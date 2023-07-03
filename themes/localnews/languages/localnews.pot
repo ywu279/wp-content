@@ -1,0 +1,1865 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: LocalNews\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-13 11:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.2; wp-6.0.2\n"
+"X-Domain: localnews"
+
+#. used between list items, there is a space after the comma
+#: inc/template-tags.php:106
+msgid ", "
+msgstr ""
+
+#: inc/customizer/handlers.php:2862
+msgid "2 layouts, ajax load more, elements and meta sortable."
+msgstr ""
+
+#: inc/customizer/handlers.php:1918
+msgid "2 layouts, display option, post order, count, controller hide."
+msgstr ""
+
+#: inc/customizer/handlers.php:1705
+msgid "2 layouts."
+msgstr ""
+
+#: inc/customizer/handlers.php:439
+msgid "29 preloader choices."
+msgstr ""
+
+#: 404.php:39 inc/breadcrumb-trail/breadcrumbs.php:313
+msgid "404 Not Found"
+msgstr ""
+
+#: inc/customizer/handlers.php:559
+msgid "5 effects choices."
+msgstr ""
+
+#: inc/widgets/popular-posts.php:16
+msgid "A collection of popular posts from specific category."
+msgstr ""
+
+#: inc/widgets/category-collection.php:16
+msgid "A collection of post categories."
+msgstr ""
+
+#: inc/widgets/posts-list.php:16
+msgid "A collection of posts from specific category displayed in list layout."
+msgstr ""
+
+#: inc/widgets/carousel.php:16
+msgid "A collection of posts from specific category for carousel slide."
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:16
+msgid "A collection of tabbed posts from specific category."
+msgstr ""
+
+#: inc/customizer/handlers.php:76
+msgid "About Theme"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:578 inc/admin/class-theme-info.php:597
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:147
+msgid ""
+"Activate Blazethemes Demo Importer Now and Import any available demo in One "
+"Click"
+msgstr ""
+
+#: inc/widgets/banner-ads.php:75
+msgid "Ad link open in"
+msgstr ""
+
+#: inc/widgets/banner-ads.php:70
+msgid "Ad URL"
+msgstr ""
+
+#: inc/customizer/handlers.php:2433
+msgid "Add %year% to retrieve current year."
+msgstr ""
+
+#: inc/widgets/widget-fields.php:87
+msgid "Add image"
+msgstr ""
+
+#: inc/customizer/handlers.php:619
+msgid "Add New Icon"
+msgstr ""
+
+#: inc/widgets/author-info.php:87 inc/widgets/banner-ads.php:60
+#: inc/widgets/carousel.php:100 inc/widgets/category-collection.php:111
+#: inc/widgets/popular-posts.php:105 inc/widgets/posts-list.php:101
+#: inc/widgets/social-icons.php:57
+msgid "Add the widget title here"
+msgstr ""
+
+#: inc/widgets/widget-title.php:51
+msgid "Add the widget title here."
+msgstr ""
+
+#: inc/widgets/widget-fields.php:58
+msgid "Add url here . ."
+msgstr ""
+
+#: inc/widgets/widgets.php:19 inc/widgets/widgets.php:32
+#: inc/widgets/widgets.php:45 inc/widgets/widgets.php:97
+#: inc/widgets/widgets.php:110 inc/widgets/widgets.php:123
+#: inc/widgets/widgets.php:136
+msgid "Add widgets here."
+msgstr ""
+
+#: inc/widgets/widgets.php:58
+msgid "Add widgets suitable for displaying ads here."
+msgstr ""
+
+#: inc/widgets/widgets.php:84
+msgid "Add widgets suitable for middle left here."
+msgstr ""
+
+#: inc/widgets/widgets.php:71
+msgid "Add widgets suitable for middle right here."
+msgstr ""
+
+#: inc/customizer/handlers.php:1422
+msgid "Ads Banner"
+msgstr ""
+
+#: inc/customizer/handlers.php:1434
+msgid "Ads Banner Setting"
+msgstr ""
+
+#: inc/customizer/handlers.php:1465 inc/widgets/widgets.php:56
+msgid "Ads Banner Sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:1461
+msgid "Ads banner type"
+msgstr ""
+
+#: inc/customizer/handlers.php:1447
+msgid "Ads Banner Visibility"
+msgstr ""
+
+#: inc/customizer/handlers.php:1477
+msgid "Ads Image"
+msgstr ""
+
+#: inc/customizer/handlers.php:1496
+msgid "Ads url"
+msgstr ""
+
+#: inc/theme-starter.php:213
+msgid "Advertisement Banner"
+msgstr ""
+
+#: inc/template-tags.php:209 inc/template-tags.php:218
+msgid "ago"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:189
+msgid "All"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:283
+msgid "All in one migration"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:151
+msgid "All Ready for demo import!! Setup your site exactly like demo"
+msgstr ""
+
+#: inc/customizer/handlers.php:514
+msgid "Animation / Hover Effects"
+msgstr ""
+
+#: inc/customizer/handlers.php:545
+msgid "Applied to post thumbanails listed in archive pages."
+msgstr ""
+
+#: inc/customizer/handlers.php:528
+msgid "Applied to post titles listed in archive pages."
+msgstr ""
+
+#: inc/customizer/handlers.php:727
+msgid "Archive/Blog Sidebar Layouts"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:314
+msgid "Archives"
+msgstr ""
+
+#: inc/widgets/author-info.php:99
+msgid "Author Image"
+msgstr ""
+
+#: inc/widgets/author-info.php:88
+msgid "Author Info"
+msgstr ""
+
+#: inc/customizer/handlers.php:2840 inc/customizer/handlers.php:2922
+#: inc/widgets/author-info.php:93 inc/widgets/author-info.php:94
+msgid "Author Name"
+msgstr ""
+
+#: inc/widgets/author-info.php:104
+msgid "Author Tag"
+msgstr ""
+
+#: inc/widgets/author-info.php:110
+msgid "Author URL"
+msgstr ""
+
+#: inc/customizer/customizer.php:17 inc/customizer/handlers.php:1094
+#: inc/customizer/handlers.php:1374 inc/customizer/handlers.php:1748
+#: inc/customizer/handlers.php:1818
+msgid "Background"
+msgstr ""
+
+#: inc/customizer/customizer.php:402
+msgid "Background Color"
+msgstr ""
+
+#: inc/widgets/banner-ads.php:65
+msgid "Banner Image"
+msgstr ""
+
+#: inc/customizer/handlers.php:2175
+msgid "Banner Slider Column"
+msgstr ""
+
+#: inc/widgets/banner-ads.php:59
+msgid "Banner Title"
+msgstr ""
+
+#. Author of the theme
+msgid "BlazeThemes"
+msgstr ""
+
+#: inc/customizer/handlers.php:2488 inc/customizer/handlers.php:2551
+#: inc/customizer/handlers.php:2616 inc/customizer/handlers.php:2658
+msgid "Blocks to show in this section"
+msgstr ""
+
+#: inc/customizer/handlers.php:2744
+msgid "Blog / Archive"
+msgstr ""
+
+#: inc/customizer/handlers.php:2738
+msgid "Blog / Archive / Single"
+msgstr ""
+
+#: inc/customizer/handlers.php:1049
+msgid "Border"
+msgstr ""
+
+#: inc/customizer/handlers.php:1832
+msgid "Border Bottom"
+msgstr ""
+
+#: inc/customizer/handlers.php:2337
+msgid "Border Top"
+msgstr ""
+
+#: inc/customizer/handlers.php:700 inc/customizer/handlers.php:758
+#: inc/customizer/handlers.php:816 inc/customizer/handlers.php:874
+msgid "Both Sidebar"
+msgstr ""
+
+#: functions.php:66 inc/customizer/handlers.php:2379
+msgid "Bottom Footer"
+msgstr ""
+
+#: inc/customizer/handlers.php:2644
+msgid "Bottom Full Width"
+msgstr ""
+
+#: inc/customizer/handlers.php:2718
+msgid "Bottom Full width Section"
+msgstr ""
+
+#: inc/customizer/handlers.php:482
+msgid "Boxed"
+msgstr ""
+
+#: inc/customizer/handlers.php:897
+msgid "Breadcrumb Options"
+msgstr ""
+
+#: inc/customizer/handlers.php:922
+msgid "Breadcrumb type"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:311
+msgctxt "breadcrumbs aria label"
+msgid "Breadcrumbs"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:310
+msgid "Browse:"
+msgstr ""
+
+#: inc/customizer/handlers.php:2803
+msgid "Button"
+msgstr ""
+
+#: inc/customizer/handlers.php:1021
+msgid "Button Align"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:236
+msgid "Buy Now"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:333
+msgid "Cancel"
+msgstr ""
+
+#: inc/customizer/handlers.php:2894 inc/widgets/carousel.php:106
+#: inc/widgets/popular-posts.php:111 inc/widgets/posts-list.php:107
+#: inc/widgets/tabbed-posts.php:197
+msgid "Categories"
+msgstr ""
+
+#: inc/widgets/category-collection.php:112
+msgid "Category Collection"
+msgstr ""
+
+#: inc/customizer/handlers.php:1031 inc/widgets/widget-title.php:61
+msgid "Center"
+msgstr ""
+
+#: inc/widgets/widget-title.php:58
+msgid "change the alignment of the wiget title text."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:582 inc/admin/class-theme-info.php:601
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: inc/widgets/category-collection.php:118
+msgid "Choose the categories to display"
+msgstr ""
+
+#: inc/widgets/carousel.php:107
+msgid "Choose the category to display for carousel posts"
+msgstr ""
+
+#: inc/widgets/popular-posts.php:112
+msgid "Choose the category to display for popular posts"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:198
+msgid "Choose the category to display for popular tab"
+msgstr ""
+
+#: inc/widgets/posts-list.php:108
+msgid "Choose the category to display list of posts"
+msgstr ""
+
+#: inc/customizer/handlers.php:1462
+msgid "Choose to display ads content from."
+msgstr ""
+
+#: inc/customizer/handlers.php:2489 inc/customizer/handlers.php:2552
+#: inc/customizer/handlers.php:2617 inc/customizer/handlers.php:2659
+msgid "Click on eye icon to show or hide block"
+msgstr ""
+
+#: inc/customizer/handlers.php:229
+msgid "Color 1"
+msgstr ""
+
+#: inc/customizer/handlers.php:244
+msgid "Color 2"
+msgstr ""
+
+#: inc/customizer/handlers.php:259
+msgid "Color 3"
+msgstr ""
+
+#: inc/customizer/handlers.php:274
+msgid "Color 4"
+msgstr ""
+
+#: inc/customizer/handlers.php:289
+msgid "Color 5"
+msgstr ""
+
+#: inc/customizer/handlers.php:304
+msgid "Color 6"
+msgstr ""
+
+#: inc/customizer/handlers.php:2287
+msgid "Column Four"
+msgstr ""
+
+#: inc/customizer/handlers.php:2275
+msgid "Column One"
+msgstr ""
+
+#: inc/customizer/handlers.php:2169
+msgid "Column Re-order"
+msgstr ""
+
+#: inc/customizer/handlers.php:2283
+msgid "Column Three"
+msgstr ""
+
+#: inc/customizer/handlers.php:2279
+msgid "Column Two"
+msgstr ""
+
+#. %s is the page number.
+#: inc/breadcrumb-trail/breadcrumbs.php:320
+#, php-format
+msgid "Comment Page %s"
+msgstr ""
+
+#: inc/theme-starter.php:184 inc/widgets/tabbed-posts.php:205
+msgid "Comments"
+msgstr ""
+
+#: comments.php:67
+msgid "Comments are closed."
+msgstr ""
+
+#: inc/customizer/handlers.php:2846 inc/customizer/handlers.php:2928
+msgid "Comments Number"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:204
+msgid "Comments Tab"
+msgstr ""
+
+#: inc/customizer/handlers.php:2137
+msgid "Comments tab title"
+msgstr ""
+
+#. 1: comment count number, 2: title.
+#: comments.php:41
+#, php-format
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/extras/helpers.php:272
+msgid "Continue reading"
+msgstr ""
+
+#. %s: Name of current post. Only visible to screen readers
+#: template-parts/content-single.php:62
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: inc/customizer/handlers.php:2431
+msgid "Copyright Text"
+msgstr ""
+
+#: inc/customizer/handlers.php:1464
+msgid "Custom"
+msgstr ""
+
+#: inc/widgets/widget-title.php:50
+msgid "Custom Widget Title"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:469
+msgid "Customize Site"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:836
+#: inc/breadcrumb-trail/breadcrumbs.php:1265
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: inc/customizer/handlers.php:201
+msgid "Date format"
+msgstr ""
+
+#: inc/customizer/handlers.php:202
+msgid "Date format applied to single and archive pages."
+msgstr ""
+
+#: inc/customizer/handlers.php:185
+msgid "Date to display"
+msgstr ""
+
+#: inc/customizer/handlers.php:925
+msgid "Default"
+msgstr ""
+
+#: inc/customizer/handlers.php:204
+msgid "Default by theme"
+msgstr ""
+
+#: inc/customizer/handlers.php:500
+msgid "Default theme mode, website frame, width, color."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:341
+msgid "Demo Import Progress"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:351
+msgid "Demo import success"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:402
+msgid "Demo importer plugin activated"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:415
+msgid "Demo importer plugin installed and activated"
+msgstr ""
+
+#: inc/widgets/author-info.php:115
+msgid "Description"
+msgstr ""
+
+#: inc/customizer/handlers.php:972 inc/customizer/handlers.php:1173
+#: inc/customizer/handlers.php:1277 inc/customizer/handlers.php:1578
+#: inc/customizer/handlers.php:1964 inc/customizer/handlers.php:2238
+msgid "Design"
+msgstr ""
+
+#: inc/customizer/handlers.php:2351
+msgid ""
+"Design tab - border width, color, text color, background color, gradient, "
+"image."
+msgstr ""
+
+#: inc/customizer/handlers.php:2995
+msgid ""
+"Design tab- title, meta content typography, related posts layouts, filter by,"
+" post count, thumb hide, elements, meta sortable."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:505
+msgid "Dismiss Notice"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:475
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/customizer/handlers.php:1186
+msgid "Display site description"
+msgstr ""
+
+#: inc/customizer/handlers.php:1133
+msgid "Display site title"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:470
+msgid "Documentation"
+msgstr ""
+
+#. %s: Name of current post. Only visible to screen readers
+#: inc/template-tags.php:83 template-parts/content-page.php:37
+#, php-format
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: inc/customizer/handlers.php:2821
+msgid "Edit button styles"
+msgstr ""
+
+#: inc/customizer/handlers.php:2445
+msgid ""
+"Edit full copyright text, Design tab - text color, link color, background "
+"color, gradient."
+msgstr ""
+
+#: inc/customizer/handlers.php:531 inc/customizer/handlers.php:548
+msgid "Effect One"
+msgstr ""
+
+#: inc/customizer/handlers.php:2788 inc/customizer/handlers.php:2888
+msgid "Elements show/hide"
+msgstr ""
+
+#: inc/customizer/handlers.php:2392
+msgid "Enable bottom footer"
+msgstr ""
+
+#: inc/customizer/handlers.php:2253
+msgid "Enable footer section"
+msgstr ""
+
+#: inc/customizer/handlers.php:1692
+msgid "Enable header section sticky"
+msgstr ""
+
+#: inc/customizer/handlers.php:715 inc/customizer/handlers.php:773
+#: inc/customizer/handlers.php:831 inc/customizer/handlers.php:889
+msgid "Enable sidebar sticky"
+msgstr ""
+
+#: inc/customizer/handlers.php:426
+msgid "Enable site preloader"
+msgstr ""
+
+#: inc/customizer/handlers.php:1878
+msgid "Enable ticker news"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:419
+msgid "Error while trying to install or active the plugin."
+msgstr ""
+
+#: inc/customizer/handlers.php:2800
+msgid "Excerpt"
+msgstr ""
+
+#: inc/customizer/handlers.php:2903
+msgid "Featured Image"
+msgstr ""
+
+#: inc/widgets/social-icons.php:58
+msgid "Find Me On"
+msgstr ""
+
+#: inc/customizer/handlers.php:1000
+msgid "Font size (px)"
+msgstr ""
+
+#: inc/widgets/widgets.php:95
+msgid "Footer Sidebar - Column 1"
+msgstr ""
+
+#: inc/widgets/widgets.php:108
+msgid "Footer Sidebar - Column 2"
+msgstr ""
+
+#: inc/widgets/widgets.php:121
+msgid "Footer Sidebar - Column 3"
+msgstr ""
+
+#: inc/widgets/widgets.php:134
+msgid "Footer Sidebar - Column 4"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:289
+msgid ""
+"For your website to look exactly like the demo,the import process will "
+"install and activate the following plugin if they are not installed or "
+"activated."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:220
+msgid "Free"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:142
+msgid "Free and Premium Demos"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:136
+msgid "Free vs PRO"
+msgstr ""
+
+#: inc/customizer/handlers.php:2468
+msgid "Front sections"
+msgstr ""
+
+#: inc/widgets/widgets.php:82
+msgid "Frontpage - Middle Left Sidebar"
+msgstr ""
+
+#: inc/widgets/widgets.php:69
+msgid "Frontpage - Middle Right Sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:669
+msgid "Frontpage Sidebar Layouts"
+msgstr ""
+
+#: inc/customizer/handlers.php:486 inc/customizer/handlers.php:2474
+msgid "Full Width"
+msgstr ""
+
+#: inc/customizer/handlers.php:2709
+msgid "Full width Section"
+msgstr ""
+
+#: inc/customizer/handlers.php:968 inc/customizer/handlers.php:1169
+#: inc/customizer/handlers.php:1273 inc/customizer/handlers.php:1574
+#: inc/customizer/handlers.php:1960 inc/customizer/handlers.php:2234
+msgid "General"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:466
+msgid ""
+"Get started with multipurpose news theme and give your site a new look. We "
+"recommend you to please go through the documentation to get started with "
+"theme and setup homepage quicky. You can click on install demos for quick "
+"demo import."
+msgstr ""
+
+#: inc/customizer/handlers.php:153
+msgid "Global"
+msgstr ""
+
+#: 404.php:47
+msgid "Go back to home"
+msgstr ""
+
+#: inc/widgets/social-icons.php:92
+msgid "go to manage social icons"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:698
+msgid "Got pre sales queries?"
+msgstr ""
+
+#: inc/customizer/handlers.php:331
+msgid "Gradient 1"
+msgstr ""
+
+#: inc/customizer/handlers.php:346
+msgid "Gradient 2"
+msgstr ""
+
+#: inc/customizer/handlers.php:361
+msgid "Gradient 3"
+msgstr ""
+
+#: inc/customizer/handlers.php:376
+msgid "Gradient 4"
+msgstr ""
+
+#: inc/customizer/handlers.php:391
+msgid "Gradient 5"
+msgstr ""
+
+#: inc/customizer/handlers.php:406
+msgid "Gradient 6"
+msgstr ""
+
+#: inc/customizer/handlers.php:317
+msgid "Gradient Presets"
+msgstr ""
+
+#: inc/widgets/widgets.php:43
+msgid "Header Toggle Sidebar"
+msgstr ""
+
+#: inc/theme-starter.php:174
+msgid "Headlines"
+msgstr ""
+
+#. %1$s current user display name., %2$s this theme name., %3$s discount coupon code., %4$s discount percentage.
+#: inc/admin/class-theme-info.php:679
+#, php-format
+msgid ""
+"Hello %1$s! We hope you're enjoying the %2$s theme now that you've been "
+"using it for a while. You may always upgrade to pro to gain access to more "
+"premium features. You can also get a %4$s discount by using the promo code "
+"%3$s during checkout. Enjoy! "
+msgstr ""
+
+#: inc/widgets/carousel.php:101
+msgid "Highlights"
+msgstr ""
+
+#: inc/customizer/handlers.php:615
+msgid "Hold bar icon and drag vertically to re-order the icons"
+msgstr ""
+
+#: inc/customizer/handlers.php:2704
+msgid "Hold item and drag vertically to re-order the items"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:312
+msgid "Home"
+msgstr ""
+
+#: inc/widgets/popular-posts.php:121
+msgid "Horizontal"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:818
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr ""
+
+#: inc/customizer/handlers.php:1794
+msgid "Hover Effect"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:501
+msgid "How was your experience using LocalNews theme ? "
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://blazethemes.com/"
+msgstr ""
+
+#. URI of the theme
+msgid "https://blazethemes.com/theme/local-news-free/"
+msgstr ""
+
+#: inc/customizer/handlers.php:1079
+msgid "Icon Color"
+msgstr ""
+
+#: inc/customizer/handlers.php:923
+msgid ""
+"If you use other than \"default\" one you will need to install and activate "
+"respective plugins Breadcrumb NavXT, Yoast SEO and Rank Math SEO"
+msgstr ""
+
+#: inc/customizer/handlers.php:544
+msgid "Image hover effects"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:332
+msgid "Import Demo"
+msgstr ""
+
+#: inc/widgets/social-icons.php:63
+msgid "Inherit global default social icons color"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:242
+msgid "Install"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:149
+msgid ""
+"Install BlazeThemes Demo Importer and Import any available demo in One Click"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:468
+msgid "Install Demos"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:379
+msgid "Installed and Active"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:383
+msgid "Installed but Not Active"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:326
+msgid ""
+"It is always recommended to reset the database for a complete demo import."
+msgstr ""
+
+#: 404.php:43
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:265
+msgid ""
+"It looks like the config file for the demos is missing or conatins errors!. "
+"Demo install can't go futher!"
+msgstr ""
+
+#: template-parts/content-none.php:43
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: inc/customizer/custom-controls/repeater/repeater.php:122
+msgid "Item Label"
+msgstr ""
+
+#: inc/theme-starter.php:181 inc/widgets/tabbed-posts.php:174
+msgid "Latest"
+msgstr ""
+
+#: inc/widgets/widget-title.php:52
+msgid "Latest News"
+msgstr ""
+
+#: inc/theme-starter.php:194 inc/theme-starter.php:225
+#: inc/theme-starter.php:247 inc/theme-starter.php:269
+msgid "Latest posts"
+msgstr ""
+
+#: inc/customizer/handlers.php:2721
+msgid "Latest Posts / Page Content"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:173
+msgid "Latest Tab"
+msgstr ""
+
+#: inc/customizer/handlers.php:2094
+msgid "Latest tab title"
+msgstr ""
+
+#. %s: post title
+#: inc/template-tags.php:66
+#, php-format
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:504
+msgid "Leave A Review"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:130
+msgid "Leave a review"
+msgstr ""
+
+#: inc/customizer/handlers.php:1027 inc/widgets/widget-title.php:60
+msgid "Left"
+msgstr ""
+
+#: inc/customizer/handlers.php:2516
+msgid "Left Content  - Right Sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:2712
+msgid "Left Content - Right Sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:692 inc/customizer/handlers.php:750
+#: inc/customizer/handlers.php:808 inc/customizer/handlers.php:866
+#: inc/widgets/widgets.php:30
+msgid "Left Sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:2582 inc/customizer/handlers.php:2715
+msgid "Left Sidebar - Right Content"
+msgstr ""
+
+#: inc/widgets/banner-ads.php:85
+msgid "Link rel attribute value"
+msgstr ""
+
+#: inc/widgets/author-info.php:15
+msgid "LN : Author Info"
+msgstr ""
+
+#: inc/widgets/banner-ads.php:15
+msgid "LN : Banner Ads"
+msgstr ""
+
+#: inc/widgets/carousel.php:15
+msgid "LN : Carousel Posts"
+msgstr ""
+
+#: inc/widgets/category-collection.php:15
+msgid "LN : Category Collection"
+msgstr ""
+
+#: inc/widgets/popular-posts.php:15
+msgid "LN : Popular Posts Slider"
+msgstr ""
+
+#: inc/widgets/posts-list.php:15
+msgid "LN : Posts List"
+msgstr ""
+
+#: inc/widgets/social-icons.php:16
+msgid "LN : Social Icons"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:15
+msgid "LN : Tabbed Posts"
+msgstr ""
+
+#: inc/widgets/widget-title.php:15
+msgid "LN : Widget Title"
+msgstr ""
+
+#. Name of the theme
+#: inc/admin/class-theme-info.php:41
+msgid "LocalNews"
+msgstr ""
+
+#: inc/theme-starter.php:297
+msgid "LocalNews - Modern WordPress Theme. All Rights Reserved  %year%.."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:91 inc/admin/class-theme-info.php:92
+msgid "LocalNews Options"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:498
+msgid "LocalNews Review Notice"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:459
+msgid "LocalNews Welcome Notice"
+msgstr ""
+
+#: inc/customizer/handlers.php:1119
+msgid "Logo & Site Icon"
+msgstr ""
+
+#: inc/customizer/handlers.php:1144
+msgid "Logo Width (px)"
+msgstr ""
+
+#: inc/widgets/author-info.php:116
+msgid "Lorem ipsum is simply dummy text"
+msgstr ""
+
+#: inc/customizer/handlers.php:1944
+msgid "Main Banner"
+msgstr ""
+
+#: functions.php:65 inc/customizer/handlers.php:1557
+msgid "Main Header"
+msgstr ""
+
+#: inc/customizer/handlers.php:171
+msgid "Make website schema ready"
+msgstr ""
+
+#: inc/customizer/handlers.php:1540
+msgid "Manage ads banner sidebar from here"
+msgstr ""
+
+#: inc/customizer/handlers.php:2323
+msgid "Manage footer widget four"
+msgstr ""
+
+#: inc/customizer/handlers.php:2308
+msgid "Manage footer widget one"
+msgstr ""
+
+#: inc/customizer/handlers.php:2318
+msgid "Manage footer widget three"
+msgstr ""
+
+#: inc/customizer/handlers.php:2313
+msgid "Manage footer widget two"
+msgstr ""
+
+#: inc/customizer/handlers.php:2601
+msgid "Manage left sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:1326
+msgid "Manage menu from here"
+msgstr ""
+
+#: inc/customizer/handlers.php:2536
+msgid "Manage right sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:1650
+msgid "Manage sidebar from here"
+msgstr ""
+
+#: inc/customizer/handlers.php:1616
+msgid "Manage site & Tagline"
+msgstr ""
+
+#: inc/customizer/handlers.php:1597
+msgid "Manage Site Logo"
+msgstr ""
+
+#: inc/customizer/handlers.php:1360
+msgid "Manage social icons"
+msgstr ""
+
+#: inc/widgets/social-icons.php:91
+msgid "Manage social icons from customizer "
+msgstr ""
+
+#: inc/admin/class-theme-info.php:695
+msgid "Maybe later"
+msgstr ""
+
+#: inc/hooks/header-hooks.php:116
+msgid "Menu"
+msgstr ""
+
+#: inc/customizer/handlers.php:1781
+msgid "Menu Options"
+msgstr ""
+
+#: inc/customizer/handlers.php:1845
+msgid "Menu, hover, active, border colors and main, sub menu typography ."
+msgstr ""
+
+#: inc/customizer/handlers.php:1388
+msgid "Menu, Icon color."
+msgstr ""
+
+#: inc/customizer/handlers.php:2797 inc/customizer/handlers.php:2900
+msgid "Meta"
+msgstr ""
+
+#: inc/customizer/handlers.php:2834 inc/customizer/handlers.php:2916
+msgid "Meta show/hide"
+msgstr ""
+
+#: template-parts/content-single.php:37 template-parts/content.php:47
+msgid "mins"
+msgstr ""
+
+#. Minute archive title. %s is the minute time format.
+#: inc/breadcrumb-trail/breadcrumbs.php:322
+#, php-format
+msgid "Minute %s"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:784
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:801
+msgctxt "minute archives time format"
+msgid "i"
+msgstr ""
+
+#: inc/customizer/handlers.php:189
+msgid "Modified date"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:835
+#: inc/breadcrumb-trail/breadcrumbs.php:891
+#: inc/breadcrumb-trail/breadcrumbs.php:1261
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr ""
+
+#: inc/customizer/handlers.php:438 inc/customizer/handlers.php:499
+#: inc/customizer/handlers.php:558 inc/customizer/handlers.php:644
+#: inc/customizer/handlers.php:938 inc/customizer/handlers.php:1387
+#: inc/customizer/handlers.php:1704 inc/customizer/handlers.php:1761
+#: inc/customizer/handlers.php:1844 inc/customizer/handlers.php:1917
+#: inc/customizer/handlers.php:2149 inc/customizer/handlers.php:2190
+#: inc/customizer/handlers.php:2350 inc/customizer/handlers.php:2444
+#: inc/customizer/handlers.php:2501 inc/customizer/handlers.php:2564
+#: inc/customizer/handlers.php:2629 inc/customizer/handlers.php:2671
+#: inc/customizer/handlers.php:2861 inc/customizer/handlers.php:2994
+msgid "More Features"
+msgstr ""
+
+#: inc/customizer/handlers.php:926
+msgid "NavXT"
+msgstr ""
+
+#: inc/widgets/category-collection.php:80
+msgid "News"
+msgstr ""
+
+#: template-parts/content-single.php:90
+msgid "Next:"
+msgstr ""
+
+#: inc/template-functions.php:389
+msgid "No posts found"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:317
+msgid "No Required Plugins Found."
+msgstr ""
+
+#: inc/customizer/handlers.php:688 inc/customizer/handlers.php:746
+#: inc/customizer/handlers.php:804 inc/customizer/handlers.php:862
+msgid "No Sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:2769
+msgid "No.  of words in excerpt"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:210
+msgid "No. of comments"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:179
+msgid "No. of latest posts"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:191
+msgid "No. of popular posts"
+msgstr ""
+
+#: inc/customizer/handlers.php:530 inc/customizer/handlers.php:547
+#: inc/customizer/handlers.php:1800
+msgid "None"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:375
+msgid "Not Installed"
+msgstr ""
+
+#: template-parts/content-none.php:16
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:14
+#, php-format
+msgid "Nothing Found for - %1s"
+msgstr ""
+
+#: inc/customizer/handlers.php:2006
+msgid "Number of posts to display"
+msgstr ""
+
+#: inc/widgets/posts-list.php:114
+msgid "Number of posts to show"
+msgstr ""
+
+#: inc/customizer/handlers.php:1804
+msgid "One"
+msgstr ""
+
+#. 1: title.
+#: comments.php:35
+#, php-format
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#: inc/customizer/handlers.php:1514
+msgid "Open Ads link on"
+msgstr ""
+
+#: inc/customizer/handlers.php:1517
+msgid "Open in new tab"
+msgstr ""
+
+#: inc/customizer/handlers.php:1516
+msgid "Open in same tab"
+msgstr ""
+
+#: inc/customizer/handlers.php:601 inc/widgets/banner-ads.php:78
+msgid "Open link in new tab"
+msgstr ""
+
+#: inc/customizer/handlers.php:602 inc/widgets/banner-ads.php:79
+msgid "Open link in same tab"
+msgstr ""
+
+#: inc/customizer/handlers.php:125
+msgid ""
+"Our premium plans comes with full featured and highly customizable "
+"customizer. With unlimited social icons, unlimited homepage news sections, "
+"unlimited advertisement area and advanced control fields with 600+ "
+"typography features."
+msgstr ""
+
+#: inc/customizer/handlers.php:1064
+msgid "Padding"
+msgstr ""
+
+#. %s is the page number.
+#: inc/breadcrumb-trail/breadcrumbs.php:318
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: inc/customizer/handlers.php:843
+msgid "Page Sidebar Layouts"
+msgstr ""
+
+#: template-parts/content-page.php:23 template-parts/content-single.php:75
+msgid "Pages:"
+msgstr ""
+
+#: inc/theme-starter.php:182 inc/widgets/tabbed-posts.php:186
+msgid "Popular"
+msgstr ""
+
+#: inc/customizer/handlers.php:2122
+msgid "Popular Categories"
+msgstr ""
+
+#: inc/widgets/popular-posts.php:106
+msgid "Popular News"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:185
+msgid "Popular Tab"
+msgstr ""
+
+#: inc/customizer/handlers.php:2108
+msgid "Popular tab title"
+msgstr ""
+
+#: inc/customizer/handlers.php:2191
+msgid "Popular, latest, comments reorder."
+msgstr ""
+
+#: inc/customizer/handlers.php:939
+msgid "Position, Design tab - text, link, background color."
+msgstr ""
+
+#: inc/widgets/category-collection.php:117
+msgid "Post Categories"
+msgstr ""
+
+#: inc/customizer/handlers.php:785
+msgid "Post Sidebar Layouts"
+msgstr ""
+
+#: inc/customizer/handlers.php:527
+msgid "Post title hover effects"
+msgstr ""
+
+#. 1: list of categories.
+#: inc/template-tags.php:109
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: inc/customizer/handlers.php:1904 inc/customizer/handlers.php:2026
+msgid "Posts Categories"
+msgstr ""
+
+#: inc/customizer/handlers.php:415
+msgid "Preloader"
+msgstr ""
+
+#: inc/customizer/handlers.php:124
+msgid "Premium Features"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:229
+msgid "Preview"
+msgstr ""
+
+#: template-parts/content-single.php:89
+msgid "Previous:"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:217
+msgid "Pro"
+msgstr ""
+
+#: inc/customizer/handlers.php:188
+msgid "Published date"
+msgstr ""
+
+#: inc/customizer/handlers.php:2843 inc/customizer/handlers.php:2925
+msgid "Published/Modified Date"
+msgstr ""
+
+#: inc/customizer/handlers.php:928
+msgid "Rank Math"
+msgstr ""
+
+#: inc/customizer/handlers.php:2849 inc/customizer/handlers.php:2931
+msgid "Read Time"
+msgstr ""
+
+#. 1: link to WP admin new post page.
+#: template-parts/content-none.php:26
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: inc/customizer/handlers.php:1478
+msgid "Recommended size for ad image is 900 (width) * 350 (height)"
+msgstr ""
+
+#: inc/theme-starter.php:311 inc/customizer/handlers.php:2943
+msgid "Related News"
+msgstr ""
+
+#: inc/customizer/handlers.php:2972
+msgid "Related news title"
+msgstr ""
+
+#: inc/widgets/widget-fields.php:91
+msgid "Remove image"
+msgstr ""
+
+#: inc/customizer/handlers.php:2686
+msgid "Reorder sections"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:288
+msgid "Required Plugins"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:324
+msgid "Reset Website"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:325
+msgid ""
+"Reseting the website will delete all your post, pages, custom post types, "
+"categories, taxonomies, images and all other customizer and theme option "
+"settings."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:430
+msgid "Review notice hidden."
+msgstr ""
+
+#: inc/customizer/handlers.php:1035 inc/widgets/widget-title.php:62
+msgid "Right"
+msgstr ""
+
+#: inc/customizer/handlers.php:696 inc/customizer/handlers.php:754
+#: inc/customizer/handlers.php:812 inc/customizer/handlers.php:870
+msgid "Right Sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:953
+msgid "Scroll To Top"
+msgstr ""
+
+#: inc/customizer/handlers.php:986
+msgid "Scroll To Top Visibility"
+msgstr ""
+
+#. %s: search query.
+#: search.php:42
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#. %s is the search query.
+#: inc/breadcrumb-trail/breadcrumbs.php:316
+#, php-format
+msgid "Search results for: %s"
+msgstr ""
+
+#: inc/customizer/handlers.php:2703
+msgid "Section Re-order"
+msgstr ""
+
+#: inc/widgets/carousel.php:91 inc/widgets/popular-posts.php:96
+#: inc/widgets/posts-list.php:92 inc/widgets/tabbed-posts.php:165
+msgid "Select category"
+msgstr ""
+
+#: inc/customizer/handlers.php:624
+msgid "Select from dropdown."
+msgstr ""
+
+#: inc/customizer/handlers.php:159
+msgid "SEO / Misc"
+msgstr ""
+
+#: inc/customizer/handlers.php:599
+msgid "Sets the target attribute according to the value."
+msgstr ""
+
+#: inc/customizer/selective-refresh.php:354
+#: inc/hooks/bottom-footer-hooks.php:49
+msgid "Setup Bottom Footer Menu"
+msgstr ""
+
+#: inc/customizer/selective-refresh.php:273 inc/hooks/top-header-hooks.php:31
+msgid "Setup Top Header Menu"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:112
+msgid "Setup Tutorials"
+msgstr ""
+
+#: inc/customizer/handlers.php:2756
+msgid "Show archive title prefix"
+msgstr ""
+
+#: inc/customizer/handlers.php:2420
+msgid "Show bottom footer menu"
+msgstr ""
+
+#: inc/customizer/handlers.php:2406
+msgid "Show bottom social icons"
+msgstr ""
+
+#: inc/customizer/handlers.php:908
+msgid "Show breadcrumb trails"
+msgstr ""
+
+#: inc/customizer/handlers.php:1679
+msgid "Show dark/light toggle icon"
+msgstr ""
+
+#: inc/customizer/handlers.php:1978
+msgid "Show main banner"
+msgstr ""
+
+#: inc/customizer/handlers.php:1308
+msgid "Show menu items"
+msgstr ""
+
+#: inc/customizer/handlers.php:2040
+msgid "Show post categories"
+msgstr ""
+
+#: inc/customizer/handlers.php:2053
+msgid "Show post date"
+msgstr ""
+
+#: inc/customizer/handlers.php:2066
+msgid "Show post excerpt"
+msgstr ""
+
+#: inc/customizer/handlers.php:2957
+msgid "Show related news"
+msgstr ""
+
+#: inc/customizer/handlers.php:2982
+msgid "Show related post on popup box"
+msgstr ""
+
+#: inc/customizer/handlers.php:1665
+msgid "Show search icon"
+msgstr ""
+
+#: inc/customizer/handlers.php:1631
+msgid "Show sidebar toggle button"
+msgstr ""
+
+#: inc/customizer/handlers.php:1341
+msgid "Show social icons"
+msgstr ""
+
+#: inc/customizer/handlers.php:1292
+msgid "Show top header"
+msgstr ""
+
+#: inc/widgets/widgets.php:17
+msgid "Sidebar"
+msgstr ""
+
+#: inc/customizer/handlers.php:659
+msgid "Sidebar Options"
+msgstr ""
+
+#: inc/customizer/handlers.php:2876
+msgid "Single Post"
+msgstr ""
+
+#: inc/customizer/handlers.php:1220
+msgid "Site Description Color"
+msgstr ""
+
+#: inc/customizer/handlers.php:1115
+msgid "Site Identity"
+msgstr ""
+
+#: inc/customizer/handlers.php:1127
+msgid "Site Title & Tagline"
+msgstr ""
+
+#: inc/customizer/handlers.php:1194
+msgid "Site Title Color"
+msgstr ""
+
+#: inc/customizer/handlers.php:1204
+msgid "Site Title Hover Color"
+msgstr ""
+
+#: inc/customizer/handlers.php:1236
+msgid "Site Title Typography"
+msgstr ""
+
+#: header.php:25
+msgid "Skip to content"
+msgstr ""
+
+#: inc/widgets/popular-posts.php:118
+msgid "Slide Direction"
+msgstr ""
+
+#: inc/customizer/handlers.php:2150
+msgid "Slider options, excerpt length, post order, count and icons selector."
+msgstr ""
+
+#: inc/customizer/handlers.php:1992
+msgid "Slider Setting"
+msgstr ""
+
+#: inc/customizer/handlers.php:623
+msgid "Social Icon"
+msgstr ""
+
+#: inc/customizer/handlers.php:598
+msgid "Social Icon Link Open in"
+msgstr ""
+
+#: inc/customizer/handlers.php:573 inc/customizer/handlers.php:614
+msgid "Social Icons"
+msgstr ""
+
+#: inc/customizer/handlers.php:583
+msgid "Social Icons Settings"
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:118
+msgid "Support"
+msgstr ""
+
+#: inc/customizer/handlers.php:111
+msgid "Support Form"
+msgstr ""
+
+#: inc/widgets/tabbed-posts.php:216
+msgid "Tab Order"
+msgstr ""
+
+#: inc/customizer/handlers.php:2178
+msgid "Tabbed Posts Column"
+msgstr ""
+
+#: inc/customizer/handlers.php:2079
+msgid "Tabs Setting"
+msgstr ""
+
+#. 1: list of tags.
+#: inc/template-tags.php:126
+#, php-format
+msgid "Tagged: %1$s"
+msgstr ""
+
+#: inc/widgets/widget-title.php:57
+msgid "Text Align"
+msgstr ""
+
+#: inc/widgets/banner-ads.php:16
+msgid "The details of advertisement."
+msgstr ""
+
+#: inc/widgets/author-info.php:16
+msgid "The information of  in detail author."
+msgstr ""
+
+#: inc/widgets/social-icons.php:17
+msgid "The list of social icons."
+msgstr ""
+
+#: inc/customizer/customizer.php:388
+msgid "Theme Color"
+msgstr ""
+
+#: inc/widgets/widget-title.php:16
+msgid "Theme custom widget title."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:124
+msgid "Theme demo"
+msgstr ""
+
+#: inc/customizer/handlers.php:86
+msgid "Theme Documentation"
+msgstr ""
+
+#: inc/customizer/handlers.php:2219
+msgid "Theme Footer"
+msgstr ""
+
+#: inc/customizer/handlers.php:1416
+msgid "Theme Header"
+msgstr ""
+
+#: inc/customizer/handlers.php:215
+msgid "Theme Presets"
+msgstr ""
+
+#: inc/customizer/handlers.php:105
+msgid "Theme Support"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:285
+msgid ""
+"This process will install all the required plugins, import contents and "
+"setup customizer and theme options."
+msgstr ""
+
+#: inc/customizer/handlers.php:1868
+msgid "Ticker News"
+msgstr ""
+
+#: inc/customizer/handlers.php:1894
+msgid "Ticker title"
+msgstr ""
+
+#: inc/customizer/handlers.php:2794 inc/customizer/handlers.php:2897
+msgid "Title"
+msgstr ""
+
+#: inc/customizer/handlers.php:1762
+msgid "Toggle bar, icon color."
+msgstr ""
+
+#: inc/customizer/handlers.php:1293
+msgid "Toggle to enable or disable top header bar"
+msgstr ""
+
+#: functions.php:64 inc/customizer/handlers.php:1258
+msgid "Top Header"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Transform your news site into BBC, CNN, or The New York Times in a snap with "
+"LocalNews Theme. With the perfect mix of all the right elements, you’ll get "
+"a theme that provides a tailor-made system that ticks every checkbox any "
+"aspiring news site needs. Quicker setup with beautiful pre-built layouts, "
+"breaking news on the ticker, fast page loading speed, and custom news blocks "
+"for different sections - all available in LocalNews Theme. Check out all pre "
+"built demos at: https://blazethemes.com/theme/local-news-free"
+msgstr ""
+
+#: inc/widgets/posts-list.php:102
+msgid "Trending News"
+msgstr ""
+
+#: inc/customizer/custom-controls/repeater/repeater.php:174
+msgid "Type to search"
+msgstr ""
+
+#: inc/customizer/handlers.php:2502 inc/customizer/handlers.php:2565
+#: inc/customizer/handlers.php:2630 inc/customizer/handlers.php:2672
+msgid ""
+"Unlimited blocks, list, grid, filter, carousel, ads, shortcode block and "
+"design tab - padding, margin, background color, gradient, image."
+msgstr ""
+
+#: inc/customizer/handlers.php:645
+msgid "Unlimited social icons."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:692
+msgid "Upgrade to pro"
+msgstr ""
+
+#: inc/customizer/custom-controls/repeater/repeater.php:156
+msgid "Upload Image"
+msgstr ""
+
+#: inc/customizer/handlers.php:630
+msgid "URL for icon"
+msgstr ""
+
+#: inc/widgets/popular-posts.php:120
+msgid "Vertical"
+msgstr ""
+
+#: inc/customizer/handlers.php:1725
+msgid "Vertical Padding (px)"
+msgstr ""
+
+#: inc/customizer/handlers.php:92
+msgid "View Documentation"
+msgstr ""
+
+#: inc/customizer/handlers.php:130 inc/customizer/handlers.php:444
+#: inc/customizer/handlers.php:505 inc/customizer/handlers.php:564
+#: inc/customizer/handlers.php:650 inc/customizer/handlers.php:944
+#: inc/customizer/handlers.php:1394 inc/customizer/handlers.php:1710
+#: inc/customizer/handlers.php:1768 inc/customizer/handlers.php:1850
+#: inc/customizer/handlers.php:1923 inc/customizer/handlers.php:2155
+#: inc/customizer/handlers.php:2197 inc/customizer/handlers.php:2357
+#: inc/customizer/handlers.php:2450 inc/customizer/handlers.php:2507
+#: inc/customizer/handlers.php:2570 inc/customizer/handlers.php:2635
+#: inc/customizer/handlers.php:2677 inc/customizer/handlers.php:2867
+#: inc/customizer/handlers.php:3000
+msgid "View Pro"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:502
+msgid ""
+"We are constantly striving to improve and we'd like to hear from you. Hope "
+"you spend your few seconds reviewing our product. We appreciate your time "
+"and feedback! Thank you!!"
+msgstr ""
+
+#: inc/customizer/handlers.php:87
+msgid ""
+"We have well prepared documentation which includes overall instructions and "
+"recommendations that are required in this theme."
+msgstr ""
+
+#: inc/customizer/handlers.php:106
+msgid ""
+"We provide 24/7 support regarding any theme issue. Our support team will "
+"help you to solve any kind of issue. Feel free to contact us."
+msgstr ""
+
+#: inc/admin/class-theme-info.php:283
+#, php-format
+msgid ""
+"We recommend you backup your website content before attempting to import the "
+"demo so that you can recover your website if something goes wrong. You can "
+"use %s plugin for it."
+msgstr ""
+
+#: inc/customizer/handlers.php:453 inc/customizer/handlers.php:463
+msgid "Website Layout"
+msgstr ""
+
+#. Weekly archive title. %s is the week date format.
+#: inc/breadcrumb-trail/breadcrumbs.php:324
+#, php-format
+msgid "Week %s"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:864
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: inc/customizer/handlers.php:186
+msgid "Whether to show date published or modified date."
+msgstr ""
+
+#: inc/widgets/author-info.php:86 inc/widgets/carousel.php:99
+#: inc/widgets/category-collection.php:110 inc/widgets/popular-posts.php:104
+#: inc/widgets/posts-list.php:100 inc/widgets/social-icons.php:56
+msgid "Widget Title"
+msgstr ""
+
+#: inc/customizer/handlers.php:2300 inc/customizer/handlers.php:2528
+#: inc/customizer/handlers.php:2593
+msgid "Widgets"
+msgstr ""
+
+#: inc/customizer/handlers.php:205
+msgid "Wordpress default date"
+msgstr ""
+
+#: inc/widgets/author-info.php:105
+msgid "Writer"
+msgstr ""
+
+#: inc/breadcrumb-trail/breadcrumbs.php:834
+#: inc/breadcrumb-trail/breadcrumbs.php:863
+#: inc/breadcrumb-trail/breadcrumbs.php:890
+#: inc/breadcrumb-trail/breadcrumbs.php:917
+#: inc/breadcrumb-trail/breadcrumbs.php:1257
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: inc/customizer/handlers.php:927
+msgid "Yoast SEO"
+msgstr ""
+
+#: inc/admin/class-theme-info.php:465
+msgid "You have successfully activated LocalNews !! "
+msgstr ""

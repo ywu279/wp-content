@@ -1,0 +1,110 @@
+/**
+ * Widegts styling
+ *
+ */
+ .local-news-widget-field {
+   margin: 1em 0;
+ }
+
+ .local-news-widget-field .title {
+    font-size: small;
+    margin: 4px 0;
+ }
+
+ .local-news-widget-field .description {
+   font-style: italic;
+   padding: 0!important;
+ }
+
+ .local-news-multicheckbox-field .multicheckbox-content {
+   border: 1px solid #c3c4c7;
+   padding: 8px 10px;
+   min-height: 200px;
+   overflow-y: scroll;
+ }
+
+ .local-news-multicheckbox-field .multicheckbox-content .multicheckbox-single-item {
+   padding: 5px;
+ }
+
+ .local-news-widget-field input,
+ .local-news-widget-field select,
+ .local-news-widget-field textarea {
+   border-radius: 0;
+ }
+
+ .local-news-upload-field .upload-trigger.selected,
+ .local-news-upload-field .upload-buttons img.nothasImage,
+ .local-news-upload-field .upload-buttons.not-selected {
+   display: none;
+ }
+
+ .local-news-upload-field .upload-trigger {
+    background-color: #f0f0f1;
+    color: #2c3338;
+    border: 1px dashed #c3c4c7;
+    box-sizing: border-box;
+    cursor: pointer;
+    line-height: 1.6;
+    padding: 9px 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.local-news-upload-field .upload-trigger:hover {
+  background-color: #fff;
+}
+
+.local-news-upload-field .upload-buttons button {
+  margin-top: 12px;
+  border-color: #d63638;
+}
+.local-news-upload-field .upload-buttons img{
+  width: 100%;
+}
+
+.local-news-widget-field .refer-note a {
+  color: #2271b1;
+}
+
+.local-news-icon-text-field .icon-selector-wrap {
+  display: none;
+}
+
+/* tab selector */
+.local-news-widget-field.local-news-icon-text-field .field-group-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.local-news-widget-field.local-news-icon-text-field .field-group-wrap .icon-field {
+  flex: 1;
+  border: 1px solid #6a6a6a;
+  margin-right: 10px;
+  text-align: center;
+  padding-top: 5px;
+  border-radius: 4px;
+}
+
+.local-news-widget-field.local-news-icon-text-field .field-group-wrap .icon-field:hover {
+  cursor: pointer;
+}
+
+.local-news-widget-field.local-news-icon-text-field .field-group-wrap .icon-selector-wrap {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #545454;
+  border-radius: 5px;;
+}
+
+.local-news-widget-field.local-news-icon-text-field .field-group-wrap .icon-selector-wrap i {
+  color: #545454;
+  padding: 5px;
+}
+
+.local-news-widget-field.local-news-icon-text-field .field-group-wrap .icon-selector-wrap i:hover {
+  color: #000;
+  cursor: pointer;
+}
+

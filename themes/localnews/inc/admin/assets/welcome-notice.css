@@ -1,0 +1,36 @@
+/*---------------------------
+   Welcome Notice Styling
+----------------------------*/
+.localnews-welcome-notice {
+    font-family: cursive;
+}
+
+.localnews-welcome-notice .notice-content-wrap {
+    display: flex;
+}
+
+.localnews-welcome-notice .notice-highlight {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.localnews-welcome-notice .notice-content {
+    padding: 0px 20px;
+}
+
+.localnews-welcome-notice .notice-actions {
+    padding-top: 15px;
+}
+
+.localnews-welcome-notice .notice-actions a {
+    padding: 6px 22px;
+}
+
+.localnews-welcome-notice .notice-dismiss-button {
+    text-align: right;
+    padding-bottom: 10px;
+ }
+ 
+ .localnews-welcome-notice .notice-dismiss-button a {
+    color: #ff0000;
+ }
