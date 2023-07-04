@@ -747,7 +747,7 @@ abstract class Forminator_Field {
 
 		if ( 'none' === $design ) {
 
-			$html .= sprintf( '<button class="forminator-upload--remove" style="display: none;">%s</button>', __( 'Remove', 'forminator' ) );
+			$html .= sprintf( '<button class="forminator-upload--remove" style="display: none;">%s</button>', esc_html__( 'Remove', 'forminator' ) );
 
 		} else {
 
@@ -771,21 +771,21 @@ abstract class Forminator_Field {
 
 					$html .= sprintf(
 						'<span>%s</span>',
-						__( 'Choose File', 'forminator' )
+						esc_html__( 'Choose File', 'forminator' )
 					);
 
 					$html .= '<span aria-hidden="true"></span>';
 
 				} else {
-					$html .= __( 'Choose File', 'forminator' );
+					$html .= esc_html__( 'Choose File', 'forminator' );
 				}
 
 					$html .= '</button>';
 
 					$html .= sprintf(
 						'<span data-empty-text="%s">%s</span>',
-						__( 'No file chosen', 'forminator' ),
-						__( 'No file chosen', 'forminator' )
+						esc_html__( 'No file chosen', 'forminator' ),
+						esc_html__( 'No file chosen', 'forminator' )
 					);
 
 				$html .= '<button class="forminator-button-delete" style="display: none;">';
@@ -794,7 +794,7 @@ abstract class Forminator_Field {
 
 					$html .= sprintf(
 						'<span class="forminator-screen-reader-only">%s</span>',
-						__( 'Delete uploaded file', 'forminator' )
+						esc_html__( 'Delete uploaded file', 'forminator' )
 					);
 
 				$html .= '</button>';

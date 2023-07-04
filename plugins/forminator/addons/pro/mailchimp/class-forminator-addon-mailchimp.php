@@ -117,11 +117,11 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 	 */
 	public function __construct() {
 		// late init to allow translation.
-		$this->_description                = __( 'Make form data as Mailchimp List', 'forminator' );
-		$this->_activation_error_message   = __( 'Sorry but we failed to activate Mailchimp Integration, don\'t hesitate to contact us', 'forminator' );
-		$this->_deactivation_error_message = __( 'Sorry but we failed to deactivate Mailchimp Integration, plese try again', 'forminator' );
+		$this->_description                = esc_html__( 'Make form data as Mailchimp List', 'forminator' );
+		$this->_activation_error_message   = esc_html__( 'Sorry but we failed to activate Mailchimp Integration, don\'t hesitate to contact us', 'forminator' );
+		$this->_deactivation_error_message = esc_html__( 'Sorry but we failed to deactivate Mailchimp Integration, plese try again', 'forminator' );
 
-		$this->_update_settings_error_message = __(
+		$this->_update_settings_error_message = esc_html__(
 			'Sorry, we failed to update settings, please check your form and try again',
 			'forminator'
 		);
@@ -183,7 +183,7 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 		try {
 			// check if its active.
 			if ( ! $this->is_active() ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Mailchimp is not active', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Mailchimp is not active', 'forminator' ) );
 			}
 
 			// if user completed settings.
@@ -234,19 +234,19 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 			// initialize with null.
 			$form_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Mailchimp addon not connected.', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Mailchimp addon not connected.', 'forminator' ) );
 			}
 
 			$form_settings_instance = $this->get_addon_settings( $form_id, 'form' );
 			if ( ! $form_settings_instance instanceof Forminator_Addon_Mailchimp_Form_Settings ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Form settings instance is not valid Forminator_Addon_Mailchimp_Form_Settings.', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Form settings instance is not valid Forminator_Addon_Mailchimp_Form_Settings.', 'forminator' ) );
 			}
 			$wizards = $form_settings_instance->form_settings_wizards();
 			//last step is completed
 			$last_step             = end( $wizards );
 			$last_step_is_complete = call_user_func( $last_step['is_completed'] );
 			if ( ! $last_step_is_complete ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Form settings is not yet completed.', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Form settings is not yet completed.', 'forminator' ) );
 			}
 
 			$is_form_connected = true;
@@ -288,19 +288,19 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 			// initialize with null.
 			$quiz_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Mailchimp addon not connected.', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Mailchimp addon not connected.', 'forminator' ) );
 			}
 
 			$quiz_settings_instance = $this->get_addon_settings( $quiz_id, 'quiz' );
 			if ( ! $quiz_settings_instance instanceof Forminator_Addon_Mailchimp_Quiz_Settings ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Form settings instance is not valid Forminator_Addon_Mailchimp_Quiz_Settings.', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Form settings instance is not valid Forminator_Addon_Mailchimp_Quiz_Settings.', 'forminator' ) );
 			}
 			$wizards = $quiz_settings_instance->quiz_settings_wizards();
 			//last step is completed
 			$last_step             = end( $wizards );
 			$last_step_is_complete = call_user_func( $last_step['is_completed'] );
 			if ( ! $last_step_is_complete ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Form settings is not yet completed.', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Form settings is not yet completed.', 'forminator' ) );
 			}
 
 			$is_quiz_connected = true;
@@ -339,7 +339,7 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 	 */
 	protected function validate_api_key( $api_key ) {
 		if ( empty( $api_key ) ) {
-			$this->_update_settings_error_message = __( 'Please add valid Mailchimp API Key.', 'forminator' );
+			$this->_update_settings_error_message = esc_html__( 'Please add valid Mailchimp API Key.', 'forminator' );
 
 			return false;
 		}
@@ -407,8 +407,8 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 	public function settings_help() {
 
 		// Display how to get mailchimp API Key by default.
-		/* translators:  placeholder is URL to get API Key of MailChimp */
-		$help = sprintf( __( 'Please get your Mailchimp API key %1$shere%2$s', 'forminator' ), '<a href="https://admin.mailchimp.com/account/api-key-popup" target="_blank">', '</a>' );
+		/* Translators: 1. Opening <a> tag with link to the Mailchimp API Key, 2. closing <a> tag. */
+		$help = sprintf( esc_html__( 'Please get your Mailchimp API key %1$shere%2$s', 'forminator' ), '<a href="https://admin.mailchimp.com/account/api-key-popup" target="_blank">', '</a>' );
 
 		$help = '<span class="sui-description" style="margin-top: 20px;">' . $help . '</span>';
 
@@ -425,7 +425,7 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 
 			// Show currently connected mailchimp account if its already connected.
 			/* translators:  placeholder is Name and Email of Connected MailChimp Account */
-			$help = '<span class="sui-description" style="margin-top: 20px;">' . __( 'Change your API Key or disconnect this Mailchimp Integration below.', 'forminator' ) . '</span>';
+			$help = '<span class="sui-description" style="margin-top: 20px;">' . esc_html__( 'Change your API Key or disconnect this Mailchimp Integration below.', 'forminator' ) . '</span>';
 
 		}
 
@@ -476,7 +476,7 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 			// Show currently connected mailchimp account if its already connected.
 			$myaccount .= sprintf(
 				/* translators:  placeholder is Name and Email of Connected MailChimp Account */
-				__( 'Your Mailchimp is connected to %1$s: %2$s.', 'forminator' ),
+				esc_html__( 'Your Mailchimp is connected to %1$s: %2$s.', 'forminator' ),
 				'<strong>' . esc_html( $connected_account['account_name'] ) . '</strong>',
 				sanitize_email( $connected_account['email'] )
 			);
@@ -624,9 +624,9 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 
 					$html  = '<div class="forminator-integration-popup__header">';
 						/* translators: ... */
-						$html .= '<h3 id="dialogTitle2" class="sui-box-title sui-lg" style="overflow: initial; text-overflow: none; white-space: normal;">' . sprintf( __( '%1$s Added', 'forminator' ), 'Mailchimp' ) . '</h3>';
+						$html .= '<h3 id="dialogTitle2" class="sui-box-title sui-lg" style="overflow: initial; text-overflow: none; white-space: normal;">' . /* translators: 1: Add-on name */ sprintf( esc_html__( '%1$s Added', 'forminator' ), 'Mailchimp' ) . '</h3>';
 					$html .= '</div>';
-					$html .= '<p class="sui-description" style="text-align: center;">' . __( 'You can now go to your forms and assign them to this integration.', 'forminator' ) . '</p>';
+					$html .= '<p class="sui-description" style="text-align: center;">' . esc_html__( 'You can now go to your forms and assign them to this integration.', 'forminator' ) . '</p>';
 
 					return array(
 						'html'         => $html,
@@ -639,7 +639,7 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 						'has_errors'   => false,
 						'notification' => array(
 							'type' => 'success',
-							'text' => '<strong>' . $this->get_title() . '</strong> ' . __( 'is connected successfully.', 'forminator' ),
+							'text' => '<strong>' . $this->get_title() . '</strong> ' . esc_html__( 'is connected successfully.', 'forminator' ),
 						),
 					);
 				}
@@ -672,17 +672,17 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 
 		$html  = '<div class="forminator-integration-popup__header">';
 			/* translators: ... */
-			$html .= '<h3 id="dialogTitle2" class="sui-box-title sui-lg" style="overflow: initial; text-overflow: none; white-space: normal;">' . sprintf( __( 'Configure %1$s', 'forminator' ), 'Mailchimp' ) . '</h3>';
+			$html .= '<h3 id="dialogTitle2" class="sui-box-title sui-lg" style="overflow: initial; text-overflow: none; white-space: normal;">' . /* translators: 1: Add-on name */ sprintf( esc_html__( 'Configure %1$s', 'forminator' ), 'Mailchimp' ) . '</h3>';
 			$html .= $this->settings_help();
 			$html .= $error_message;
 		$html .= '</div>';
 		$html .= '<form>';
 			// FIELD: API Key
 			$html .= '<div class="sui-form-field ' . ( ! empty( $api_key_error_message ) ? 'sui-form-field-error' : '' ) . '">';
-				$html .= '<label class="sui-label">' . __( 'API Key', 'forminator' ) . '</label>';
+				$html .= '<label class="sui-label">' . esc_html__( 'API Key', 'forminator' ) . '</label>';
 				$html .= '<div class="sui-control-with-icon">';
 					/* translators: ... */
-					$html .= '<input name="api_key" value="' . esc_attr( $api_key ) . '" placeholder="' . sprintf( __( 'Enter %1$s API Key', 'forminator' ), 'Mailchimp' ) . '" class="sui-form-control" />';
+					$html .= '<input name="api_key" value="' . esc_attr( $api_key ) . '" placeholder="' . /* translators: 1: Add-on name */ sprintf( esc_html__( 'Enter %1$s API Key', 'forminator' ), 'Mailchimp' ) . '" class="sui-form-control" />';
 					$html .= '<i class="sui-icon-key" aria-hidden="true"></i>';
 				$html .= '</div>';
 				$html .= ( ! empty( $api_key_error_message ) ? '<span class="sui-error-message">' . esc_html( $api_key_error_message ) . '</span>' : '' );
@@ -736,12 +736,12 @@ class Forminator_Addon_Mailchimp extends Forminator_Addon_Abstract {
 			// initialize with null.
 			$quiz_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Mailchimp addon not connected.', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Mailchimp addon not connected.', 'forminator' ) );
 			}
 			$quiz_settings_instance = $this->get_addon_settings( $quiz_id, 'quiz' );
 
 			if ( ! $quiz_settings_instance instanceof Forminator_Addon_Mailchimp_Quiz_Settings ) {
-				throw new Forminator_Addon_Mailchimp_Exception( __( 'Form settings instance is not valid Forminator_Addon_Mailchimp_Quiz_Settings.', 'forminator' ) );
+				throw new Forminator_Addon_Mailchimp_Exception( esc_html__( 'Form settings instance is not valid Forminator_Addon_Mailchimp_Quiz_Settings.', 'forminator' ) );
 			}
 
 			$quiz_settings = $quiz_settings_instance->get_quiz_settings();

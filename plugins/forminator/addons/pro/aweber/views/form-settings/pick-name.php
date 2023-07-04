@@ -14,7 +14,7 @@ foreach ( $template_vars as $key => $val ) {
 
 <div class="forminator-integration-popup__header">
 
-	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg"><?php echo esc_html( __( 'Set Up Name', 'forminator' ) ); ?></h3>
+	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg"><?php esc_html_e( 'Set Up Name', 'forminator' ); ?></h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description"><?php esc_html_e( 'Set up a friendly name for this integration, so you can easily identify it.', 'forminator' ); ?></p>
 
@@ -48,7 +48,7 @@ foreach ( $template_vars as $key => $val ) {
 		<label class="sui-label"><?php esc_html_e( 'Name', 'forminator' ); ?></label>
 		<input
 				class="sui-form-control"
-				name="name" placeholder="<?php echo esc_attr( __( 'Friendly Name', 'forminator' ) ); ?>"
+				name="name" placeholder="<?php esc_attr_e( 'Friendly Name', 'forminator' ); ?>"
 				value="<?php echo esc_attr( $vars['name'] ); ?>">
 		<?php if ( ! empty( $vars['name_error'] ) ) : ?>
 			<span class="sui-error-message"><?php echo esc_html( $vars['name_error'] ); ?></span>

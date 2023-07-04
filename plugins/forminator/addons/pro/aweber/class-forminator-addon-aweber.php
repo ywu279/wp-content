@@ -47,11 +47,11 @@ final class Forminator_Addon_Aweber extends Forminator_Addon_Abstract {
 	 */
 	public function __construct() {
 		// late init to allow translation.
-		$this->_description                = __( 'Get awesome by your form.', 'forminator' );
-		$this->_activation_error_message   = __( 'Sorry but we failed to activate AWeber Integration, don\'t hesitate to contact us', 'forminator' );
-		$this->_deactivation_error_message = __( 'Sorry but we failed to deactivate AWeber Integration, please try again', 'forminator' );
+		$this->_description                = esc_html__( 'Get awesome by your form.', 'forminator' );
+		$this->_activation_error_message   = esc_html__( 'Sorry but we failed to activate AWeber Integration, don\'t hesitate to contact us', 'forminator' );
+		$this->_deactivation_error_message = esc_html__( 'Sorry but we failed to deactivate AWeber Integration, please try again', 'forminator' );
 
-		$this->_update_settings_error_message = __(
+		$this->_update_settings_error_message = esc_html__(
 			'Sorry, we failed to update settings, please check your form and try again',
 			'forminator'
 		);
@@ -91,7 +91,7 @@ final class Forminator_Addon_Aweber extends Forminator_Addon_Abstract {
 		try {
 			// check if its active.
 			if ( ! $this->is_active() ) {
-				throw new Forminator_Addon_Aweber_Exception( __( 'AWeber is not active', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( 'AWeber is not active', 'forminator' ) );
 			}
 
 			// if user completed api setup.
@@ -130,17 +130,17 @@ final class Forminator_Addon_Aweber extends Forminator_Addon_Abstract {
 		try {
 			$form_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Aweber_Exception( __( ' AWeber is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( ' AWeber is not connected', 'forminator' ) );
 			}
 
 			$form_settings_instance = $this->get_addon_settings( $form_id, 'form' );
 			if ( ! $form_settings_instance instanceof Forminator_Addon_Aweber_Form_Settings ) {
-				throw new Forminator_Addon_Aweber_Exception( __( 'Invalid Form Settings of AWeber', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Invalid Form Settings of AWeber', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $form_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Aweber_Exception( __( 'No active AWeber connection found in this form', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( 'No active AWeber connection found in this form', 'forminator' ) );
 			}
 
 			$is_form_connected = true;
@@ -350,7 +350,7 @@ final class Forminator_Addon_Aweber extends Forminator_Addon_Abstract {
 				//https://labs.aweber.com/docs/authentication#distributed-app
 				//the authorization code is an application key, application secret, request token, token secret, and oauth_verifier, delimited by pipes (|).
 				if ( ! is_array( $split_codes ) || 5 !== count( $split_codes ) ) {
-					new Forminator_Addon_Aweber_Exception( __( 'Invalid Authorization Code', 'forminator' ) );
+					new Forminator_Addon_Aweber_Exception( esc_html__( 'Invalid Authorization Code', 'forminator' ) );
 				}
 
 				$application_key    = $split_codes[0];
@@ -536,12 +536,12 @@ final class Forminator_Addon_Aweber extends Forminator_Addon_Abstract {
 	public function get_validated_account_id( $api ) {
 		$accounts = $api->get_accounts();
 		if ( ! isset( $accounts->entries ) ) {
-			throw new Forminator_Addon_Aweber_Exception( __( 'Failed to get AWeber account information', 'forminator' ) );
+			throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Failed to get AWeber account information', 'forminator' ) );
 		}
 
 		$entries = $accounts->entries;
 		if ( ! isset( $entries[0] ) ) {
-			throw new Forminator_Addon_Aweber_Exception( __( 'Failed to get AWeber account information', 'forminator' ) );
+			throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Failed to get AWeber account information', 'forminator' ) );
 		}
 
 		$first_entry = $entries[0];
@@ -628,17 +628,17 @@ final class Forminator_Addon_Aweber extends Forminator_Addon_Abstract {
 		try {
 			$quiz_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Aweber_Exception( __( ' AWeber is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( ' AWeber is not connected', 'forminator' ) );
 			}
 
 			$quiz_settings_instance = $this->get_addon_settings( $quiz_id, 'quiz' );
 			if ( ! $quiz_settings_instance instanceof Forminator_Addon_Aweber_Quiz_Settings ) {
-				throw new Forminator_Addon_Aweber_Exception( __( 'Invalid Quiz Settings of AWeber', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Invalid Quiz Settings of AWeber', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $quiz_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Aweber_Exception( __( 'No active AWeber connection found in this quiz', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( 'No active AWeber connection found in this quiz', 'forminator' ) );
 			}
 
 			$is_quiz_connected = true;
@@ -678,12 +678,12 @@ final class Forminator_Addon_Aweber extends Forminator_Addon_Abstract {
 			// initialize with null.
 			$quiz_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Aweber_Exception( __( ' AWeber is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( ' AWeber is not connected', 'forminator' ) );
 			}
 
 			$quiz_settings_instance = $this->get_addon_settings( $quiz_id, 'quiz' );
 			if ( ! $quiz_settings_instance instanceof Forminator_Addon_Aweber_Quiz_Settings ) {
-				throw new Forminator_Addon_Aweber_Exception( __( 'Invalid Quiz Settings of AWeber', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Invalid Quiz Settings of AWeber', 'forminator' ) );
 			}
 
 			$quiz_settings = $quiz_settings_instance->get_quiz_settings();

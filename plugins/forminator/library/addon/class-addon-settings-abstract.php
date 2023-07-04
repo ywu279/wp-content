@@ -18,7 +18,7 @@ abstract class Forminator_Addon_Settings_Abstract {
 	 * @return string
 	 */
 	public static function get_select_html( $options, $selected_value = '' ) {
-		$html = '<option value="">' . __( 'None', 'forminator' ) . '</option>';
+		$html = '<option value="">' . esc_html__( 'None', 'forminator' ) . '</option>';
 
 		foreach ( $options as $id => $title ) {
 			$html .= '<option value="' . esc_attr( $id ) . '" ' . selected(

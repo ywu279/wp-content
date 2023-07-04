@@ -18,8 +18,8 @@ $sql_month_start_date = date( 'Y-m-d H:i:s', strtotime( '-30 days midnight' ) );
 $entry_type    = 'custom-forms';
 $wizard_page   = 'forminator-cform-wizard';
 $create_dialog = 'custom_forms';
-$preview_title = __( 'Preview Custom Form', 'forminator' );
-$empty_title   = __( 'Create custom forms for all your needs with as many fields as you like. From contact forms to quote requests and everything in between.', 'forminator' );
+$preview_title = esc_html__( 'Preview Custom Form', 'forminator' );
+$empty_title   = esc_html__( 'Create custom forms for all your needs with as many fields as you like. From contact forms to quote requests and everything in between.', 'forminator' );
 
 require_once forminator_plugin_dir() . 'admin/views/common/list/summary.php';
 

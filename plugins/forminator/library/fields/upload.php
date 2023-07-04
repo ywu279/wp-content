@@ -53,7 +53,7 @@ class Forminator_Upload extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'File Upload', 'forminator' );
+		$this->name = esc_html__( 'File Upload', 'forminator' );
 	}
 
 	/**
@@ -78,7 +78,7 @@ class Forminator_Upload extends Forminator_Field {
 		$file_type = array_merge( $default_all, array_keys( $mimes ) );
 
 		return array(
-			'field_label'  => __( 'Upload file', 'forminator' ),
+			'field_label'  => esc_html__( 'Upload file', 'forminator' ),
 			'filetypes'    => $file_type,
 			'file-type'    => 'single',
 			'file-limit'   => 'unlimited',
@@ -173,7 +173,7 @@ class Forminator_Upload extends Forminator_Field {
 			if ( 'custom' === $file_limit_type ) {
 				$file_limit                        = self::get_property( 'file-limit-input', $field, 5 );
 				$upload_attr['data-limit']         = $file_limit;
-				$upload_attr['data-limit-message'] = sprintf( __( 'You can upload a maximum of %d files.', 'forminator' ), $file_limit );
+				$upload_attr['data-limit-message'] = /* translators: %d: File limit */ sprintf( esc_html__( 'You can upload a maximum of %d files.', 'forminator' ), $file_limit );
 			}
 			$upload_limit = self::get_property( 'upload-limit', $field, self::FIELD_PROPERTY_VALUE_NOT_EXIST );
 			$max_size     = wp_max_upload_size();
@@ -184,10 +184,10 @@ class Forminator_Upload extends Forminator_Field {
 			}
 			$upload_attr['data-size']         = $max_size;
 			$rounded_max_size                 = $this->byte_to_size( $max_size );
-			$upload_attr['data-size-message'] = sprintf( __( 'Maximum file size allowed is %1$s. ', 'forminator' ), $rounded_max_size );
+			$upload_attr['data-size-message'] = /* translators: %s: Maximum size */ sprintf( esc_html__( 'Maximum file size allowed is %s. ', 'forminator' ), $rounded_max_size );
 			if ( $custom_file_type ) {
 				$upload_attr['data-filetype']         = implode( '|', array_values( $mime_types ) );
-				$upload_attr['data-filetype-message'] = __( 'file extension is not allowed.', 'forminator' );
+				$upload_attr['data-filetype-message'] = esc_html__( 'file extension is not allowed.', 'forminator' );
 			}
 
 			$html .= self::create_file_upload(
@@ -242,7 +242,7 @@ class Forminator_Upload extends Forminator_Field {
 			if ( empty( $data ) ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_upload_field_required_validation_message',
-					( ! empty( $required_message ) ? $required_message : __( 'This field is required. Please upload a file.', 'forminator' ) ),
+					( ! empty( $required_message ) ? $required_message : esc_html__( 'This field is required. Please upload a file.', 'forminator' ) ),
 					$id,
 					$field
 				);
@@ -304,13 +304,13 @@ class Forminator_Upload extends Forminator_Field {
 			$settings_required_message = self::get_property( 'required_message', $field, '' );
 			$required_message          = apply_filters(
 				'forminator_upload_field_required_validation_message',
-				( ! empty( $settings_required_message ) ? $settings_required_message : __( 'This field is required. Please upload a file.', 'forminator' ) ),
+				( ! empty( $settings_required_message ) ? $settings_required_message : esc_html__( 'This field is required. Please upload a file.', 'forminator' ) ),
 				$id,
 				$field
 			);
 			$messages                  = $messages . '"required": "' . forminator_addcslashes( $required_message ) . '",' . "\n";
 		}
-		$extension_message = __( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' );
+		$extension_message = esc_html__( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' );
 		$messages         .= '"extension": "' . $extension_message . '",' . "\n";
 
 		$messages .= '},' . "\n";
@@ -395,12 +395,12 @@ class Forminator_Upload extends Forminator_Field {
 					if ( 'multiple' === $file_type ) {
 						return array(
 							'success' => false,
-							'message' => sprintf( __( '.%1$s file extension is not allowed.', 'forminator' ), $ext ),
+							'message' => /* translators: %s: Extension */ sprintf( esc_html__( '.%s file extension is not allowed.', 'forminator' ), $ext ),
 						);
 					} else {
 						return array(
 							'success' => false,
-							'message' => __( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' ),
+							'message' => esc_html__( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' ),
 						);
 					}
 				}
@@ -409,14 +409,14 @@ class Forminator_Upload extends Forminator_Field {
 				if ( false === $allow ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' ),
 					);
 				}
 
 				if ( ! is_uploaded_file( $file_object['tmp_name'] ) ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Failed to read uploaded file.', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Failed to read uploaded file.', 'forminator' ),
 					);
 				}
 
@@ -436,7 +436,7 @@ class Forminator_Upload extends Forminator_Field {
 				if ( 0 === $file_object['size'] ) {
 					return array(
 						'success' => false,
-						'message' => __( 'The attached file is empty and can\'t be uploaded.', 'forminator' ),
+						'message' => esc_html__( 'The attached file is empty and can\'t be uploaded.', 'forminator' ),
 					);
 				}
 
@@ -446,8 +446,9 @@ class Forminator_Upload extends Forminator_Field {
 
 					return array(
 						'success' => false,
-						'message' => sprintf( /* translators: ... */
-							__( 'Maximum file size allowed is %1$s. ', 'forminator' ),
+						'message' => sprintf(
+						/* translators: %s: Maximum size */
+							esc_html__( 'Maximum file size allowed is %s. ', 'forminator' ),
 							$rounded_max_size
 						),
 					);
@@ -456,7 +457,7 @@ class Forminator_Upload extends Forminator_Field {
 				if ( UPLOAD_ERR_OK !== $file_object['error'] ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Upload error.', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Upload error.', 'forminator' ),
 					);
 				}
 
@@ -487,7 +488,7 @@ class Forminator_Upload extends Forminator_Field {
 							return array(
 								'error_type' => 'limit',
 								'success'    => false,
-								'message'    => sprintf( __( 'You can upload a maximum of %d files.', 'forminator' ), $file_limit ),
+								'message'    => /* translators: %d: File limit */ sprintf( esc_html__( 'You can upload a maximum of %d files.', 'forminator' ), $file_limit ),
 							);
 						}
 					}
@@ -527,7 +528,7 @@ class Forminator_Upload extends Forminator_Field {
 				} else {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Upload error.', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Upload error.', 'forminator' ),
 					);
 				}
 			}
@@ -640,7 +641,7 @@ class Forminator_Upload extends Forminator_Field {
 
 				return array(
 					'success' => false,
-					'message' => __( 'Error saving form. Upload error.', 'forminator' ),
+					'message' => esc_html__( 'Error saving form. Upload error.', 'forminator' ),
 				);
 			}
 		}
@@ -691,7 +692,7 @@ class Forminator_Upload extends Forminator_Field {
 			} else {
 				return array(
 					'success' => false,
-					'message' => __( 'Error saving form. Upload error.', 'forminator' ),
+					'message' => esc_html__( 'Error saving form. Upload error.', 'forminator' ),
 				);
 			}
 		}
@@ -765,7 +766,7 @@ class Forminator_Upload extends Forminator_Field {
 			} else {
 				return array(
 					'success' => false,
-					'message' => __( 'Error saving form. Upload error.', 'forminator' ),
+					'message' => esc_html__( 'Error saving form. Upload error.', 'forminator' ),
 				);
 			}
 		}

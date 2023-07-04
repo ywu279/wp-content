@@ -50,7 +50,7 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 	public function __construct( Forminator_Addon_Abstract $addon, $form_id ) {
 		parent::__construct( $addon, $form_id );
 
-		$this->_update_form_settings_error_message = __(
+		$this->_update_form_settings_error_message = esc_html__(
 			'The update to your settings for this form failed, check the form input and try again.',
 			'forminator'
 		);
@@ -176,7 +176,7 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 				$mail_list_name = $this->get_choosen_mail_list_name( $mail_lists, $submitted_data );
 				forminator_addon_maybe_log( __METHOD__, '$mail_list_name', $mail_list_name );
 				if ( empty( $mail_list_name ) ) {
-					throw new Forminator_Addon_Mailchimp_Form_Settings_Exception( __( 'Please select a valid Email Audience', 'forminator' ), 'mail_list_id' );
+					throw new Forminator_Addon_Mailchimp_Form_Settings_Exception( esc_html__( 'Please select a valid Email Audience', 'forminator' ), 'mail_list_id' );
 				}
 				if ( ! empty( $this->addon_form_settings['mail_list_id'] ) && $this->addon_form_settings['mail_list_id'] !== $submitted_data['mail_list_id'] ) {
 					// reset cache cuz List id is changed.
@@ -216,7 +216,7 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 
 			$html_field_mail_list
 				= '<div class="sui-form-field" style="margin-bottom: 10px;">
-						<label class="sui-label">' . __( 'Email Audience', 'forminator' ) . '</label>
+						<label class="sui-label">' . esc_html__( 'Email Audience', 'forminator' ) . '</label>
 						' . $html_select_mail_list . '
 					</div>';
 
@@ -226,7 +226,7 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 			if ( isset( $input_error_messages['mail_list_id'] ) ) {
 				$html_field_mail_list
 					= '<div class="sui-form-field sui-form-field-error" style="margin-bottom: 10px;">
-							<label class="sui-label">' . __( 'Email Audience', 'forminator' ) . '</label>
+							<label class="sui-label">' . esc_html__( 'Email Audience', 'forminator' ) . '</label>
 							' . $html_select_mail_list . '
 							<span class="sui-error-message">' . esc_html( $input_error_messages['mail_list_id'] ) . '</span>
 						</div>';
@@ -273,20 +273,20 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 			$gdpr_fields = '';
 			if ( Forminator_Addon_Mailchimp::is_enable_gdpr() ) {
 				$gdpr_fields = '<div class="sui-form-field">' .
-							'<label class="sui-label">' . __( 'Enable GDPR', 'forminator' ) . '</label>
+							'<label class="sui-label">' . esc_html__( 'Enable GDPR', 'forminator' ) . '</label>
 									<input type="checkbox" name="enable_gdpr" value="1" ' . checked( 1, $current_data['enable_double_opt_in'], false ) . '>
 								</div>
 
 								<div class="sui-form-field">
-									<label class="sui-label">' . __( 'GDPR Text', 'forminator' ) . '</label>
+									<label class="sui-label">' . esc_html__( 'GDPR Text', 'forminator' ) . '</label>
 									<textarea name="gdpr_text">' . $current_data['gdpr_text'] . '</textarea>
 								</div>';
 			}
 		}
 
 		$html  = '<div class="forminator-integration-popup__header">';
-			$html .= '<h3 id="dialogTitle2" class="sui-box-title sui-lg" style="overflow: initial; text-overflow: none; white-space: normal;">' . __( 'Choose Audience', 'forminator' ) . '</h3>';
-			$html .= '<p class="sui-description">' . __( 'Choose the audience you want to send form data to.', 'forminator' ) . '</p>';
+			$html .= '<h3 id="dialogTitle2" class="sui-box-title sui-lg" style="overflow: initial; text-overflow: none; white-space: normal;">' . esc_html__( 'Choose Audience', 'forminator' ) . '</h3>';
+			$html .= '<p class="sui-description">' . esc_html__( 'Choose the audience you want to send form data to.', 'forminator' ) . '</p>';
 			$html .= $error_message;
 		$html .= '</div>';
 
@@ -297,7 +297,7 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 					$html .= '<label class="sui-toggle">';
 						$html .= '<input type="checkbox" name="enable_double_opt_in" value="1" id="forminator_addon_mailchimp_enable_double_opt_in" ' . checked( 1, $current_data['enable_double_opt_in'], false ) . ' />';
 						$html .= '<span class="sui-toggle-slider"></span>';
-						$html .= '<span class="sui-toggle-label">' . __( 'Use Double Opt in', 'forminator' ) . '</span>';
+						$html .= '<span class="sui-toggle-label">' . esc_html__( 'Use Double Opt in', 'forminator' ) . '</span>';
 					$html .= '</label>';
 				$html .= '</div>';
 				$html .= $gdpr_fields;
@@ -903,13 +903,13 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 		if ( $is_submit && empty( $error_message ) && empty( $input_error_messages ) ) {
 			$notification = array(
 				'type' => 'success',
-				'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'is activated successfully.' ),
+				'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'is activated successfully.', 'forminator' ),
 			);
 		}
 
 		$html  = '<div class="forminator-integration-popup__header">';
-			$html .= '<h3 id="dialogTitle2" class="sui-box-title sui-lg" style="overflow: initial; text-overflow: none; white-space: normal;">' . __( 'Assign Fields', 'forminator' ) . '</h3>';
-			$html .= '<p class="sui-description">' . __( 'Lastly, match up your form fields with your campaign fields to make sure we\'re sending data to the right place.', 'forminator' ) . '</p>';
+			$html .= '<h3 id="dialogTitle2" class="sui-box-title sui-lg" style="overflow: initial; text-overflow: none; white-space: normal;">' . esc_html__( 'Assign Fields', 'forminator' ) . '</h3>';
+			$html .= '<p class="sui-description">' . esc_html__( 'Lastly, match up your form fields with your campaign fields to make sure we\'re sending data to the right place.', 'forminator' ) . '</p>';
 			$html .= $error_message;
 		$html .= '</div>';
 		$html .= '<form enctype="multipart/form-data">';
@@ -943,13 +943,13 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 		<table class="sui-table">
 			<thead>
 			<tr>
-				<th>Mailchimp Field</th>
-				<th>Forminator Field</th>
+				<th><?php esc_html_e( 'Mailchimp Field', 'forminator' ); ?></th>
+				<th><?php esc_html_e( 'Forminator Field', 'forminator' ); ?></th>
 			</tr>
 			</thead>
 			<tbody>
 			<tr>
-				<td>Email Address <span class="integrations-required-field">*</span></td>
+				<td><?php esc_html_e( 'Email Address', 'forminator' ); ?> <span class="integrations-required-field">*</span></td>
 				<td>
 					<div class="sui-form-field {{$error_css_class_EMAIL}}">
 						<?php // DEV NOTE: Select without JS. ?>
@@ -1190,7 +1190,7 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 		$input_exceptions = new Forminator_Addon_Mailchimp_Form_Settings_Exception();
 		// EMAIL : super required**.
 		if ( ! isset( $post_data['EMAIL'] ) || empty( $post_data['EMAIL'] ) ) {
-			$this->_update_form_settings_error_message = __( 'Please choose valid Forminator field for email address.', 'forminator' );
+			$this->_update_form_settings_error_message = esc_html__( 'Please choose valid Forminator field for email address.', 'forminator' );
 			$input_exceptions->add_input_exception( $this->_update_form_settings_error_message, 'EMAIL' );
 		}
 
@@ -1202,8 +1202,8 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 					if ( 'addr2' !== $addr ) {
 						if ( ! isset( $post_data[ $mailchimp_required_field->tag ][ $addr ] ) || empty( $post_data[ $mailchimp_required_field->tag ][ $addr ] ) ) {
 							$this->_update_form_settings_error_message =
-								/* translators: ... */
-								sprintf( __( '%s is required by Mailchimp, please choose valid Forminator field.', 'forminator' ), esc_html( $mailchimp_required_field->name ) );
+								/* translators: %s: Required field name */
+                                sprintf( esc_html__( '%s is required by Mailchimp, please choose valid Forminator field.', 'forminator' ), esc_html( $mailchimp_required_field->name ) );
 							$input_exceptions->add_sub_input_exception( $this->_update_form_settings_error_message, $mailchimp_required_field->tag, $addr );
 						}
 					}
@@ -1211,8 +1211,8 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 			}
 			if ( ! isset( $post_data[ $mailchimp_required_field->tag ] ) || empty( $post_data[ $mailchimp_required_field->tag ] ) ) {
 				$this->_update_form_settings_error_message =
-					/* translators: ... */
-					sprintf( __( '%s is required by Mailchimp, please choose valid Forminator field.', 'forminator' ), esc_html( $mailchimp_required_field->name ) );
+					/* translators: %s: Required field name */
+					sprintf( esc_html__( '%s is required by Mailchimp, please choose valid Forminator field.', 'forminator' ), esc_html( $mailchimp_required_field->name ) );
 				$input_exceptions->add_input_exception( $this->_update_form_settings_error_message, $mailchimp_required_field->tag );
 			}
 		}
@@ -1237,23 +1237,23 @@ class Forminator_Addon_Mailchimp_Form_Settings extends Forminator_Addon_Form_Set
 						$mailchimp_field_name = $mailchimp_field->name;
 
 						$this->_update_form_settings_error_message =
-							/* translators: ... */
-							sprintf( __( 'Please choose valid Forminator field for %s.', 'forminator' ), esc_html( $mailchimp_field_name ) );
+							/* translators: %s: Mailchimp Field name */
+							sprintf( esc_html__( 'Please choose valid Forminator field for %s.', 'forminator' ), esc_html( $mailchimp_field_name ) );
 						$input_exceptions->add_sub_input_exception( $this->_update_form_settings_error_message, $mailchimp_field_tag, $addr );
 					}
 				}
 			}
 			if ( ! is_array( $forminator_field_id ) && ! in_array( $forminator_field_id, $forminator_field_element_ids, true ) ) {
 				if ( 'EMAIL' === $mailchimp_field_tag ) {
-					$mailchimp_field_name = __( 'Email Address', 'forminator' );
+					$mailchimp_field_name = esc_html__( 'Email Address', 'forminator' );
 				} else {
 					$mailchimp_field      = $tag_maped_mailchimp_fields[ $mailchimp_field_tag ];
 					$mailchimp_field_name = $mailchimp_field->name;
 				}
 
 				$this->_update_form_settings_error_message =
-					/* translators: ... */
-					sprintf( __( 'Please choose valid Forminator field for %s.', 'forminator' ), esc_html( $mailchimp_field_name ) );
+					/* translators: %s: Mailchimp Field name */
+                    sprintf( esc_html__( 'Please choose valid Forminator field for %s.', 'forminator' ), esc_html( $mailchimp_field_name ) );
 				$input_exceptions->add_input_exception( $this->_update_form_settings_error_message, $mailchimp_field_tag );
 			}
 		}

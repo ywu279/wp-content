@@ -193,7 +193,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 		if ( empty( self::$info['stripe_field'] ) ) {
 			wp_send_json_error(
 				array(
-					'message' => __( "Error: Stripe field doesn't exist in your form!", 'forminator' ),
+					'message' => esc_html__( 'Error: Stripe field doesn\'t exist in your form!', 'forminator' ),
 					'errors'  => array(),
 				)
 			);
@@ -350,7 +350,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 
 		if ( ! empty( $login_user['authentication'] ) && 'invalid' === $login_user['authentication'] ) {
 			self::$response_attrs['authentication'] = 'invalid';
-			throw new Exception( __( 'Whoops, the passcode you entered was incorrect or expired.', 'forminator' ) );
+			throw new Exception( esc_html__( 'Whoops, the passcode you entered was incorrect or expired.', 'forminator' ) );
 		}
 
 		if ( isset( $login_user['user']->ID ) ) {
@@ -637,10 +637,10 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 	private static function filter_field_data_array() {
 		if ( empty( self::$info['field_data_array'] ) ) {
 			if ( self::$is_draft ) {
-				throw new Exception( __( 'The form is empty and cannot be saved as a draft. Please fill out at least one form field and try again.', 'forminator' ) );
+				throw new Exception( esc_html__( 'The form is empty and cannot be saved as a draft. Please fill out at least one form field and try again.', 'forminator' ) );
 			}
 
-			throw new Exception( __( 'At least one field must be filled out to submit the form.', 'forminator' ) );
+			throw new Exception( esc_html__( 'At least one field must be filled out to submit the form.', 'forminator' ) );
 		}
 
 		if ( isset( self::$prepared_data['product-shipping'] ) && intval( self::$prepared_data['product-shipping'] > 0 ) ) {
@@ -701,7 +701,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 				$amount       = isset( $payment_plan['subscription_amount'] ) ? $payment_plan['subscription_amount'] : 0.0;
 
 				if ( 'fixed' === $amount_type && empty( $amount ) ) {
-					throw new Exception( __( 'Payment amount should be larger than 0.', 'forminator' ) );
+					throw new Exception( esc_html__( 'Payment amount should be larger than 0.', 'forminator' ) );
 				}
 
 				$entry_data = $stripe_addon->handle_subscription( $field_object, self::$module_object, self::$prepared_data, $field, $entry, $payment_plan );
@@ -820,7 +820,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 			self::$response_attrs['stripe3d'] = true;
 			self::$response_attrs['secret']   = $result->client_secret;
 
-			return new WP_Error( 'forminator_stripe_error', __( 'This payment require 3D Secure authentication! Please follow the instructions.', 'forminator' ) );
+			return new WP_Error( 'forminator_stripe_error', esc_html__( 'This payment require 3D Secure authentication! Please follow the instructions.', 'forminator' ) );
 		}
 
 		// Try to capture payment
@@ -837,7 +837,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 			// Delete entry if capture is not successful.
 			$entry->delete();
 
-			return new WP_Error( 'forminator_stripe_error', __( 'Payment failed, please try again!', 'forminator' ) );
+			return new WP_Error( 'forminator_stripe_error', esc_html__( 'Payment failed, please try again!', 'forminator' ) );
 		}
 
 		$result                     = array(
@@ -889,7 +889,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 			throw new Exception(
 				apply_filters(
 					'forminator_payment_require_ssl_error_message',
-					__( 'SSL required to submit this form, please check your URL.', 'forminator' )
+					esc_html__( 'SSL required to submit this form, please check your URL.', 'forminator' )
 				)
 			);
 		}
@@ -1162,9 +1162,9 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 		self::$response_attrs['draft_id']           = $entry->draft_id;
 		self::$response_attrs['page_id']            = self::$prepared_data['page_id'];
 		self::$response_attrs['enable_email_link']  = isset( $setting['sc_email_link'] ) ? filter_var( $setting['sc_email_link'], FILTER_VALIDATE_BOOLEAN ) : true;
-		self::$response_attrs['email_label']        = isset( $setting['sc_email_input_label'] ) ? $setting['sc_email_input_label'] : __( 'Send draft link to', 'forminator' );
-		self::$response_attrs['email_placeholder']  = isset( $setting['sc_email_placeholder'] ) ? $setting['sc_email_placeholder'] : __( 'E.g., johndoe@gmail.com', 'forminator' );
-		self::$response_attrs['email_button_label'] = isset( $setting['sc_email_button_label'] ) ? $setting['sc_email_button_label'] : __( 'Send draft link', 'forminator' );
+		self::$response_attrs['email_label']        = isset( $setting['sc_email_input_label'] ) ? $setting['sc_email_input_label'] : esc_html__( 'Send draft link to', 'forminator' );
+		self::$response_attrs['email_placeholder']  = isset( $setting['sc_email_placeholder'] ) ? $setting['sc_email_placeholder'] : esc_html__( 'E.g., johndoe@gmail.com', 'forminator' );
+		self::$response_attrs['email_button_label'] = isset( $setting['sc_email_button_label'] ) ? $setting['sc_email_button_label'] : esc_html__( 'Send draft link', 'forminator' );
 		self::$response_attrs['retention_period']   = isset( $setting['sc_draft_retention'] ) ? $setting['sc_draft_retention'] : 30;
 
 		return self::return_success( $setting['sc_message'] );
@@ -1225,7 +1225,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 		$fields = self::$module_object->get_real_fields();
 
 		if ( ! $fields ) {
-			throw new Exception( __( 'At least one field must be filled out to submit the form.', 'forminator' ) );
+			throw new Exception( esc_html__( 'At least one field must be filled out to submit the form.', 'forminator' ) );
 		}
 
 		return $fields;
@@ -1566,7 +1566,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 	 * @return mixed
 	 */
 	private static function get_invalid_form_message() {
-		$invalid_form_message = __( 'Error: Your form is not valid, please fix the errors!', 'forminator' );
+		$invalid_form_message = esc_html__( 'Error: Your form is not valid, please fix the errors!', 'forminator' );
 		if ( ! empty( self::$module_settings['submitData']['custom-invalid-form-message'] ) ) {
 			$invalid_form_message = self::$module_settings['submitData']['custom-invalid-form-message'];
 		}
@@ -1730,7 +1730,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 			// Delete entry if capture is not successful.
 			$entry->delete();
 
-			throw new Exception( __( 'Payment failed, please try again!', 'forminator' ) );
+			throw new Exception( esc_html__( 'Payment failed, please try again!', 'forminator' ) );
 		}
 		$paypal_entry_data['value']['status'] = 'COMPLETED';
 
@@ -2509,7 +2509,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 					return array(
 						'type'     => 'error',
 						'field_id' => $field_id,
-						'value'    => __( 'There was an error saving the post data. Please try again', 'forminator' ),
+						'value'    => esc_html__( 'There was an error saving the post data. Please try again', 'forminator' ),
 					);
 				}
 			} else {
@@ -2543,7 +2543,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 		if ( false === $ret ) {
 			wp_send_json_error(
 				array(
-					'message' => __( 'Please try again.', 'forminator' ),
+					'message' => esc_html__( 'Please try again.', 'forminator' ),
 				)
 			);
 		}
@@ -2558,7 +2558,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Your code has been sent to your email.', 'forminator' ),
+				'message' => esc_html__( 'Your code has been sent to your email.', 'forminator' ),
 			)
 		);
 	}
@@ -2636,7 +2636,7 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 		$draft_id = Forminator_Core::sanitize_text_field( 'draft_id' );
 		$nonce    = 'forminator_nonce_email_draft_link_' . $draft_id;
 		if ( ! check_ajax_referer( $nonce, $nonce ) ) {
-			wp_send_json_error( __( 'Invalid request, you are not allowed to do that action.', 'forminator' ) );
+			wp_send_json_error( esc_html__( 'Invalid request, you are not allowed to do that action.', 'forminator' ) );
 		}
 
 		$submitted_data = Forminator_Core::sanitize_array( $_POST );
@@ -2694,13 +2694,13 @@ class Forminator_CForm_Front_Action extends Forminator_Front_Action {
 		if ( $mail_sent ) {
 			$response['draft_mail_message'] = sprintf(
 				'<p>%s</p><a href="#" class="draft-resend-mail">%s</a>',
-				esc_html__( "We've sent the resume form link to your email address. Please check your spam folder if you can't find the link in your inbox.", 'forminator' ),
+				esc_html__( 'We\'ve sent the resume form link to your email address. Please check your spam folder if you can\'t find the link in your inbox.', 'forminator' ),
 				esc_html__( 'Change email', 'forminator' )
 			);
 		} else {
 			$response['draft_mail_message'] = sprintf(
 				'<p>%s</p><a href="#" class="draft-resend-mail">%s</a>',
-				esc_html__( "We couldn't send the form resume link to your email at this time. Click on the link below to resend it or manually copy and save the link in a safe place.", 'forminator' ),
+				esc_html__( 'We couldn\'t send the form resume link to your email at this time. Click on the link below to resend it or manually copy and save the link in a safe place.', 'forminator' ),
 				esc_html__( 'Resend link', 'forminator' )
 			);
 		}

@@ -113,7 +113,7 @@ function forminator_ajax_url() {
  */
 function forminator_validate_ajax( $action, $query_arg = false ) {
 	if ( ! check_ajax_referer( $action, $query_arg, false ) || ! forminator_is_user_allowed() ) {
-		wp_send_json_error( __( 'Invalid request, you are not allowed to do that action.', 'forminator' ) );
+		wp_send_json_error( esc_html__( 'Invalid request, you are not allowed to do that action.', 'forminator' ) );
 	}
 }
 
@@ -272,12 +272,12 @@ function forminator_enqueue_color_picker_alpha() {
 		'wp-color-picker-alpha',
 		'wpColorPickerL10n',
 		array(
-			'clear'            => __( 'Clear', 'forminator' ),
-			'clearAriaLabel'   => __( 'Clear color', 'forminator' ),
-			'defaultString'    => __( 'Default', 'forminator' ),
-			'defaultAriaLabel' => __( 'Select default color', 'forminator' ),
-			'pick'             => __( 'Select Color', 'forminator' ),
-			'defaultLabel'     => __( 'Color value', 'forminator' ),
+			'clear'            => esc_html__( 'Clear', 'forminator' ),
+			'clearAriaLabel'   => esc_html__( 'Clear color', 'forminator' ),
+			'defaultString'    => esc_html__( 'Default', 'forminator' ),
+			'defaultAriaLabel' => esc_html__( 'Select default color', 'forminator' ),
+			'pick'             => esc_html__( 'Select Color', 'forminator' ),
+			'defaultLabel'     => esc_html__( 'Color value', 'forminator' ),
 		)
 	);
 }
@@ -415,35 +415,35 @@ function forminator_localize_data() {
 	return array(
 		'ajaxUrl' => forminator_ajax_url(),
 		'cform'   => array(
-			'processing'                => __( 'Submitting form, please wait', 'forminator' ),
-			'error'                     => __( 'An error occurred while processing the form. Please try again', 'forminator' ),
-			'upload_error'              => __( 'An upload error occurred while processing the form. Please try again', 'forminator' ),
-			'pagination_prev'           => __( 'Previous', 'forminator' ),
-			'pagination_next'           => __( 'Next', 'forminator' ),
-			'pagination_go'             => __( 'Submit', 'forminator' ),
+			'processing'                => esc_html__( 'Submitting form, please wait', 'forminator' ),
+			'error'                     => esc_html__( 'An error occurred while processing the form. Please try again', 'forminator' ),
+			'upload_error'              => esc_html__( 'An upload error occurred while processing the form. Please try again', 'forminator' ),
+			'pagination_prev'           => esc_html__( 'Previous', 'forminator' ),
+			'pagination_next'           => esc_html__( 'Next', 'forminator' ),
+			'pagination_go'             => esc_html__( 'Submit', 'forminator' ),
 			'gateway'                   => array(
-				'processing' => __( 'Processing payment, please wait', 'forminator' ),
-				'paid'       => __( 'Success! Payment confirmed. Submitting form, please wait', 'forminator' ),
-				'error'      => __( 'Error! Something went wrong when verifying the payment', 'forminator' ),
+				'processing' => esc_html__( 'Processing payment, please wait', 'forminator' ),
+				'paid'       => esc_html__( 'Success! Payment confirmed. Submitting form, please wait', 'forminator' ),
+				'error'      => esc_html__( 'Error! Something went wrong when verifying the payment', 'forminator' ),
 			),
-			'captcha_error'             => __( 'Invalid CAPTCHA', 'forminator' ),
-			'no_file_chosen'            => __( 'No file chosen', 'forminator' ),
+			'captcha_error'             => esc_html__( 'Invalid CAPTCHA', 'forminator' ),
+			'no_file_chosen'            => esc_html__( 'No file chosen', 'forminator' ),
 			// This is the file "/build/js/utils.js" found into intlTelInput plugin. Renamed so it makes sense within the "js/library" directory context.
 			'intlTelInput_utils_script' => forminator_plugin_url() . 'assets/js/library/intlTelInputUtils.js',
-			'process_error'             => __( 'Please try again', 'forminator' ),
+			'process_error'             => esc_html__( 'Please try again', 'forminator' ),
 		),
 		'poll'    => array(
-			'processing' => __( 'Submitting vote, please wait', 'forminator' ),
-			'error'      => __( 'An error occurred saving the vote. Please try again', 'forminator' ),
+			'processing' => esc_html__( 'Submitting vote, please wait', 'forminator' ),
+			'error'      => esc_html__( 'An error occurred saving the vote. Please try again', 'forminator' ),
 		),
 		'quiz'    => array(
-			'view_results' => __( 'View Results', 'forminator' ),
+			'view_results' => esc_html__( 'View Results', 'forminator' ),
 		),
 		'select2' => array(
-			'load_more'       => __( 'Loading more results…', 'forminator' ),
-			'no_result_found' => __( 'No results found', 'forminator' ),
-			'searching'       => __( 'Searching…', 'forminator' ),
-			'loaded_error'    => __( 'The results could not be loaded.', 'forminator' ),
+			'load_more'       => esc_html__( 'Loading more results…', 'forminator' ),
+			'no_result_found' => esc_html__( 'No results found', 'forminator' ),
+			'searching'       => esc_html__( 'Searching…', 'forminator' ),
+			'loaded_error'    => esc_html__( 'The results could not be loaded.', 'forminator' ),
 		),
 	);
 }
@@ -645,9 +645,9 @@ function forminator_get_form_id_helper() {
  */
 function forminator_get_page_ids_helper() {
 	// Sanitize is requied when user uses space inside the translation.
-	$name = sanitize_title( __( 'forminator', 'forminator' ) );
+	$name = sanitize_title( esc_html__( 'forminator', 'forminator' ) );
 	if ( FORMINATOR_PRO ) {
-		$title = sanitize_title( __( 'Forminator Pro', 'forminator' ) );
+		$title = sanitize_title( esc_html__( 'Forminator Pro', 'forminator' ) );
 		return array(
 			$title . '_page_forminator-quiz-view',
 			$title . '_page_forminator-cform-view',
@@ -656,7 +656,7 @@ function forminator_get_page_ids_helper() {
 		);
 	} else {
 		// Free version.
-		$title = sanitize_title( __( 'Forminator', 'forminator' ) );
+		$title = sanitize_title( esc_html__( 'Forminator', 'forminator' ) );
 		return array(
 			$title . '_page_forminator-quiz-view',
 			$title . '_page_forminator-cform-view',
@@ -872,13 +872,13 @@ function forminator_is_page_builder_preview() {
  */
 function forminator_get_day_translated( $day ) {
 	$days = array(
-		'mon' => __( 'Monday', 'forminator' ),
-		'tue' => __( 'Tuesday', 'forminator' ),
-		'wed' => __( 'Wednesday', 'forminator' ),
-		'thu' => __( 'Thursday', 'forminator' ),
-		'fri' => __( 'Friday', 'forminator' ),
-		'sat' => __( 'Saturday', 'forminator' ),
-		'sun' => __( 'Sunday', 'forminator' ),
+		'mon' => esc_html__( 'Monday', 'forminator' ),
+		'tue' => esc_html__( 'Tuesday', 'forminator' ),
+		'wed' => esc_html__( 'Wednesday', 'forminator' ),
+		'thu' => esc_html__( 'Thursday', 'forminator' ),
+		'fri' => esc_html__( 'Friday', 'forminator' ),
+		'sat' => esc_html__( 'Saturday', 'forminator' ),
+		'sun' => esc_html__( 'Sunday', 'forminator' ),
 	);
 
 	return isset( $days[ $day ] ) ? $days[ $day ] : $day;

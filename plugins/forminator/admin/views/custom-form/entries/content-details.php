@@ -90,7 +90,8 @@ function forminator_submissions_content_details( $detail_item, $inside_group = f
 									if ( $max_fields === $sub_key && $max_fields < count( $sub_entries ) ) {
 										$sub_count = count( $sub_entries ) - $max_fields + 1;
 										echo '<td style="padding-top: 5px; padding-bottom: 5px;">';
-										echo '<span class="fui-accordion-open-text">' . sprintf(/* translators: ... */
+										echo '<span class="fui-accordion-open-text">' . sprintf(
+                                                /* translators: %s: field sub count */
 											esc_html__( '+ %s other fields', 'forminator' ),
 											esc_html( $sub_count )
 										) . '</span>';
@@ -231,7 +232,7 @@ function forminator_submissions_remove_quantity( $sub_entries, $item_type ) {
 		$quantity_index     = array_search( 'quantity', array_column( $sub_entries, 'key' ), true );
 		$payment_type       = $sub_entries[ $payment_type_index ]['value'];
 
-		if ( strtolower( __( 'One Time', 'forminator' ) ) === strtolower( $payment_type ) ) {
+		if ( strtolower( esc_html__( 'One Time', 'forminator' ) ) === strtolower( $payment_type ) ) {
 			unset( $sub_entries[ $quantity_index ] );
 		}
 	}

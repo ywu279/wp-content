@@ -45,7 +45,7 @@ if ( ! empty( $module_id ) ) {
 			$activated = true;
 		} else {
 			$activated = false;
-			$tooltip   = __( 'Connect App', 'forminator' );
+			$tooltip   = esc_html__( 'Connect App', 'forminator' );
 		}
 	}
 }
@@ -53,9 +53,9 @@ if ( ! empty( $module_id ) ) {
 $icon_class_action = empty( $activated ) ? 'sui-icon-plus' : 'sui-icon-widget-settings-config';
 if ( empty( $tooltip ) ) {
 	if ( ! isset( $activated ) ) {
-		$tooltip = __( 'Configure Integration', 'forminator' );
+		$tooltip = esc_html__( 'Configure Integration', 'forminator' );
 	} else {
-		$tooltip = empty( $activated ) ? __( 'Activate App', 'forminator' ) : __( 'Configure App', 'forminator' );
+		$tooltip = empty( $activated ) ? esc_html__( 'Activate App', 'forminator' ) : esc_html__( 'Configure App', 'forminator' );
 	}
 }
 
@@ -64,7 +64,7 @@ $unique_id         = ! empty( $addon['global_id'] ) ? esc_attr( $addon['global_i
 if ( empty( $is_integrations_page ) && ! empty( $activated ) && 'form' === $module_slug ) {
 	$conditions_button = '<button class="sui-button sui-button-ghost conditions-integration"
 			data-title="' . esc_attr( $addon['title'] ) . '"  data-multi-id="' . $unique_id . '">' .
-		__( 'Conditions', 'forminator' ) . '</button>';
+		esc_html__( 'Conditions', 'forminator' ) . '</button>';
 }
 
 $action_available = false;

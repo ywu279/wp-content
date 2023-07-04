@@ -17,8 +17,8 @@ foreach ( $template_vars as $key => $val ) {
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
 		<?php
-		/* translators: ... */
-		 printf( __( 'Set Up %1$s', 'forminator' ), 'Trello' );
+		/* translators: 1: Add-on name */
+		 printf( esc_html__( 'Set Up %1$s', 'forminator' ), 'Trello' );
 		?>
 	</h3>
 
@@ -29,7 +29,11 @@ foreach ( $template_vars as $key => $val ) {
 	<?php else : ?>
 
 		<p id="forminator-integration-popup__description" class="sui-description">
-            <?php printf( __( 'Please get your Trello API key %1$s', 'forminator' ), '<a href="https://trello.com/app-key" target="_blank">here</a>' ); ?>
+            <?php printf(
+            /* Translators: 1. Opening <a> tag with link to Trello API key, 2. closing <a> tag. */
+                    esc_html__( 'Please get your Trello API key %1$shere%2$s', 'forminator' ),
+                '<a href="https://trello.com/app-key" target="_blank">',
+                '</a>' ); ?>
         </p>
 
 		<?php if ( ! empty( $vars['error_message'] ) ) : ?>
@@ -66,7 +70,7 @@ foreach ( $template_vars as $key => $val ) {
             <input
                     class="sui-form-control"
                     name="api_key"
-                    placeholder="<?php printf( __( 'Enter %1$s API Key', 'forminator' ), 'Trello' ); ?>"
+                    placeholder="<?php /* translators: 1: Add-on name */ printf( esc_attr__( 'Enter %1$s API Key', 'forminator' ), 'Trello' ); ?>"
                     value="<?php echo esc_attr( $vars['api_key'] ); ?>">
                 <i class="sui-icon-key" aria-hidden="true"></i>
         </div>

@@ -443,7 +443,7 @@ class Forminator_Shortcode_Generator {
 		$html        = '';
 		$modules     = Forminator_API::get_forms( null, 1, 999 );
 		$search      = ( count( $modules ) > 4 ) ? 'true' : 'false';
-		$placeholder = __( 'Select Custom Form', 'forminator' );
+		$placeholder = esc_html__( 'Select Custom Form', 'forminator' );
 
 		$html .= '<select id="forminator-select-forms" name="forms" class="sui-select forminator-custom-form-list" data-placeholder="' . $placeholder . '" data-search="' . $search . '">';
 
@@ -479,7 +479,7 @@ class Forminator_Shortcode_Generator {
 		$html        = '';
 		$modules     = Forminator_API::get_polls( null, 1, 999 );
 		$search      = ( count( $modules ) > 4 ) ? 'true' : 'false';
-		$placeholder = __( 'Select Poll', 'forminator' );
+		$placeholder = esc_html__( 'Select Poll', 'forminator' );
 
 		$html .= '<select id="forminator-select-polls" name="forms" class="sui-select forminator-insert-poll" data-placeholder="' . $placeholder . '" data-search="' . $search . '">';
 
@@ -514,11 +514,11 @@ class Forminator_Shortcode_Generator {
 		$html        = '';
 		$modules     = Forminator_API::get_quizzes( null, 1, 999 );
 		$search      = ( count( $modules ) > 4 ) ? 'true' : 'false';
-		$placeholder = __( 'Select Quiz', 'forminator' );
+		$placeholder = esc_html__( 'Select Quiz', 'forminator' );
 
 		$html .= '<select id="forminator-select-quizzes" name="forms" class="sui-select forminator-quiz-list" data-placeholder="' . $placeholder . '" data-search="' . $search . '">';
 
-			$html .= '<option value="">' . __( 'Select Quiz', 'forminator' ) . '</option>';
+			$html .= '<option value="">' . esc_html__( 'Select Quiz', 'forminator' ) . '</option>';
 
 			foreach ( $modules as $module ) {
 				$module = (array) $module;

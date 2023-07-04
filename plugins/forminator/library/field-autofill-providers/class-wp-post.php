@@ -23,15 +23,15 @@ class Forminator_WP_Post_Autofill_Provider extends Forminator_Autofill_Provider_
 
 		$attributes_map = array(
 			'id'        => array(
-				'name'         => __( 'ID', 'forminator' ),
+				'name'         => esc_html__( 'ID', 'forminator' ),
 				'value_getter' => array( $this, 'get_value_id' ),
 			),
 			'title'     => array(
-				'name'         => __( 'Title', 'forminator' ),
+				'name'         => esc_html__( 'Title', 'forminator' ),
 				'value_getter' => array( $this, 'get_value_title' ),
 			),
 			'permalink' => array(
-				'name'         => __( 'Permalink', 'forminator' ),
+				'name'         => esc_html__( 'Permalink', 'forminator' ),
 				'value_getter' => array( $this, 'get_value_permalink' ),
 			),
 		);

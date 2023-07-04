@@ -9,7 +9,7 @@ $reports = $args['reports']; ?>
             <div class="sui-accordion-item-header sui-accordion-item-action">
                 <div class="sui-accordion-item-title">
                     <?php esc_html_e( 'Overview', 'forminator' ); ?>
-                    <div class="sui-accordion-item-subtitle forminator-chart-date"><?php printf( __( 'Showing report from %s - %s', 'forminator' ),
+                    <div class="sui-accordion-item-subtitle forminator-chart-date"><?php /* translators: 1: Start date, 2: End date */ printf( esc_html__( 'Showing report from %1$s - %2$s', 'forminator' ),
                             date( 'F d, Y', strtotime( $args['start_date'] ) ),
                             date( 'F d, Y', strtotime( $args['end_date'] ) )
                         ); ?></div>

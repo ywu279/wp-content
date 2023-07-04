@@ -91,7 +91,8 @@
                                 <p style="font-size:25px;line-height:30px;font-weight:700;margin:0;">
                                     <?php
                                     printf(
-                                        __( 'Your Forminator %1$s summary for %2$s', 'forminator' ),
+                                    /* Translators: 1. Form label 2. Opening <a> tag with link to the site url. */
+                                        esc_html__( 'Your Forminator %1$s summary for %2$s', 'forminator' ),
                                         esc_html( $args['label'] ),
                                         '<a href="' . esc_url( $args['site_url'] ) . '" style="color:#286EFA;text-decoration: none;">' . esc_html( $args['site_name'] ) . '</a>'
                                     );
@@ -103,7 +104,8 @@
                                 >
                                 <?php
                                 printf(
-                                    __( 'Hi %s,', 'forminator' ),
+                                /* translators: %s: Recipient name */
+                                    esc_html__( 'Hi %s,', 'forminator' ),
                                     esc_html( $args['recipient']['name'] )
                                 );
 								?>
@@ -111,7 +113,8 @@
                                 <p>
                                 <?php
                                 printf(
-                                    __( 'Here is the %1$s summary of how your form(s) are performing on %2$s. View the full reports %3$shere%4$s.', 'forminator' ),
+                                /* Translators: 1. Schedule 2. Site url, 3. Report dashboard URL. */
+                                    esc_html__( 'Here is the %1$s summary of how your form(s) are performing on %2$s. View the full reports %3$shere%4$s.', 'forminator' ),
                                     esc_html( $args['schedule'] ),
                                     '<a href="' . esc_url( $args['site_url'] ) . '" style="color:#286EFA;text-decoration: none;">' . esc_html( $args['site_name'] ) . '</a>',
                                     '<a href="' . esc_url( admin_url( 'admin.php?page=forminator-reports&section=dashboard' ) ) . '" target="_blank" style="color:#286EFA;text-decoration: none;">',
@@ -157,7 +160,8 @@
                             <p style="font-size:16px;line-height:24px;color:#1a1a1a;">
                                 <?php
                                 printf(
-                                    __( 'You can change the frequency of receiving this email in Forminator\'s  %1$sReport - Notification%2$s section.', 'forminator' ),
+                                /* Translators: 1. Opening <a> tag with link to the report dashboard url, 2. closing <a> tag. */
+                                    esc_html__( 'You can change the frequency of receiving this email in Forminator\'s  %1$sReport - Notification%2$s section.', 'forminator' ),
                                     '<a href="' . esc_url( admin_url( 'admin.php?page=forminator-reports&section=notification' ) ) . '" target="_blank" style="color:#286EFA;text-decoration: none;">',
                                     '</a>'
                                 );

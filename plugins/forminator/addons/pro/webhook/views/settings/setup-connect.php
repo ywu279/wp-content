@@ -5,7 +5,7 @@ $vars = array(
 	'is_connected'  => false,
 );
 
-$activate_description = __( 'Activate Webhook to start using it with your forms, quizzes, and polls.', 'forminator' );
+$activate_description = esc_html__( 'Activate Webhook to start using it with your forms, quizzes, and polls.', 'forminator' );
 
 /** @var array $template_vars */
 foreach ( $template_vars as $key => $val ) {
@@ -16,8 +16,8 @@ foreach ( $template_vars as $key => $val ) {
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
 		<?php
-		/* translators: ... */
-		echo esc_html( sprintf( __( 'Activate %1$s', 'forminator' ), 'Webhook' ) );
+		/* translators: 1: Add-on name */
+		printf( esc_html__( 'Activate %1$s', 'forminator' ), 'Webhook' );
 		?>
 	</h3>
 

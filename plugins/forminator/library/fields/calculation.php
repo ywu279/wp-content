@@ -65,7 +65,7 @@ class Forminator_Calculation extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Calculations', 'forminator' );
+		$this->name = esc_html__( 'Calculations', 'forminator' );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class Forminator_Calculation extends Forminator_Field {
 	 */
 	public function defaults() {
 		return array(
-			'field_label' => __( 'Calculations', 'forminator' ),
+			'field_label' => esc_html__( 'Calculations', 'forminator' ),
 		);
 	}
 
@@ -285,7 +285,7 @@ class Forminator_Calculation extends Forminator_Field {
 	 * @return string
 	 */
 	public static function default_error_message() {
-		$message = __( 'Failed to calculate field.', 'forminator' );
+		$message = esc_html__( 'Failed to calculate field.', 'forminator' );
 
 		/**
 		 * Filter default error message

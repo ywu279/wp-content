@@ -351,7 +351,7 @@ class Forminator_Poll_Front extends Forminator_Render_Form {
 
 					$html .= sprintf(
 						'<span class="forminator-note">%s</span>',
-						__( 'No votes yet', 'forminator' )
+						esc_html__( 'No votes yet', 'forminator' )
 					);
 				} else {
 
@@ -386,7 +386,7 @@ class Forminator_Poll_Front extends Forminator_Render_Form {
 						$url
 					);
 				}
-				$html .= sprintf( '<a href="%s">%s</a>', esc_url( $url ), __( 'View results', 'forminator' ) );
+				$html .= sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html__( 'View results', 'forminator' ) );
 			}
 
 			$html .= '</div>';

@@ -63,7 +63,7 @@ class Forminator_Group extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Field Group', 'forminator' );
+		$this->name = esc_html__( 'Field Group', 'forminator' );
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Forminator_Group extends Forminator_Field {
 	 */
 	public function defaults() {
 		return array(
-			'field_label' => __( 'Field Group', 'forminator' ),
+			'field_label' => esc_html__( 'Field Group', 'forminator' ),
 			'is_repeater' => 'true',
 		);
 	}
@@ -187,8 +187,8 @@ class Forminator_Group extends Forminator_Field {
 			'max_type'            => $max_limit_type,
 			'min'                 => $min,
 			'max'                 => $max,
-			'add_text'            => empty( $field['add_action_text'] ) ? __( 'Add item', 'forminator' ) : $field['add_action_text'],
-			'remove_text'         => empty( $field['remove_action_text'] ) ? __( 'Remove item', 'forminator' ) : $field['remove_action_text'],
+			'add_text'            => empty( $field['add_action_text'] ) ? esc_html__( 'Add item', 'forminator' ) : $field['add_action_text'],
+			'remove_text'         => empty( $field['remove_action_text'] ) ? esc_html__( 'Remove item', 'forminator' ) : $field['remove_action_text'],
 			'action_element_type' => empty( $field['action_element_type'] ) ? 'button' : $field['action_element_type'],
 		);
 	}

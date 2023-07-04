@@ -18,7 +18,10 @@ $nonce = wp_create_nonce( 'forminator_save_import_' . $slug );
 
 		<textarea class="sui-form-control" rows="10" name="importable"></textarea>
 
-		<span class="sui-description"><?php echo esc_html( sprintf( __( 'Paste exported %s above.', 'forminator' ), esc_html( $slug ) ) ); ?></span>
+		<span class="sui-description"><?php /* translators: %s: Module slug */
+            printf( esc_html__( 'Paste exported %s above.', 'forminator' ),
+                esc_html__( $slug, 'forminator' ) ); ?>
+        </span>
 
 	</div>
 

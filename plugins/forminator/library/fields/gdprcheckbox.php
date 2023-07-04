@@ -54,7 +54,7 @@ class Forminator_GdprCheckbox extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'GDPR Approval', 'forminator' );
+		$this->name = esc_html__( 'GDPR Approval', 'forminator' );
 	}
 
 	/**
@@ -71,8 +71,16 @@ class Forminator_GdprCheckbox extends Forminator_Field {
 		return array(
 			'required'         => 'true',
 			'field_label'      => 'GDPR',
-			'gdpr_description' => sprintf( __( 'Yes, I agree with the <a href="%s" target="_blank">privacy policy</a> and <a href="#" target="_blank">terms and conditions</a>.', 'forminator' ), esc_url( $privacy_url ) ),
-			'required_message' => __( 'This field is required. Please check it.', 'forminator' ),
+			'gdpr_description' =>
+			/* Translators: 1. Opening <a> tag with link to privacy policy, 2. closing <a> tag, 3. Opening <a> tag with #href, 4. closing <a> tag. */
+				sprintf(
+					esc_html__( 'Yes, I agree with the %1$sprivacy policy%2$s and %3$sterms and conditions%4$s.', 'forminator' ),
+					'<a href="' . esc_url( $privacy_url ) . '" target="_blank">',
+					'</a>',
+					'<a href="#" target="_blank">',
+					'</a>'
+				),
+			'required_message' => esc_html__( 'This field is required. Please check it.', 'forminator' ),
 		);
 	}
 
@@ -173,7 +181,7 @@ class Forminator_GdprCheckbox extends Forminator_Field {
 		$required_message = self::get_property( 'required_message', $field, '' );
 		$required_message = apply_filters(
 			'forminator_gdprcheckbox_field_required_validation_message',
-			( ! empty( $required_message ) ? $required_message : __( 'This field is required. Please check it.', 'forminator' ) ),
+			( ! empty( $required_message ) ? $required_message : esc_html__( 'This field is required. Please check it.', 'forminator' ) ),
 			$id,
 			$field
 		);
@@ -196,7 +204,7 @@ class Forminator_GdprCheckbox extends Forminator_Field {
 		if ( empty( $data ) || 'true' !== $data ) {
 			$this->validation_message[ $id ] = apply_filters(
 				'forminator_gdprcheckbox_field_required_validation_message',
-				__( 'This field is required. Please check it.', 'forminator' ),
+				esc_html__( 'This field is required. Please check it.', 'forminator' ),
 				$id,
 				$field
 			);

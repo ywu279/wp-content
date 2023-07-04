@@ -176,7 +176,7 @@ abstract class Forminator_Front_Action {
 			if ( ! static::$module_object && wp_doing_ajax() ) {
 				wp_send_json_error(
 					array(
-						'message' => __( 'Error: Module object is corrupted!', 'forminator' ),
+						'message' => esc_html__( 'Error: Module object is corrupted!', 'forminator' ),
 						'errors'  => array(),
 					)
 				);
@@ -196,7 +196,7 @@ abstract class Forminator_Front_Action {
 			if ( wp_doing_ajax() ) {
 				wp_send_json_error(
 					array(
-						'message' => __( "Error: Your module ID doesn't exist!", 'forminator' ),
+						'message' => esc_html__( 'Error: Your module ID doesn\'t exist!', 'forminator' ),
 						'errors'  => array(),
 					)
 				);
@@ -435,7 +435,7 @@ abstract class Forminator_Front_Action {
 		$draft = self::$is_draft ? '_draft' : '';
 
 		if ( ! $this->validate_ajax( 'forminator_submit_form', 'POST', 'forminator_nonce' ) ) {
-			wp_send_json_error( __( 'Invalid nonce. Please refresh your browser.', 'forminator' ) );
+			wp_send_json_error( esc_html__( 'Invalid nonce. Please refresh your browser.', 'forminator' ) );
 		}
 
 		/**
@@ -485,7 +485,7 @@ abstract class Forminator_Front_Action {
 				wp_send_json_success( $response );
 			}
 		}
-		wp_send_json_error( __( 'Invalid form response', 'forminator' ) );
+		wp_send_json_error( esc_html__( 'Invalid form response', 'forminator' ) );
 	}
 
 	/**
@@ -795,7 +795,7 @@ abstract class Forminator_Front_Action {
 				if ( false === $valid['ext'] ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' ),
 					);
 				}
 
@@ -803,7 +803,7 @@ abstract class Forminator_Front_Action {
 				if ( false === $allow ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Uploaded file extension is not allowed.', 'forminator' ),
 					);
 				}
 
@@ -814,7 +814,7 @@ abstract class Forminator_Front_Action {
 				if ( ! is_uploaded_file( $_FILES[ $field_name ]['tmp_name'] ) ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Failed to read uploaded file.', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Failed to read uploaded file.', 'forminator' ),
 					);
 				}
 
@@ -829,14 +829,14 @@ abstract class Forminator_Front_Action {
 
 					return array(
 						'success' => false,
-						'message' => sprintf( /* translators: ... */ __( 'Error saving form. Uploaded file size exceeds %1$s upload limit. ', 'forminator' ), $max_size ),
+						'message' => sprintf( /* translators: %s: Maximum size */ esc_html__( 'Error saving form. Uploaded file size exceeds %s upload limit. ', 'forminator' ), $max_size ),
 					);
 				}
 
 				if ( UPLOAD_ERR_OK !== $_FILES[ $field_name ]['error'] ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Upload error. ', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Upload error. ', 'forminator' ),
 					);
 				}
 
@@ -863,7 +863,7 @@ abstract class Forminator_Front_Action {
 				} else {
 					return array(
 						'success' => false,
-						'message' => __( 'Error saving form. Upload error. ', 'forminator' ),
+						'message' => esc_html__( 'Error saving form. Upload error. ', 'forminator' ),
 					);
 				}
 			}
@@ -1017,7 +1017,7 @@ abstract class Forminator_Front_Action {
 			if ( ! empty( self::$module_settings['spam-fail-message'] ) ) {
 				$fail_message = self::$module_settings['spam-fail-message'];
 			} else {
-				$fail_message = __( 'Something went wrong.', 'forminator' );
+				$fail_message = esc_html__( 'Something went wrong.', 'forminator' );
 			}
 			return $fail_message;
 		} else {
@@ -1059,7 +1059,7 @@ abstract class Forminator_Front_Action {
 	 */
 	protected static function return_success( $message = null ) {
 		$response = array(
-			'message' => ! is_null( $message ) ? $message : __( 'Form entry saved', 'forminator' ),
+			'message' => ! is_null( $message ) ? $message : esc_html__( 'Form entry saved', 'forminator' ),
 			'success' => true,
 			'form_id' => static::$module_id,
 		);

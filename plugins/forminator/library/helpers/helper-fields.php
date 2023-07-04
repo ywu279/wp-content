@@ -446,13 +446,13 @@ function forminator_week_days() {
 	return apply_filters(
 		'forminator_week_days',
 		array(
-			'sunday'    => __( 'Sunday', 'forminator' ),
-			'monday'    => __( 'Monday', 'forminator' ),
-			'tuesday'   => __( 'Tuesday', 'forminator' ),
-			'wednesday' => __( 'Wednesday', 'forminator' ),
-			'thursday'  => __( 'Thursday', 'forminator' ),
-			'friday'    => __( 'Friday', 'forminator' ),
-			'saturday'  => __( 'Saturday', 'forminator' ),
+			'sunday'    => esc_html__( 'Sunday', 'forminator' ),
+			'monday'    => esc_html__( 'Monday', 'forminator' ),
+			'tuesday'   => esc_html__( 'Tuesday', 'forminator' ),
+			'wednesday' => esc_html__( 'Wednesday', 'forminator' ),
+			'thursday'  => esc_html__( 'Thursday', 'forminator' ),
+			'friday'    => esc_html__( 'Friday', 'forminator' ),
+			'saturday'  => esc_html__( 'Saturday', 'forminator' ),
 		)
 	);
 }
@@ -467,13 +467,13 @@ function forminator_get_name_prefixes() {
 	return apply_filters(
 		'forminator_name_prefixes',
 		array(
-			'Mr'   => __( 'Mr.', 'forminator' ),
-			'Mrs'  => __( 'Mrs.', 'forminator' ),
-			'Ms'   => __( 'Ms.', 'forminator' ),
-			'Mx'   => __( 'Mx.', 'forminator' ),
-			'Miss' => __( 'Miss', 'forminator' ),
-			'Dr'   => __( 'Dr.', 'forminator' ),
-			'Prof' => __( 'Prof.', 'forminator' ),
+			'Mr'   => esc_html__( 'Mr.', 'forminator' ),
+			'Mrs'  => esc_html__( 'Mrs.', 'forminator' ),
+			'Ms'   => esc_html__( 'Ms.', 'forminator' ),
+			'Mx'   => esc_html__( 'Mx.', 'forminator' ),
+			'Miss' => esc_html__( 'Miss', 'forminator' ),
+			'Dr'   => esc_html__( 'Dr.', 'forminator' ),
+			'Prof' => esc_html__( 'Prof.', 'forminator' ),
 		)
 	);
 }
@@ -1174,7 +1174,7 @@ function render_entry( $item, $column_name, $field = null, $type = '', $remove_e
 							$files_count = count( $file_urls );
 							foreach ( $file_urls as $index => $file_url ) {
 								$file_name = basename( $file_url );
-								$file_name = "<a href='" . esc_url( $file_url ) . "' target='_blank' rel='noreferrer' title='" . __( 'View File', 'forminator' ) . "'>$file_name</a>";
+								$file_name = "<a href='" . esc_url( $file_url ) . "' target='_blank' rel='noreferrer' title='" . esc_html__( 'View File', 'forminator' ) . "'>$file_name</a>";
 								$output   .= $file_name;
 								$output   .= $index < $files_count - 1 ? '<br/>' : '';
 							}
@@ -1190,7 +1190,7 @@ function render_entry( $item, $column_name, $field = null, $type = '', $remove_e
 
                                     // Title
                                     $title = get_the_title( $post_id );
-                                    $title = ! empty( $title ) ? $title : __( '(no title)', 'forminator' );
+                                    $title = ! empty( $title ) ? $title : esc_html__( '(no title)', 'forminator' );
 
                                     $output .= '<ul>';
 
@@ -1395,7 +1395,7 @@ function render_entry( $item, $column_name, $field = null, $type = '', $remove_e
 										if ( $remove_empty && empty( $value ) ) {
 											$output .= '';
 										} else {
-											$output .= sprintf( __( '<strong>%1$s : </strong> %2$s', 'forminator' ), esc_html( $key ), esc_html( $value ) ) . "<br/> ";
+											$output .= sprintf( '<strong>%1$s : </strong> %2$s', esc_html( $key ), esc_html( $value ) ) . "<br/> ";
 										}
 									}
 								}
@@ -1405,8 +1405,8 @@ function render_entry( $item, $column_name, $field = null, $type = '', $remove_e
 				}
 			}
 			if ( $is_product ) {
-				/* translators: ... */
-				$output = sprintf( __( '<strong>Total</strong> %s', 'forminator' ), $currency_symbol . '' . $product_cost );
+				/* Translators: 1. Opening <strong> tag, 2. closing <strong> tag 3. currency symbol with cost */
+				$output = sprintf( esc_html__( '%1$sTotal%2$s %3$s', 'forminator' ), '<strong>', '</strong>', $currency_symbol . '' . $product_cost );
 			} else {
 				if ( ! empty( $output ) ) {
 					if (
@@ -1554,7 +1554,7 @@ function forminator_get_countries_list() {
 			'CF' => esc_html__( 'Central African Republic', 'forminator' ),
 			'TD' => esc_html__( 'Chad', 'forminator' ),
 			'CL' => esc_html__( 'Chile', 'forminator' ),
-			'CN' => html_entity_decode( esc_html__( "China, People's Republic of", 'forminator' ), ENT_QUOTES ),
+			'CN' => html_entity_decode( esc_html__( 'China, People\'s Republic of', 'forminator' ), ENT_QUOTES ),
 			'CX' => esc_html__( 'Christmas Island', 'forminator' ),
 			'CC' => esc_html__( 'Cocos Islands', 'forminator' ),
 			'CO' => esc_html__( 'Colombia', 'forminator' ),
@@ -1563,7 +1563,7 @@ function forminator_get_countries_list() {
 			'CG' => esc_html__( 'Congo, Republic of the', 'forminator' ),
 			'CK' => esc_html__( 'Cook Islands', 'forminator' ),
 			'CR' => esc_html__( 'Costa Rica', 'forminator' ),
-			'CI' => html_entity_decode( esc_html__( "Côte d'Ivoire", 'forminator'  ), ENT_QUOTES ),
+			'CI' => html_entity_decode( esc_html__( 'Côte d\'Ivoire', 'forminator'  ), ENT_QUOTES ),
 			'HR' => esc_html__( 'Croatia', 'forminator' ),
 			'CU' => esc_html__( 'Cuba', 'forminator' ),
 			'CW' => esc_html__( 'Curaçao', 'forminator' ),
@@ -1627,12 +1627,12 @@ function forminator_get_countries_list() {
 			'KZ' => esc_html__( 'Kazakhstan', 'forminator' ),
 			'KE' => esc_html__( 'Kenya', 'forminator' ),
 			'KI' => esc_html__( 'Kiribati', 'forminator' ),
-			'KP' => html_entity_decode( esc_html__( "Korea, Democratic People's Republic of", 'forminator' ), ENT_QUOTES ),
+			'KP' => html_entity_decode( esc_html__( 'Korea, Democratic People\'s Republic of', 'forminator' ), ENT_QUOTES ),
 			'KR' => esc_html__( 'Korea, Republic of', 'forminator' ),
 			'XK' => esc_html__( 'Kosovo', 'forminator' ),
 			'KW' => esc_html__( 'Kuwait', 'forminator' ),
 			'KG' => esc_html__( 'Kyrgyzstan', 'forminator' ),
-			'LA' => html_entity_decode( esc_html__( "Lao People's Democratic Republic", 'forminator' ), ENT_QUOTES ),
+			'LA' => html_entity_decode( esc_html__( 'Lao People\'s Democratic Republic', 'forminator' ), ENT_QUOTES ),
 			'LV' => esc_html__( 'Latvia', 'forminator' ),
 			'LB' => esc_html__( 'Lebanon', 'forminator' ),
 			'LS' => esc_html__( 'Lesotho', 'forminator' ),
@@ -1920,7 +1920,6 @@ function forminator_get_ext_types() {
 			'rtx'                => 'text/richtext',
 			'rtf'                => 'application/rtf',
 			'vtt'                => 'text/vtt',
-			'dfxp'               => 'application/ttaf+xml',
 		),
 		'spreadsheet' => array(
 			'xla|xls|xlt|xlw' => 'application/vnd.ms-excel',
@@ -2166,7 +2165,8 @@ function forminator_replace_quiz_form_data( $content, Forminator_Quiz_Model $qui
 
 				$result_content  = PHP_EOL . '<ul>' . PHP_EOL;
 				$result_content .= '<li>' .
-								sprintf(/* translators: ... */
+								sprintf(
+								/* Translators: 1. Opening <b> tag, 2. closing <b> tag 3. Correct answer count */
 									esc_html__( '%1$sCorrect Answers%2$s : %3$d', 'forminator' ),
 									'<b>',
 									'</b>',
@@ -2175,7 +2175,8 @@ function forminator_replace_quiz_form_data( $content, Forminator_Quiz_Model $qui
 								'</li>' . PHP_EOL;
 
 				$result_content .= '<li>' .
-								sprintf(/* translators: ... */
+								sprintf(
+								/* Translators: 1. Opening <b> tag, 2. closing <b> tag 3. Total answer */
 									esc_html__( '%1$sTotal Question Answered%2$s : %3$d', 'forminator' ),
 									'<b>',
 									'</b>',
@@ -2724,7 +2725,7 @@ function forminator_allowed_mime_types( $mimes = array(), $allow = true ) {
 		$mimes = get_allowed_mime_types();
 	}
 	if ( ! $allow ) {
-		$filters = array( 'htm|html', 'js', 'jse', 'jar', 'php', 'php3', 'php4', 'php5', 'phtml', 'svg', 'swf', 'exe', 'html', 'htm', 'shtml', 'xhtml', 'xml', 'css', 'asp', 'aspx', 'jsp', 'sql', 'hta', 'dll', 'bat', 'com', 'sh', 'bash', 'py', 'pl' );
+		$filters = array( 'htm|html', 'js', 'jse', 'jar', 'php', 'php3', 'php4', 'php5', 'phtml', 'svg', 'swf', 'exe', 'html', 'htm', 'shtml', 'xhtml', 'xml', 'css', 'asp', 'aspx', 'jsp', 'sql', 'hta', 'dll', 'bat', 'com', 'sh', 'bash', 'py', 'pl', 'dfxp' );
 		foreach ( $filters as $filter ) {
 			unset( $mimes[ $filter ] );
 		}

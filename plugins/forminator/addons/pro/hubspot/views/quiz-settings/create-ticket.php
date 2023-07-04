@@ -24,7 +24,7 @@ foreach ( $template_vars as $key => $val ) {
 <div class="forminator-integration-popup__header">
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
-		<?php echo esc_html( __( 'Create Ticket', 'forminator' ) ); ?>
+		<?php esc_html_e( 'Create Ticket', 'forminator' ); ?>
 	</h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description">
@@ -205,7 +205,7 @@ foreach ( $template_vars as $key => $val ) {
 					type="text"
 					name="ticket_name"
 					value="<?php echo esc_attr( $vars['ticket_name'] ); ?>"
-					placeholder="Enter ticket name"
+					placeholder="<?php esc_attr_e( 'Enter ticket name', 'forminator' ); ?>"
 					id="ticket-name-input"
 					class="sui-form-control ticket-text"
 					aria-labelledby="ticket-name-input-label"
@@ -254,7 +254,7 @@ foreach ( $template_vars as $key => $val ) {
 
 				<textarea
 					name="ticket_description"
-					placeholder="Enter ticket description"
+					placeholder="<?php esc_attr_e( 'Enter ticket description', 'forminator' ); ?>"
 					id="ticket-description"
 					class="sui-form-control ticket-text"
 					aria-labelledby="ticket-description-label"

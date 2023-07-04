@@ -66,7 +66,7 @@ class Forminator_Addon_Aweber_Wp_Api {
 	public function __construct( $_application_key, $_application_secret, $_oauth_token, $_oauth_token_secret ) {
 		//prerequisites
 		if ( ! $_application_key || ! $_application_secret || ! $_oauth_token || ! $_oauth_token_secret ) {
-			throw new Forminator_Addon_Aweber_Wp_Api_Exception( __( 'Missing required API Credentials', 'forminator' ) );
+			throw new Forminator_Addon_Aweber_Wp_Api_Exception( esc_html__( 'Missing required API Credentials', 'forminator' ) );
 		}
 
 		$this->_application_key    = $_application_key;
@@ -227,7 +227,7 @@ class Forminator_Addon_Aweber_Wp_Api {
 
 		if ( is_wp_error( $res ) || ! $res ) {
 			throw new Forminator_Addon_Aweber_Wp_Api_Exception(
-				__( 'Failed to process request, make sure your API URL is correct and your server has internet connection.', 'forminator' )
+				esc_html__( 'Failed to process request, make sure your API URL is correct and your server has internet connection.', 'forminator' )
 			);
 		}
 
@@ -248,11 +248,13 @@ class Forminator_Addon_Aweber_Wp_Api {
 				}
 
 				if ( 404 === $status_code ) {
-					/* translators: ... */
-					throw new Forminator_Addon_Aweber_Wp_Api_Not_Found_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), $msg ) );
+					throw new Forminator_Addon_Aweber_Wp_Api_Not_Found_Exception( sprintf(
+						/* translators: %s: Error message */
+						esc_html__( 'Failed to process request : %s', 'forminator' ), $msg ) );
 				}
-				/* translators: ... */
-				throw new Forminator_Addon_Aweber_Wp_Api_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), $msg ) );
+				throw new Forminator_Addon_Aweber_Wp_Api_Exception( sprintf(
+					/* translators: %s: Error message */
+					esc_html__( 'Failed to process request : %s', 'forminator' ), $msg ) );
 			}
 		}
 
@@ -411,11 +413,11 @@ class Forminator_Addon_Aweber_Wp_Api {
 		$access_tokens = $this->request( 'POST', self::$_access_token_url, $args );
 
 		if ( ! is_object( $access_tokens ) ) {
-			throw new Forminator_Addon_Aweber_Wp_Api_Exception( __( 'Invalid access token', 'forminator' ) );
+			throw new Forminator_Addon_Aweber_Wp_Api_Exception( esc_html__( 'Invalid access token', 'forminator' ) );
 		}
 
 		if ( ! isset( $access_tokens->oauth_token_secret ) || ! isset( $access_tokens->oauth_token ) ) {
-			throw new Forminator_Addon_Aweber_Wp_Api_Exception( __( 'Invalid access token', 'forminator' ) );
+			throw new Forminator_Addon_Aweber_Wp_Api_Exception( esc_html__( 'Invalid access token', 'forminator' ) );
 		}
 
 		return $access_tokens;
@@ -508,7 +510,7 @@ class Forminator_Addon_Aweber_Wp_Api {
 		$args         = array_merge( $default_args, $args );
 
 		if ( empty( $args['email'] ) ) {
-			throw new Forminator_Addon_Aweber_Wp_Api_Exception( __( 'Email is required on add AWeber subscriber.', 'forminator' ) );
+			throw new Forminator_Addon_Aweber_Wp_Api_Exception( esc_html__( 'Email is required on add AWeber subscriber.', 'forminator' ) );
 		}
 
 		return $this->request(
@@ -558,7 +560,7 @@ class Forminator_Addon_Aweber_Wp_Api {
 		}
 
 		if ( empty( $args['email'] ) ) {
-			throw new Forminator_Addon_Aweber_Wp_Api_Exception( __( 'Email is required on update AWeber subscriber.', 'forminator' ) );
+			throw new Forminator_Addon_Aweber_Wp_Api_Exception( esc_html__( 'Email is required on update AWeber subscriber.', 'forminator' ) );
 		}
 
 		return $this->request(

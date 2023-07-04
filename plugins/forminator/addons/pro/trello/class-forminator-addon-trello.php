@@ -79,11 +79,11 @@ final class Forminator_Addon_Trello extends Forminator_Addon_Abstract {
 	 */
 	public function __construct() {
 		// late init to allow translation.
-		$this->_description                = __( 'Get awesome by your form.', 'forminator' );
-		$this->_activation_error_message   = __( 'Sorry but we failed to activate Trello Integration, don\'t hesitate to contact us', 'forminator' );
-		$this->_deactivation_error_message = __( 'Sorry but we failed to deactivate Trello Integration, please try again', 'forminator' );
+		$this->_description                = esc_html__( 'Get awesome by your form.', 'forminator' );
+		$this->_activation_error_message   = esc_html__( 'Sorry but we failed to activate Trello Integration, don\'t hesitate to contact us', 'forminator' );
+		$this->_deactivation_error_message = esc_html__( 'Sorry but we failed to deactivate Trello Integration, please try again', 'forminator' );
 
-		$this->_update_settings_error_message = __(
+		$this->_update_settings_error_message = esc_html__(
 			'Sorry, we failed to update settings, please check your form and try again',
 			'forminator'
 		);
@@ -123,7 +123,7 @@ final class Forminator_Addon_Trello extends Forminator_Addon_Abstract {
 		try {
 			// check if its active.
 			if ( ! $this->is_active() ) {
-				throw new Forminator_Addon_Trello_Exception( __( 'Trello is not active', 'forminator' ) );
+				throw new Forminator_Addon_Trello_Exception( esc_html__( 'Trello is not active', 'forminator' ) );
 			}
 
 			$is_connected   = false;
@@ -161,17 +161,17 @@ final class Forminator_Addon_Trello extends Forminator_Addon_Abstract {
 		try {
 			$form_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Trello_Exception( __( ' Trello is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Trello_Exception( esc_html__( ' Trello is not connected', 'forminator' ) );
 			}
 
 			$form_settings_instance = $this->get_addon_settings( $form_id, 'form' );
 			if ( ! $form_settings_instance instanceof Forminator_Addon_Trello_Form_Settings ) {
-				throw new Forminator_Addon_Trello_Exception( __( 'Invalid Form Settings of Trello', 'forminator' ) );
+				throw new Forminator_Addon_Trello_Exception( esc_html__( 'Invalid Form Settings of Trello', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $form_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Trello_Exception( __( 'No active Trello connection found in this form', 'forminator' ) );
+				throw new Forminator_Addon_Trello_Exception( esc_html__( 'No active Trello connection found in this form', 'forminator' ) );
 			}
 
 			$is_form_connected = true;
@@ -402,7 +402,7 @@ final class Forminator_Addon_Trello extends Forminator_Addon_Abstract {
 			$identifier = isset( $submitted_data['identifier'] ) ? $submitted_data['identifier'] : '';
 
 			if ( empty( $api_key ) ) {
-				$template_params['api_key_error'] = __( 'Please input valid API Key', 'forminator' );
+				$template_params['api_key_error'] = esc_html__( 'Please input valid API Key', 'forminator' );
 				$has_errors                         = true;
 			}
 
@@ -621,7 +621,7 @@ final class Forminator_Addon_Trello extends Forminator_Addon_Abstract {
 			'callback_method' => 'fragment',
 			'scope'           => 'read,write,account',
 			'expiration'      => 'never',
-			'name'            => __( 'Forminator Pro', 'forminator' ),
+			'name'            => esc_html__( 'Forminator Pro', 'forminator' ),
 			'key'             => $this->get_app_key(),
 			'response_type'   => 'token',
 			'return_url'      => $return_url,
@@ -659,7 +659,7 @@ final class Forminator_Addon_Trello extends Forminator_Addon_Abstract {
 			$me_request = $api->get_( 'members/me/' );
 
 			if ( ! isset( $me_request->id ) || empty( $me_request->id ) ) {
-				throw new Forminator_Addon_Trello_Exception( __( 'Failed to acquire user ID.', 'forminator' ) );
+				throw new Forminator_Addon_Trello_Exception( esc_html__( 'Failed to acquire user ID.', 'forminator' ) );
 			}
 
 			if ( isset( $me_request->url ) ) {

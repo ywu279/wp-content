@@ -252,7 +252,7 @@ class Forminator_CForm_Front_User_Login extends Forminator_User {
 			if ( isset( $custom_form->settings['remember-me-label'] ) && ! empty( $custom_form->settings['remember-me-label'] ) ) {
 				$label = trim( $custom_form->settings['remember-me-label'] );
 			} else {
-				$label = __( 'Remember Me', 'forminator' );
+				$label = esc_html__( 'Remember Me', 'forminator' );
 			}
 
 			$new_wrappers = array(

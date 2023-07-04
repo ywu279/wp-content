@@ -77,7 +77,9 @@
 							?>
 						</p>
 						<p>
-							<a href="https://wpmudev.com/docs/wpmu-dev-plugins/forminator-api-docs/" target="_blank" class="sui-button sui-button-blue">Get Started</a>
+							<a href="https://wpmudev.com/docs/wpmu-dev-plugins/forminator-api-docs/" target="_blank" class="sui-button sui-button-blue">
+                                <?php esc_html_e( 'Get Started', 'forminator' ); ?>
+                            </a>
 						</p>
 						</div>
 

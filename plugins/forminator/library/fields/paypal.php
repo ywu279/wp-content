@@ -54,7 +54,7 @@ class Forminator_PayPal extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'PayPal', 'forminator' );
+		$this->name = esc_html__( 'PayPal', 'forminator' );
 	}
 
 	/**
@@ -285,28 +285,28 @@ class Forminator_PayPal extends Forminator_Field {
 		// Validate intent.
 		if ( ! isset( $order->intent ) || $order->intent !== 'CAPTURE' ) {
 			return array(
-				'error' => __( 'Error! Something went wrong during checkout and payment couldn\'t be approved.', 'forminator' ),
+				'error' => esc_html__( 'Error! Something went wrong during checkout and payment couldn\'t be approved.', 'forminator' ),
 			);
 		}
 
 		// Validate status.
 		if ( ! isset( $order->status ) || $order->status !== 'APPROVED' ) {
 			return array(
-				'error' => __( 'Error! Something went wrong during checkout and payment couldn\'t be approved.', 'forminator' ),
+				'error' => esc_html__( 'Error! Something went wrong during checkout and payment couldn\'t be approved.', 'forminator' ),
 			);
 		}
 
 		// Validate amount.
 		if ( ! isset( $order->purchase_units[0]->amount->value ) || floatval( $order->purchase_units[0]->amount->value ) !== floatval( $charge_amount ) ) {
 			return array(
-				'error' => __( 'Error! Invalid payment amount!', 'forminator' ),
+				'error' => esc_html__( 'Error! Invalid payment amount!', 'forminator' ),
 			);
 		}
 
 		// Validate currency.
 		if ( ! isset( $order->purchase_units[0]->amount->currency_code ) || $order->purchase_units[0]->amount->currency_code !== $currency ) {
 			return array(
-				'error' => __( 'Error! Invalid currency code!', 'forminator' ),
+				'error' => esc_html__( 'Error! Invalid currency code!', 'forminator' ),
 			);
 		}
 

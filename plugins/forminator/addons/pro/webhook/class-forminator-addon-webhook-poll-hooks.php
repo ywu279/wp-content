@@ -39,7 +39,7 @@ class Forminator_Addon_Webhook_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Ab
 	 */
 	public function __construct( Forminator_Addon_Abstract $addon, $poll_id ) {
 		parent::__construct( $addon, $poll_id );
-		$this->_submit_poll_error_message = __( 'Webhook failed to process submitted data. Please check your form and try again', 'forminator' );
+		$this->_submit_poll_error_message = esc_html__( 'Webhook failed to process submitted data. Please check your form and try again', 'forminator' );
 	}
 
 	/**
@@ -157,7 +157,7 @@ class Forminator_Addon_Webhook_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Ab
 		//check required fields
 		try {
 			if ( ! isset( $connection_settings['webhook_url'] ) ) {
-				throw new Forminator_Addon_Webhook_Exception( __( 'Webhook URL is not properly set up', 'forminator' ) );
+				throw new Forminator_Addon_Webhook_Exception( esc_html__( 'Webhook URL is not properly set up', 'forminator' ) );
 			}
 
 			$endpoint = $connection_settings['webhook_url'];
@@ -276,7 +276,7 @@ class Forminator_Addon_Webhook_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Ab
 			return array(
 				'is_sent'         => true,
 				'connection_name' => $connection_settings['name'],
-				'description'     => __( 'Successfully send data to Webhook', 'forminator' ),
+				'description'     => esc_html__( 'Successfully send data to Webhook', 'forminator' ),
 				'data_sent'       => $webhook_api->get_last_data_sent(),
 				'data_received'   => $webhook_api->get_last_data_received(),
 				'url_request'     => $webhook_api->get_last_url_request(),
@@ -306,7 +306,7 @@ class Forminator_Addon_Webhook_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Ab
 	public function on_export_render_title_row() {
 
 		$export_headers = array(
-			'info' => __( 'Webhook Info', 'forminator' ),
+			'info' => esc_html__( 'Webhook Info', 'forminator' ),
 		);
 
 		$poll_id                = $this->poll_id;

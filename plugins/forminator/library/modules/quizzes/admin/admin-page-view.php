@@ -108,12 +108,12 @@ class Forminator_Quiz_Page extends Forminator_Admin_Module_Edit_Page {
 		return apply_filters(
 			'forminator_quizzes_bulk_actions',
 			array(
-				'publish-quizzes'        => __( 'Publish', 'forminator' ),
-				'draft-quizzes'          => __( 'Unpublish', 'forminator' ),
-				// 'clone-quizzes'          => __( "Duplicate", 'forminator' ),.
-				'reset-views-quizzes'    => __( 'Reset Tracking Data', 'forminator' ),
-				'delete-entries-quizzes' => __( 'Delete Submissions', 'forminator' ),
-				'delete-quizzes'         => __( 'Delete', 'forminator' ),
+				'publish-quizzes'        => esc_html__( 'Publish', 'forminator' ),
+				'draft-quizzes'          => esc_html__( 'Unpublish', 'forminator' ),
+				// 'clone-quizzes'          => esc_html__( "Duplicate", 'forminator' ),.
+				'reset-views-quizzes'    => esc_html__( 'Reset Tracking Data', 'forminator' ),
+				'delete-entries-quizzes' => esc_html__( 'Delete Submissions', 'forminator' ),
+				'delete-quizzes'         => esc_html__( 'Delete', 'forminator' ),
 			)
 		);
 	}

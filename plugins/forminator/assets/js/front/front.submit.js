@@ -132,14 +132,12 @@
 				this.handle_submit_form_draft();
 			}
 
-			// Disable submit button onClick.
-			this.formSubmitOnclick();
-
 			$( 'body' ).off( 'forminator:preSubmit:paypal', this.settings.forminator_selector )
 					.on( 'forminator:preSubmit:paypal', this.settings.forminator_selector, function( e, $target_message ) { return self.processCaptcha( self, e, $target_message ); } );
 			$( 'body' ).off( 'submit.frontSubmit', this.settings.forminator_selector );
 			$( 'body' ).on( 'submit.frontSubmit', this.settings.forminator_selector, function ( e, submitter ) {
-				if ( 'frontSubmit' !== e.namespace ) {
+
+				if ( self.$el.find( '.forminator-button-submit' ).prop('disabled') ) {
 					return false;
 				}
 
@@ -1644,18 +1642,7 @@
 		},
 
 		disable_form_submit: function ( form, disable  ) {
-			form.$el.find( '.forminator-button-submit' ).attr( 'disabled', disable );
-		},
-
-		formSubmitOnclick: function () {
-			var self = this;
-
-			$( 'body' ).off( 'click', 'form' + self.settings.forminator_selector + ' .forminator-button-submit' );
-			$( 'body' ).on( 'click', 'form' + self.settings.forminator_selector + ' .forminator-button-submit', function ( e ) {
-				e.preventDefault();
-				$( this ).attr( 'disabled', true );
-				self.$el.trigger( 'submit.frontSubmit' );
-			});
+			$( form ).find( '.forminator-button-submit' ).attr( 'disabled', disable );
 		},
 
 		showLeadsLoader: function ( quiz  ) {

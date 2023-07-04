@@ -17,7 +17,7 @@ foreach ( $template_vars as $key => $val ) {
 <div class="forminator-integration-popup__header">
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
-		<?php echo esc_html( __( 'Create Spreadsheet', 'forminator' ) ); ?>
+		<?php esc_html_e( 'Create Spreadsheet', 'forminator' ); ?>
 	</h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description">
@@ -40,8 +40,8 @@ foreach ( $template_vars as $key => $val ) {
 
 					<p>
 						<?php
-						/* translators: ... */
 						printf(
+						/* Translators: 1. Opening <a> tag with link spreadsheet link, 2. closing <a> tag. */
 							esc_html__( 'You can open your current Spreadsheet %shere%s.', 'forminator' ),
 							'<a target="_blank" href="https://docs.google.com/spreadsheets/d/' . esc_attr( $vars['file_id'] ) . '">',
 							'</a>'
@@ -87,7 +87,7 @@ foreach ( $template_vars as $key => $val ) {
 		<label class="sui-label"><?php esc_html_e( 'Drive Folder ID', 'forminator' ); ?></label>
 		<input
 				class="sui-form-control"
-				name="folder_id" placeholder="<?php echo esc_attr( __( 'Folder ID', 'forminator' ) ); ?>"
+				name="folder_id" placeholder="<?php esc_html_e( 'Folder ID', 'forminator' ); ?>"
 				value="<?php echo esc_attr( $vars['folder_id'] ); ?>">
 		<?php if ( ! empty( $vars['folder_id_error'] ) ) : ?>
 			<span class="sui-error-message"><?php echo esc_html( $vars['folder_id_error'] ); ?></span>
@@ -99,21 +99,23 @@ foreach ( $template_vars as $key => $val ) {
 				</li>
 				<li>
 					<?php
-					echo sprintf(/* translators: ... */
+					printf(
+					/* Translators: 1. <a> tag with Google Drive link */
 						esc_html__( 'Go to your %1$s.', 'forminator' ),
 						'<a href="https://drive.google.com/#my-drive" target="_blank">' . esc_html__( 'Drive account', 'forminator' ) . '</a>'
-					); //phpcs:ignore Standard.Category.SniffName.ErrorCode
+					);
 					?>
 					<?php esc_html_e( 'Navigate to or create a new directory where you want to create a new spreadsheet. Make sure you are viewing the destination directory.', 'forminator' ); ?>
 				</li>
 				<li>
 				<?php
-				echo sprintf(/* translators: ... */
+				printf(
+				/* Translators: 1. <em> tag with Directory ID link, 2. <em> tag with folders 3. <strong> tag with Directory ID. */
 					esc_html__( 'The URL for the directory will be something similar to %1$s. The Directory ID would be the last part after %2$s, which is %3$s in this case.', 'forminator' ),
 					'<em>https://drive.google.com/#folders/0B6GD66ctHXdCOWZKNDRIRGJJXS3</em>',
 					'<em>/#folders/</em>',
 					'<strong>0B6GD66ctHXdCOWZKNDRIRGJJXS3</strong>'
-				); //phpcs:ignore Standard.Category.SniffName.ErrorCode
+				);
 				?>
 				</li>
 			</ol>
@@ -124,7 +126,7 @@ foreach ( $template_vars as $key => $val ) {
 		<label class="sui-label"><?php esc_html_e( 'Spreadsheet File Name', 'forminator' ); ?></label>
 		<input
 				class="sui-form-control"
-				name="file_name" placeholder="<?php echo esc_attr( __( 'File Name', 'forminator' ) ); ?>"
+				name="file_name" placeholder="<?php esc_attr_e( 'File Name', 'forminator' ); ?>"
 				value="<?php echo esc_attr( $vars['file_name'] ); ?>">
 		<?php if ( ! empty( $vars['file_name_error'] ) ) : ?>
 			<span class="sui-error-message"><?php echo esc_html( $vars['file_name_error'] ); ?></span>

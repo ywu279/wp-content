@@ -233,11 +233,11 @@ abstract class Forminator_Import_Mediator {
 	public function try_form_import( $import_data ) {
 		try {
 			if ( empty( $import_data ) || ! is_array( $import_data ) ) {
-				throw new Exception( __( 'Oops, looks like we found an issue. Import text can not include whitespace or special characters.', 'forminator' ) );
+				throw new Exception( esc_html__( 'Oops, looks like we found an issue. Import text can not include whitespace or special characters.', 'forminator' ) );
 			}
 
 			if ( ! isset( $import_data['type'] ) || 'form' !== $import_data['type'] ) {
-				throw new Exception( __( 'Oops, wrong module type. You can only import a module of the same type that you\'re currently viewing.', 'forminator' ) );
+				throw new Exception( esc_html__( 'Oops, wrong module type. You can only import a module of the same type that you\'re currently viewing.', 'forminator' ) );
 			}
 
 			$import_data = $this->parse_import_data( $import_data );
@@ -249,7 +249,7 @@ abstract class Forminator_Import_Mediator {
 			}
 
 			if ( ! $model instanceof Forminator_Form_Model ) {
-				throw new Exception( __( 'Failed to import form, please make sure import text is valid, and try again.', 'forminator' ) );
+				throw new Exception( esc_html__( 'Failed to import form, please make sure import text is valid, and try again.', 'forminator' ) );
 			}
 
 			$return_url = admin_url( 'admin.php?page=forminator-cform' );

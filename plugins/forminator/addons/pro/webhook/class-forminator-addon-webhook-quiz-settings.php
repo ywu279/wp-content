@@ -29,7 +29,7 @@ class Forminator_Addon_Webhook_Quiz_Settings extends Forminator_Addon_Quiz_Setti
 	public function __construct( Forminator_Addon_Abstract $addon, $form_id ) {
 		parent::__construct( $addon, $form_id );
 
-		$this->_update_quiz_settings_error_message = __(
+		$this->_update_quiz_settings_error_message = esc_html__(
 			'The update to your settings for this quiz failed, check the form input and try again.',
 			'forminator'
 		);
@@ -66,7 +66,7 @@ class Forminator_Addon_Webhook_Quiz_Settings extends Forminator_Addon_Quiz_Setti
 		$template = forminator_addon_webhook_dir() . 'views/quiz-settings/setup-webhook.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -94,7 +94,7 @@ class Forminator_Addon_Webhook_Quiz_Settings extends Forminator_Addon_Quiz_Setti
 				$input_exceptions = new Forminator_Addon_Webhook_Quiz_Settings_Exception();
 
 				if ( empty( $name ) ) {
-					$input_exceptions->add_input_exception( __( 'Please specify integration name.', 'forminator' ), 'name_error' );
+					$input_exceptions->add_input_exception( esc_html__( 'Please specify integration name.', 'forminator' ), 'name_error' );
 				}
 
 				$this->validate_and_send_sample( $submitted_data, $input_exceptions );
@@ -115,7 +115,7 @@ class Forminator_Addon_Webhook_Quiz_Settings extends Forminator_Addon_Quiz_Setti
 
 				$notification = array(
 					'type' => 'success',
-					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'Successfully connected and sent sample data to your Webhook', 'forminator' ),
+					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'Successfully connected and sent sample data to your Webhook', 'forminator' ),
 				);
 				$is_close     = true;
 
@@ -170,19 +170,19 @@ class Forminator_Addon_Webhook_Quiz_Settings extends Forminator_Addon_Quiz_Setti
 	private function validate_and_send_sample( $submitted_data, Forminator_Addon_Webhook_Quiz_Settings_Exception $current_input_exception ) {
 		$quiz_id = $this->quiz_id;
 		if ( ! isset( $submitted_data['webhook_url'] ) ) {
-			$current_input_exception->add_input_exception( __( 'Please put a valid Webhook URL.', 'forminator' ), 'webhook_url_error' );
+			$current_input_exception->add_input_exception( esc_html__( 'Please put a valid Webhook URL.', 'forminator' ), 'webhook_url_error' );
 			throw $current_input_exception;
 		}
 
 		// must not be in silent mode.
 		if ( stripos( $submitted_data['webhook_url'], 'silent' ) !== false ) {
-			$current_input_exception->add_input_exception( __( 'Please disable Silent Mode on Webhook URL.', 'forminator' ), 'webhook_url_error' );
+			$current_input_exception->add_input_exception( esc_html__( 'Please disable Silent Mode on Webhook URL.', 'forminator' ), 'webhook_url_error' );
 			throw $current_input_exception;
 		}
 
 		$endpoint = wp_http_validate_url( $submitted_data['webhook_url'] );
 		if ( false === $endpoint ) {
-			$current_input_exception->add_input_exception( __( 'Please put a valid Webhook URL.', 'forminator' ), 'webhook_url_error' );
+			$current_input_exception->add_input_exception( esc_html__( 'Please put a valid Webhook URL.', 'forminator' ), 'webhook_url_error' );
 			throw $current_input_exception;
 		}
 

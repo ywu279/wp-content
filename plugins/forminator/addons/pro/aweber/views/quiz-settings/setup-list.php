@@ -15,7 +15,7 @@ foreach ( $template_vars as $key => $val ) {
 
 <div class="forminator-integration-popup__header">
 
-	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg"><?php echo esc_html( __( 'Choose List', 'forminator' ) ); ?></h3>
+	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg"><?php esc_html_e( 'Choose List', 'forminator' ); ?></h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description"><?php esc_html_e( 'Pick AWeber List for new subscriber to be added to.', 'forminator' ); ?></p>
 

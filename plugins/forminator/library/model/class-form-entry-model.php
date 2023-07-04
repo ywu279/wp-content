@@ -1352,7 +1352,7 @@ class Forminator_Form_Entry_Model {
 						if ( strlen( $email ) > $truncate ) {
 							$email = substr( $email, 0, $truncate ) . '...';
 						}
-						$string_value = '<a href="mailto:' . $email . '" target="_blank" rel="noopener noreferrer" title="' . __( 'Send Email', 'forminator' ) . '">' . $email . '</a>';
+						$string_value = '<a href="mailto:' . $email . '" target="_blank" rel="noopener noreferrer" title="' . esc_html__( 'Send Email', 'forminator' ) . '">' . $email . '</a>';
 					} else {
 						// truncate url.
 						if ( strlen( $string_value ) > $truncate ) {
@@ -1375,7 +1375,7 @@ class Forminator_Form_Entry_Model {
 						if ( strlen( $website ) > $truncate ) {
 							$website = substr( $website, 0, $truncate ) . '...';
 						}
-						$string_value = '<a href="' . $website . '" target="_blank" rel="noopener noreferrer" title="' . __( 'View Website', 'forminator' ) . '">' . $website . '</a>';
+						$string_value = '<a href="' . $website . '" target="_blank" rel="noopener noreferrer" title="' . esc_html__( 'View Website', 'forminator' ) . '">' . $website . '</a>';
 					} else {
 						// truncate url.
 						if ( strlen( $string_value ) > $truncate ) {
@@ -1401,7 +1401,7 @@ class Forminator_Form_Entry_Model {
 						foreach ( $file_values as $file_value ) {
 							$url       = $file_value;
 							$file_name = basename( $url );
-							$file_name = ! empty( $file_name ) ? $file_name : __( '(no filename)', 'forminator' );
+							$file_name = ! empty( $file_name ) ? $file_name : esc_html__( '(no filename)', 'forminator' );
 							// truncate.
 							if ( strlen( $file_name ) > $truncate ) {
 								$file_name = substr( $file_name, 0, $truncate ) . '...';
@@ -1412,7 +1412,7 @@ class Forminator_Form_Entry_Model {
 								$string_value .= ', ';
 							}
 
-							$string_value .= '<a href="' . $url . '" rel="noopener noreferrer" target="_blank" title="' . __( 'View File', 'forminator' ) . '">' . $file_name . '</a>';
+							$string_value .= '<a href="' . $url . '" rel="noopener noreferrer" target="_blank" title="' . esc_html__( 'View File', 'forminator' ) . '">' . $file_name . '</a>';
 						}
 					} else {
 						// truncate url.
@@ -1652,7 +1652,7 @@ class Forminator_Form_Entry_Model {
 			return;
 		}
 
-		$title = ! empty( $value ) ? $value : __( '(no title)', 'forminator' );
+		$title = ! empty( $value ) ? $value : esc_html__( '(no title)', 'forminator' );
 		$title = forminator_truncate_text( wp_kses_post( $title ), $truncate );
 		$label = esc_html__( 'Title', 'forminator' );
 

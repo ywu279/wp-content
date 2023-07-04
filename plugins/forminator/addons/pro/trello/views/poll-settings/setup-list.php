@@ -16,7 +16,7 @@ foreach ( $template_vars as $key => $val ) {
 }
 
 $vars['step_description'] = sprintf(
-	/* translators: ... */
+/* translators: 1: Board name */
 	esc_html__( 'Which list from %1$s do you want auto-generated cards to be added to?', 'forminator' ),
 	'<b>' . esc_html( $vars['board_name'] ) . '</b>'
 );
@@ -24,7 +24,7 @@ $vars['step_description'] = sprintf(
 
 <div class="forminator-integration-popup__header">
 
-	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;"><?php echo esc_html( __( 'Assign List', 'forminator' ) ); ?></h3>
+	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;"><?php esc_html_e( 'Assign List', 'forminator' ); ?></h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description"><?php echo wp_kses_post( $vars['step_description'] ); ?></p>
 

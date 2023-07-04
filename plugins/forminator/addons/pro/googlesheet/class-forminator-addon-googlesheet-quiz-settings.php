@@ -29,7 +29,7 @@ class Forminator_Addon_Googlesheet_Quiz_Settings extends Forminator_Addon_Quiz_S
 	public function __construct( Forminator_Addon_Abstract $addon, $quiz_id ) {
 		parent::__construct( $addon, $quiz_id );
 
-		$this->_update_quiz_settings_error_message = __(
+		$this->_update_quiz_settings_error_message = esc_html__(
 			'The update to your settings for this quiz failed, check the form input and try again.',
 			'forminator'
 		);
@@ -89,7 +89,7 @@ class Forminator_Addon_Googlesheet_Quiz_Settings extends Forminator_Addon_Quiz_S
 
 			try {
 				if ( empty( $name ) ) {
-					throw new Forminator_Addon_Googlesheet_Exception( __( 'Please pick valid name' ) );
+					throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Please pick valid name' ) );
 				}
 
 				$time_added = $this->get_multi_id_quiz_settings_value( $multi_id, 'time_added', time() );
@@ -142,7 +142,7 @@ class Forminator_Addon_Googlesheet_Quiz_Settings extends Forminator_Addon_Quiz_S
 		$template = forminator_addon_googlesheet_dir() . 'views/quiz-settings/setup-sheet.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -171,7 +171,7 @@ class Forminator_Addon_Googlesheet_Quiz_Settings extends Forminator_Addon_Quiz_S
 			try {
 				$input_exceptions = new Forminator_Addon_Googlesheet_Quiz_Settings_Exception();
 				if ( empty( $file_name ) ) {
-					$input_exceptions->add_input_exception( __( 'Please put valid Spreadsheet name', 'forminator' ), 'file_name_error' );
+					$input_exceptions->add_input_exception( esc_html__( 'Please put valid Spreadsheet name', 'forminator' ), 'file_name_error' );
 				}
 
 				$google_client = $this->addon->get_google_client();
@@ -185,12 +185,12 @@ class Forminator_Addon_Googlesheet_Quiz_Settings extends Forminator_Addon_Quiz_S
 						// its from API var.
 						// phpcs:ignore WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar
 						if ( Forminator_Addon_Googlesheet::MIME_TYPE_GOOGLE_DRIVE_FOLDER !== $folder->mimeType ) {
-							$input_exceptions->add_input_exception( __( 'This is not a folder, please use a valid Folder ID.', 'forminator' ), 'folder_id_error' );
+							$input_exceptions->add_input_exception( esc_html__( 'This is not a folder, please use a valid Folder ID.', 'forminator' ), 'folder_id_error' );
 						}
 					} catch ( Forminator_Google_Exception $google_exception ) {
 						// catch 404.
 						if ( false !== stripos( $google_exception->getMessage(), 'File not found' ) ) {
-							$input_exceptions->add_input_exception( __( 'Folder not found, please put Folder ID.', 'forminator' ), 'folder_id_error' );
+							$input_exceptions->add_input_exception( esc_html__( 'Folder not found, please put Folder ID.', 'forminator' ), 'folder_id_error' );
 						} else {
 							throw $google_exception;
 						}
@@ -223,7 +223,7 @@ class Forminator_Addon_Googlesheet_Quiz_Settings extends Forminator_Addon_Quiz_S
 
 				$notification = array(
 					'type' => 'success',
-					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'Successfully created spreadsheet and connected to your quiz' ),
+					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'Successfully created spreadsheet and connected to your quiz', 'forminator' ),
 				);
 				$is_close     = true;
 

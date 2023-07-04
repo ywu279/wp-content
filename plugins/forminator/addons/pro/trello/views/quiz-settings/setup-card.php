@@ -29,7 +29,7 @@ foreach ( $template_vars as $key => $val ) {
 <div class="forminator-integration-popup__header">
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
-		<?php echo esc_html( __( 'Customize Fields', 'forminator' ) ); ?>
+		<?php esc_html_e( 'Customize Fields', 'forminator' ); ?>
 	</h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description"><?php esc_html_e( 'Set up how you want your cards to be created in Trello.', 'forminator' ); ?></p>
@@ -71,7 +71,7 @@ foreach ( $template_vars as $key => $val ) {
 				id="card_name"
 				class="sui-form-control"
 				name="card_name"
-				placeholder="<?php echo esc_attr( __( 'Card Name', 'forminator' ) ); ?>"
+				placeholder="<?php esc_attr_e( 'Card Name', 'forminator' ); ?>"
 				value="<?php echo esc_attr( $vars['card_name'] ); ?>"
 			/>
 
@@ -121,8 +121,12 @@ foreach ( $template_vars as $key => $val ) {
 
 		<span class="sui-description">
 			<?php
-			/* translators: ... */
-			printf( esc_html__( 'Markdown supported for card description. Find complete guide %shere%s', 'forminator' ), '<a href="https://help.trello.com/article/821-using-markdown-in-trello" target="_blank">', '</a>' );
+			printf(
+			/* Translators: 1. Opening <a> tag with link to the Trello article , 2. closing <a> tag. */
+				esc_html__( 'Markdown supported for card description. Find complete guide %shere%s', 'forminator' ),
+				'<a href="https://help.trello.com/article/821-using-markdown-in-trello" target="_blank">',
+				'</a>'
+			);
 			?>
 		</span>
 
@@ -141,7 +145,7 @@ foreach ( $template_vars as $key => $val ) {
 					class="sui-form-control"
 					name="due_date"
                     autocomplete="off"
-					placeholder="<?php echo esc_attr( __( 'Select a due date', 'forminator' ) ); ?>"
+					placeholder="<?php esc_attr_e( 'Select a due date', 'forminator' ); ?>"
 					value="<?php echo esc_attr( $vars['due_date'] ); ?>"
 				/>
 

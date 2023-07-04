@@ -935,25 +935,26 @@
 				$input.on('change keyup keydown', function (e) {
 					e.stopPropagation();
 					var $field = $(this).closest('.forminator-col'),
-					    $limit = $field.find('.forminator-description span')
+					    $limit = $field.find('.forminator-description span'),
+							fieldVal = sanitize_text_field( $(this).val() )
 					;
 
 					if ($limit.length) {
 						if ($limit.data('limit')) {
-							var field_value = $(this).val().replace( /<[^>]*>/g, '' );
+							var field_value = fieldVal.replace( /<[^>]*>/g, '' );
 							if ($limit.data('type') !== "words") {
 								count = $( '<div>' + field_value + '</div>' ).text().length;
 							} else {
 								count = field_value.trim().split(/\s+/).length;
 
-                                // Prevent additional words from being added when limit is reached.
-                                numwords = field_value.trim().split(/\s+/).length;
-                                if ( numwords >= $limit.data( 'limit' ) ) {
-                                    // Allow delete and backspace when limit is reached.
+								// Prevent additional words from being added when limit is reached.
+								numwords = field_value.trim().split(/\s+/).length;
+								if ( numwords >= $limit.data( 'limit' ) ) {
+									// Allow to delete and backspace when limit is reached.
 									if( e.which === 32 ) {
 										e.preventDefault();
 									}
-                                }
+								}
 							}
 							$limit.html(count + ' / ' + $limit.data('limit'));
 						}

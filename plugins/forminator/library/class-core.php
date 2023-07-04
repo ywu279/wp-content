@@ -360,7 +360,7 @@ class Forminator_Core {
 			if ( $is_forminator_meta ) {
 				add_meta_box(
 					'forminator-post-meta-box',
-					__( 'Post Custom Data', 'forminator' ),
+					esc_html__( 'Post Custom Data', 'forminator' ),
 					array( $this, 'render_post_meta_box' ),
 					$post->post_type,
 					'normal',

@@ -93,7 +93,7 @@ class Forminator_Export {
 	public function add_cron_schedule( $schedules ) {
 		$schedules['every_minute'] = array(
 			'interval' => MINUTE_IN_SECONDS,
-			'display'  => __( 'Every minute', 'forminator' ),
+			'display'  => esc_html__( 'Every minute', 'forminator' ),
 		);
 
 		return $schedules;
@@ -148,7 +148,7 @@ class Forminator_Export {
 			$fields = self::get_formatted_csv_fields( $fields );
 			fputcsv( $fp, $fields );
 		}
-		$filename = sanitize_title( __( 'forminator', 'forminator' ) ) . '-' . sanitize_title( $model->name ) . '-' . date( 'ymdHis' ) . '.csv';
+		$filename = sanitize_title( esc_html__( 'forminator', 'forminator' ) ) . '-' . sanitize_title( $model->name ) . '-' . date( 'ymdHis' ) . '.csv';
 
 		$output = ob_get_clean();
 
@@ -176,7 +176,7 @@ class Forminator_Export {
 
 				$redirect = add_query_arg(
 					array(
-						'err_msg' => rawurlencode( __( 'Invalid request, you are not allowed to do that action.', 'forminator' ) ),
+						'err_msg' => rawurlencode( esc_html__( 'Invalid request, you are not allowed to do that action.', 'forminator' ) ),
 					)
 				);
 
@@ -190,7 +190,7 @@ class Forminator_Export {
 			if ( ! $form_id ) {
 				$redirect = add_query_arg(
 					array(
-						'err_msg' => rawurlencode( __( 'Invalid form ID.', 'forminator' ) ),
+						'err_msg' => rawurlencode( esc_html__( 'Invalid form ID.', 'forminator' ) ),
 					)
 				);
 
@@ -201,7 +201,7 @@ class Forminator_Export {
 			if ( ! $form_type ) {
 				$redirect = add_query_arg(
 					array(
-						'err_msg' => rawurlencode( __( 'Invalid form type.', 'forminator' ) ),
+						'err_msg' => rawurlencode( esc_html__( 'Invalid form type.', 'forminator' ) ),
 					)
 				);
 
@@ -214,7 +214,7 @@ class Forminator_Export {
 			if ( $enabled && ! $email ) {
 				$redirect = add_query_arg(
 					array(
-						'err_msg' => rawurlencode( __( 'Invalid email.', 'forminator' ) ),
+						'err_msg' => rawurlencode( esc_html__( 'Invalid email.', 'forminator' ) ),
 					)
 				);
 
@@ -442,10 +442,10 @@ class Forminator_Export {
 				}
 
 				$headers = array(
-					__( 'Date', 'forminator' ),
-					__( 'Question', 'forminator' ),
-					__( 'Answer', 'forminator' ),
-					__( 'Result', 'forminator' ),
+					esc_html__( 'Date', 'forminator' ),
+					esc_html__( 'Question', 'forminator' ),
+					esc_html__( 'Answer', 'forminator' ),
+					esc_html__( 'Result', 'forminator' ),
 				);
 
 				$has_leads = isset( $model->settings['hasLeads'] ) ? $model->settings['hasLeads'] : false;
@@ -541,7 +541,7 @@ class Forminator_Export {
 								$row[] = ! empty( $answer['question'] ) ? sprintf( '"%s"', $answer['question'] ) : '';
 								$row[] = $answer['answer'];
 								if ( ! empty( $answer['answer'] ) ) {
-									$row[] = ( ( $answer['isCorrect'] ) ? __( 'Correct', 'forminator' ) : __( 'Incorrect', 'forminator' ) );
+									$row[] = ( ( $answer['isCorrect'] ) ? esc_html__( 'Correct', 'forminator' ) : esc_html__( 'Incorrect', 'forminator' ) );
 								} else {
 									$row[] = '';
 								}
@@ -590,9 +590,9 @@ class Forminator_Export {
 				$fields_array = $model->get_fields_as_array();
 				$map_entries  = Forminator_Form_Entry_Model::map_polls_entries_for_export( $form_id, $fields_array );
 				$header       = array(
-					__( 'Date', 'forminator' ),
-					__( 'Answer', 'forminator' ),
-					__( 'Extra', 'forminator' ),
+					esc_html__( 'Date', 'forminator' ),
+					esc_html__( 'Answer', 'forminator' ),
+					esc_html__( 'Extra', 'forminator' ),
 				);
 				$addon_header = $this->attach_poll_addons_on_export_render_title_row( $form_id, $entries );
 				$header       = array_merge( $header, $addon_header );
@@ -892,7 +892,7 @@ class Forminator_Export {
 				array(
 					// read form model's property.
 					'property' => 'time_created', // must be on export.
-					'label'    => __( 'Submission Time', 'forminator' ),
+					'label'    => esc_html__( 'Submission Time', 'forminator' ),
 					'type'     => 'entry_time_created',
 				),
 			),
@@ -1061,39 +1061,39 @@ class Forminator_Export {
 				$mapper['sub_metas']   = array();
 				$mapper['sub_metas'][] = array(
 					'key'   => 'mode',
-					'label' => $mapper['label'] . ' - ' . __( 'Mode', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Mode', 'forminator' ),
 				);
 				$mapper['sub_metas'][] = array(
 					'key'   => 'product_name',
-					'label' => $mapper['label'] . ' - ' . __( 'Product / Plan Name', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Product / Plan Name', 'forminator' ),
 				);
 				$mapper['sub_metas'][] = array(
 					'key'   => 'payment_type',
-					'label' => $mapper['label'] . ' - ' . __( 'Payment type', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Payment type', 'forminator' ),
 				);
 				$mapper['sub_metas'][] = array(
 					'key'   => 'amount',
-					'label' => $mapper['label'] . ' - ' . __( 'Amount', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Amount', 'forminator' ),
 				);
 				$mapper['sub_metas'][] = array(
 					'key'   => 'currency',
-					'label' => $mapper['label'] . ' - ' . __( 'Currency', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Currency', 'forminator' ),
 				);
 				$mapper['sub_metas'][] = array(
 					'key'   => 'quantity',
-					'label' => $mapper['label'] . ' - ' . __( 'Quantity', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Quantity', 'forminator' ),
 				);
 				$mapper['sub_metas'][] = array(
 					'key'   => 'transaction_id',
-					'label' => $mapper['label'] . ' - ' . __( 'Transaction ID', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Transaction ID', 'forminator' ),
 				);
 				$mapper['sub_metas'][] = array(
 					'key'   => 'status',
-					'label' => $mapper['label'] . ' - ' . __( 'Status', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Status', 'forminator' ),
 				);
 				$mapper['sub_metas'][] = array(
 					'key'   => 'subscription_id',
-					'label' => $mapper['label'] . ' - ' . __( 'Manage', 'forminator' ),
+					'label' => $mapper['label'] . ' - ' . esc_html__( 'Manage', 'forminator' ),
 				);
 			} elseif ( 'group' === $field_type ) {
 				$group_fields  = $model->get_grouped_real_fields( $field->slug );
@@ -1373,7 +1373,7 @@ class Forminator_Export {
 			}
 		}
 
-		$subject = sprintf( __( 'Submissions data for %s', 'forminator' ), implode( ', ', $form_names ) );
+		$subject = sprintf( esc_html__( 'Submissions data for %s', 'forminator' ), implode( ', ', $form_names ) );
 
 		/**
 		 * Filter mail subject used for scheduled export email
@@ -1436,10 +1436,10 @@ class Forminator_Export {
 		$total_entries     = array_sum( $entries_counts );
 		$total_new_entries = array_sum( $new_entries_counts );
 
-		$mail_content = '<p>' . sprintf( __( 'Hi %s,', 'forminator' ), $blog_name ) . '</p>' . PHP_EOL;
+		$mail_content = '<p>' . sprintf( esc_html__( 'Hi %s,', 'forminator' ), $blog_name ) . '</p>' . PHP_EOL;
 
 		$mail_content .= '<p>' . sprintf(
-			__(
+			esc_html__(
 				'Your scheduled exports have arrived! Forminator has captured %1$s new submission(s) and packaged %2$s total submissions from %3$s since the last scheduled export sent.',
 				'forminator'
 			),
@@ -1460,18 +1460,18 @@ class Forminator_Export {
 						</ul>
 					</li>',
 					$form_names[ $key ],
-					__( 'New Submissions', 'forminator' ),
+					   esc_html__( 'New Submissions', 'forminator' ),
 					(int) $new_entries_counts[ $key ],
-					__( 'Total Submissions', 'forminator' ),
+					   esc_html__( 'Total Submissions', 'forminator' ),
 					(int) $entries_counts[ $key ],
 					$submission_links[ $key ],
-					__( 'View Submissions', 'forminator' )
+					   esc_html__( 'View Submissions', 'forminator' )
 				) . PHP_EOL;
 		}
 		$mail_content .= '</ul>' . PHP_EOL;
 
-		$mail_content .= '<p>' . __( 'Cheers,', 'forminator' ) . '</p>' . PHP_EOL;
-		$mail_content .= '<p>' . __( 'Forminator', 'forminator' ) . '</p>';
+		$mail_content .= '<p>' . esc_html__( 'Cheers,', 'forminator' ) . '</p>' . PHP_EOL;
+		$mail_content .= '<p>' . esc_html__( 'Forminator', 'forminator' ) . '</p>';
 
 		/**
 		 * Filter mail content used for scheduled export email

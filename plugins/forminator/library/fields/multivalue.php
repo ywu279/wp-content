@@ -55,7 +55,7 @@ class Forminator_MultiValue extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Checkbox', 'forminator' );
+		$this->name = esc_html__( 'Checkbox', 'forminator' );
 	}
 
 	/**
@@ -67,16 +67,16 @@ class Forminator_MultiValue extends Forminator_Field {
 	public function defaults() {
 		return array(
 			'value_type'  => 'checkbox',
-			'field_label' => __( 'Checkbox', 'forminator' ),
+			'field_label' => esc_html__( 'Checkbox', 'forminator' ),
 			'layout'      => 'vertical',
 			'options'     => array(
 				array(
-					'label' => __( 'Option 1', 'forminator' ),
+					'label' => esc_html__( 'Option 1', 'forminator' ),
 					'value' => 'one',
 					'key'   => forminator_unique_key(),
 				),
 				array(
-					'label' => __( 'Option 2', 'forminator' ),
+					'label' => esc_html__( 'Option 2', 'forminator' ),
 					'value' => 'two',
 					'key'   => forminator_unique_key(),
 				),
@@ -345,7 +345,7 @@ class Forminator_MultiValue extends Forminator_Field {
 		if ( $is_required ) {
 			$required_message = self::get_property( 'required_message', $field );
 			if ( empty( $required_message ) ) {
-				$required_message = __( 'This field is required. Please select a value.', 'forminator' );
+				$required_message = esc_html__( 'This field is required. Please select a value.', 'forminator' );
 			}
 			$required_message = apply_filters(
 				'forminator_multi_field_required_validation_message',
@@ -374,7 +374,7 @@ class Forminator_MultiValue extends Forminator_Field {
 			if ( false === array_search( htmlspecialchars_decode( $value ), array_column( $field['options'], 'value' ) ) ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_checkbox_field_nonexistent_validation_message',
-					__( 'Selected value does not exist.', 'forminator' ),
+					esc_html__( 'Selected value does not exist.', 'forminator' ),
 					$id,
 					$field
 				);
@@ -382,7 +382,7 @@ class Forminator_MultiValue extends Forminator_Field {
 			}
 		}
 		if ( $this->is_required( $field ) ) {
-			$required_message = self::get_property( 'required_message', $field, __( 'This field is required. Please select a value', 'forminator' ) );
+			$required_message = self::get_property( 'required_message', $field, esc_html__( 'This field is required. Please select a value', 'forminator' ) );
 			if ( empty( $data ) ) {
 				$slug = ! empty( $field['original_id'] ) ? $field['original_id'] : $id;
 

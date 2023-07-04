@@ -44,11 +44,11 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 	 */
 	public function __construct() {
 		// late init to allow translation.
-		$this->_description                = __( 'Get awesome by your form.', 'forminator' );
-		$this->_activation_error_message   = __( 'Sorry but we failed to activate GoogleSheet Integration, don\'t hesitate to contact us', 'forminator' );
-		$this->_deactivation_error_message = __( 'Sorry but we failed to deactivate GoogleSheet Integration, please try again', 'forminator' );
+		$this->_description                = esc_html__( 'Get awesome by your form.', 'forminator' );
+		$this->_activation_error_message   = esc_html__( 'Sorry but we failed to activate GoogleSheet Integration, don\'t hesitate to contact us', 'forminator' );
+		$this->_deactivation_error_message = esc_html__( 'Sorry but we failed to deactivate GoogleSheet Integration, please try again', 'forminator' );
 
-		$this->_update_settings_error_message = __(
+		$this->_update_settings_error_message = esc_html__(
 			'Sorry, we failed to update settings, please check your form and try again',
 			'forminator'
 		);
@@ -88,7 +88,7 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 		try {
 			// check if its active.
 			if ( ! $this->is_active() ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'Google Sheets is not active', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Google Sheets is not active', 'forminator' ) );
 			}
 
 			$is_connected   = false;
@@ -127,17 +127,17 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 		try {
 			$form_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'GoogleSheet is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'GoogleSheet is not connected', 'forminator' ) );
 			}
 
 			$form_settings_instance = $this->get_addon_settings( $form_id, 'form' );
 			if ( ! $form_settings_instance instanceof Forminator_Addon_Googlesheet_Form_Settings ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'Invalid Form Settings of GoogleSheet', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Invalid Form Settings of GoogleSheet', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $form_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'No active GoogleSheet connection found in this form', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'No active GoogleSheet connection found in this form', 'forminator' ) );
 			}
 
 			$is_form_connected = true;
@@ -298,12 +298,12 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 			$identifier    = isset( $submitted_data['identifier'] ) ? $submitted_data['identifier'] : '';
 
 			if ( empty( $client_id ) ) {
-				$template_params['client_id_error'] = __( 'Please input valid Client ID', 'forminator' );
+				$template_params['client_id_error'] = esc_html__( 'Please input valid Client ID', 'forminator' );
 				$has_errors                         = true;
 			}
 
 			if ( empty( $client_secret ) ) {
-				$template_params['client_secret_error'] = __( 'Please input valid Client Secret', 'forminator' );
+				$template_params['client_secret_error'] = esc_html__( 'Please input valid Client Secret', 'forminator' );
 				$has_errors                             = true;
 			}
 
@@ -587,7 +587,7 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 				$google_client->authenticate( $query_args['code'] );
 				$token = $google_client->getAccessToken();
 				if ( empty( $token ) ) {
-					throw new Forminator_Addon_Googlesheet_Exception( __( 'Failed to get token', 'forminator' ) );
+					throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Failed to get token', 'forminator' ) );
 				}
 
 				if ( ! $this->is_active() ) {
@@ -630,7 +630,7 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 		$config = new Forminator_Google_Config();
 		$config->setLoggerClass( 'Forminator_Addon_Wp_Googlesheet_Client_Logger' );
 		$google_client = new Forminator_Google_Client( $config );
-		$google_client->setApplicationName( __( 'Forminator Pro', 'forminator' ) );
+		$google_client->setApplicationName( esc_html__( 'Forminator Pro', 'forminator' ) );
 		$google_client->setClientId( $client_id );
 		$google_client->setClientSecret( $client_secret );
 		$google_client->setScopes( $scopes );
@@ -673,7 +673,7 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 				$revoked = $google_client->revokeToken();
 
 				// if ( ! $revoked ) {
-				// 	throw new Forminator_Addon_Googlesheet_Exception( __( 'Failed to revoke access token', 'forminator' ) );
+				// 	throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Failed to revoke access token', 'forminator' ) );
 				// }
 			}
 		} catch ( Forminator_Addon_Googlesheet_Exception $e ) {
@@ -700,17 +700,17 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 		try {
 			$poll_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'GoogleSheet is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'GoogleSheet is not connected', 'forminator' ) );
 			}
 
 			$poll_settings_instance = $this->get_addon_settings( $poll_id, 'poll' );
 			if ( ! $poll_settings_instance instanceof Forminator_Addon_Googlesheet_Poll_Settings ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'Invalid Poll Settings of GoogleSheet', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Invalid Poll Settings of GoogleSheet', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $poll_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'No active GoogleSheet connection found in this poll', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'No active GoogleSheet connection found in this poll', 'forminator' ) );
 			}
 
 			$is_poll_connected = true;
@@ -760,17 +760,17 @@ final class Forminator_Addon_Googlesheet extends Forminator_Addon_Abstract {
 		try {
 			$quiz_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'GoogleSheet is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'GoogleSheet is not connected', 'forminator' ) );
 			}
 
 			$quiz_settings_instance = $this->get_addon_settings( $quiz_id, 'quiz' );
 			if ( ! $quiz_settings_instance instanceof Forminator_Addon_Googlesheet_Quiz_Settings ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'Invalid Quiz Settings of GoogleSheet', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Invalid Quiz Settings of GoogleSheet', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $quiz_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Googlesheet_Exception( __( 'No active GoogleSheet connection found in this quiz', 'forminator' ) );
+				throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'No active GoogleSheet connection found in this quiz', 'forminator' ) );
 			}
 
 			$is_quiz_connected = true;

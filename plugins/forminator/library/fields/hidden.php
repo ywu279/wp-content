@@ -58,7 +58,7 @@ class Forminator_Hidden extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Hidden Field', 'forminator' );
+		$this->name = esc_html__( 'Hidden Field', 'forminator' );
 	}
 
 	/**
@@ -103,8 +103,6 @@ class Forminator_Hidden extends Forminator_Field {
 
 		$id          = self::get_property( 'element_id', $field );
 		$name        = $id;
-		$required    = self::get_property( 'required', $field, false );
-		$placeholder = esc_html( self::get_property( 'placeholder', $field ) );
 		$value       = esc_html( $this->get_value( $field ) );
 
 		return sprintf( '<input type="hidden" id="%s" name="%s" value="%s" />', $id . '_' . Forminator_CForm_Front::$uid, $name, $value );

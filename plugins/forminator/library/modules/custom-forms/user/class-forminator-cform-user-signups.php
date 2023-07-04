@@ -46,10 +46,10 @@ class Forminator_CForm_User_Signups {
 		$signup = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->signups WHERE activation_key = %s", $key ) );
 
 		if ( empty( $signup ) ) {
-			return new WP_Error( 'invalid_key', __( 'Invalid activation key.' ) );
+			return new WP_Error( 'invalid_key', esc_html__( 'Invalid activation key.', 'forminator' ) );
 		}
 		if ( $signup->active ) {
-			return new WP_Error( 'already_active', __( 'The user is already active.' ), $signup );
+			return new WP_Error( 'already_active', esc_html__( 'The user is already active.', 'forminator' ), $signup );
 		}
 
 		return new Forminator_CForm_User_Signups( $signup );
@@ -235,7 +235,7 @@ class Forminator_CForm_User_Signups {
 	public static function modify_signup_user_notification_message( $message, $user, $user_email, $key ) {
 		if ( 'none' === self::get_activation_email( $key ) ) {
 			/* translators: New user notification email. %s: Activation URL. */
-			$message = __( "To activate your user, please click the following link:\n\n%s\n", 'forminator' );
+			$message = esc_html__( "To activate your user, please click the following link:\n\n%s\n", 'forminator' );
 		}
 		$url = add_query_arg(
 			array(
@@ -251,7 +251,7 @@ class Forminator_CForm_User_Signups {
 	public static function modify_signup_blog_notification_message( $message, $domain, $path, $title, $user, $user_email, $key ) {
 		if ( 'none' === self::get_activation_email( $key ) ) {
 			/* translators: New site notification email. 1: Activation URL, 2: New site URL. */
-			$message = __( "To activate your site, please click the following link:\n\n%1\$s\n\nAfter you activate, you can visit your site here:\n\n%2\$s", 'forminator' );
+			$message = esc_html__( "To activate your site, please click the following link:\n\n%1\$s\n\nAfter you activate, you can visit your site here:\n\n%2\$s", 'forminator' );
 		}
 
 		$url = add_query_arg(
@@ -327,12 +327,12 @@ class Forminator_CForm_User_Signups {
 			// User already exists.
 			$signup->set_as_activated();
 
-			return new WP_Error( 'user_already_exists', __( 'That username is already activated.', 'forminator' ), $signup );
+			return new WP_Error( 'user_already_exists', esc_html__( 'That username is already activated.', 'forminator' ), $signup );
 		}
 
 		if ( email_exists( $signup->user_data['user_email'] ) ) {
 			// Email already exists.
-			return new WP_Error( 'email_already_exists', __( 'Sorry, that email address is already used!', 'forminator' ), $signup );
+			return new WP_Error( 'email_already_exists', esc_html__( 'Sorry, that email address is already used!', 'forminator' ), $signup );
 		}
 
 		if ( forminator_is_main_site() ) {
@@ -354,7 +354,7 @@ class Forminator_CForm_User_Signups {
 
 		$user_id = $forminator_user_registration->create_user( $user_data, $signup->form, $signup->entry, $is_user_signon );
 		if ( ! $user_id ) {
-			return new WP_Error( 'create_user', __( 'Could not create user', 'forminator' ), $signup );
+			return new WP_Error( 'create_user', esc_html__( 'Could not create user', 'forminator' ), $signup );
 		}
 
 		$signup->set_as_activated();
@@ -365,7 +365,7 @@ class Forminator_CForm_User_Signups {
 			&& 'manual' === $signup->settings['activation-method']
 			&& ! current_user_can( 'manage_options' )
 		) {
-			return new WP_Error( 'user_activated', __( 'User account has been activated.', 'forminator' ), $signup );
+			return new WP_Error( 'user_activated', esc_html__( 'User account has been activated.', 'forminator' ), $signup );
 		}
 
 		// Create site only on main site and if option for that is enabled.

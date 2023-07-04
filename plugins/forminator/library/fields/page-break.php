@@ -59,7 +59,7 @@ class Forminator_Page_Break extends Forminator_Field {
 
 		parent::__construct();
 
-		$this->name = __( 'Page Break', 'forminator' );
+		$this->name = esc_html__( 'Page Break', 'forminator' );
 
 	}
 
@@ -73,8 +73,8 @@ class Forminator_Page_Break extends Forminator_Field {
 		return apply_filters(
 			'forminator_page_break_btn_label',
 			array(
-				'btn_left'  => __( '« Previous Step', 'forminator' ),
-				'btn_right' => __( 'Next Step »', 'forminator' ),
+				'btn_left'  => esc_html__( '« Previous Step', 'forminator' ),
+				'btn_right' => esc_html__( 'Next Step »', 'forminator' ),
 			)
 		);
 	}

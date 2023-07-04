@@ -27,13 +27,13 @@ class Forminator_CForm_Page extends Forminator_Admin_Module_Edit_Page {
 		return apply_filters(
 			'forminator_cform_bulk_actions',
 			array(
-				'publish-forms'        => __( 'Publish', 'forminator' ),
-				'draft-forms'          => __( 'Unpublish', 'forminator' ),
-				'clone-forms'          => __( 'Duplicate', 'forminator' ),
-				'reset-views-forms'    => __( 'Reset Tracking Data', 'forminator' ),
-				'apply-preset-forms'   => __( 'Apply Appearance Preset', 'forminator' ),
-				'delete-entries-forms' => __( 'Delete Submissions', 'forminator' ),
-				'delete-forms'         => __( 'Delete', 'forminator' ),
+				'publish-forms'        => esc_html__( 'Publish', 'forminator' ),
+				'draft-forms'          => esc_html__( 'Unpublish', 'forminator' ),
+				'clone-forms'          => esc_html__( 'Duplicate', 'forminator' ),
+				'reset-views-forms'    => esc_html__( 'Reset Tracking Data', 'forminator' ),
+				'apply-preset-forms'   => esc_html__( 'Apply Appearance Preset', 'forminator' ),
+				'delete-entries-forms' => esc_html__( 'Delete Submissions', 'forminator' ),
+				'delete-forms'         => esc_html__( 'Delete', 'forminator' ),
 			)
 		);
 	}

@@ -29,7 +29,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 	public function __construct( Forminator_Addon_Abstract $addon, $quiz_id ) {
 		parent::__construct( $addon, $quiz_id );
 
-		$this->_update_quiz_settings_error_message = __(
+		$this->_update_quiz_settings_error_message = esc_html__(
 			'The update to your settings for this quiz failed, check the quiz input and try again.',
 			'forminator'
 		);
@@ -97,7 +97,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 			try {
 
 				if ( empty( $name ) ) {
-					throw new Forminator_Addon_Campaignmonitor_Exception( __( 'Please pick valid name' ) );
+					throw new Forminator_Addon_Campaignmonitor_Exception( esc_html__( 'Please pick valid name', 'forminator' ) );
 				}
 
 				$time_added = $this->get_multi_id_quiz_settings_value( $multi_id, 'time_added', time() );
@@ -177,7 +177,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 		$template = forminator_addon_campaignmonitor_dir() . 'views/quiz-settings/setup-list.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -208,7 +208,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 			}
 
 			if ( empty( $lists ) ) {
-				throw new Forminator_Addon_Campaignmonitor_Exception( __( 'No lists found on your Campaign Monitor. Please create one.', 'forminator' ) );
+				throw new Forminator_Addon_Campaignmonitor_Exception( esc_html__( 'No lists found on your Campaign Monitor. Please create one.', 'forminator' ) );
 			}
 
 			$template_params['lists'] = $lists;
@@ -225,12 +225,12 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 			try {
 
 				if ( empty( $list_id ) ) {
-					throw new Forminator_Addon_Campaignmonitor_Exception( __( 'Please pick valid list' ) );
+					throw new Forminator_Addon_Campaignmonitor_Exception( esc_html__( 'Please pick valid list', 'forminator' ) );
 				}
 
 				// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				if ( ! in_array( $list_id, array_keys( $lists ) ) ) {
-					throw new Forminator_Addon_Campaignmonitor_Exception( __( 'Please pick valid list' ) );
+					throw new Forminator_Addon_Campaignmonitor_Exception( esc_html__( 'Please pick valid list', 'forminator' ) );
 				}
 
 				$list_name = $lists[ $list_id ];
@@ -312,7 +312,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 		$template = forminator_addon_campaignmonitor_dir() . 'views/quiz-settings/map-fields.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -332,7 +332,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 
 		$quiz_questions = $this->get_quiz_fields();
 		$quiz_fields    = array(
-			'quiz-name' => __( 'Quiz Name', 'forminator' ),
+			'quiz-name' => esc_html__( 'Quiz Name', 'forminator' ),
 		);
 		foreach ( $quiz_questions as $quiz_question ) {
 			// collect element ids.
@@ -340,11 +340,11 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 			$quiz_fields[ $quiz_question['slug'] ] = $quiz_question['title'];
 		}
 		if ( 'knowledge' === $this->quiz->quiz_type ) {
-			$quiz_fields['correct-answers'] = __( 'Correct Answers', 'forminator' );
-			$quiz_fields['total-answers']   = __( 'Total Answers', 'forminator' );
+			$quiz_fields['correct-answers'] = esc_html__( 'Correct Answers', 'forminator' );
+			$quiz_fields['total-answers']   = esc_html__( 'Total Answers', 'forminator' );
 			array_push( $forminator_quiz_element_ids, 'quiz-name', 'correct-answers', 'total-answers' );
 		} elseif ( 'nowrong' === $this->quiz->quiz_type ) {
-			$quiz_fields['result-answers'] = __( 'Result Answer', 'forminator' );
+			$quiz_fields['result-answers'] = esc_html__( 'Result Answer', 'forminator' );
 			array_push( $forminator_quiz_element_ids, 'quiz-name', 'result-answers' );
 		}
 
@@ -364,8 +364,8 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 		$has_errors = false;
 
 		$fields = array(
-			'default_field_email' => __( 'Email Address', 'forminator' ),
-			'default_field_name'  => __( 'Name', 'forminator' ),
+			'default_field_email' => esc_html__( 'Email Address', 'forminator' ),
+			'default_field_name'  => esc_html__( 'Name', 'forminator' ),
 		);
 
 		$list_id = $this->get_multi_id_quiz_settings_value( $multi_id, 'list_id', 0 );
@@ -376,7 +376,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 			$list_custom_fields = $api->get_list_custom_field( $list_id );
 
 			if ( ! is_array( $list_custom_fields ) ) {
-				throw new Forminator_Addon_Campaignmonitor_Exception( __( 'Campaign Monitor list\'s custom fields could not be found', 'forminator' ) );
+				throw new Forminator_Addon_Campaignmonitor_Exception( esc_html__( 'Campaign Monitor list\'s custom fields could not be found', 'forminator' ) );
 			}
 
 			foreach ( $list_custom_fields as $field ) {
@@ -403,7 +403,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 
 			try {
 				if ( empty( $fields_map ) ) {
-					throw new Forminator_Addon_Campaignmonitor_Exception( __( 'Please assign fields.', 'forminator' ) );
+					throw new Forminator_Addon_Campaignmonitor_Exception( esc_html__( 'Please assign fields.', 'forminator' ) );
 				}
 
 				$input_exceptions = new Forminator_Addon_Campaignmonitor_Quiz_Settings_Exception();
@@ -420,8 +420,9 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 					if ( isset( $fields_map[ $key ] ) && ! empty( $fields_map[ $key ] ) ) {
 						$element_id = $fields_map[ $key ];
 						if ( ! in_array( $element_id, $forminator_field_element_ids, true ) ) {
-							$input_exceptions->add_input_exception(/* translators: ... */
-								sprintf( __( 'Please assign valid field for %s', 'forminator' ), esc_html( $title ) ),
+							$input_exceptions->add_input_exception( sprintf(
+							/* translators: %s: Field Title */
+								esc_html__( 'Please assign valid field for %s', 'forminator' ), esc_html( $title ) ),
 								$key . '_error'
 							);
 							continue;
@@ -523,7 +524,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 		$template = forminator_addon_campaignmonitor_dir() . 'views/quiz-settings/setup-options.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -562,7 +563,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 				);
 
 				if ( ! in_array( $consent_to_track, $available_consents, true ) ) {
-					$input_exceptions->add_input_exception( __( 'Please pick valid Consent To Track options', 'forminator' ), 'consent_to_track_error' );
+					$input_exceptions->add_input_exception( esc_html__( 'Please pick valid Consent To Track options', 'forminator' ), 'consent_to_track_error' );
 				}
 
 				if ( $input_exceptions->input_exceptions_is_available() ) {
@@ -580,7 +581,7 @@ class Forminator_Addon_Campaignmonitor_Quiz_Settings extends Forminator_Addon_Qu
 
 				$notification = array(
 					'type' => 'success',
-					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'Successfully connected to your quiz' ),
+					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'Successfully connected to your quiz', 'forminator' ),
 				);
 				$is_close     = true;
 

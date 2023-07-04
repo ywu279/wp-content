@@ -74,7 +74,7 @@ class Forminator_Addon_Hubspot_Wp_Api {
 	public function __construct( $_token, $_global_id ) {
 		//prerequisites
 		if ( ! $_token ) {
-			throw new Forminator_Addon_Hubspot_Wp_Api_Exception( __( 'Missing required Token', 'forminator' ) );
+			throw new Forminator_Addon_Hubspot_Wp_Api_Exception( esc_html__( 'Missing required Token', 'forminator' ) );
 		}
 
 		$this->_token       = $_token;
@@ -228,7 +228,7 @@ class Forminator_Addon_Hubspot_Wp_Api {
 
 		if ( is_wp_error( $res ) || ! $res ) {
 			throw new Forminator_Addon_Hubspot_Wp_Api_Exception(
-				__( 'Failed to process request, make sure your API URL is correct and your server has internet connection.', 'forminator' )
+				esc_html__( 'Failed to process request, make sure your API URL is correct and your server has internet connection.', 'forminator' )
 			);
 		}
 
@@ -241,11 +241,15 @@ class Forminator_Addon_Hubspot_Wp_Api {
 				}
 
 				if ( 404 === $status_code ) {
-					/* translators: ... */
-					throw new Forminator_Addon_Hubspot_Wp_Api_Not_Found_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
+					throw new Forminator_Addon_Hubspot_Wp_Api_Not_Found_Exception( sprintf(
+						/* translators: %s: Error message */
+						esc_html__( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) )
+					);
 				}
-				/* translators: ... */
-				throw new Forminator_Addon_Hubspot_Wp_Api_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
+				throw new Forminator_Addon_Hubspot_Wp_Api_Exception( sprintf(
+					/* translators: %s: Error message */
+					esc_html__( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) )
+				);
 			}
 		}
 
@@ -257,17 +261,21 @@ class Forminator_Addon_Hubspot_Wp_Api {
 
 			$this->_last_data_received = $res;
 			if ( isset( $res->status ) && 'error' === $res->status ) {
-				$message = isset( $res->message ) ? $res->message : __( 'Invalid', 'forminator' );
-				/* translators: ... */
-				throw new Forminator_Addon_Hubspot_Wp_Api_Not_Found_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), esc_html( $message ) ) );
+				$message = isset( $res->message ) ? $res->message : esc_html__( 'Invalid', 'forminator' );
+				throw new Forminator_Addon_Hubspot_Wp_Api_Not_Found_Exception( sprintf(
+					/* translators: %s: Error message */
+					esc_html__( 'Failed to process request : %s', 'forminator' ), esc_html( $message ) )
+				);
 			}
 			if ( isset( $res->ok ) && false === $res->ok ) {
 				$msg = '';
 				if ( isset( $res->error ) ) {
 					$msg = $res->error;
 				}
-				/* translators: ... */
-				throw new Forminator_Addon_Hubspot_Wp_Api_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
+				throw new Forminator_Addon_Hubspot_Wp_Api_Exception( sprintf(
+					/* translators: %s: Error message */
+					esc_html__( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) )
+				);
 			}
 		}
 
@@ -703,7 +711,7 @@ class Forminator_Addon_Hubspot_Wp_Api {
 		if ( property_exists( $response, $property ) ) {
 			return $response->$property;
 		} else {
-			return __( 'Property does not exist', 'forminator' );
+			return esc_html__( 'Property does not exist', 'forminator' );
 		}
 	}
 

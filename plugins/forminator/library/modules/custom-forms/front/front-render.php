@@ -285,8 +285,8 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 			$login_header_url   = network_home_url();
 			$login_header_title = get_network()->site_name;
 		} else {
-			$login_header_url   = __( 'https://wordpress.org/' );
-			$login_header_title = __( 'Powered by WordPress' );
+			$login_header_url   = esc_html__( 'https://wordpress.org/', 'forminator' );
+			$login_header_title = esc_html__( 'Powered by WordPress', 'forminator' );
 		}
 
 		$defender_data  = forminator_defender_compatibility();
@@ -1038,7 +1038,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 	public function pagination_start( $element = array() ) {
 
 		$form_settings = $this->get_form_settings();
-		$label         = __( 'Finish', 'forminator' );
+		$label         = esc_html__( 'Finish', 'forminator' );
 		$element_id    = ! empty( $element ) ? $element[0]['element_id'] : '';
 
 		if ( isset( $form_settings['paginationData']['last-steps'] ) ) {
@@ -1072,8 +1072,8 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 			'has-pagination'           => $this->has_pagination(),
 			'pagination-header-design' => 'show',
 			'pagination-header'        => 'nav',
-			'last-steps'               => __( 'Finish', 'forminator' ),
-			'last-previous'            => __( 'Previous', 'forminator' ),
+			'last-steps'               => esc_html__( 'Finish', 'forminator' ),
+			'last-previous'            => esc_html__( 'Previous', 'forminator' ),
 			'pagination-labels'        => 'default',
 			'has-paypal'               => $this->has_paypal(),
 		);
@@ -1264,7 +1264,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 	 */
 	public function pagination_step( $field, $pagination, $step ) {
 		$form_settings       = $this->get_form_settings();
-		$label               = sprintf( '%s %s', __( 'Page ', 'forminator' ), $step );
+		$label               = sprintf( '%s %s', esc_html__( 'Page ', 'forminator' ), $step );
 		$pagination_settings = $this->get_pagination_field();
 		if ( isset( $pagination_settings[ $field['element_id'] . '-steps' ] ) ) {
 			$label = $pagination_settings[ $field['element_id'] . '-steps' ];
@@ -2211,7 +2211,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 			$fields       = $this->model->get_real_fields();
 			$total_fields = count( $fields ) + 1;
 			// Most bots won't bother with hidden fields, so set to text and hide it.
-			$html .= sprintf( '<label for="%1$s" class="forminator-hidden" aria-hidden="true">%2$s <input id="%1$s" type="text" name="%1$s" value="" autocomplete="off"></label>', "input_$total_fields", __( 'Please do not fill in this field.', 'forminator' ) );
+			$html .= sprintf( '<label for="%1$s" class="forminator-hidden" aria-hidden="true">%2$s <input id="%1$s" type="text" name="%1$s" value="" autocomplete="off"></label>', "input_$total_fields", esc_html__( 'Please do not fill in this field.', 'forminator' ) );
 		}
 
 		return $html;
@@ -2687,6 +2687,14 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 							// cast to bool.
 							$field_settings_value = filter_var( $field[ $setting_name ], FILTER_VALIDATE_BOOLEAN );
 						}
+
+						if (
+							'address_country' === $setting_name &&
+							(bool) $setting_value === (bool) $field_settings_value
+						) {
+							return true;
+						}
+
 						if ( $setting_value === $field_settings_value ) {
 							return true;
 						}
@@ -2757,10 +2765,10 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 				'calculation_error'            => Forminator_Calculation::default_error_message(),
 				'payment_require_ssl_error'    => apply_filters(
 					'forminator_payment_require_ssl_error_message',
-					__( 'SSL required to submit this form, please check your URL.', 'forminator' )
+					esc_html__( 'SSL required to submit this form, please check your URL.', 'forminator' )
 				),
-				'payment_require_amount_error' => __( 'PayPal amount must be greater than 0.', 'forminator' ),
-				'form_has_error'               => __( 'Please correct the errors before submission.', 'forminator' ),
+				'payment_require_amount_error' => esc_html__( 'PayPal amount must be greater than 0.', 'forminator' ),
+				'form_has_error'               => esc_html__( 'Please correct the errors before submission.', 'forminator' ),
 			),
 			'payment_require_ssl' => $this->model->is_payment_require_ssl(),
 			'has_loader'          => $this->form_has_loader( $form_properties ),
@@ -2843,7 +2851,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 			return $properties['settings']['indicator-label'];
 		}
 
-		return __( 'Submitting...', 'forminator' );
+		return esc_html__( 'Submitting...', 'forminator' );
 	}
 
 	/**
@@ -2920,7 +2928,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 			$hidden_message_option = 'hidden-' . $form_type . '-form-message';
 			$html                  = isset( $form_settings[ $hidden_message_option ] )
 				? $form_settings[ $hidden_message_option ]
-				: __( 'User is logged in.', 'forminator' );
+				: esc_html__( 'User is logged in.', 'forminator' );
 
 			return $html;
 		}
@@ -3131,7 +3139,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 	 * @return bool
 	 */
 	public function get_skip_text( $form_settings ) {
-		$skip_text = isset( $form_settings['skip-text'] ) ? esc_html( $form_settings['skip-text'] ) : __( 'Skip and continue', 'forminator' );
+		$skip_text = isset( $form_settings['skip-text'] ) ? esc_html( $form_settings['skip-text'] ) : esc_html__( 'Skip and continue', 'forminator' );
 
 		return $skip_text;
 	}

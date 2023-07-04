@@ -29,7 +29,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 	public function __construct( Forminator_Addon_Abstract $addon, $form_id ) {
 		parent::__construct( $addon, $form_id );
 
-		$this->_update_form_settings_error_message = __(
+		$this->_update_form_settings_error_message = esc_html__(
 			'The update to your settings for this form failed, check the form input and try again.',
 			'forminator'
 		);
@@ -97,7 +97,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 			try {
 
 				if ( empty( $name ) ) {
-					throw new Forminator_Addon_Aweber_Exception( __( 'Please pick valid name' ) );
+					throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Please pick valid name', 'forminator' ) );
 				}
 
 				$time_added = $this->get_multi_id_form_settings_value( $multi_id, 'time_added', time() );
@@ -177,7 +177,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 		$template = forminator_addon_aweber_dir() . 'views/form-settings/setup-list.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -203,7 +203,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 			$lists_request = $api->get_account_lists( $setting_values['account_id'] );
 
 			if ( ! is_object( $lists_request ) || ! isset( $lists_request->entries ) || ! is_array( $lists_request->entries ) || empty( $lists_request->entries ) ) {
-				throw new Forminator_Addon_Aweber_Exception( __( 'No lists found on your AWeber. Please create one.', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( 'No lists found on your AWeber. Please create one.', 'forminator' ) );
 			}
 
 			$lists_entries = $lists_request->entries;
@@ -237,12 +237,12 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 			try {
 
 				if ( empty( $list_id ) ) {
-					throw new Forminator_Addon_Aweber_Exception( __( 'Please pick valid list' ) );
+					throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Please pick valid list', 'forminator' ) );
 				}
 
 				// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				if ( ! in_array( $list_id, array_keys( $lists ) ) ) {
-					throw new Forminator_Addon_Aweber_Exception( __( 'Please pick valid list' ) );
+					throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Please pick valid list', 'forminator' ) );
 				}
 
 				$list_name = $lists[ $list_id ];
@@ -324,7 +324,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 		$template = forminator_addon_aweber_dir() . 'views/form-settings/map-fields.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -354,8 +354,8 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 		$has_errors = false;
 
 		$fields = array(
-			'default_field_email' => __( 'Email Address', 'forminator' ),
-			'default_field_name'  => __( 'Name', 'forminator' ),
+			'default_field_email' => esc_html__( 'Email Address', 'forminator' ),
+			'default_field_name'  => esc_html__( 'Name', 'forminator' ),
 		);
 
 		$list_id = $this->get_multi_id_form_settings_value( $multi_id, 'list_id', 0 );
@@ -367,7 +367,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 			$list_custom_fields_request = $api->get_account_list_custom_fields( $setting_values['account_id'], $list_id );
 
 			if ( ! is_object( $list_custom_fields_request ) || ! isset( $list_custom_fields_request->entries ) || ! is_array( $list_custom_fields_request->entries ) ) {
-				throw new Forminator_Addon_Aweber_Exception( __( 'Failed to get Custom Fields on the list.', 'forminator' ) );
+				throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Failed to get Custom Fields on the list.', 'forminator' ) );
 			}
 
 			foreach ( $list_custom_fields_request->entries as $entry ) {
@@ -387,7 +387,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 
 			try {
 				if ( empty( $fields_map ) ) {
-					throw new Forminator_Addon_Aweber_Exception( __( 'Please assign fields.', 'forminator' ) );
+					throw new Forminator_Addon_Aweber_Exception( esc_html__( 'Please assign fields.', 'forminator' ) );
 				}
 
 				$input_exceptions = new Forminator_Addon_Aweber_Form_Settings_Exception();
@@ -400,8 +400,9 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 					if ( isset( $fields_map[ $key ] ) && ! empty( $fields_map[ $key ] ) ) {
 						$element_id = $fields_map[ $key ];
 						if ( ! in_array( $element_id, $forminator_field_element_ids, true ) ) {
-							$input_exceptions->add_input_exception(/* translators: ... */
-								sprintf( __( 'Please assign valid field for %s', 'forminator' ), esc_html( $title ) ),
+							$input_exceptions->add_input_exception( sprintf(
+								/* translators: %s: Field title */
+								esc_html__( 'Please assign valid field for %s', 'forminator' ), esc_html( $title ) ),
 								$key . '_error'
 							);
 							continue;
@@ -509,7 +510,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 		$template = forminator_addon_aweber_dir() . 'views/form-settings/setup-options.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -586,7 +587,7 @@ class Forminator_Addon_Aweber_Form_Settings extends Forminator_Addon_Form_Settin
 
 				$notification = array(
 					'type' => 'success',
-					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'Successfully connected to your form' ),
+					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'Successfully connected to your form', 'forminator' ),
 				);
 				$is_close     = true;
 

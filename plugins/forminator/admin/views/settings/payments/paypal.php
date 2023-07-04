@@ -18,7 +18,15 @@ foreach ( $template_vars as $key => $val ) {
 }
 ?>
 
-<span class="sui-description"><?php /* translators: ... */ printf( esc_html__( 'Enter your PayPal REST API keys to connect your account. You can create a REST API app %1$shere%2$s to grab the credentials.' ), '<a href="https://developer.paypal.com/developer/applications/" target="_blank">', '</a>' ); ?></span>
+<span class="sui-description">
+    <?php
+    printf(
+    /* Translators: 1. Opening <a> tag with link to the PayPal account, 2. closing <a> tag. */
+	    esc_html__( 'Enter your PayPal REST API keys to connect your account. You can create a REST API app %1$shere%2$s to grab the credentials.', 'forminator' ),
+	    '<a href="https://developer.paypal.com/developer/applications/" target="_blank">',
+	    '</a>' );
+    ?>
+</span>
 
 <?php if ( ! empty( $vars['error_message'] ) ) : ?>
 
@@ -53,7 +61,7 @@ foreach ( $template_vars as $key => $val ) {
 
 		<input
 			class="sui-form-control"
-			name="sandbox_id" placeholder="<?php echo esc_attr( __( 'Enter your sandbox client id', 'forminator' ) ); ?>"
+			name="sandbox_id" placeholder="<?php echo esc_attr__( 'Enter your sandbox client id', 'forminator' ); ?>"
 			value="<?php echo esc_attr( $vars['sandbox_id'] ); ?>"
 		/>
 		<?php if ( ! empty( $vars['sandbox_id_error'] ) ) : ?>
@@ -68,7 +76,7 @@ foreach ( $template_vars as $key => $val ) {
 
 		<input
 			class="sui-form-control"
-			name="sandbox_secret" placeholder="<?php echo esc_attr( __( 'Enter your sandbox secret', 'forminator' ) ); ?>"
+			name="sandbox_secret" placeholder="<?php echo esc_attr__( 'Enter your sandbox secret', 'forminator' ); ?>"
 			value="<?php echo esc_attr( $vars['sandbox_secret'] ); ?>"
 		/>
 
@@ -84,7 +92,7 @@ foreach ( $template_vars as $key => $val ) {
 
 		<input
 			class="sui-form-control"
-			name="live_id" placeholder="<?php echo esc_attr( __( 'Enter your live client id', 'forminator' ) ); ?>"
+			name="live_id" placeholder="<?php echo esc_attr__( 'Enter your live client id', 'forminator' ); ?>"
 			value="<?php echo esc_attr( $vars['live_id'] ); ?>"
 		/>
 
@@ -100,7 +108,7 @@ foreach ( $template_vars as $key => $val ) {
 
 		<input
 			class="sui-form-control"
-			name="live_secret" placeholder="<?php echo esc_attr( __( 'Enter your live secret id', 'forminator' ) ); ?>"
+			name="live_secret" placeholder="<?php echo esc_attr__( 'Enter your live secret id', 'forminator' ); ?>"
 			value="<?php echo esc_attr( $vars['live_secret'] ); ?>"
 		/>
 

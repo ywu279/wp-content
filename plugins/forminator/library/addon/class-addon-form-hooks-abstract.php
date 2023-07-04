@@ -84,11 +84,11 @@ abstract class Forminator_Addon_Form_Hooks_Abstract extends Forminator_Addon_Hoo
 		$this->form_id     = $form_id;
 		$this->custom_form = Forminator_Base_Form_Model::get_model( $this->form_id );
 		if ( ! $this->custom_form ) {
-			/* translators: ... */
-			throw new Forminator_Addon_Exception( sprintf( __( 'Form with id %d could not be found', 'forminator' ), $this->form_id ) );
+			/* translators: Form ID */
+			throw new Forminator_Addon_Exception( sprintf( esc_html__( 'Form with id %d could not be found', 'forminator' ), $this->form_id ) );
 		}
 
-		$this->_submit_form_error_message = __( 'Failed to submit form because of an addon, please check your form and try again' );
+		$this->_submit_form_error_message = esc_html__( 'Failed to submit form because of an addon, please check your form and try again' );
 
 		// get form settings instance to be available throughout cycle.
 		$this->form_settings_instance = $this->addon->get_addon_settings( $this->form_id, 'form' );

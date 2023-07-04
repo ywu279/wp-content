@@ -53,7 +53,7 @@ class Forminator_Section extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Section', 'forminator' );
+		$this->name = esc_html__( 'Section', 'forminator' );
 	}
 
 	/**
@@ -64,7 +64,7 @@ class Forminator_Section extends Forminator_Field {
 	 */
 	public function defaults() {
 		return array(
-			'section_title'              => __( 'Form Section', 'forminator' ),
+			'section_title'              => esc_html__( 'Form Section', 'forminator' ),
 			'cform-section-border-style' => 'none',
 		);
 	}

@@ -423,17 +423,17 @@ class Forminator_Poll_Model extends Forminator_Base_Form_Model {
 
 		$close_msg = ( isset( $settings['opening_close_msg'] ) ) ? trim( $settings['opening_close_msg'] ) : '';
 		if ( '' === $close_msg ) {
-			$close_msg = __( 'Voting is closed', 'forminator' );
+			$close_msg = esc_html__( 'Voting is closed', 'forminator' );
 		}
 
 		$pause_msg = ( isset( $settings['opening_pause_msg'] ) ) ? trim( $settings['opening_pause_msg'] ) : '';
 		if ( '' === $pause_msg ) {
-			$pause_msg = __( 'Voting is paused, check again later', 'forminator' );
+			$pause_msg = esc_html__( 'Voting is paused, check again later', 'forminator' );
 		}
 
 		$before_open_from_msg = ( isset( $settings['opening_before_open_from_msg'] ) ) ? trim( $settings['opening_before_open_from_msg'] ) : '';
 		if ( '' === $before_open_from_msg ) {
-			$before_open_from_msg = __( 'Voting has not been started yet, check again later', 'forminator' );
+			$before_open_from_msg = esc_html__( 'Voting has not been started yet, check again later', 'forminator' );
 		}
 
 		$status = ( isset( $settings['opening_status'] ) ) ? $settings['opening_status'] : 'open';

@@ -16,7 +16,7 @@ foreach ( $template_vars as $key => $val ) {
 }
 
 $vars['step_description'] = sprintf(
-	/* translators: ... */
+/* translators: 1: Board name */
 	esc_html__( 'Which list from %1$s do you want auto-generated cards to be added to?', 'forminator' ),
 	'<b>' . esc_html( $vars['board_name'] ) . '</b>'
 );

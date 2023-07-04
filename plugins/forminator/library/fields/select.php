@@ -56,7 +56,7 @@ class Forminator_Select extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Select', 'forminator' );
+		$this->name = esc_html__( 'Select', 'forminator' );
 	}
 
 	/**
@@ -68,16 +68,16 @@ class Forminator_Select extends Forminator_Field {
 	public function defaults() {
 		return array(
 			'value_type'  => 'single',
-			'field_label' => __( 'Select', 'forminator' ),
+			'field_label' => esc_html__( 'Select', 'forminator' ),
 			'options'     => array(
 				array(
-					'label' => __( 'Option 1', 'forminator' ),
+					'label' => esc_html__( 'Option 1', 'forminator' ),
 					'value' => 'one',
 					'limit' => '',
 					'key'   => forminator_unique_key(),
 				),
 				array(
-					'label' => __( 'Option 2', 'forminator' ),
+					'label' => esc_html__( 'Option 2', 'forminator' ),
 					'value' => 'two',
 					'limit' => '',
 					'key'   => forminator_unique_key(),
@@ -463,7 +463,7 @@ class Forminator_Select extends Forminator_Field {
 		$field_type  = self::get_property( 'value_type', $field, '' );
 
 		if ( $is_required ) {
-			$required_message = self::get_property( 'required_message', $field, __( 'This field is required. Please select a value.', 'forminator' ) );
+			$required_message = self::get_property( 'required_message', $field, esc_html__( 'This field is required. Please select a value.', 'forminator' ) );
 			$required_message = apply_filters(
 				'forminator_single_field_required_validation_message',
 				$required_message,
@@ -508,7 +508,7 @@ class Forminator_Select extends Forminator_Field {
 		if ( ! $value_exists ) {
 			$this->validation_message[ $id ] = apply_filters(
 				'forminator_select_field_nonexistent_validation_message',
-				__( 'Selected value does not exist.', 'forminator' ),
+				esc_html__( 'Selected value does not exist.', 'forminator' ),
 				$id,
 				$field
 			);
@@ -519,7 +519,7 @@ class Forminator_Select extends Forminator_Field {
 				 ( 'single' === $select_type && ! strlen( $data ) ) ||
 				 ( 'multiselect' === $select_type && empty( $data ) )
 			) {
-				$required_message                = self::get_property( 'required_message', $field, __( 'This field is required. Please select a value.', 'forminator' ) );
+				$required_message                = self::get_property( 'required_message', $field, esc_html__( 'This field is required. Please select a value.', 'forminator' ) );
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_single_field_required_validation_message',
 					$required_message,

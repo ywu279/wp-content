@@ -31,7 +31,7 @@ class Forminator_Addon_Hubspot_Form_Settings extends Forminator_Addon_Form_Setti
 	public function __construct( Forminator_Addon_Abstract $addon, $form_id ) {
 		parent::__construct( $addon, $form_id );
 
-		$this->_update_form_settings_error_message = __(
+		$this->_update_form_settings_error_message = esc_html__(
 			'The update to your settings for this form failed, check the form input and try again.',
 			'forminator'
 		);
@@ -103,10 +103,10 @@ class Forminator_Addon_Hubspot_Form_Settings extends Forminator_Addon_Form_Setti
 		unset( $submitted_data['multi_id'] );
 
 		$fields                    = array(
-			'email'     => __( 'Email Address', 'forminator' ),
-			'firstname' => __( 'First Name', 'forminator' ),
-			'lastname'  => __( 'Last Name', 'forminator' ),
-			'jobtitle'  => __( 'Job Title', 'forminator' ),
+			'email'     => esc_html__( 'Email Address', 'forminator' ),
+			'firstname' => esc_html__( 'First Name', 'forminator' ),
+			'lastname'  => esc_html__( 'Last Name', 'forminator' ),
+			'jobtitle'  => esc_html__( 'Job Title', 'forminator' ),
 		);
 		$template_params['fields'] = $fields;
 		try {
@@ -155,8 +155,9 @@ class Forminator_Addon_Hubspot_Form_Settings extends Forminator_Addon_Form_Setti
 					if ( isset( $fields_map[ $key ] ) && ! empty( $fields_map[ $key ] ) ) {
 						$element_id = $fields_map[ $key ];
 						if ( ! in_array( $element_id, $forminator_field_element_ids, true ) ) {
-							$input_exceptions->add_input_exception(/* translators: ... */
-								sprintf( __( 'Please assign valid field for %s', 'forminator' ), esc_html( $title ) ),
+							$input_exceptions->add_input_exception( sprintf(
+							/* translators: %s: Field title */
+								esc_html__( 'Please assign valid field for %s', 'forminator' ), esc_html( $title ) ),
 								$key . '_error'
 							);
 							continue;
@@ -263,7 +264,7 @@ class Forminator_Addon_Hubspot_Form_Settings extends Forminator_Addon_Form_Setti
 		$template = forminator_addon_hubspot_dir() . 'views/form-settings/create-ticket.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -351,11 +352,11 @@ class Forminator_Addon_Hubspot_Form_Settings extends Forminator_Addon_Form_Setti
 				}
 			}
 			if ( empty( $pipeline ) ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'No pipeline found on your HubSpot account. Please create one.', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'No pipeline found on your HubSpot account. Please create one.', 'forminator' ) );
 			}
 
 			if ( empty( $status ) ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'No status found on your HubSpot account. Please create one.', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'No status found on your HubSpot account. Please create one.', 'forminator' ) );
 			}
 
 			$template_params['status']   = $status;
@@ -417,7 +418,7 @@ class Forminator_Addon_Hubspot_Form_Settings extends Forminator_Addon_Form_Setti
 					);
 					$notification = array(
 						'type' => 'success',
-						'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'is activated successfully.' ),
+						'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'is activated successfully.', 'forminator' ),
 					);
 					$is_close     = true;
 				}

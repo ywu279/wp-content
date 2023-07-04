@@ -47,11 +47,11 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 	 */
 	public function __construct() {
 		// late init to allow translation.
-		$this->_description                = __( 'Get awesome by your form.', 'forminator' );
-		$this->_activation_error_message   = __( 'Sorry but we failed to activate HubSpot Integration, don\'t hesitate to contact us', 'forminator' );
-		$this->_deactivation_error_message = __( 'Sorry but we failed to deactivate HubSpot Integration, please try again', 'forminator' );
+		$this->_description                = esc_html__( 'Get awesome by your form.', 'forminator' );
+		$this->_activation_error_message   = esc_html__( 'Sorry but we failed to activate HubSpot Integration, don\'t hesitate to contact us', 'forminator' );
+		$this->_deactivation_error_message = esc_html__( 'Sorry but we failed to deactivate HubSpot Integration, please try again', 'forminator' );
 
-		$this->_update_settings_error_message = __(
+		$this->_update_settings_error_message = esc_html__(
 			'Sorry, we failed to update settings, please check your form and try again',
 			'forminator'
 		);
@@ -117,7 +117,7 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 		try {
 			// check if its active.
 			if ( ! $this->is_active() ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'HubSpot is not active', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'HubSpot is not active', 'forminator' ) );
 			}
 
 			// if user completed api setup.
@@ -157,17 +157,17 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 		try {
 			$form_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'HubSpot is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'HubSpot is not connected', 'forminator' ) );
 			}
 
 			$form_settings_instance = $this->get_addon_settings( $form_id, 'form' );
 			if ( ! $form_settings_instance instanceof Forminator_Addon_Hubspot_Form_Settings ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'Invalid Form Settings of HubSpot', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'Invalid Form Settings of HubSpot', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $form_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'No active HubSpot connection found in this form', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'No active HubSpot connection found in this form', 'forminator' ) );
 			}
 
 			$is_form_connected = true;
@@ -425,6 +425,21 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 	}
 
 	/**
+	 * Prepare redirect URL to wpmudev.com
+	 *
+	 * @return string
+	 */
+	private static function prepare_redirect_url() {
+		return self::redirect_uri(
+			'hubspot',
+			'authorize',
+			array(
+				'client_id' => Forminator_Addon_Hubspot_Wp_Api::CLIENT_ID,
+			)
+		);
+	}
+
+	/**
 	 * Get Auth Url
 	 *
 	 * @return string
@@ -432,7 +447,8 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 	public function get_auth_url() {
 		$base_authorize_url = Forminator_Addon_Hubspot_Wp_Api::AUTHORIZE_URL;
 		$client_id          = Forminator_Addon_Hubspot_Wp_Api::CLIENT_ID;
-		$redirect_url       = rawurlencode( forminator_addon_integration_section_admin_url( $this, 'authorize', false ) );
+		$final_redirect_url = rawurlencode( forminator_addon_integration_section_admin_url( $this, 'authorize', false ) );
+		$redirect_url       = self::prepare_redirect_url();
 		$scopes             = Forminator_Addon_Hubspot_Wp_Api::$oauth_scopes;
 
 		/**
@@ -448,7 +464,8 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 			array(
 				'client_id'    => $client_id,
 				'scope'        => rawurlencode( $scopes ),
-				'redirect_uri' => $redirect_url,
+				'redirect_uri' => rawurlencode( $redirect_url ),
+				'state'        => rawurlencode( self::get_nonce_value() . '|' . $final_redirect_url ),
 			),
 			$base_authorize_url
 		);
@@ -486,7 +503,7 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 			'is_close'      => false,
 		);
 
-		if ( isset( $query_args['code'] ) ) {
+		if ( isset( $query_args['code'] ) && self::validate_callback_request( 'hubspot' ) ) {
 			try {
 				$code       = $query_args['code'];
 				$token      = '';
@@ -495,11 +512,14 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 				$this->multi_global_id = ! empty( $query_args['global_id'] ) ? $query_args['global_id'] : uniqid( '', true );
 
 				// prefer new instance.
+				$final_redirect_url = forminator_addon_integration_section_admin_url( $this, 'authorize', false, $identifier );
+
 				$api           = Forminator_Addon_Hubspot_Wp_Api::get_instance( uniqid(), $this->multi_global_id );
-				$redirect_uri  = forminator_addon_integration_section_admin_url( $this, 'authorize', false, $identifier );
+				$redirect_uri  = self::prepare_redirect_url();
 				$args          = array(
 					'code'         => $code,
 					'redirect_uri' => $redirect_uri,
+					'state'        => rawurlencode( self::get_nonce_value() . '|' . $final_redirect_url ),
 				);
 				$token_request = $api->get_access_token( $args );
 
@@ -508,7 +528,7 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 				}
 
 				if ( empty( $token ) ) {
-					throw new Forminator_Addon_Hubspot_Exception( __( 'Failed to get token', 'forminator' ) );
+					throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'Failed to get token', 'forminator' ) );
 				}
 
 				if ( ! $this->is_active() ) {
@@ -531,7 +551,7 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 				$template_params['error_message'] = $e->getMessage();
 			}
 		} else {
-			$template_params['error_message'] = __( 'Failed to get authorization code.', 'forminator' );
+			$template_params['error_message'] = esc_html__( 'Failed to get authorization code.', 'forminator' );
 			// todo : translate $query_args[error].
 			$settings['auth_error_message'] = $template_params['error_message'];
 			$this->save_settings_values( $settings );
@@ -619,7 +639,7 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 			$api              = $this->get_api();
 			$pipeline_request = $api->get_pipeline();
 			if ( empty( $pipeline_request ) ) {
-				throw new Exception( __( 'Pipeline can not be empty.', 'forminator' ) );
+				throw new Exception( esc_html__( 'Pipeline can not be empty.', 'forminator' ) );
 			}
 			if ( ! empty( $pipeline_request->results ) ) {
 				foreach ( $pipeline_request->results as $key => $data ) {
@@ -651,17 +671,17 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 		try {
 			$quiz_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'HubSpot is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'HubSpot is not connected', 'forminator' ) );
 			}
 
 			$quiz_settings_instance = $this->get_addon_settings( $quiz_id, 'quiz' );
 			if ( ! $quiz_settings_instance instanceof Forminator_Addon_Hubspot_Quiz_Settings ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'Invalid Quiz Settings of HubSpot', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'Invalid Quiz Settings of HubSpot', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $quiz_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'No active HubSpot connection found in this quiz', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'No active HubSpot connection found in this quiz', 'forminator' ) );
 			}
 
 			$is_quiz_connected = true;
@@ -701,12 +721,12 @@ final class Forminator_Addon_Hubspot extends Forminator_Addon_Abstract {
 			// initialize with null.
 			$quiz_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'HubSpot is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'HubSpot is not connected', 'forminator' ) );
 			}
 
 			$quiz_settings_instance = $this->get_addon_settings( $quiz_id, 'quiz' );
 			if ( ! $quiz_settings_instance instanceof Forminator_Addon_Hubspot_Quiz_Settings ) {
-				throw new Forminator_Addon_Hubspot_Exception( __( 'Invalid Quiz Settings of HubSpot', 'forminator' ) );
+				throw new Forminator_Addon_Hubspot_Exception( esc_html__( 'Invalid Quiz Settings of HubSpot', 'forminator' ) );
 			}
 
 			$quiz_settings = $quiz_settings_instance->get_quiz_settings();

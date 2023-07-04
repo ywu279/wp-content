@@ -55,11 +55,11 @@ final class Forminator_Addon_Slack extends Forminator_Addon_Abstract {
 	 */
 	public function __construct() {
 		// late init to allow translation.
-		$this->_description                = __( 'Get awesome by your form.', 'forminator' );
-		$this->_activation_error_message   = __( 'Sorry but we failed to activate Slack Integration, don\'t hesitate to contact us', 'forminator' );
-		$this->_deactivation_error_message = __( 'Sorry but we failed to deactivate Slack Integration, please try again', 'forminator' );
+		$this->_description                = esc_html__( 'Get awesome by your form.', 'forminator' );
+		$this->_activation_error_message   = esc_html__( 'Sorry but we failed to activate Slack Integration, don\'t hesitate to contact us', 'forminator' );
+		$this->_deactivation_error_message = esc_html__( 'Sorry but we failed to deactivate Slack Integration, please try again', 'forminator' );
 
-		$this->_update_settings_error_message = __(
+		$this->_update_settings_error_message = esc_html__(
 			'Sorry, we failed to update settings, please check your form and try again',
 			'forminator'
 		);
@@ -97,7 +97,7 @@ final class Forminator_Addon_Slack extends Forminator_Addon_Abstract {
 		try {
 			// check if its active.
 			if ( ! $this->is_active() ) {
-				throw new Forminator_Addon_Slack_Exception( __( 'Slack is not active', 'forminator' ) );
+				throw new Forminator_Addon_Slack_Exception( esc_html__( 'Slack is not active', 'forminator' ) );
 			}
 
 			// if user completed api setup.
@@ -137,17 +137,17 @@ final class Forminator_Addon_Slack extends Forminator_Addon_Abstract {
 		try {
 			$form_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Slack_Exception( __( ' Slack is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Slack_Exception( esc_html__( ' Slack is not connected', 'forminator' ) );
 			}
 
 			$form_settings_instance = $this->get_addon_settings( $form_id, 'form' );
 			if ( ! $form_settings_instance instanceof Forminator_Addon_Slack_Form_Settings ) {
-				throw new Forminator_Addon_Slack_Exception( __( 'Invalid Form Settings of Slack', 'forminator' ) );
+				throw new Forminator_Addon_Slack_Exception( esc_html__( 'Invalid Form Settings of Slack', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $form_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Slack_Exception( __( 'No active Slack connection found in this form', 'forminator' ) );
+				throw new Forminator_Addon_Slack_Exception( esc_html__( 'No active Slack connection found in this form', 'forminator' ) );
 			}
 
 			$is_form_connected = true;
@@ -330,12 +330,12 @@ final class Forminator_Addon_Slack extends Forminator_Addon_Abstract {
 			$client_secret = isset( $submitted_data['client_secret'] ) ? $submitted_data['client_secret'] : '';
 
 			if ( empty( $client_id ) ) {
-				$template_params['client_id_error'] = __( 'Please input valid Client ID', 'forminator' );
+				$template_params['client_id_error'] = esc_html__( 'Please input valid Client ID', 'forminator' );
 				$has_errors                         = true;
 			}
 
 			if ( empty( $client_secret ) ) {
-				$template_params['client_secret_error'] = __( 'Please input valid Client Secret', 'forminator' );
+				$template_params['client_secret_error'] = esc_html__( 'Please input valid Client Secret', 'forminator' );
 				$has_errors                             = true;
 			}
 
@@ -688,7 +688,7 @@ final class Forminator_Addon_Slack extends Forminator_Addon_Abstract {
 				}
 
 				if ( empty( $token ) ) {
-					throw new Forminator_Addon_Slack_Exception( __( 'Failed to get token', 'forminator' ) );
+					throw new Forminator_Addon_Slack_Exception( esc_html__( 'Failed to get token', 'forminator' ) );
 				}
 
 				if ( ! $this->is_active() ) {
@@ -707,7 +707,7 @@ final class Forminator_Addon_Slack extends Forminator_Addon_Abstract {
 				$template_params['error_message'] = $e->getMessage();
 			}
 		} else {
-			$template_params['error_message'] = __( 'Failed to get authorization code.', 'forminator' );
+			$template_params['error_message'] = esc_html__( 'Failed to get authorization code.', 'forminator' );
 			// todo : translate $query_args[error].
 			$settings['auth_error_message'] = $template_params['error_message'];
 			$this->save_settings_values( $settings );

@@ -86,7 +86,7 @@ class Forminator_Addon_Admin_Ajax {
 	 */
 	private function validate_ajax() {
 		if ( ! forminator_is_user_allowed() || ! check_ajax_referer( self::$_nonce_action, false, false ) ) {
-			$this->send_json_errors( __( 'Invalid request, you are not allowed to do that action.', 'forminator' ) );
+			$this->send_json_errors( esc_html__( 'Invalid request, you are not allowed to do that action.', 'forminator' ) );
 		}
 	}
 
@@ -124,11 +124,11 @@ class Forminator_Addon_Admin_Ajax {
 		}
 
 		$this->send_json_success(
-			__( 'Addon Deactivated', 'forminator' ),
+			esc_html__( 'Addon Deactivated', 'forminator' ),
 			array(
 				'notification' => array(
 					'type' => 'success',
-					'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'has been disconnected successfully.' ),
+					'text' => '<strong>' . $addon->get_title() . '</strong> ' . esc_html__( 'has been disconnected successfully.' ),
 				),
 			)
 		);
@@ -153,7 +153,7 @@ class Forminator_Addon_Admin_Ajax {
 		$addon = $this->validate_addon_from_slug( $slug );
 
 		if ( ! $addon->is_settings_available() ) {
-			$this->send_json_errors( __( 'This Addon does not have settings available', 'forminator' ) );
+			$this->send_json_errors( esc_html__( 'This Addon does not have settings available', 'forminator' ) );
 		}
 
 		if ( isset( $sanitized_post_data['global_id'] ) ) {
@@ -226,24 +226,24 @@ class Forminator_Addon_Admin_Ajax {
 			$settings->$disconnect( $sanitized_post_data );
 
 			$this->send_json_success(
-				/* translators: ... */
-				sprintf( __( 'Successfully disconnected %1$s from this module', 'forminator' ), $addon->get_title() ),
+			/* translators: integration title */
+				sprintf( esc_html__( 'Successfully disconnected %s from this module', 'forminator' ), $addon->get_title() ),
 				array(
 					'notification' => array(
 						'type' => 'success',
-						'text' => '<strong>' . $addon_title . '</strong> ' . __( 'Successfully disconnected from this module' ),
+						'text' => '<strong>' . $addon_title . '</strong> ' . esc_html__( 'Successfully disconnected from this module' ),
 					),
 				)
 			);
 		} else {
 			$this->send_json_errors(
-				/* translators: ... */
-				sprintf( __( 'Failed to disconnect %1$s from this module', 'forminator' ), $addon->get_title() ),
+			/* translators: integration title */
+				sprintf( esc_html__( 'Failed to disconnect %s from this module', 'forminator' ), $addon->get_title() ),
 				array(),
 				array(
 					'notification' => array(
 						'type' => 'error',
-						'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'Failed to disconnected from this module' ),
+						'text' => '<strong>' . $addon->get_title() . '</strong> ' . esc_html__( 'Failed to disconnected from this module' ),
 					),
 				)
 			);
@@ -362,14 +362,14 @@ class Forminator_Addon_Admin_Ajax {
 		$errors = array();
 		foreach ( $required_fields as $key => $required_field ) {
 			if ( ! isset( $post_data[ $required_field ] ) ) {
-				/* translators: ... */
-				$errors[] = sprintf( __( 'Field %s is required', 'forminator' ), $required_field );
+				/* translators: %s: Required field */
+				$errors[] = sprintf( esc_html__( 'Field %s is required', 'forminator' ), $required_field );
 				continue;
 			}
 		}
 
 		if ( ! empty( $errors ) ) {
-			$this->send_json_errors( __( 'Please check your form.', 'forminator' ), $errors );
+			$this->send_json_errors( esc_html__( 'Please check your form.', 'forminator' ), $errors );
 		}
 
 		// TODO: sanitize.
@@ -397,12 +397,12 @@ class Forminator_Addon_Admin_Ajax {
 
 		if ( ! $addon || ! $addon instanceof Forminator_Addon_Abstract ) {
 			$this->send_json_errors(
-				__( 'Addon not found', 'forminator' ),
+				esc_html__( 'Addon not found', 'forminator' ),
 				array(),
 				array(
 					'notification' => array(
 						'type' => 'error',
-						'text' => '<strong>' . $slug . '</strong> ' . __( 'Integration Not Found' ),
+						'text' => '<strong>' . $slug . '</strong> ' . esc_html__( 'Integration Not Found' ),
 					),
 				)
 			);
@@ -505,7 +505,7 @@ class Forminator_Addon_Admin_Ajax {
 
 		$is_settings_available = 'is_' . $module_type . '_settings_available';
 		if ( ! $addon->$is_settings_available( $module_id ) ) {
-			$this->send_json_errors( __( 'This Addon does not have module settings available', 'forminator' ) );
+			$this->send_json_errors( esc_html__( 'This Addon does not have module settings available', 'forminator' ) );
 		}
 
 		forminator_maybe_attach_addon_hook( $addon );

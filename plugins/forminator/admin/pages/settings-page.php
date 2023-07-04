@@ -209,7 +209,7 @@ class Forminator_Settings_Page extends Forminator_Admin_Page {
 	public static function get_preset_names() {
 		$preset_names = get_option( 'forminator_appearance_presets', array() );
 		if ( ! isset( $preset_names['default'] ) ) {
-			self::save_preset_list( 'default', __( 'Default Preset', 'forminator' ) );
+			self::save_preset_list( 'default', esc_html__( 'Default Preset', 'forminator' ) );
 			$preset_names = get_option( 'forminator_appearance_presets', array() );
 		}
 

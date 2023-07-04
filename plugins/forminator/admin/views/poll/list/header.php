@@ -1,5 +1,5 @@
 <?php
-$title         = __( 'Polls', 'forminator' );
+$title         = esc_html__( 'Polls', 'forminator' );
 $create_dialog = 'polls';
 $import_dialog = 'import_poll';
 $hash          = '#polls';

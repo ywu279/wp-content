@@ -18,8 +18,8 @@ foreach ( $template_vars as $key => $val ) {
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
 	<?php
-		/* translators: %s: Addon name */
-		echo esc_html( sprintf( __( 'Configure %1$s API', 'forminator' ), 'ActiveCampaign' ) );
+	/* translators: 1: Add-on name */
+		printf( esc_html__( 'Configure %1$s API', 'forminator' ), 'ActiveCampaign' );
 	?>
 	</h3>
 
@@ -59,7 +59,7 @@ foreach ( $template_vars as $key => $val ) {
 		<div class="sui-control-with-icon">
 
 			<input name="api_url"
-				placeholder="<?php /* translators: ... */ echo esc_attr( sprintf( __( 'Enter %1$s API URL', 'forminator' ), 'ActiveCampaign' ) ); ?>"
+				placeholder="<?php /* translators: 1: Add-on name */ printf( esc_attr__( 'Enter %1$s API URL', 'forminator' ), 'ActiveCampaign' ); ?>"
 				value="<?php echo esc_attr( $vars['api_url'] ); ?>"
 				class="sui-form-control" />
 
@@ -80,7 +80,7 @@ foreach ( $template_vars as $key => $val ) {
 		<div class="sui-control-with-icon">
 
 			<input name="api_key"
-				placeholder="<?php /* translators: ... */ echo esc_attr( sprintf( __( 'Enter %1$s API Key', 'forminator' ), 'ActiveCampaign' ) ); ?>"
+				placeholder="<?php /* translators: 1: Add-on name */ printf( esc_attr__( 'Enter %1$s API Key', 'forminator' ), 'ActiveCampaign' ); ?>"
 				value="<?php echo esc_attr( $vars['api_key'] ); ?>"
 				class="sui-form-control" />
 

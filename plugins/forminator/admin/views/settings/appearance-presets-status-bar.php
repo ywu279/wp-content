@@ -1,6 +1,6 @@
 <?php
 $mobile = 'forminator-for-mobile' === $args['class'];
-$label  = __( 'Preset', 'forminator' );
+$label  = esc_html__( 'Preset', 'forminator' );
 ?>
 
 <div class="sui-box-status <?php echo esc_attr( $args['class'] ); ?>">

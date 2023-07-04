@@ -36,10 +36,10 @@ if ( FORMINATOR_PRO ) {
 	$main_actions = array();
 	if ( ! $addons->is_installed ) {
 		$actions['install'] = array(
-			'name'    => __( 'Install', 'forminator' ),
+			'name'    => esc_html__( 'Install', 'forminator' ),
 			'icon'    => 'sui-icon-download',
 			'class'   => 'sui-button-blue addons-actions',
-			'loading' => __( 'Installing', 'forminator' ),
+			'loading' => esc_html__( 'Installing', 'forminator' ),
 			'nonce'   => wp_create_nonce( 'forminator_popup_addons_actions' ),
 			'data'    => array(
 				'action' => 'addons-install',
@@ -49,10 +49,10 @@ if ( FORMINATOR_PRO ) {
 	} else {
 		if ( ! is_plugin_active( $addons->filename ) ) {
 			$actions['activate']    = array(
-				'name'    => ( $is_network_active && is_super_admin() ? __( 'Network Activate', 'forminator' ) : __( 'Activate', 'forminator' ) ),
+				'name'    => ( $is_network_active && is_super_admin() ? esc_html__( 'Network Activate', 'forminator' ) : esc_html__( 'Activate', 'forminator' ) ),
 				'icon'    => 'sui-icon-power-on-off',
 				'class'   => 'sui-button-blue addons-actions',
-				'loading' => __( 'Activating', 'forminator' ),
+				'loading' => esc_html__( 'Activating', 'forminator' ),
 				'nonce'   => wp_create_nonce( 'forminator_popup_addons_actions' ),
 				'data'    => array(
 					'action' => 'addons-activate',
@@ -60,10 +60,10 @@ if ( FORMINATOR_PRO ) {
 				),
 			);
 			$main_actions['delete'] = array(
-				'name'    => __( 'Delete', 'forminator' ),
+				'name'    => esc_html__( 'Delete', 'forminator' ),
 				'icon'    => 'sui-icon-trash',
 				'class'   => 'sui-button-ghost addons-actions',
-				'loading' => __( 'Deleting', 'forminator' ),
+				'loading' => esc_html__( 'Deleting', 'forminator' ),
 				'nonce'   => wp_create_nonce( 'forminator_popup_addons_actions' ),
 				'data'    => array(
 					'action' => 'addons-delete',
@@ -72,14 +72,14 @@ if ( FORMINATOR_PRO ) {
 			);
 		} else {
 			$actions['configure'] = array(
-				'name'     => __( 'Configure', 'forminator' ),
+				'name'     => esc_html__( 'Configure', 'forminator' ),
 				'icon'     => 'sui-icon-wrench-tool',
 				'class'    => 'addons-configure',
 				'nonce'    => wp_create_nonce( 'forminator_' . $addons_slug . '_settings_modal' ),
 				'loading'  => '',
 				'image'    => forminator_plugin_url() . 'assets/images/' . $addons_slug . '-logo.png',
 				'image_x2' => forminator_plugin_url() . 'assets/images/' . $addons_slug . '-logo@2x.png',
-				'title'    => sprintf( __( 'Connect %s Account', 'forminator' ), ucfirst( $addons_slug ) ),
+				'title'    => /* translators: %s: Add-on slug */ sprintf( esc_html__( 'Connect %s Account', 'forminator' ), ucfirst( $addons_slug ) ),
 				'data'     => array(
 					'action' => $addons_slug . '-connect-modal',
 					'addons' => $addons->pid,
@@ -87,10 +87,10 @@ if ( FORMINATOR_PRO ) {
 			);
 
 			$main_actions['deactivate'] = array(
-				'name'    => ( $is_network_active && is_super_admin() ? __( 'Network Deactivate', 'forminator' ) : __( 'Deactivate', 'forminator' ) ),
+				'name'    => ( $is_network_active && is_super_admin() ? esc_html__( 'Network Deactivate', 'forminator' ) : esc_html__( 'Deactivate', 'forminator' ) ),
 				'icon'    => 'sui-icon-power-on-off',
 				'class'   => 'sui-button-ghost wpmudev-open-modal',
-				'loading' => __( 'Deactivating', 'forminator' ),
+				'loading' => esc_html__( 'Deactivating', 'forminator' ),
 				'nonce'   => wp_create_nonce( 'forminator_popup_addons_actions' ),
 				'data'    => array(
 					'action' => 'addons-deactivate',
@@ -178,7 +178,7 @@ if ( FORMINATOR_PRO ) {
 										'data-action'  => 'addons-update',
 										'data-addon'   => esc_attr( $addons->pid ),
 										'data-nonce'   => esc_attr( wp_create_nonce( 'forminator_popup_addons_actions' ) ),
-										'data-version' => sprintf( esc_html__( 'Version %s', 'forminator' ), esc_html( $addons->version_latest ) ),
+										'data-version' => /* translators: %s: Latest version. */ sprintf( esc_html__( 'Version %s', 'forminator' ), esc_html( $addons->version_latest ) ),
 								    ),
 								)
 						    );
@@ -202,7 +202,7 @@ if ( FORMINATOR_PRO ) {
 										'data-modal-nonce' => esc_attr( wp_create_nonce( 'forminator_' . $addons_slug . '_settings_modal' ) ),
 										'data-modal-image' => esc_url( forminator_plugin_url() . 'assets/images/' . $addons_slug . '-logo.png' ),
 										'data-modal-image-x2' => esc_url( forminator_plugin_url() . 'assets/images/' . $addons_slug . '-logo@2x.png' ),
-										'data-modal-title' => esc_html( sprintf( __( 'Connect %s Account', 'forminator' ), ucfirst( $addons_slug ) ) ),
+										'data-modal-title' => /* translators: %s: Add-on slug */ sprintf( esc_html__( 'Connect %s Account', 'forminator' ), ucfirst( $addons_slug ) ),
 								    ),
 								)
 						    );
@@ -212,7 +212,7 @@ if ( FORMINATOR_PRO ) {
 								'admin/views/addons/action-button',
 								array(
 								    'compound' => true,
-								    'label'    => ( $is_network_active && is_super_admin() ? __( 'Network Deactivate', 'forminator' ) : __( 'Deactivate', 'forminator' ) ),
+								    'label'    => ( $is_network_active && is_super_admin() ? esc_html__( 'Network Deactivate', 'forminator' ) : esc_html__( 'Deactivate', 'forminator' ) ),
 								    'icon'     => 'power-on-off',
 								    'ghost'    => true,
 								    'class'    => 'wpmudev-open-modal',
@@ -222,7 +222,7 @@ if ( FORMINATOR_PRO ) {
 										'data-nonce'       => esc_attr( wp_create_nonce( 'forminator_popup_addons_actions' ) ),
 										'data-modal'       => 'addons-deactivate',
 										'data-modal-title' => esc_html__( 'Deactivate Add-ons', 'forminator' ),
-										'data-modal-content' => sprintf( __( 'You are trying to deactivate <strong>%s</strong> which is being used by the following forms. This can break the functionality of the forms. Are you sure you want to proceed?', 'forminator' ), esc_html( $addons->name ) ),
+										'data-modal-content' => /* translators: %s: Add-on name */ sprintf( esc_html__( 'You are trying to deactivate %s which is being used by the following forms. This can break the functionality of the forms. Are you sure you want to proceed?', 'forminator' ), '<strong>' . esc_html( $addons->name ) . '</strong>' ),
 										'data-addon-slug'  => esc_attr( $addons_slug ),
 										'data-is_network'  => $is_network_active,
 								    ),
@@ -235,7 +235,7 @@ if ( FORMINATOR_PRO ) {
 								'admin/views/addons/action-button',
 								array(
 								    'compound' => true,
-								    'label'    => ( $is_network_active && is_super_admin() ? __( 'Network Activate', 'forminator' ) : __( 'Activate', 'forminator' ) ),
+								    'label'    => ( $is_network_active && is_super_admin() ? esc_html__( 'Network Activate', 'forminator' ) : esc_html__( 'Activate', 'forminator' ) ),
 								    'icon'     => 'power-on-off',
 								    'color'    => 'blue',
 								    'class'    => 'addons-actions',

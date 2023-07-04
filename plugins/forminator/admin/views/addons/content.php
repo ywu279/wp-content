@@ -164,7 +164,7 @@ $projects = $this->get_addons_by_action();
 				Forminator_Admin_Addons_page::get_instance()->render_template(
 					'admin/views/addons/content-empty',
 					array(
-						'title'       => sprintf( esc_html__( 'All good, %s!', 'forminator' ), $current_user->display_name ),
+						'title'       => /* translators: %s: User display name */ sprintf( esc_html__( 'All good, %s!', 'forminator' ), $current_user->display_name ),
 						'description' => esc_html__( 'No add-ons require an update at this time. Use the button below to check again.', 'forminator' ),
 						'refresh'     => true,
 					)

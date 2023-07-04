@@ -21,7 +21,7 @@
 					<span class="sui-screen-reader-text">Close this modal</span>
 				</button>
 
-				<h3 id="forminator-activate-popup-<?php echo esc_attr( $addons->pid ); ?>__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: initial; text-overflow: initial;"><?php echo esc_html( sprintf( __( '%s installed!', 'forminator' ), $addons->name ) ); ?></h3>
+				<h3 id="forminator-activate-popup-<?php echo esc_attr( $addons->pid ); ?>__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: initial; text-overflow: initial;"><?php /* translators: %s: Add-on name */ printf( esc_html__( '%s installed!', 'forminator' ), $addons->name ); ?></h3>
 
 				<p id="forminator-activate-popup-<?php echo esc_attr( $addons->pid ); ?>__description" class="sui-description" style="margin-top: 15px;"><?php esc_html_e( 'Would you like to activate it now?', 'forminator' ); ?></p>
 

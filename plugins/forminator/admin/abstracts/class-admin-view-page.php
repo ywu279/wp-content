@@ -217,7 +217,12 @@ abstract class Forminator_Admin_View_Page extends Forminator_Admin_Page {
 	 * @since 1.0
 	 */
 	public function fields_header() {
-		echo esc_html( sprintf( __( 'Showing %$1s of %$2s fields', 'forminator' ), $this->checked_fields, $this->total_fields ) );
+		echo sprintf(
+		/* Translators: 1. checked field, 2. total field. */
+                esc_html__( 'Showing %$1s of %$2s fields', 'forminator' ),
+                $this->checked_fields,
+                $this->total_fields
+        );
 	}
 
 	/**

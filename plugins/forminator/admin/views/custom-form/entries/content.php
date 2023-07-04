@@ -12,7 +12,7 @@ if ( $this->has_payments() && $count <= 100 ) {
 	$notice_args = array(
 		'submissions'     => $live_payment_count,
 		'min_submissions' => 0,
-		'notice'          => sprintf( esc_html__( "%1\$sCongratulations!%2\$s You have started collecting live payments on this form - that's awesome. We have spent countless hours developing this free plugin for you, and we would really appreciate it if you could drop us a rating on wp.org to help us spread the word and boost our motivation.", 'forminator' ), '<strong>', '</strong>' ),
+		'notice'          => /* Translators: 1. Opening <strong> tag, 2. closing <strong> tag. */ sprintf( esc_html__( "%1\$sCongratulations!%2\$s You have started collecting live payments on this form - that's awesome. We have spent countless hours developing this free plugin for you, and we would really appreciate it if you could drop us a rating on wp.org to help us spread the word and boost our motivation.", 'forminator' ), '<strong>', '</strong>' ),
 	);
 } else {
 	$notice_args = array(
@@ -155,7 +155,8 @@ if ( $this->total_entries() > 0 ) :
 
 								echo '<span aria-hidden="true"></span>';
 
-								echo '<span class="sui-screen-reader-text">' . sprintf(/* translators: ... */
+								echo '<span class="sui-screen-reader-text">' . sprintf(
+									/* translators: %s: Entry ID */
 									esc_html__( 'Select entry number %s', 'forminator' ),
 									esc_html( $db_entry_id )
 								) . '</span>';
@@ -199,7 +200,8 @@ if ( $this->total_entries() > 0 ) :
 						if ( $summary['num_fields_left'] ) {
 
 							echo '<td>';
-							echo '' . sprintf(/* translators: ... */
+							echo '' . sprintf(
+								/* translators: %s: number of other field. */
 								esc_html__( '+ %s other fields', 'forminator' ),
 								esc_html( $summary['num_fields_left'] )
 							) . '';

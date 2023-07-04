@@ -104,8 +104,8 @@ $notifications   = $report_instance->fetch_reports();
                                 </div>
                                 <div>
                                     <?php echo 'all' === $module_type
-                                        ? sprintf( __( 'All %s', 'forminator' ), esc_html( $module ) )
-                                        : sprintf( __( 'Selected %s', 'forminator' ), esc_html( $module ) ); ?>
+                                        ? /* translators: %s: Module name */ sprintf( esc_html__( 'All %s', 'forminator' ), esc_html( $module ) )
+                                        : /* translators: %s: Module name */ sprintf( esc_html__( 'Selected %s', 'forminator' ), esc_html( $module ) ); ?>
                                     <span class="sui-tag sui-tag-sm">
                                         <?php if ( 'all' === $module_type ) {
                                         echo absint( $report_instance->get_total_forms( $module ) );

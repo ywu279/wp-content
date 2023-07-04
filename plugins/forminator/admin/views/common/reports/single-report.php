@@ -31,7 +31,9 @@
                         <?php if ( isset( $has_payment ) && ! $has_payment ) { ?>
                             <p><?php esc_html_e( 'No payment field found. Add a PayPal or a Stripe field to your form to start collecting payments.', 'forminator' ); ?></p>
                         <?php } else { ?>
-                            <p><?php printf( esc_html__( 'One or more of your payment fields are set to %1$sTest/Sandbox%2$s mode. Forminator reports only capture data from live payments. Please switch to live mode to view the payment data here', 'forminator' ),
+                            <p><?php printf(
+	                            /* Translators: 1. Opening <strong> tag, 2. closing <strong> tag. */
+                                    esc_html__( 'One or more of your payment fields are set to %1$sTest/Sandbox%2$s mode. Forminator reports only capture data from live payments. Please switch to live mode to view the payment data here', 'forminator' ),
                                     '<strong>',
                                     '</strong>'
                                 ); ?></p>
@@ -68,7 +70,7 @@
                     </div>
                 </td>
                 <td>
-                    <div class="fui-table-title"><?php esc_html_e( 'previous period', '' ); ?>
+                    <div class="fui-table-title"><?php esc_html_e( 'previous period', 'forminator' ); ?>
                         <button class="sui-button-icon sui-tooltip sui-tooltip-top-center sui-tooltip-constrained sui-tooltip-top-right-mobile"
                                 data-tooltip="<?php esc_html_e( 'Displays the statistics for the same previous period you selected.', 'forminator' ); ?>">
                             <span class="sui-icon-info" aria-hidden="true"></span>

@@ -14,8 +14,8 @@
 				'forever'     => get_option( 'retain_submission_forever' ),
 				'number'      => get_option( 'forminator_retain_submissions_interval_number', 0 ),
 				'unit'        => get_option( 'forminator_retain_submissions_interval_unit', 'days' ),
-				'title'       => __( 'Submissions Retention', 'forminator' ),
-				'description' => __( 'How long do you want to retain the form submissions for?', 'forminator' ),
+				'title'       => esc_html__( 'Submissions Retention', 'forminator' ),
+				'description' => esc_html__( 'How long do you want to retain the form submissions for?', 'forminator' ),
 			)
 		);
 
@@ -26,8 +26,8 @@
 				'forever'     => get_option( 'retain_ip_forever' ),
 				'number'      => get_option( 'forminator_retain_ip_interval_number', 0 ),
 				'unit'        => get_option( 'forminator_retain_ip_interval_unit', 'days' ),
-				'title'       => __( 'IP Retention', 'forminator' ),
-				'description' => __( 'Choose how long to retain IP address before a submission is anonymized.', 'forminator' ),
+				'title'       => esc_html__( 'IP Retention', 'forminator' ),
+				'description' => esc_html__( 'Choose how long to retain IP address before a submission is anonymized.', 'forminator' ),
 			)
 		);
 
@@ -37,7 +37,7 @@
 		<span class="sui-description">
 			<?php
 			printf(
-				/* translators: ... */
+			/* Translators: 1. Opening <a> tag with Erase personal data URL, 2. closing <a> tag. */
 				esc_html__( 'When handling an %1$saccount erasure request%2$s that contains an email associated with a submission, what do you want to do?', 'forminator' ),
 				'<a href="' . esc_url( admin_url( 'erase-personal-data.php' ) ) . '" target="_blank">',
 				'</a>'

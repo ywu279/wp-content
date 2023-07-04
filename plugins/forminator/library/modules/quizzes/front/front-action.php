@@ -60,7 +60,7 @@ class Forminator_Quiz_Front_Action extends Forminator_Front_Action {
 		if ( ! is_object( $this->model ) ) {
 			wp_send_json_error(
 				array(
-					'error' => apply_filters( 'forminator_submit_quiz_error_not_found', __( 'Form not found', 'forminator' ) ),
+					'error' => apply_filters( 'forminator_submit_quiz_error_not_found', esc_html__( 'Form not found', 'forminator' ) ),
 				)
 			);
 		}
@@ -69,7 +69,7 @@ class Forminator_Quiz_Front_Action extends Forminator_Front_Action {
 		if ( Forminator_Quiz_Model::STATUS_PUBLISH !== $this->model->status ) {
 			wp_send_json_error(
 				array(
-					'error' => __( 'Quiz submissions disabled.', 'forminator' ),
+					'error' => esc_html__( 'Quiz submissions disabled.', 'forminator' ),
 				)
 			);
 		}
@@ -422,7 +422,7 @@ class Forminator_Quiz_Front_Action extends Forminator_Front_Action {
 		if ( ! is_array( $answers ) || 0 === count( $answers ) ) {
 			wp_send_json_error(
 				array(
-					'error' => apply_filters( 'forminator_quizzes_process_knowledge_submit_no_answer_error', __( "You haven't answered any questions", 'forminator' ) ),
+					'error' => apply_filters( 'forminator_quizzes_process_knowledge_submit_no_answer_error', esc_html__( 'You haven\'t answered any questions', 'forminator' ) ),
 				)
 			);
 		}
@@ -434,7 +434,7 @@ class Forminator_Quiz_Front_Action extends Forminator_Front_Action {
 				// need to check if all the questions are answered.
 				wp_send_json_error(
 					array(
-						'error' => apply_filters( 'forminator_quizzes_process_knowledge_submit_answer_all_error', __( 'Please answer all the questions', 'forminator' ) ),
+						'error' => apply_filters( 'forminator_quizzes_process_knowledge_submit_answer_all_error', esc_html__( 'Please answer all the questions', 'forminator' ) ),
 					)
 				);
 			} else {
@@ -584,7 +584,7 @@ class Forminator_Quiz_Front_Action extends Forminator_Front_Action {
 		if ( ! is_array( $user_answers ) || 0 === count( $user_answers ) ) {
 			wp_send_json_error(
 				array(
-					'error' => apply_filters( 'forminator_quizzes_process_knowledge_submit_no_answer_error', __( "You haven't answered any questions", 'forminator' ) ),
+					'error' => apply_filters( 'forminator_quizzes_process_knowledge_submit_no_answer_error', esc_html__( 'You haven\'t answered any questions', 'forminator' ) ),
 				)
 			);
 		}
@@ -600,7 +600,7 @@ class Forminator_Quiz_Front_Action extends Forminator_Front_Action {
 			// need to check if all the questions are answered.
 			wp_send_json_error(
 				array(
-					'error' => apply_filters( 'forminator_quizzes_process_knowledge_submit_answer_all_error', __( 'Please answer all the questions', 'forminator' ) ),
+					'error' => apply_filters( 'forminator_quizzes_process_knowledge_submit_answer_all_error', esc_html__( 'Please answer all the questions', 'forminator' ) ),
 				)
 			);
 		}
@@ -677,7 +677,7 @@ class Forminator_Quiz_Front_Action extends Forminator_Front_Action {
 			if ( ! empty( $correct_answers ) && is_array( $correct_answers ) ) {
 				$answer_titles = implode( ', ', wp_list_pluck( $correct_answers, 'title' ) );
 				if ( count( $correct_answers ) > 1 ) {
-					$answer_titles = preg_replace( '/(,(?!.*,))/', __( ' and', 'forminator' ), $answer_titles );
+					$answer_titles = preg_replace( '/(,(?!.*,))/', esc_html__( ' and', 'forminator' ), $answer_titles );
 				}
 			}
 

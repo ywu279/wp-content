@@ -20,7 +20,7 @@ class Forminator_Polls_General_Data_Protection extends Forminator_General_Data_P
 	protected static $module_slug = 'poll';
 
 	public function __construct() {
-		parent::__construct( __( 'Forminator Polls', 'forminator' ) );
+		parent::__construct( esc_html__( 'Forminator Polls', 'forminator' ) );
 	}
 
 	/**

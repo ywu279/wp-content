@@ -39,7 +39,7 @@ class Forminator_Addon_Trello_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Abs
 	 */
 	public function __construct( Forminator_Addon_Abstract $addon, $poll_id ) {
 		parent::__construct( $addon, $poll_id );
-		$this->_submit_poll_error_message = __( 'Trello failed to process submitted data. Please check your form and try again', 'forminator' );
+		$this->_submit_poll_error_message = esc_html__( 'Trello failed to process submitted data. Please check your form and try again', 'forminator' );
 	}
 
 	/**
@@ -310,7 +310,7 @@ class Forminator_Addon_Trello_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Abs
 			return array(
 				'is_sent'         => true,
 				'connection_name' => $connection_settings['name'] . $name_suffix,
-				'description'     => __( 'Successfully send data to Trello', 'forminator' ),
+				'description'     => esc_html__( 'Successfully send data to Trello', 'forminator' ),
 				'data_sent'       => $api->get_last_data_sent(),
 				'data_received'   => $api->get_last_data_received(),
 				'url_request'     => $api->get_last_url_request(),
@@ -377,10 +377,10 @@ class Forminator_Addon_Trello_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Abs
 		$answer = isset( $fields_labels[ $answer_data ] ) ? $fields_labels[ $answer_data ] : $answer_data;
 		$extra  = $extra_field;
 
-		$markdown  = '##' . __( 'Poll Answer', 'forminator' ) . "\n";
-		$markdown .= '**' . __( 'Vote', 'forminator' ) . ':** ' . $answer;
+		$markdown  = '##' . esc_html__( 'Poll Answer', 'forminator' ) . "\n";
+		$markdown .= '**' . esc_html__( 'Vote', 'forminator' ) . ':** ' . $answer;
 		if ( ! empty( $extra ) ) {
-			$markdown .= "\n**" . __( 'Extra', 'forminator' ) . ':** ' . $extra;
+			$markdown .= "\n**" . esc_html__( 'Extra', 'forminator' ) . ':** ' . $extra;
 		}
 
 		/**
@@ -432,7 +432,7 @@ class Forminator_Addon_Trello_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Abs
 
 		$fields = $this->poll->get_fields();
 
-		$markdown = '##' . __( 'Poll Results', 'forminator' );
+		$markdown = '##' . esc_html__( 'Poll Results', 'forminator' );
 		if ( ! is_null( $fields ) ) {
 			foreach ( $fields as $field ) {
 				$label = addslashes( $field->title );
@@ -580,7 +580,7 @@ class Forminator_Addon_Trello_Poll_Hooks extends Forminator_Addon_Poll_Hooks_Abs
 	public function on_export_render_title_row() {
 
 		$export_headers = array(
-			'info' => __( 'Trello Info', 'forminator' ),
+			'info' => esc_html__( 'Trello Info', 'forminator' ),
 		);
 
 		$poll_id                = $this->poll_id;

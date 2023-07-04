@@ -67,7 +67,7 @@ class Forminator_Stripe extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Stripe', 'forminator' );
+		$this->name = esc_html__( 'Stripe', 'forminator' );
 
 		try {
 			$stripe = new Forminator_Gateway_Stripe();
@@ -96,7 +96,7 @@ class Forminator_Stripe extends Forminator_Field {
 		}
 
 		return array(
-			'field_label'              => __( 'Credit / Debit Card', 'forminator' ),
+			'field_label'              => esc_html__( 'Credit / Debit Card', 'forminator' ),
 			'mode'                     => 'test',
 			'currency'                 => $default_currency,
 			'amount_type'              => 'fixed',
@@ -120,7 +120,7 @@ class Forminator_Stripe extends Forminator_Field {
 			'quantity_type'            => 'fixed',
 			'payments'                 => array(
 				array(
-					'plan_name'                => __( 'Plan 1', 'forminator' ),
+					'plan_name'                => esc_html__( 'Plan 1', 'forminator' ),
 					'payment_method'           => 'single',
 					'amount_type'              => 'fixed',
 					'amount'                   => '',
@@ -503,7 +503,7 @@ class Forminator_Stripe extends Forminator_Field {
 		// Throw error if payment ID is empty.
 		if ( empty( $id ) ) {
 			$response = array(
-				'message' => __( 'Your Payment ID is empty, please reload the page and try again!', 'forminator' ),
+				'message' => esc_html__( 'Your Payment ID is empty, please reload the page and try again!', 'forminator' ),
 				'errors'  => array(),
 			);
 
@@ -522,17 +522,17 @@ class Forminator_Stripe extends Forminator_Field {
 			try {
 				// Check payment amount.
 				if ( 0 > $amount ) {
-					throw new Exception( __( 'Payment amount should be larger than 0.', 'forminator' ) );
+					throw new Exception( esc_html__( 'Payment amount should be larger than 0.', 'forminator' ) );
 				}
 
 				// Check payment ID.
 				if ( empty( $id ) ) {
-					throw new Exception( __( 'Your Payment ID is empty!', 'forminator' ) );
+					throw new Exception( esc_html__( 'Your Payment ID is empty!', 'forminator' ) );
 				}
 
 				// Check payment method.
 				if ( ! isset( $submitted_data['payment_method'] ) || is_null( $submitted_data['payment_method'] ) ) {
-					throw new Exception( __( 'Your Payment ID is empty!', 'forminator' ) );
+					throw new Exception( esc_html__( 'Your Payment ID is empty!', 'forminator' ) );
 				}
 
 				$options = array(
@@ -733,12 +733,12 @@ class Forminator_Stripe extends Forminator_Field {
 				throw new Exception( $intent->get_error_message() );
 			} elseif ( ! is_object( $intent ) ) {
 				// Make sure Payment Intent is object.
-				throw new Exception( __( 'Payment Intent object is not valid Payment object.', 'forminator' ) );
+				throw new Exception( esc_html__( 'Payment Intent object is not valid Payment object.', 'forminator' ) );
 			}
 
 			// Check if the PaymentIntent is set or empty.
 			if ( empty( $intent->id ) ) {
-				throw new Exception( __( 'Payment Intent ID is not valid!', 'forminator' ) );
+				throw new Exception( esc_html__( 'Payment Intent ID is not valid!', 'forminator' ) );
 			}
 
 			$charge_amount = $this->get_payment_amount( $field );
@@ -829,7 +829,7 @@ class Forminator_Stripe extends Forminator_Field {
 		try {
 			// Makue sure payment ID exist.
 			if ( ! isset( Forminator_CForm_Front_Action::$prepared_data['paymentid'] ) ) {
-				throw new Exception( __( 'Stripe Payment ID does not exist.', 'forminator' ) );
+				throw new Exception( esc_html__( 'Stripe Payment ID does not exist.', 'forminator' ) );
 			}
 
 			// Check payment amount.
@@ -866,7 +866,7 @@ class Forminator_Stripe extends Forminator_Field {
 		try {
 			// Makue sure payment ID exist.
 			if ( ! isset( $submitted_data['paymentid'] ) ) {
-				throw new Exception( __( 'Stripe Payment ID does not exist.', 'forminator' ) );
+				throw new Exception( esc_html__( 'Stripe Payment ID does not exist.', 'forminator' ) );
 			}
 
 			// Check payment amount.
@@ -1085,10 +1085,10 @@ class Forminator_Stripe extends Forminator_Field {
 	public function payment_method( $method ) {
 		switch ( $method ) {
 			case 'single':
-				$method = __( 'One Time', 'forminator' );
+				$method = esc_html__( 'One Time', 'forminator' );
 				break;
 			case 'subscription':
-				$method = __( 'Subscription', 'forminator' );
+				$method = esc_html__( 'Subscription', 'forminator' );
 				break;
 			default:
 				$method = '';

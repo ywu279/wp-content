@@ -18,8 +18,8 @@ class Forminator_Widget extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'forminator_widget',
-			__( 'Forminator Widget', 'forminator' ),
-			array( 'description' => __( 'Forminator Widget', 'forminator' ) )
+			esc_html__( 'Forminator Widget', 'forminator' ),
+			array( 'description' => esc_html__( 'Forminator Widget', 'forminator' ) )
 		);
 	}
 

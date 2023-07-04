@@ -188,7 +188,7 @@ class Forminator_Reports {
 	 */
 	public function get_subject() {
 		return sprintf( /* translators: %s: Url for site */
-			__( 'Here\'s your latest report for %s', 'forminator' ),
+			esc_html__( 'Here\'s your latest report for %s', 'forminator' ),
 			site_url()
 		);
 	}

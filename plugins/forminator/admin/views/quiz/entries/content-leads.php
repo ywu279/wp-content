@@ -47,7 +47,8 @@ foreach ( $this->entries_iterator() as $entries ) {
 
 						echo '<span aria-hidden="true"></span>';
 
-						echo '<span class="sui-screen-reader-text">' . sprintf(/* translators: ... */
+						echo '<span class="sui-screen-reader-text">' . sprintf(
+							/* translators: %s: Entry ID */
 							esc_html__( 'Select entry number %s', 'forminator' ),
 							esc_html( $db_entry_id )
 						) . '</span>';
@@ -79,7 +80,8 @@ foreach ( $this->entries_iterator() as $entries ) {
 		if ( $summary['num_fields_left'] ) {
 
 			echo '<td>';
-				echo '' . sprintf(/* translators: ... */
+				echo '' . sprintf(
+					/* translators: %s: number of other fields left */
 					esc_html__( '+ %s other fields', 'forminator' ),
 					esc_html( $summary['num_fields_left'] )
 				) . '';
@@ -169,7 +171,14 @@ foreach ( $this->entries_iterator() as $entries ) {
 								}
 								?>
 
-								<p class="sui-description"><?php echo sprintf( esc_html__( 'You got %1$s/%2$s correct answers.', 'forminator' ), (int) $right, (int) $total ); ?></p>
+                                <p class="sui-description">
+									<?php printf(
+									/* translators: 1: Correct answer, 2: Total */
+										esc_html__( 'You got %1$s/%2$s correct answers.', 'forminator' ),
+										$right,
+										$total
+									); ?>
+                                </p>
 
 								<table class="fui-entries-table">
 
@@ -261,7 +270,12 @@ foreach ( $this->entries_iterator() as $entries ) {
 
 											<tr>
 
-												<td colspan="2"><?php echo wp_kses_post( sprintf( __( '<strong>Quiz Result:</strong> %s', 'forminator' ), $meta['result']['title'] ) ); ?></td>
+												<td colspan="2">
+													<?php printf( '<strong>%1$s<strong> %2$s',
+														esc_html__( 'Quiz Result:', 'forminator' ),
+														$meta['result']['title']
+													); ?>
+                                                </td>
 
 											</tr>
 

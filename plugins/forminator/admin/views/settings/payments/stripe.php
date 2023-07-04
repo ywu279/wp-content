@@ -17,7 +17,14 @@ foreach ( $template_vars as $key => $val ) {
 }
 ?>
 
-<p class="sui-description" style="margin-top: 0; text-align: center;"><?php /* translators: ... */ printf( esc_html__( 'Enter your Stripe API keys below to connect your account. You can grab your API keys from %1$shere%2$s.' ), '<a href="https://dashboard.stripe.com/account/apikeys" target="_blank">', '</a>' ); ?></p>
+<p class="sui-description" style="margin-top: 0; text-align: center;">
+    <?php printf(
+    /* Translators: 1. Opening <a> tag with link stripe API key, 2. closing <a> tag. */
+            esc_html__( 'Enter your Stripe API keys below to connect your account. You can grab your API keys from %1$shere%2$s.', 'forminator' ),
+            '<a href="https://dashboard.stripe.com/account/apikeys" target="_blank">',
+            '</a>'
+    ); ?>
+</p>
 
 <?php if ( ! empty( $vars['error_message'] ) ) : ?>
 
@@ -52,7 +59,7 @@ foreach ( $template_vars as $key => $val ) {
 
 		<input
 			class="sui-form-control"
-			name="test_key" placeholder="<?php echo esc_attr( __( 'Enter your test publishable key', 'forminator' ) ); ?>"
+			name="test_key" placeholder="<?php echo esc_attr__( 'Enter your test publishable key', 'forminator' ); ?>"
 			value="<?php echo esc_attr( $vars['test_key'] ); ?>"
 		/>
 		<?php if ( ! empty( $vars['test_key_error'] ) ) : ?>
@@ -67,7 +74,7 @@ foreach ( $template_vars as $key => $val ) {
 
 		<input
 			class="sui-form-control"
-			name="test_secret" placeholder="<?php echo esc_attr( __( 'Enter your test secret key', 'forminator' ) ); ?>"
+			name="test_secret" placeholder="<?php echo esc_attr__( 'Enter your test secret key', 'forminator' ); ?>"
 			value="<?php echo esc_attr( $vars['test_secret'] ); ?>"
 		/>
 
@@ -83,7 +90,7 @@ foreach ( $template_vars as $key => $val ) {
 
 		<input
 			class="sui-form-control"
-			name="live_key" placeholder="<?php echo esc_attr( __( 'Enter your live publishable key', 'forminator' ) ); ?>"
+			name="live_key" placeholder="<?php echo esc_attr__( 'Enter your live publishable key', 'forminator' ); ?>"
 			value="<?php echo esc_attr( $vars['live_key'] ); ?>"
 		/>
 
@@ -99,7 +106,7 @@ foreach ( $template_vars as $key => $val ) {
 
 		<input
 			class="sui-form-control"
-			name="live_secret" placeholder="<?php echo esc_attr( __( 'Enter your live secret key', 'forminator' ) ); ?>"
+			name="live_secret" placeholder="<?php echo esc_attr__( 'Enter your live secret key', 'forminator' ); ?>"
 			value="<?php echo esc_attr( $vars['live_secret'] ); ?>"
 		/>
 

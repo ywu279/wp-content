@@ -104,8 +104,8 @@ abstract class Forminator_Addon_Form_Settings_Abstract extends Forminator_Addon_
 		$this->form_id = $form_id;
 		$custom_form   = Forminator_Base_Form_Model::get_model( $this->form_id );
 		if ( ! $custom_form ) {
-			/* translators: ... */
-			throw new Forminator_Addon_Exception( sprintf( __( 'Form with id %d could not be found', 'forminator' ), $this->form_id ) );
+			/* translators: Form ID */
+			throw new Forminator_Addon_Exception( sprintf( esc_html__( 'Form with id %d could not be found', 'forminator' ), $this->form_id ) );
 		}
 		$this->form_fields   = forminator_addon_format_form_fields( $custom_form );
 		$this->form_settings = forminator_addon_format_form_settings( $custom_form );

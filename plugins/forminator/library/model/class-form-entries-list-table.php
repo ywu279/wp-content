@@ -158,7 +158,7 @@ class Forminator_Entries_List_Table extends WP_List_Table {
 
 		if ( ! empty( $columns['cb'] ) ) {
 			static $cb_counter = 1;
-			$columns['cb']     = '<label class="screen-reader-text" for="cb-select-all-' . $cb_counter . '">' . __( 'Select All' ) . '</label>'
+			$columns['cb']     = '<label class="screen-reader-text" for="cb-select-all-' . $cb_counter . '">' . esc_html__( 'Select All', 'forminator' ) . '</label>'
 				. '<div class="wpmudev-checkbox"><input id="cb-select-all-' . $cb_counter . '" type="checkbox" /><label for="cb-select-all-' . $cb_counter . '" class="wpdui-icon wpdui-icon-check"></label></div>';
 			$cb_counter++;
 		}
@@ -285,7 +285,7 @@ class Forminator_Entries_List_Table extends WP_List_Table {
 					if ( is_array( $value ) ) {
 						if ( 'file' === $key && isset( $value['file_url'] ) ) {
 							$file_name = basename( $value['file_url'] );
-							$file_name = "<a href='" . $value['file_url'] . "' target='_blank' rel='noreferrer' title='" . __( 'View File', 'forminator' ) . "'>$file_name</a> ,";
+							$file_name = "<a href='" . $value['file_url'] . "' target='_blank' rel='noreferrer' title='" . esc_html__( 'View File', 'forminator' ) . "'>$file_name</a> ,";
 							$output   .= $file_name;
 						}
 					} else {
@@ -293,7 +293,7 @@ class Forminator_Entries_List_Table extends WP_List_Table {
 							if ( 'postdata' === $key ) {
 								$url     = get_edit_post_link( $value );
 								$name    = get_the_title( $value );
-								$output .= "<a href='" . $url . "' target='_blank' rel='noreferrer' title='" . __( 'Edit Post', 'forminator' ) . "'>$name</a> ,";
+								$output .= "<a href='" . $url . "' target='_blank' rel='noreferrer' title='" . esc_html__( 'Edit Post', 'forminator' ) . "'>$name</a> ,";
 							} else {
 								if ( is_string( $key ) ) {
 									if ( 'product-id' === $key || 'product-quantity' === $key ) {
@@ -312,7 +312,7 @@ class Forminator_Entries_List_Table extends WP_List_Table {
 					}
 				}
 				if ( $is_product ) {
-					$output = sprintf( /* translators: ... */ __( 'Total %d', 'forminator' ), $product_cost );
+					$output = sprintf( /* translators: %s: Product cost */ esc_html__( 'Total %d', 'forminator' ), $product_cost );
 				} else {
 					if ( ! empty( $output ) ) {
 						$output = substr( trim( $output ), 0, -1 );

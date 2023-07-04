@@ -53,7 +53,7 @@ class Forminator_Date extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Datepicker', 'forminator' );
+		$this->name = esc_html__( 'Datepicker', 'forminator' );
 	}
 
 	/**
@@ -67,16 +67,16 @@ class Forminator_Date extends Forminator_Field {
 			'field_type'        => 'picker',
 			'date_format'       => 'mm/dd/yy',
 			'default_date'      => 'none',
-			'field_label'       => __( 'Date', 'forminator' ),
-			'placeholder'       => __( 'Choose Date', 'forminator' ),
+			'field_label'       => esc_html__( 'Date', 'forminator' ),
+			'placeholder'       => esc_html__( 'Choose Date', 'forminator' ),
 			'icon'              => 'true',
-			'day_label'         => __( 'Day', 'forminator' ),
-			'day_placeholder'   => __( 'E.g. 01', 'forminator' ),
-			'month_label'       => __( 'Month', 'forminator' ),
-			'month_placeholder' => __( 'E.g. 01', 'forminator' ),
-			'year_label'        => __( 'Year', 'forminator' ),
-			'year_placeholder'  => __( 'E.g. 2000', 'forminator' ),
-			'restrict_message'  => __( 'Please select one of the available dates.', 'forminator' ),
+			'day_label'         => esc_html__( 'Day', 'forminator' ),
+			'day_placeholder'   => esc_html__( 'E.g. 01', 'forminator' ),
+			'month_label'       => esc_html__( 'Month', 'forminator' ),
+			'month_placeholder' => esc_html__( 'E.g. 01', 'forminator' ),
+			'year_label'        => esc_html__( 'Year', 'forminator' ),
+			'year_placeholder'  => esc_html__( 'E.g. 2000', 'forminator' ),
+			'restrict_message'  => esc_html__( 'Please select one of the available dates.', 'forminator' ),
 		);
 	}
 
@@ -1038,9 +1038,9 @@ class Forminator_Date extends Forminator_Field {
 
 		if ( empty( $required_validation_message ) ) {
 			if ( 'picker' === $type ) {
-				$required_validation_message = __( 'This field is required.', 'forminator' );
+				$required_validation_message = esc_html__( 'This field is required.', 'forminator' );
 			} else {
-				$required_validation_message = ' ' . __( 'field is required.', 'forminator' );
+				$required_validation_message = ' ' . esc_html__( 'field is required.', 'forminator' );
 			}
 		}
 
@@ -1061,7 +1061,7 @@ class Forminator_Date extends Forminator_Field {
 
 			$format_validation_message = apply_filters(
 				'forminator_field_date_format_validation_message',
-				__( 'Not valid date', 'forminator' ),
+				esc_html__( 'Not valid date', 'forminator' ),
 				$field,
 				$type,
 				$date_format,
@@ -1125,7 +1125,7 @@ class Forminator_Date extends Forminator_Field {
 		$restrict_type   = self::get_property( 'howto-restrict', $field );
 
 		if ( $this->is_required( $field ) ) {
-			$required_validation_message = self::get_property( 'required_message', $field, __( 'This field is required. Please enter a valid date.', 'forminator' ) );
+			$required_validation_message = self::get_property( 'required_message', $field, esc_html__( 'This field is required. Please enter a valid date.', 'forminator' ) );
 			if ( empty( $data ) ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_field_date_required_field_validation_message',
@@ -1146,7 +1146,7 @@ class Forminator_Date extends Forminator_Field {
 
 					$this->validation_message[ $month_id ] = apply_filters(
 						'forminator_field_date_required_field_validation_message',
-						__( 'Month field is required.', 'forminator' ),
+						esc_html__( 'Month field is required.', 'forminator' ),
 						$month_id,
 						$data,
 						$this
@@ -1158,7 +1158,7 @@ class Forminator_Date extends Forminator_Field {
 
 					$this->validation_message[ $day_id ] = apply_filters(
 						'forminator_field_date_required_field_validation_message',
-						__( 'Day field is required.', 'forminator' ),
+						esc_html__( 'Day field is required.', 'forminator' ),
 						$day_id,
 						$data,
 						$this
@@ -1170,7 +1170,7 @@ class Forminator_Date extends Forminator_Field {
 
 					$this->validation_message[ $year_id ] = apply_filters(
 						'forminator_field_date_required_field_validation_message',
-						__( 'Year field is required.', 'forminator' ),
+						esc_html__( 'Year field is required.', 'forminator' ),
 						$year_id,
 						$data,
 						$this
@@ -1203,7 +1203,7 @@ class Forminator_Date extends Forminator_Field {
 			} else {
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_field_date_valid_date_validation_message',
-					__( 'Please enter a valid date.', 'forminator' ),
+					esc_html__( 'Please enter a valid date.', 'forminator' ),
 					$id,
 					$data,
 					$date_format,
@@ -1223,7 +1223,7 @@ class Forminator_Date extends Forminator_Field {
 
 				$this->validation_message[ $year_id ] = apply_filters(
 					'forminator_field_date_valid_year_validation_message',
-					__( 'Year field is invalid.', 'forminator' ),
+					esc_html__( 'Year field is invalid.', 'forminator' ),
 					$year_id,
 					$data,
 					$date_format,
@@ -1234,7 +1234,7 @@ class Forminator_Date extends Forminator_Field {
 
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_field_date_valid_date_validation_message',
-					__( 'Please enter a valid date.', 'forminator' ),
+					esc_html__( 'Please enter a valid date.', 'forminator' ),
 					$id,
 					$data,
 					$date_format,
@@ -1254,7 +1254,7 @@ class Forminator_Date extends Forminator_Field {
 					if ( $year < $min_year || $year > $max_year ) {
 						$this->validation_message[ $id ] = apply_filters(
 							'forminator_field_date_valid_maxmin_year_validation_message',
-							__( 'Please select a valid year.', 'forminator' )
+							esc_html__( 'Please select a valid year.', 'forminator' )
 						);
 					}
 				} else {
@@ -1262,7 +1262,7 @@ class Forminator_Date extends Forminator_Field {
 						if ( $year < $min_year ) {
 							$this->validation_message[ $id ] = apply_filters(
 								'forminator_field_date_valid_maxmin_year_validation_message',
-								__( 'Please select a valid year.', 'forminator' )
+								esc_html__( 'Please select a valid year.', 'forminator' )
 							);
 						}
 					}
@@ -1270,7 +1270,7 @@ class Forminator_Date extends Forminator_Field {
 						if ( $year > $max_year ) {
 							$this->validation_message[ $id ] = apply_filters(
 								'forminator_field_date_valid_maxmin_year_validation_message',
-								__( 'Please select a valid year.', 'forminator' )
+								esc_html__( 'Please select a valid year.', 'forminator' )
 							);
 						}
 					}
@@ -1291,7 +1291,7 @@ class Forminator_Date extends Forminator_Field {
 
 						$this->validation_message[ $month_id ] = apply_filters(
 							'forminator_field_date_required_field_validation_message',
-							__( 'Month field is invalid.', 'forminator' ),
+							esc_html__( 'Month field is invalid.', 'forminator' ),
 							$month_id,
 							$data,
 							$this
@@ -1303,7 +1303,7 @@ class Forminator_Date extends Forminator_Field {
 
 						$this->validation_message[ $day_id ] = apply_filters(
 							'forminator_field_date_required_field_validation_message',
-							__( 'Day field is invalid.', 'forminator' ),
+							esc_html__( 'Day field is invalid.', 'forminator' ),
 							$day_id,
 							$data,
 							$this
@@ -1315,7 +1315,7 @@ class Forminator_Date extends Forminator_Field {
 
 						$this->validation_message[ $year_id ] = apply_filters(
 							'forminator_field_date_required_field_validation_message',
-							__( 'Year field is invalid.', 'forminator' ),
+							esc_html__( 'Year field is invalid.', 'forminator' ),
 							$year_id,
 							$data,
 							$this
@@ -1344,7 +1344,7 @@ class Forminator_Date extends Forminator_Field {
 						if ( in_array( strtolower( $current_day ), $restrict, true ) ) {
 							$this->validation_message[ $id ] = apply_filters(
 								'forminator_field_date_valid_between_date_validation_message',
-								self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', 'forminator' ) )
+								self::get_property( 'restrict_message', $field, esc_html__( 'Please select one of the available dates.', 'forminator' ) )
 							);
 						}
 					}
@@ -1374,7 +1374,7 @@ class Forminator_Date extends Forminator_Field {
 					if ( ! empty( $start_date ) && strtotime( $selected_date ) < strtotime( $start_date ) ) {
 						$this->validation_message[ $id ] = apply_filters(
 							'forminator_field_date_valid_between_date_validation_message',
-							self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', 'forminator' ) )
+							self::get_property( 'restrict_message', $field, esc_html__( 'Please select one of the available dates.', 'forminator' ) )
 						);
 					}
 				}
@@ -1403,7 +1403,7 @@ class Forminator_Date extends Forminator_Field {
 					if ( ! empty( $end_date ) && strtotime( $selected_date ) > strtotime( $end_date ) ) {
 						$this->validation_message[ $id ] = apply_filters(
 							'forminator_field_date_valid_between_date_validation_message',
-							self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', 'forminator' ) )
+							self::get_property( 'restrict_message', $field, esc_html__( 'Please select one of the available dates.', 'forminator' ) )
 						);
 					}
 				}
@@ -1414,7 +1414,7 @@ class Forminator_Date extends Forminator_Field {
 				if ( ! empty( $disabled_dates ) && in_array( $formatted_selected_date, $disabled_dates, true ) ) {
 					$this->validation_message[ $id ] = apply_filters(
 						'forminator_field_date_valid_disabled_validation_message',
-						self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', 'forminator' ) )
+						self::get_property( 'restrict_message', $field, esc_html__( 'Please select one of the available dates.', 'forminator' ) )
 					);
 				}
 
@@ -1434,7 +1434,7 @@ class Forminator_Date extends Forminator_Field {
 					if ( ! $has_range ) {
 						$this->validation_message[ $id ] = apply_filters(
 							'forminator_field_date_valid_disabled_validation_message',
-							self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', 'forminator' ) )
+							self::get_property( 'restrict_message', $field, esc_html__( 'Please select one of the available dates.', 'forminator' ) )
 						);
 					}
 				}

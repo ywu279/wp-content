@@ -19,9 +19,9 @@ class Forminator_Quiz_New_Knowledge extends Forminator_Admin_Page {
 	public function getWizardTitle() {
 		$id = filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT );
 		if ( $id ) {
-			return __( 'Edit Quiz', 'forminator' );
+			return esc_html__( 'Edit Quiz', 'forminator' );
 		} else {
-			return __( 'New Quiz', 'forminator' );
+			return esc_html__( 'New Quiz', 'forminator' );
 		}
 	}
 

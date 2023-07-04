@@ -219,8 +219,9 @@ abstract class Forminator_Admin_Page {
 	 */
 	protected function render_footer() {
 		$hide_footer = false;
-		$footer_text = sprintf(/* translators: ... */
-			__( 'Made with %s by WPMU DEV', 'wpmudev' ),
+		$footer_text = sprintf(
+		/* translators: %s: SUI Icon . */
+			esc_html__( 'Made with %s by WPMU DEV', 'wpmudev' ),
 			' <i class="sui-icon-heart"></i>'
 		);
 
@@ -523,21 +524,6 @@ abstract class Forminator_Admin_Page {
 		) {
 			return;
 		}
-
-		if ( is_multisite() && ! is_main_site() ) {
-
-			$fix_notice = esc_html__( 'Kindly contact your network administrator.', 'forminator' );
-
-		} else {
-
-			/* translators: %1$s, %2$s. are placeholders */
-			$fix_notice = sprintf(
-				esc_html__( 'To fix this, go to Network Admin > Sites and change each site\'s URL from "http://" to "https://". If you are unable to make the change through the WordPress interface, you may need to %1$schange the URL directly in the database%2$s.', 'forminator' ),
-				'<a href="https://wordpress.org/support/article/changing-the-site-url/#changing-the-url-directly-in-the-database" target="_blank">',
-				'</a>'
-			);
-		}
-
 		?>
 			<div
 				role="alert"
@@ -585,17 +571,17 @@ abstract class Forminator_Admin_Page {
 	public function populate_modules() {
 
 		$modules[] = array(
-			'name'  => __( 'Forms', 'forminator' ),
+			'name'  => esc_html__( 'Forms', 'forminator' ),
 			'model' => Forminator_Form_Model::model(),
 			'slug'  => 'form',
 		);
 		$modules[] = array(
-			'name'  => __( 'Polls', 'forminator' ),
+			'name'  => esc_html__( 'Polls', 'forminator' ),
 			'model' => Forminator_Poll_Model::model(),
 			'slug'  => 'poll',
 		);
 		$modules[] = array(
-			'name'  => __( 'Quizzes', 'forminator' ),
+			'name'  => esc_html__( 'Quizzes', 'forminator' ),
 			'model' => Forminator_Quiz_Model::model(),
 			'slug'  => 'quiz',
 		);

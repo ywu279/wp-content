@@ -5,7 +5,8 @@
 if ( $form_id ) {
 	$none_title = esc_html( forminator_get_form_name( $form_id ) );
 	$none_text  = sprintf(
-		esc_html__( 'You haven’t received any submissions for this %s yet. When you do, you’ll be able to view all the data here.', 'forminator' ),
+	/* translators: %s: Form type helper */
+		esc_html__( 'You haven\'t received any submissions for this %s yet. When you do, you\'ll be able to view all the data here.', 'forminator' ),
 		esc_html( forminator_get_form_type_helper( true ) )
 	);
 }

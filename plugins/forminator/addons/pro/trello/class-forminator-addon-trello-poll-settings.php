@@ -29,7 +29,7 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 	public function __construct( Forminator_Addon_Abstract $addon, $poll_id ) {
 		parent::__construct( $addon, $poll_id );
 
-		$this->_update_poll_settings_error_message = __(
+		$this->_update_poll_settings_error_message = esc_html__(
 			'The update to your settings for this poll failed, check the form input and try again.',
 			'forminator'
 		);
@@ -96,7 +96,7 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 
 			try {
 				if ( empty( $name ) ) {
-					throw new Forminator_Addon_Trello_Exception( __( 'Please pick valid name' ) );
+					throw new Forminator_Addon_Trello_Exception( esc_html__( 'Please pick valid name', 'forminator' ) );
 				}
 
 				$time_added = $this->get_multi_id_poll_settings_value( $multi_id, 'time_added', time() );
@@ -176,7 +176,7 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 		$template = forminator_addon_trello_dir() . 'views/poll-settings/setup-board.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -207,7 +207,7 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 			}
 
 			if ( empty( $boards ) ) {
-				throw new Forminator_Addon_Trello_Exception( __( 'No board found on your Trello account. Please create one.', 'forminator' ) );
+				throw new Forminator_Addon_Trello_Exception( esc_html__( 'No board found on your Trello account. Please create one.', 'forminator' ) );
 			}
 
 			$template_params['boards'] = $boards;
@@ -223,12 +223,12 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 
 			try {
 				if ( empty( $board_id ) ) {
-					throw new Forminator_Addon_Trello_Exception( __( 'Please pick valid board.' ) );
+					throw new Forminator_Addon_Trello_Exception( esc_html__( 'Please pick valid board.', 'forminator' ) );
 				}
 
 				// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				if ( ! in_array( $board_id, array_keys( $boards ) ) ) {
-					throw new Forminator_Addon_Trello_Exception( __( 'Please pick valid board.' ) );
+					throw new Forminator_Addon_Trello_Exception( esc_html__( 'Please pick valid board.', 'forminator' ) );
 				}
 
 				$board_name = $boards[ $board_id ];
@@ -310,7 +310,7 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 		$template = forminator_addon_trello_dir() . 'views/poll-settings/setup-list.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -346,8 +346,10 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 			}
 
 			if ( empty( $lists ) ) {
-				/* translators: ... */
-				throw new Forminator_Addon_Trello_Exception( sprintf( __( 'No list found on Trello Board of %1$s. Please create one.', 'forminator' ), esc_html( $board_name ) ) );
+				throw new Forminator_Addon_Trello_Exception( sprintf(
+					/* translators: 1: Board name */
+					esc_html__( 'No list found on Trello Board of %1$s. Please create one.', 'forminator' ), esc_html( $board_name ) )
+				);
 			}
 
 			$template_params['lists'] = $lists;
@@ -363,12 +365,12 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 
 			try {
 				if ( empty( $list_id ) ) {
-					throw new Forminator_Addon_Trello_Exception( __( 'Please pick valid list.' ) );
+					throw new Forminator_Addon_Trello_Exception( esc_html__( 'Please pick valid list.', 'forminator' ) );
 				}
 
 				// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				if ( ! in_array( $list_id, array_keys( $lists ) ) ) {
-					throw new Forminator_Addon_Trello_Exception( __( 'Please pick valid list.' ) );
+					throw new Forminator_Addon_Trello_Exception( esc_html__( 'Please pick valid list.', 'forminator' ) );
 				}
 
 				$list_name = $lists[ $list_id ];
@@ -450,15 +452,15 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 		$template = forminator_addon_trello_dir() . 'views/poll-settings/setup-card.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
 		unset( $submitted_data['multi_id'] );
 
 		$positions = array(
-			'top'    => __( 'Top', 'forminator' ),
-			'bottom' => __( 'Bottom', 'forminator' ),
+			'top'    => esc_html__( 'Top', 'forminator' ),
+			'bottom' => esc_html__( 'Bottom', 'forminator' ),
 		);
 
 		//todo: validate this, step wizard back if needed
@@ -485,7 +487,7 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 		);
 
 		$var_list              = array();
-		$var_list['poll_name'] = __( 'Poll Name', 'forminator' );
+		$var_list['poll_name'] = esc_html__( 'Poll Name', 'forminator' );
 		$var_list              = array_merge( $var_list, forminator_get_vars() );
 		unset( $var_list['custom_value'] );
 
@@ -624,7 +626,7 @@ class Forminator_Addon_Trello_Poll_Settings extends Forminator_Addon_Poll_Settin
 
 				$notification = array(
 					'type' => 'success',
-					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'Successfully connected to your poll' ),
+					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'Successfully connected to your poll', 'forminator' ),
 				);
 				$is_close     = true;
 

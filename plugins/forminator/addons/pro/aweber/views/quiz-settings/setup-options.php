@@ -18,7 +18,7 @@ foreach ( $template_vars as $key => $val ) {
 
 <div class="forminator-integration-popup__header">
 
-	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg"><?php echo esc_html( __( 'Additional Options', 'forminator' ) ); ?></h3>
+	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg"><?php esc_html_e( 'Additional Options', 'forminator' ); ?></h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description"><?php esc_html_e( 'Configure additional options for AWeber integration.', 'forminator' ); ?></p>
 
@@ -56,7 +56,7 @@ foreach ( $template_vars as $key => $val ) {
 		<div class="sui-insert-variables">
 
 			<input name="ad_tracking"
-				placeholder="<?php echo esc_attr( __( 'Ad Tracking', 'forminator' ) ); ?>"
+				placeholder="<?php esc_attr_e( 'Ad Tracking', 'forminator' ); ?>"
 				value="<?php echo esc_attr( $vars['ad_tracking'] ); ?>"
 				id="ad_tracking"
 				class="sui-form-control" />
@@ -78,7 +78,14 @@ foreach ( $template_vars as $key => $val ) {
 			<span class="sui-error-message"><?php echo esc_html( $vars['ad_tracking_error'] ); ?></span>
 		<?php endif; ?>
 
-		<span class="sui-description"><?php echo ( sprintf( esc_html__( 'Use 20 or fewer characters to label subscribers based on how they signed up. Find complete article %1$shere%2$s.', 'forminator' ), '<a href="https://help.aweber.com/hc/en-us/articles/204028836-What-is-Ad-Tracking-" target="_blank">', '</a>' ) ); ?></span>
+		<span class="sui-description">
+            <?php printf(
+            /* Translators: 1. Opening <a> tag with link to the article link, 2. closing <a> tag. */
+	            esc_html__( 'Use 20 or fewer characters to label subscribers based on how they signed up. Find complete article %1$shere%2$s.', 'forminator' ),
+	            '<a href="https://help.aweber.com/hc/en-us/articles/204028836-What-is-Ad-Tracking-" target="_blank">',
+	            '</a>' );
+            ?>
+        </span>
 
 	</div>
 
@@ -116,7 +123,14 @@ foreach ( $template_vars as $key => $val ) {
 			<span class="sui-error-message"><?php echo esc_html( $vars['tags_error'] ); ?></span>
 		<?php endif; ?>
 
-		<span class="sui-description"><?php echo ( sprintf( esc_html__( 'Available fields value or free text can be used as tags. Have a campaign that’s triggered when a subscriber is tagged? Enter the appropriate tag to add the subscriber to the campaign, and they will immediately begin receiving your messages. More info about AWeber subscriber tags can be found %1$shere%2$s.', 'forminator' ), '<a href="https://help.aweber.com/hc/en-us/articles/212677877-How-do-I-use-Tags-with-Campaigns-" target="_blank">', '</a>' ) ); ?></span>
+		<span class="sui-description">
+            <?php printf(
+            /* Translators: 1. Opening <a> tag with link to the campaign tag, 2. closing <a> tag. */
+	            esc_html__( 'Available fields value or free text can be used as tags. Have a campaign that’s triggered when a subscriber is tagged? Enter the appropriate tag to add the subscriber to the campaign, and they will immediately begin receiving your messages. More info about AWeber subscriber tags can be found %1$shere%2$s.', 'forminator' ),
+	            '<a href="https://help.aweber.com/hc/en-us/articles/212677877-How-do-I-use-Tags-with-Campaigns-" target="_blank">',
+	            '</a>' );
+            ?>
+        </span>
 
 	</div>
 

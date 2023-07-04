@@ -69,11 +69,11 @@ abstract class Forminator_Addon_Poll_Hooks_Abstract extends Forminator_Addon_Hoo
 		$this->poll_id = $poll_id;
 		$this->poll    = Forminator_Base_Form_Model::get_model( $this->poll_id );
 		if ( ! $this->poll ) {
-			/* translators: ... */
-			throw new Forminator_Addon_Exception( sprintf( __( 'Poll with id %d could not be found', 'forminator' ), $this->poll_id ) );
+			/* translators: Poll ID */
+			throw new Forminator_Addon_Exception( sprintf( esc_html__( 'Poll with id %d could not be found', 'forminator' ), $this->poll_id ) );
 		}
 
-		$this->_submit_poll_error_message = __( 'Failed to submit poll because of an addon, please check your poll and try again' );
+		$this->_submit_poll_error_message = esc_html__( 'Failed to submit poll because of an addon, please check your poll and try again' );
 
 		// get poll settings instance to be available throughout cycle.
 		$this->poll_settings_instance = $this->addon->get_addon_settings( $this->poll_id, 'poll' );

@@ -13,8 +13,8 @@ foreach ( $template_vars as $key => $val ) {
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
 		<?php
-			/* translators: ... */
-			echo esc_html( sprintf( __( 'Connect %1$s', 'forminator' ), 'HubSpot' ) );
+		/* translators: 1: Add-on name */
+			printf( esc_html__( 'Connect %1$s', 'forminator' ), 'HubSpot' );
 		?>
 	</h3>
 
@@ -37,8 +37,8 @@ foreach ( $template_vars as $key => $val ) {
 
 				<p>
 					<?php
-					/* translators: ... */
-					echo esc_html( sprintf( __( 'Your %1$s account is already authorized.', 'forminator' ), 'HubSpot' ) );
+					/* translators: 1: Add-on name */
+					printf( esc_html__( 'Your %1$s account is already authorized.', 'forminator' ), 'HubSpot' );
 					?>
 				</p>
 

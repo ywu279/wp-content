@@ -19,9 +19,9 @@ class Forminator_CForm_New_Page extends Forminator_Admin_Page {
 	public function getWizardTitle() {
 		$id = filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT );
 		if ( $id ) {
-			return __( 'Edit Form', 'forminator' );
+			return esc_html__( 'Edit Form', 'forminator' );
 		} else {
-			return __( 'New Form', 'forminator' );
+			return esc_html__( 'New Form', 'forminator' );
 		}
 	}
 

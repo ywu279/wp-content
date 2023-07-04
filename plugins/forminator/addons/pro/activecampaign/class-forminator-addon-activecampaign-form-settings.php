@@ -35,7 +35,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 	public function __construct( Forminator_Addon_Abstract $addon, $form_id ) {
 		parent::__construct( $addon, $form_id );
 
-		$this->_update_form_settings_error_message = __(
+		$this->_update_form_settings_error_message = esc_html__(
 			'The update to your settings for this form failed, check the form input and try again.',
 			'forminator'
 		);
@@ -102,7 +102,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 
 			try {
 				if ( empty( $name ) ) {
-					throw new Forminator_Addon_Activecampaign_Exception( __( 'Please pick valid name' ) );
+					throw new Forminator_Addon_Activecampaign_Exception( esc_html__( 'Please pick valid name', 'forminator' ) );
 				}
 
 				$time_added = $this->get_multi_id_form_settings_value( $multi_id, 'time_added', time() );
@@ -182,7 +182,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 		$template = forminator_addon_activecampaign_dir() . 'views/form-settings/select-list.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -212,7 +212,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 			}
 
 			if ( empty( $lists ) ) {
-				throw new Forminator_Addon_Activecampaign_Exception( __( 'No lists found on your ActiveCampaign account. Please create one.', 'forminator' ) );
+				throw new Forminator_Addon_Activecampaign_Exception( esc_html__( 'No lists found on your ActiveCampaign account. Please create one.', 'forminator' ) );
 			}
 
 			$template_params['lists'] = $lists;
@@ -228,12 +228,12 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 
 			try {
 				if ( empty( $list_id ) ) {
-					throw new Forminator_Addon_Activecampaign_Exception( __( 'Please pick valid list' ) );
+					throw new Forminator_Addon_Activecampaign_Exception( esc_html__( 'Please pick valid list', 'forminator' ) );
 				}
 
 				// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				if ( ! in_array( $list_id, array_keys( $lists ) ) ) {
-					throw new Forminator_Addon_Activecampaign_Exception( __( 'Please pick valid list' ) );
+					throw new Forminator_Addon_Activecampaign_Exception( esc_html__( 'Please pick valid list', 'forminator' ) );
 				}
 
 				$list_name = $lists[ $list_id ];
@@ -316,7 +316,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 		$template = forminator_addon_activecampaign_dir() . 'views/form-settings/map-fields.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -347,11 +347,11 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 		$custom_fields = array();
 
 		$fields = array(
-			'email'      => __( 'Email Address', 'forminator' ),
-			'first_name' => __( 'First Name', 'forminator' ),
-			'last_name'  => __( 'Last Name', 'forminator' ),
-			'phone'      => __( 'Phone', 'forminator' ),
-			'orgname'    => __( 'Organization Name', 'forminator' ),
+			'email'      => esc_html__( 'Email Address', 'forminator' ),
+			'first_name' => esc_html__( 'First Name', 'forminator' ),
+			'last_name'  => esc_html__( 'Last Name', 'forminator' ),
+			'phone'      => esc_html__( 'Phone', 'forminator' ),
+			'orgname'    => esc_html__( 'Organization Name', 'forminator' ),
 		);
 
 		$list_id = $this->get_multi_id_form_settings_value( $multi_id, 'list_id', 0 );
@@ -390,7 +390,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 
 			try {
 				if ( empty( $fields_map ) ) {
-					throw new Forminator_Addon_Activecampaign_Exception( __( 'Please assign fields.', 'forminator' ) );
+					throw new Forminator_Addon_Activecampaign_Exception( esc_html__( 'Please assign fields.', 'forminator' ) );
 				}
 
 				$input_exceptions = new Forminator_Addon_Activecampaign_Form_Settings_Exception();
@@ -403,9 +403,9 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 					if ( isset( $fields_map[ $key ] ) && ! empty( $fields_map[ $key ] ) ) {
 						$element_id = $fields_map[ $key ];
 						if ( ! in_array( $element_id, $forminator_field_element_ids, true ) ) {
-							$input_exceptions->add_input_exception(
-								/* translators: %s: title */
-								sprintf( __( 'Please assign valid field for %s', 'forminator' ), esc_html( $title ) ),
+							$input_exceptions->add_input_exception( sprintf(
+								/* translators: %s: Field title */
+								esc_html__( 'Please assign valid field for %s', 'forminator' ), esc_html( $title ) ),
 								$key . '_error'
 							);
 							continue;
@@ -504,7 +504,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 		$template = forminator_addon_activecampaign_dir() . 'views/form-settings/setup-options.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -595,7 +595,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 				// possible different type intended.
 				// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 				if ( ! empty( $double_opt_form_id ) && ! in_array( $double_opt_form_id, array_keys( $forms ) ) ) {
-					$input_exceptions->add_input_exception( __( 'Please pick valid ActiveCampaign Form', 'forminator' ), 'double_opt_form_id_error' );
+					$input_exceptions->add_input_exception( esc_html__( 'Please pick valid ActiveCampaign Form', 'forminator' ), 'double_opt_form_id_error' );
 				}
 
 				if ( $input_exceptions->input_exceptions_is_available() ) {
@@ -614,7 +614,7 @@ class Forminator_Addon_Activecampaign_Form_Settings extends Forminator_Addon_For
 
 				$notification = array(
 					'type' => 'success',
-					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'Successfully connected to your form' ),
+					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'Successfully connected to your form', 'forminator' ),
 				);
 				$is_close     = true;
 

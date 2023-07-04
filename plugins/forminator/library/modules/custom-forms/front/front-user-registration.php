@@ -218,7 +218,7 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 		$user_id = wp_insert_user( $new_user_data );
 		if ( is_wp_error( $user_id ) ) {
 
-			return __( 'Couldn&#8217;t register you&hellip; please contact us if you continue to have problems.', 'forminator' );
+			return esc_html__( 'Couldn&#8217;t register you&hellip; please contact us if you continue to have problems.', 'forminator' );
 		}
 
 		$settings = $custom_form->settings;
@@ -309,7 +309,7 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 		// Username is valid, but has already pending activation.
 		if ( ! is_multisite() && $this->pending_activation_exists( 'user_login', $username ) ) {
 
-			return __( 'That username is currently reserved but may be available in a couple of days', 'forminator' );
+			return esc_html__( 'That username is currently reserved but may be available in a couple of days', 'forminator' );
 		}
 
 		// Field user email.
@@ -325,7 +325,7 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 		// Email is valid, but has already pending activation.
 		if ( ! is_multisite() && $this->pending_activation_exists( 'user_email', $user_email ) ) {
 
-			return __( 'That email address has already been used. Please check your inbox for an activation email. It will become available in a couple of days if you do nothing.', 'forminator' );
+			return esc_html__( 'That email address has already been used. Please check your inbox for an activation email. It will become available in a couple of days if you do nothing.', 'forminator' );
 		}
 
 		// Multisite validation.
@@ -450,7 +450,7 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 		if ( $email ) {
 			if ( ! is_email( $email ) ) {
 				$data['result']  = false;
-				$data['message'] = __( 'This email address is not valid.', 'forminator' );
+				$data['message'] = esc_html__( 'This email address is not valid.', 'forminator' );
 
 				return $data;
 			}
@@ -458,13 +458,13 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 			// Throws an error if the email is already registered.
 			if ( email_exists( $email ) ) {
 				$data['result']  = false;
-				$data['message'] = __( 'This email address is already registered.', 'forminator' );
+				$data['message'] = esc_html__( 'This email address is already registered.', 'forminator' );
 
 				return $data;
 			}
 		} else {
 			$data['result']  = false;
-			$data['message'] = __( 'The email address can not be empty.', 'forminator' );
+			$data['message'] = esc_html__( 'The email address can not be empty.', 'forminator' );
 
 			return $data;
 		}
@@ -488,7 +488,7 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 			// Throws an error if the username contains invalid characters.
 			if ( ! validate_username( $username ) ) {
 				$data['result']  = false;
-				$data['message'] = __( 'This username is invalid because it uses illegal characters. Please enter a valid username.', 'forminator' );
+				$data['message'] = esc_html__( 'This username is invalid because it uses illegal characters. Please enter a valid username.', 'forminator' );
 
 				return $data;
 			}
@@ -496,13 +496,13 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 			// Throws an error if the username already exists.
 			if ( username_exists( $username ) ) {
 				$data['result']  = false;
-				$data['message'] = __( 'This username is already registered.', 'forminator' );
+				$data['message'] = esc_html__( 'This username is already registered.', 'forminator' );
 
 				return $data;
 			}
 		} else {
 			$data['result']  = false;
-			$data['message'] = __( 'The username can not be empty.', 'forminator' );
+			$data['message'] = esc_html__( 'The username can not be empty.', 'forminator' );
 
 			return $data;
 		}
@@ -644,11 +644,11 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 		if ( isset( $setting['registration-password-field'] ) && 'auto' === $setting['registration-password-field'] ) {
 
 			$password  = $password . "\r\n";
-			$password .= '(' . __( 'This password was generated automatically, and it is recommended that you set a new password once you log in to your account.', 'forminator' ) . ")\r\n\r\n";
+			$password .= '(' . esc_html__( 'This password was generated automatically, and it is recommended that you set a new password once you log in to your account.', 'forminator' ) . ")\r\n\r\n";
 
 		} else {
 
-			$password  = __( 'Use the password that you submitted when registering your account, or set a new password at the link below.', 'forminator' ) . "\r\n";
+			$password  = esc_html__( 'Use the password that you submitted when registering your account, or set a new password at the link below.', 'forminator' ) . "\r\n";
 			$password .= '<' . $this->get_set_password_url( $user ) . ">\r\n\r\n";
 
 		}
@@ -879,11 +879,11 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 		$switched_locale = switch_to_locale( get_locale() );
 
 		/* Removed in 1.15.1, if no problem occurs in few months, we can delete this in 1.15.3?
-		$message  = sprintf( __( 'New user registration on your site %s:', 'forminator' ), $blogname ) . "\r\n\r\n";
-		$message .= sprintf( __( 'Username: %s', 'forminator' ), $username ) . "\r\n\r\n";
-		$message .= sprintf( __( 'Email: %s', 'forminator' ), $user->user_email ) . "\r\n";
+		$message  = sprintf( esc_html__( 'New user registration on your site %s:', 'forminator' ), $blogname ) . "\r\n\r\n";
+		$message .= sprintf( esc_html__( 'Username: %s', 'forminator' ), $username ) . "\r\n\r\n";
+		$message .= sprintf( esc_html__( 'Email: %s', 'forminator' ), $user->user_email ) . "\r\n";
 
-		$result = @wp_mail( get_option( 'admin_email' ), sprintf( __( '[%s] New User Registration', 'forminator' ), $blogname ), $message ); */
+		$result = @wp_mail( get_option( 'admin_email' ), sprintf( esc_html__( '[%s] New User Registration', 'forminator' ), $blogname ), $message ); */
 
 		if ( $switched_locale ) {
 			restore_previous_locale();
@@ -895,26 +895,26 @@ class Forminator_CForm_Front_User_Registration extends Forminator_User {
 
 		$switched_locale = switch_to_locale( get_user_locale( $user ) );
 
-		$message  = sprintf( __( 'Dear %s,', 'forminator' ), $username ) . "\r\n\r\n";
-		$message .= sprintf( __( 'Your account on %s has been activated! Please find your login details below.', 'forminator' ), $blogname ) . "\r\n\r\n\r\n";
-		$message .= sprintf( __( 'Login page: %s', 'forminator' ), wp_login_url() ) . "\r\n\r\n";
-		$message .= sprintf( __( 'Username: %s', 'forminator' ), $username ) . "\r\n\r\n";
+		$message  = sprintf( esc_html__( 'Dear %s,', 'forminator' ), $username ) . "\r\n\r\n";
+		$message .= sprintf( esc_html__( 'Your account on %s has been activated! Please find your login details below.', 'forminator' ), $blogname ) . "\r\n\r\n\r\n";
+		$message .= sprintf( esc_html__( 'Login page: %s', 'forminator' ), wp_login_url() ) . "\r\n\r\n";
+		$message .= sprintf( esc_html__( 'Username: %s', 'forminator' ), $username ) . "\r\n\r\n";
 
 		if ( empty( $plaintext_pass ) ) {
 
-			$message .= __( 'Password: Use the password that you submitted when registering your account, or set a new password at the link below.', 'forminator' ) . "\r\n";
+			$message .= esc_html__( 'Password: Use the password that you submitted when registering your account, or set a new password at the link below.', 'forminator' ) . "\r\n";
 			$message .= '<' . $this->get_set_password_url( $user ) . ">\r\n\r\n\r\n";
 
 		} else {
 
-			$message .= sprintf( __( 'Password: %s', 'forminator' ), $plaintext_pass ) . "\r\n";
-			$message .= '(' . __( 'This password was generated automatically, and it is recommended that you set a new password once you log in to your account.', 'forminator' ) . ")\r\n\r\n\r\n";
+			$message .= sprintf( esc_html__( 'Password: %s', 'forminator' ), $plaintext_pass ) . "\r\n";
+			$message .= '(' . esc_html__( 'This password was generated automatically, and it is recommended that you set a new password once you log in to your account.', 'forminator' ) . ")\r\n\r\n\r\n";
 
 		}
 
-		$message .= sprintf( __( 'This message was sent from %s', 'forminator' ), home_url() );
+		$message .= sprintf( esc_html__( 'This message was sent from %s', 'forminator' ), home_url() );
 
-		$result = wp_mail( $user->user_email, sprintf( __( '[%s] Account Activated', 'forminator' ), $blogname ), $message );
+		$result = wp_mail( $user->user_email, sprintf( esc_html__( '[%s] Account Activated', 'forminator' ), $blogname ), $message );
 
 		if ( $switched_locale ) {
 			restore_previous_locale();

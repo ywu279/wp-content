@@ -19,9 +19,9 @@ class Forminator_Poll_New_Page extends Forminator_Admin_Page {
 	public function getWizardTitle() {
 		$id = filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT );
 		if ( $id ) {
-			return __( 'Edit Poll', 'forminator' );
+			return esc_html__( 'Edit Poll', 'forminator' );
 		} else {
-			return __( 'New Poll', 'forminator' );
+			return esc_html__( 'New Poll', 'forminator' );
 		}
 	}
 

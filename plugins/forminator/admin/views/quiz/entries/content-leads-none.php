@@ -98,7 +98,14 @@ if ( $page_number > 1 ) {
 							}
 							?>
 
-							<p class="sui-description"><?php echo sprintf( esc_html__( 'You got %1$s/%2$s correct answers.', 'forminator' ), intval( $right ), intval( $total ) ); ?></p>
+							<p class="sui-description">
+                                <?php printf(
+                                /* translators: 1: Correct answer, 2: total */
+                                        esc_html__( 'You got %1$s/%2$s correct answers.', 'forminator' ),
+                                        intval( $right ),
+                                        intval( $total ) );
+                                ?>
+                            </p>
 
 							<table class="fui-entries-table">
 
@@ -212,7 +219,12 @@ if ( $page_number > 1 ) {
 
 										<tr>
 
-											<td colspan="2"><?php echo wp_kses_post( sprintf( __( '<strong>Quiz Result:</strong> %s', 'forminator' ), $meta['result']['title'] ) ); ?></td>
+                                            <td colspan="2">
+												<?php printf( '<strong>%1$s<strong> %2$s',
+													esc_html__( 'Quiz Result:', 'forminator' ),
+													$meta['result']['title']
+												); ?>
+                                            </td>
 
 										</tr>
 

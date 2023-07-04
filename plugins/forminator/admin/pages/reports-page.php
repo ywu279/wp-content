@@ -49,16 +49,16 @@ class Forminator_Reports_Page extends Forminator_Admin_Page {
 			$classes .= ' sui-select-sm sui-select-inline';
 		}
 
-		$empty_option = __( 'Choose a Form', 'forminator' );
+		$empty_option = esc_html__( 'Choose a Form', 'forminator' );
 		$method       = 'get_forms';
 		$model        = 'Forminator_Form_Model';
 
 		if ( $form_type === Forminator_Poll_Model::model()->get_post_type() ) {
-			$empty_option = __( 'Choose a Poll', 'forminator' );
+			$empty_option = esc_html__( 'Choose a Poll', 'forminator' );
 			$method       = 'get_polls';
 			$model        = 'Forminator_Poll_Model';
 		} elseif ( $form_type === Forminator_Quiz_Model::model()->get_post_type() ) {
-			$empty_option = __( 'Choose a Quiz', 'forminator' );
+			$empty_option = esc_html__( 'Choose a Quiz', 'forminator' );
 			$method       = 'get_quizzes';
 			$model        = 'Forminator_Quiz_Model';
 		}
@@ -174,11 +174,11 @@ class Forminator_Reports_Page extends Forminator_Admin_Page {
 		        '%s': [moment().subtract(29,'days'), moment()],
 		        '%s': [moment().startOf('year'), moment().endOf('year')],
 			};",
-			__( 'Today', 'forminator' ),
-			__( 'Last 7 Days', 'forminator' ),
-			__( 'This Month', 'forminator' ),
-			__( 'Last 30 Days', 'forminator' ),
-			__( 'This Year', 'forminator' )
+			esc_html__( 'Today', 'forminator' ),
+			esc_html__( 'Last 7 Days', 'forminator' ),
+			esc_html__( 'This Month', 'forminator' ),
+			esc_html__( 'Last 30 Days', 'forminator' ),
+			esc_html__( 'This Year', 'forminator' )
 		);
 
 		/**
@@ -209,7 +209,7 @@ class Forminator_Reports_Page extends Forminator_Admin_Page {
                 monthDays = ['%s'],
                 submissions = [%s],
                 canvas_spacing = %s;",
-			__( 'Submissions', 'forminator' ),
+			esc_html__( 'Submissions', 'forminator' ),
 			$form_id,
 			wp_kses_post( implode( "', '", $chart_data['monthDays'] ) ),
 			esc_html( implode( ', ', $chart_data['submissions'] ) ),

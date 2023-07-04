@@ -673,7 +673,7 @@ abstract class Forminator_Render_Form {
 	 * @return string
 	 */
 	public function get_submit_button_text() {
-		return __( 'Submit', 'forminator' );
+		return esc_html__( 'Submit', 'forminator' );
 	}
 
 	/**
@@ -686,7 +686,7 @@ abstract class Forminator_Render_Form {
 		if ( is_null( $settings ) ) {
 			$settings = $this->model->settings;
 		}
-		return ! empty( $settings['text-start'] ) ? $settings['text-start'] : __( 'Start Quiz', 'forminator' );
+		return ! empty( $settings['text-start'] ) ? $settings['text-start'] : esc_html__( 'Start Quiz', 'forminator' );
 	}
 
 	/**
@@ -1781,7 +1781,7 @@ abstract class Forminator_Render_Form {
 
 		$draft = new Forminator_Form_Entry_Model( $this->draft_id );
 		if ( is_null( $draft->form_id ) && $is_draft_enabled ) {
-			return esc_html__( "Can't find the draft associated with the draft ID in the URL. This draft was either submitted or has expired.", 'forminator' );
+			return esc_html__( 'Can\'t find the draft associated with the draft ID in the URL. This draft was either submitted or has expired.', 'forminator' );
 		}
 
 		if ( (int) $draft->form_id === $this->model->id ) {
@@ -1830,15 +1830,15 @@ abstract class Forminator_Render_Form {
 		switch ( $module_type ) {
 			case 'quiz':
 				$wizard_page = 'forminator-' . $this->model->quiz_type . '-wizard';
-				$text        = __( 'Edit quiz', 'forminator' );
+				$text        = esc_html__( 'Edit quiz', 'forminator' );
 				break;
 			case 'poll':
 				$wizard_page = 'forminator-poll-wizard';
-				$text        = __( 'Edit poll', 'forminator' );
+				$text        = esc_html__( 'Edit poll', 'forminator' );
 				break;
 			default:
 				$wizard_page = 'forminator-cform-wizard';
-				$text        = __( 'Edit form', 'forminator' );
+				$text        = esc_html__( 'Edit form', 'forminator' );
 				break;
 		}
 		$link = admin_url( 'admin.php?page=' . $wizard_page . '&id=' . $module_id );

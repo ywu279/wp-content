@@ -30,11 +30,11 @@ class Forminator_Autofill_Simple extends Forminator_Autofill_Provider_Abstract {
 	public function __construct() {
 		$attributes_map = array(
 			'simple_attribute_text'   => array(
-				'name'         => __( 'Text', 'forminator' ),
+				'name'         => esc_html__( 'Text', 'forminator' ),
 				'value_getter' => array( $this, 'get_value_simple_text' ),
 			),
 			'simple_attribute_number' => array(
-				'name'         => __( 'Number', 'forminator' ),
+				'name'         => esc_html__( 'Number', 'forminator' ),
 				'value_getter' => array( $this, 'get_value_simple_number' ),
 			),
 		);

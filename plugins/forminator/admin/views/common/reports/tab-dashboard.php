@@ -63,7 +63,7 @@ $reports  = Forminator_Admin_Report_Page::get_instance()->forminator_report_data
             $this->template( 'common/reports/report-content', $report_args );
         } else {
             $data_arg = array(
-                'title'       => 'Almost there!',
+                'title'       => esc_html__( 'Almost there!', 'forminator' ),
                 'description' => esc_html__( 'Select a form, poll, or quiz to view its report.', 'forminator' ),
                 'image'       => 'forminator-info.png',
                 'image_x2'    => 'forminator-info@2x.png'
@@ -72,7 +72,7 @@ $reports  = Forminator_Admin_Report_Page::get_instance()->forminator_report_data
         }
     } else {
 	    $data_arg = array(
-		    'title'       => 'Oops! Nothing to show',
+		    'title'       => esc_html__( 'Oops! Nothing to show', 'forminator' ),
 		    'description' => esc_html__( 'You haven\'t created any forms, polls, or quizzes yet. When you do, you\'ll be able to view their reports here.', 'forminator' ),
 		    'image'       => 'forminator-warning.png',
 		    'image_x2'    => 'forminator-warning@2x.png'

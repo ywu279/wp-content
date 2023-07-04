@@ -48,7 +48,7 @@ class Forminator_Quiz_View_Page extends Forminator_Admin_View_Page {
 		}
 
 		if ( $this->has_leads() ) {
-			$this->lead_cform = new Forminator_CForm_View_Page( 'forminator-quiz-view', 'custom-form/entries', __( 'Submissions:', 'forminator' ), __( 'View Custom Form', 'forminator' ), 'forminator' );
+			$this->lead_cform = new Forminator_CForm_View_Page( 'forminator-quiz-view', 'custom-form/entries', esc_html__( 'Submissions:', 'forminator' ), esc_html__( 'View Custom Form', 'forminator' ), 'forminator' );
 			$this->lead_cform->before_render( $this->lead_id() );
 			$this->lead_fields = $this->lead_cform->get_fields();
 		}

@@ -37,8 +37,8 @@ $banner_2x = forminator_plugin_url() . 'assets/images/Feature_highlight@2x.png';
 				<p class="sui-description">
 					<?php
 					printf(
-						/* translators: User name */
-						__( 'Hey %1$s, to enhance security, Forminator will now store the file uploads from all your forms with random names in the “%2$s/wp-content/uploads/forminator%3$s” directory by default. However, you can specify a different storage directory for the uploaded files in the %4$sSettings > Data%5$s page.', 'forminator' ),
+					/* Translators: 1. User name 2. Opening <strong> tag, 2. closing <strong> tag, 3. Opening <a> tag with forminator setting data section url, 2. closing <a> tag  */
+						esc_html__( 'Hey %1$s, to enhance security, Forminator will now store the file uploads from all your forms with random names in the “%2$s/wp-content/uploads/forminator%3$s” directory by default. However, you can specify a different storage directory for the uploaded files in the %4$sSettings > Data%5$s page.', 'forminator' ),
 						esc_html( ucfirst( $user->display_name ) ),
                         '<strong>',
                         '</strong>',

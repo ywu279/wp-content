@@ -29,7 +29,7 @@ class Forminator_Addon_Webhook_Form_Settings extends Forminator_Addon_Form_Setti
 	public function __construct( Forminator_Addon_Abstract $addon, $form_id ) {
 		parent::__construct( $addon, $form_id );
 
-		$this->_update_form_settings_error_message = __(
+		$this->_update_form_settings_error_message = esc_html__(
 			'The update to your settings for this form failed, check the form input and try again.',
 			'forminator'
 		);
@@ -100,7 +100,7 @@ class Forminator_Addon_Webhook_Form_Settings extends Forminator_Addon_Form_Setti
 			if ( $is_submit ) {
 				$input_exceptions = new Forminator_Addon_Webhook_Form_Settings_Exception();
 				if ( empty( $current_data['name'] ) ) {
-					$input_exceptions->add_input_exception( __( 'Please create a name for this Webhook integration', 'forminator' ), 'name' );
+					$input_exceptions->add_input_exception( esc_html__( 'Please create a name for this Webhook integration', 'forminator' ), 'name' );
 				}
 
 				$this->validate_and_send_sample( $submitted_data, $input_exceptions );
@@ -118,7 +118,7 @@ class Forminator_Addon_Webhook_Form_Settings extends Forminator_Addon_Form_Setti
 				$notification = array(
 					'type' => 'success',
 					'text' => '<strong>' . $this->addon->get_title() . ' [' . esc_html( $submitted_data['name'] ) . ']</strong> '
-							. __( 'Successfully connected and sent sample data to your Webhook' ),
+							. esc_html__( 'Successfully connected and sent sample data to your Webhook', 'forminator' ),
 				);
 			}
 		} catch ( Forminator_Addon_Webhook_Form_Settings_Exception $e ) {
@@ -157,7 +157,7 @@ class Forminator_Addon_Webhook_Form_Settings extends Forminator_Addon_Form_Setti
 		$help_message = esc_html__( 'Give your webhook integration a name and add the webhook URL.', 'forminator' );
 
 		return array(
-			'html'         => '<div class="forminator-integration-popup__header"><h3 class="sui-box-title sui-lg" id="dialogTitle2">' . __( 'Set Up Webhook', 'forminator' ) . '</h3>
+			'html'         => '<div class="forminator-integration-popup__header"><h3 class="sui-box-title sui-lg" id="dialogTitle2">' . esc_html__( 'Set Up Webhook', 'forminator' ) . '</h3>
 							<p class="sui-description">' . $help_message . '</p>
 							' . $error_message . '</div>
 							<form enctype="multipart/form-data">
@@ -221,19 +221,19 @@ class Forminator_Addon_Webhook_Form_Settings extends Forminator_Addon_Form_Setti
 	private function validate_and_send_sample( $submitted_data, Forminator_Addon_Webhook_Form_Settings_Exception $current_input_exception ) {
 		$form_id = $this->form_id;
 		if ( ! isset( $submitted_data['webhook_url'] ) ) {
-			$current_input_exception->add_input_exception( __( 'Please put a valid Webhook URL.', 'forminator' ), 'webhook_url' );
+			$current_input_exception->add_input_exception( esc_html__( 'Please put a valid Webhook URL.', 'forminator' ), 'webhook_url' );
 			throw $current_input_exception;
 		}
 
 		// must not be in silent mode.
 		if ( stripos( $submitted_data['webhook_url'], 'silent' ) !== false ) {
-			$current_input_exception->add_input_exception( __( 'Please disable Silent Mode on Webhook URL.', 'forminator' ), 'webhook_url' );
+			$current_input_exception->add_input_exception( esc_html__( 'Please disable Silent Mode on Webhook URL.', 'forminator' ), 'webhook_url' );
 			throw $current_input_exception;
 		}
 
 		$endpoint = wp_http_validate_url( $submitted_data['webhook_url'] );
 		if ( false === $endpoint ) {
-			$current_input_exception->add_input_exception( __( 'Please put a valid Webhook URL.', 'forminator' ), 'webhook_url' );
+			$current_input_exception->add_input_exception( esc_html__( 'Please put a valid Webhook URL.', 'forminator' ), 'webhook_url' );
 			throw $current_input_exception;
 		}
 

@@ -636,7 +636,7 @@ class Forminator_CForm_Front_Mail extends Forminator_Mail {
 				if ( 0 === strpos( $key, 'stripe-' ) && ! empty( $val ) && ! empty( $val['value'] ) ) {
 					if (
 						isset( $val['value']['payment_type'] ) &&
-						strtolower( __( 'One Time', 'forminator' ) ) === strtolower( $val['value']['payment_type'] )
+						strtolower( esc_html__( 'One Time', 'forminator' ) ) === strtolower( $val['value']['payment_type'] )
 					) {
 						unset( $entry->meta_data[ $key ]['value']['quantity'] );
 					}

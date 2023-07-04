@@ -70,7 +70,7 @@ $custom_votes = $this->map_custom_votes();
 						echo '<div style="margin-top: 10px;">';
 
 					foreach ( $custom_vote as $answer => $vote ) {
-						echo '<span class="sui-tag">' . /* translators: ... */ esc_html( sprintf( _n( '%1$s (%2$s) vote', '%1$s (%2$s) votes', $vote, 'forminator' ), $answer, $vote ) ) . '</span>';
+						echo '<span class="sui-tag">' . /* translators: 1: Number of vote, 2: Answer */ esc_html( sprintf( _n( '%1$s (%2$s) vote', '%1$s (%2$s) votes', $vote, 'forminator' ), $answer, $vote ) ) . '</span>';
 					}
 
 						echo '</div>';

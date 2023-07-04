@@ -273,7 +273,7 @@ abstract class Forminator_Admin_Module_Edit_Page extends Forminator_Admin_Page {
 								<li><a href="#"
 									class="wpmudev-open-modal"
 									data-modal="<?php echo esc_attr( $preview_dialog ); ?>"
-									data-modal-title="<?php printf( '%s - %s', esc_html( $preview_title ), esc_attr( htmlspecialchars( htmlspecialchars( forminator_get_form_name( $module['id'] ) ) ) ) ); ?>"
+									data-modal-title="<?php printf( esc_attr__( '%1$s - %2$s', 'forminator' ), esc_html( $preview_title ), esc_attr( htmlspecialchars( forminator_get_form_name( $module['id'] ) ) ) ); ?>"
 									data-form-id="<?php echo esc_attr( $module['id'] ); ?>"
 									data-has-leads="<?php echo esc_attr( $has_leads ); ?>"
 									data-leads-id="<?php echo esc_attr( $leads_id ); ?>"
@@ -345,7 +345,7 @@ abstract class Forminator_Admin_Module_Edit_Page extends Forminator_Admin_Page {
 										class="wpmudev-open-modal"
 										data-modal="delete-module"
 										data-modal-title="<?php esc_attr_e( 'Reset Tracking Data', 'forminator' ); ?>"
-										data-modal-content="<?php echo esc_attr( sprintf( __( 'This action will reset the views and conversions data for this %s. Are you sure you want to proceed?', 'forminator' ), $module_slug ) ); ?>"
+										data-modal-content="<?php /* translators: %s: Module slug. */ printf( esc_attr__( 'This action will reset the views and conversions data for this %s. Are you sure you want to proceed?', 'forminator' ), esc_html__( $module_slug, 'forminator' ) ); ?>"
 										data-button-text="<?php esc_attr_e( 'Reset', 'forminator' ); ?>"
 										data-form-id="<?php echo esc_attr( $module['id'] ); ?>"
 										data-action="reset-views"
@@ -392,8 +392,8 @@ abstract class Forminator_Admin_Module_Edit_Page extends Forminator_Admin_Page {
 									<button
 										class="sui-option-red wpmudev-open-modal"
 										data-modal="delete-module"
-										data-modal-title="<?php echo esc_attr( sprintf( __( 'Delete %s', 'forminator' ), forminator_get_prefix( $module_slug, '', true ) ) ); ?>"
-										data-modal-content="<?php echo esc_attr( sprintf( __( 'Are you sure you wish to permanently delete this %s?', 'forminator' ), $module_slug ) ); ?>"
+										data-modal-title="<?php /* translators: %s: Module slug. */ printf( esc_attr__( 'Delete %s', 'forminator' ), forminator_get_prefix( $module_slug, '', true ) ); ?>"
+										data-modal-content="<?php /* translators: %s: Module slug. */ printf( esc_attr__( 'Are you sure you wish to permanently delete this %s?', 'forminator' ), $module_slug ); ?>"
 										data-form-id="<?php echo esc_attr( $module['id'] ); ?>"
 										data-nonce="<?php echo esc_attr( wp_create_nonce( 'forminator_' . $module_slug . '_request' ) ); ?>"
 									>
@@ -467,11 +467,14 @@ abstract class Forminator_Admin_Module_Edit_Page extends Forminator_Admin_Page {
 						<?php
 						unset( $message );
 						if ( 0 === $module['entries'] ) {
-							$message = sprintf( esc_html__( "Your %s doesn't have any submission yet. Try again in a moment.", 'forminator' ), $module_slug );
+							/* translators: %s: Module slug */
+							$message = sprintf( esc_html__( 'Your %s doesn\'t have any submission yet. Try again in a moment.', 'forminator' ), esc_html__( $module_slug, 'forminator' ) );
 						} elseif ( 'draft' === $module['status'] ) {
-							$message = sprintf( esc_html__( "This %s is in draft state, so we've paused collecting data until you publish it live.", 'forminator' ), $module_slug );
+							/* translators: %s: Module slug */
+							$message = sprintf( esc_html__( 'This %s is in draft state, so we\'ve paused collecting data until you publish it live.', 'forminator' ), esc_html__( $module_slug, 'forminator' ) );
 						} elseif ( 0 === $module_entries_from_last_month ) {
-							$message = sprintf( esc_html__( "Your %s didn't collect submissions the past 30 days.", 'forminator' ), $module_slug );
+							/* translators: %s: Module slug */
+							$message = sprintf( esc_html__( 'Your %s didn\'t collect submissions the past 30 days.', 'forminator' ), esc_html__( $module_slug, 'forminator' ) );
 						}
 						?>
 						<?php if ( ! empty( $message ) ) { ?>
@@ -550,7 +553,7 @@ abstract class Forminator_Admin_Module_Edit_Page extends Forminator_Admin_Page {
 	 */
 	public function pagination( $is_search, $count ) {
 		echo '<span class="sui-pagination-results">'
-			/* translators: ... */
+		     /* translators: %s: Pagination Count */
 			. esc_html( sprintf( _n( '%s result', '%s results', $count, 'forminator' ), $count ) )
 			. '</span>';
 
@@ -626,7 +629,7 @@ abstract class Forminator_Admin_Module_Edit_Page extends Forminator_Admin_Page {
 
 			// update title.
 			if ( isset( $model->settings['formName'] ) ) {
-				$model->settings['formName'] = sprintf( __( 'Copy of %s', 'forminator' ), esc_html( $model->settings['formName'] ) );
+				$model->settings['formName'] = /* translators: %s: Form name */ sprintf( esc_html__( 'Copy of %s', 'forminator' ), esc_html( $model->settings['formName'] ) );
 			}
 
 			// save it to create new record.
@@ -777,7 +780,7 @@ abstract class Forminator_Admin_Module_Edit_Page extends Forminator_Admin_Page {
 		fwrite( $fp, $encoded ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite
 		fseek( $fp, 0 );
 
-		$filename = sanitize_title( __( 'forminator', 'forminator' ) ) . '-' . sanitize_title( $model_name ) . '-' . static::$module_slug . '-export' . '.txt';
+		$filename = esc_html__( 'forminator', 'forminator' ) . '-' . sanitize_title( $model_name ) . '-' . static::$module_slug . '-export' . '.txt';
 
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Type: text/plain' );

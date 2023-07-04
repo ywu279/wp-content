@@ -2,8 +2,8 @@
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
 		<?php
-			/* translators: ... */
-			echo esc_html( sprintf( __( '%1$s Connected', 'forminator' ), 'HubSpot' ) );
+		/* translators: 1: Add-on name */
+			printf( __( '%1$s Connected', 'forminator' ), 'HubSpot' );
 		?>
 	</h3>
 

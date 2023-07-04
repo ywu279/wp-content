@@ -234,7 +234,7 @@ class Forminator_QForm_Front extends Forminator_Render_Form {
 	 * @return string
 	 */
 	private static function pagination_content_start( $module_id, $step, $page_indicator ) {
-		$label = sprintf( __( 'Page %s', 'forminator' ), $step );
+		$label = sprintf( esc_html__( 'Page %s', 'forminator' ), $step );
 
 		$html  = '<div role="tabpanel" id="forminator-custom-form-' . esc_attr( $module_id ) . '--page-' . esc_attr( $step ) . '" '
 				. 'class="forminator-pagination forminator-hidden" '
@@ -243,7 +243,7 @@ class Forminator_QForm_Front extends Forminator_Render_Form {
 		$html .= '<div class="forminator-pagination--content">';
 		if ( $page_indicator ) {
 			$html .= '<div class="forminator-page-indicator"><span>';
-			$html .= esc_html( sprintf( __( 'Page %1$s of %2$s', 'forminator' ), $step + 1, self::$steps_count ) );
+			$html .= esc_html( sprintf( esc_html__( 'Page %1$s of %2$s', 'forminator' ), $step + 1, self::$steps_count ) );
 			$html .= '</span></div>';
 		}
 

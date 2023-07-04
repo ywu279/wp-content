@@ -72,7 +72,7 @@ class Forminator_Poll_Front_Action extends Forminator_Front_Action {
 	private static function can_submit( $freeze = false ) {
 		// disable submissions if not published.
 		if ( Forminator_Poll_Model::STATUS_PUBLISH !== self::$module_object->status ) {
-			throw new Exception( __( 'Poll submissions disabled.', 'forminator' ) );
+			throw new Exception( esc_html__( 'Poll submissions disabled.', 'forminator' ) );
 		}
 
 		// Check poll opening status.
@@ -96,7 +96,7 @@ class Forminator_Poll_Front_Action extends Forminator_Front_Action {
 
 		if ( ! $user_can_vote ) {
 			self::$response_attrs['notice']  = 'notice';
-			throw new Exception( __( 'You have already submitted a vote to this poll', 'forminator' ) );
+			throw new Exception( esc_html__( 'You have already submitted a vote to this poll', 'forminator' ) );
 		}
 	}
 
@@ -109,7 +109,7 @@ class Forminator_Poll_Front_Action extends Forminator_Front_Action {
 	private static function get_field_data() {
 		$field_data = isset( self::$prepared_data[ self::$module_id ] ) ? self::$prepared_data[ self::$module_id ] : false;
 		if ( empty( $field_data ) ) {
-			throw new Exception( __( 'You need to select a poll option', 'forminator' ) );
+			throw new Exception( esc_html__( 'You need to select a poll option', 'forminator' ) );
 		}
 
 		return $field_data;
@@ -216,7 +216,7 @@ class Forminator_Poll_Front_Action extends Forminator_Front_Action {
 	private static function get_response() {
 		self::$response_attrs['notice'] = 'success';
 
-		$response = self::return_success( __( 'Your vote has been saved', 'forminator' ) );
+		$response = self::return_success( esc_html__( 'Your vote has been saved', 'forminator' ) );
 		if ( ! isset( self::$module_settings['results-behav'] ) || ! in_array( self::$module_settings['results-behav'], array( 'show_after', 'link_on' ), true ) ) {
 			return $response;
 		}
@@ -282,7 +282,7 @@ class Forminator_Poll_Front_Action extends Forminator_Front_Action {
 			$response['chart_data'] = self::get_chart_data( $poll );
 
 			if ( isset( $setting['enable-votes-limit'] ) && 'true' === $setting['enable-votes-limit'] ) {
-				$response['back_button'] = '<button type="button" class="forminator-button forminator-button-back">' . __( 'Back To Poll', 'forminator' ) . '</button>';
+				$response['back_button'] = '<button type="button" class="forminator-button forminator-button-back">' . esc_html__( 'Back To Poll', 'forminator' ) . '</button>';
 			}
 		} else {
 			// its not ajax enabled, send url result to front end

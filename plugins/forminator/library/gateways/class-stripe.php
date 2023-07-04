@@ -72,7 +72,7 @@ class Forminator_Gateway_Stripe {
 	public function __construct() {
 
 		if ( ! self::is_available() ) {
-			throw new Forminator_Gateway_Exception( __( 'Stripe not available, please check your WordPress installation for PHP Version and plugin conflicts.', 'forminator' ) );
+			throw new Forminator_Gateway_Exception( esc_html__( 'Stripe not available, please check your WordPress installation for PHP Version and plugin conflicts.', 'forminator' ) );
 		}
 		$config = get_option( 'forminator_stripe_configuration', array() );
 
@@ -147,7 +147,7 @@ class Forminator_Gateway_Stripe {
 		} catch ( Exception $e ) {
 			forminator_maybe_log( __METHOD__, $e->getMessage() );
 			throw new Forminator_Gateway_Exception(
-				__( 'Some error has occurred while connecting to your Stripe account. Please resolve the following errors and try to connect again.', 'forminator' ),
+				esc_html__( 'Some error has occurred while connecting to your Stripe account. Please resolve the following errors and try to connect again.', 'forminator' ),
 				$error,
 				$e
 			);

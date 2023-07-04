@@ -16,7 +16,7 @@ foreach ( $template_vars as $key => $val ) {
 <div class="forminator-integration-popup__header">
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
-		<?php echo esc_html( __( 'Set Up Message', 'forminator' ) ); ?>
+		<?php esc_html_e( 'Set Up Message', 'forminator' ); ?>
 	</h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description"><?php esc_html_e( 'Configure message to be sent.', 'forminator' ); ?></p>
@@ -57,7 +57,7 @@ foreach ( $template_vars as $key => $val ) {
 				id="slack_message"
 				class="sui-form-control"
 				name="message"
-				placeholder="<?php echo esc_attr( __( 'Message', 'forminator' ) ); ?>"
+				placeholder="<?php esc_attr_e( 'Message', 'forminator' ); ?>"
 			><?php echo esc_html( $vars['message'] ); ?></textarea>
 
 			<select class="sui-variables" data-textarea-id="slack_message">
@@ -74,8 +74,8 @@ foreach ( $template_vars as $key => $val ) {
 		<?php endif; ?>
 		<span class="sui-description">
 			<?php
-			/* translators: ... */
 			printf(
+			/* Translators: 1. Opening <a> tag with link to the article link, 2. closing <a> tag. */
 				esc_html__( 'You can format your message using Slack Flavored Markdown, find more information %shere%s.', 'forminator' ),
 				'<a href="https://get.slack.help/hc/en-us/articles/202288908-how-can-i-add-formatting-to-my-messages" target="_blank">',
 				'</a>'
@@ -84,8 +84,8 @@ foreach ( $template_vars as $key => $val ) {
 		</span>
 		<span class="sui-description">
 			<?php
-			/* translators: ... */
 			printf(
+			/* Translators: 1. Opening <a> tag with link to the message attach link, 2. closing <a> tag. */
 				esc_html__( 'By default sent message will include Poll Answer and Poll Results as attachment using Forminator Format to ease you up, more information about attachment can be found %shere%s.', 'forminator' ),
 				'<a href="https://api.slack.com/docs/message-attachments" target="_blank">',
 				'</a>'

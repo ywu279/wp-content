@@ -1110,11 +1110,11 @@ abstract class Forminator_Base_Form_Model {
 
 		try {
 			if ( ! Forminator::is_import_export_feature_enabled() ) {
-				throw new Exception( __( 'Export Import feature disabled', 'forminator' ) );
+				throw new Exception( esc_html__( 'Export Import feature disabled', 'forminator' ) );
 			}
 
 			if ( ! is_callable( array( $class, 'model' ) ) ) {
-				throw new Exception( __( 'Model loader for importer does not exist.', 'forminator' ) );
+				throw new Exception( esc_html__( 'Model loader for importer does not exist.', 'forminator' ) );
 			}
 
 			// call static method ::model.
@@ -1131,7 +1131,7 @@ abstract class Forminator_Base_Form_Model {
 			do_action( 'forminator_before_create_model_from_import_data', $import_data, $class );
 
 			if ( ! isset( $import_data['type'] ) || empty( $import_data['type'] ) ) {
-				throw new Exception( __( 'Invalid format of import data type', 'forminator' ) );
+				throw new Exception( esc_html__( 'Invalid format of import data type', 'forminator' ) );
 			}
 
 			$meta = ( isset( $import_data['data'] ) ? $import_data['data'] : array() );
@@ -1139,15 +1139,15 @@ abstract class Forminator_Base_Form_Model {
 			$meta = self::clear_stripe_plan_ids( $meta );
 
 			if ( empty( $meta ) ) {
-				throw new Exception( __( 'Invalid format of import data', 'forminator' ) );
+				throw new Exception( esc_html__( 'Invalid format of import data', 'forminator' ) );
 			}
 
 			if ( ! isset( $meta['settings'] ) || empty( $meta['settings'] ) ) {
-				throw new Exception( __( 'Invalid format of import data settings', 'forminator' ) );
+				throw new Exception( esc_html__( 'Invalid format of import data settings', 'forminator' ) );
 			}
 
 			if ( ! isset( $meta['settings']['formName'] ) || empty( $meta['settings']['formName'] ) ) {
-				throw new Exception( __( 'Invalid format of import data name', 'forminator' ) );
+				throw new Exception( esc_html__( 'Invalid format of import data name', 'forminator' ) );
 			}
 
 			$form_name = $meta['settings']['formName'];
@@ -1196,7 +1196,7 @@ abstract class Forminator_Base_Form_Model {
 			$settings = $meta['settings'];
 
 			if ( ! $model instanceof $class ) {
-				throw new Exception( __( 'Failed to load imported Forminator model', 'forminator' ) );
+				throw new Exception( esc_html__( 'Failed to load imported Forminator model', 'forminator' ) );
 			}
 
 			/**

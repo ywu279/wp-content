@@ -42,10 +42,10 @@ final class Forminator_Addon_Webhook extends Forminator_Addon_Abstract {
 	 */
 	public function __construct() {
 		// late init to allow translation.
-		$this->_description = __( 'Get awesome by your form.', 'forminator' );
+		$this->_description = esc_html__( 'Get awesome by your form.', 'forminator' );
 		$this->_promotion = sprintf(
 		/* translators: 1: Zapier link 2. Closing a tag 3. Integrately link 4. Tray.io link 5. Make.com link 6. Workato link 7. Additional text */
-			__( 'Connect Forminator with automation tools through webhook. You can use this to send submissions to automation apps like %1$sZapier%2$s, %3$sIntegrately%2$s, %4$sTray.io%2$s, %5$sMake%2$s, %6$sWorkato%2$s, and other automation tools that support webhooks.', 'forminator' ),
+			esc_html__( 'Connect Forminator with automation tools through webhook. You can use this to send submissions to automation apps like %1$sZapier%2$s, %3$sIntegrately%2$s, %4$sTray.io%2$s, %5$sMake%2$s, %6$sWorkato%2$s, and other automation tools that support webhooks.', 'forminator' ),
 			'<a href="https://zapier.com/" target="_blank">',
 			'</a>',
 			'<a href="https://integrately.com/" target="_blank">',
@@ -54,10 +54,10 @@ final class Forminator_Addon_Webhook extends Forminator_Addon_Abstract {
 			'<a href="https://www.workato.com/" target="_blank">'
 		);
 
-		$this->_activation_error_message   = __( 'Sorry but we failed to activate Webhook Integration, don\'t hesitate to contact us', 'forminator' );
-		$this->_deactivation_error_message = __( 'Sorry but we failed to deactivate Webhook Integration, please try again', 'forminator' );
+		$this->_activation_error_message   = esc_html__( 'Sorry but we failed to activate Webhook Integration, don\'t hesitate to contact us', 'forminator' );
+		$this->_deactivation_error_message = esc_html__( 'Sorry but we failed to deactivate Webhook Integration, please try again', 'forminator' );
 
-		$this->_update_settings_error_message = __(
+		$this->_update_settings_error_message = esc_html__(
 			'Sorry, we failed to update settings, please check your form and try again',
 			'forminator'
 		);
@@ -137,7 +137,7 @@ final class Forminator_Addon_Webhook extends Forminator_Addon_Abstract {
 
 			try {
 				if ( empty( $connect ) ) {
-					throw new Forminator_Addon_Webhook_Exception( __( 'Please Connect Webhook', 'forminator' ) );
+					throw new Forminator_Addon_Webhook_Exception( esc_html__( 'Please Connect Webhook', 'forminator' ) );
 				}
 
 				if ( ! forminator_addon_is_active( $this->_slug ) ) {
@@ -198,7 +198,7 @@ final class Forminator_Addon_Webhook extends Forminator_Addon_Abstract {
 		try {
 			// check if its active.
 			if ( ! $this->is_active() ) {
-				throw new Forminator_Addon_Webhook_Exception( __( 'Webhook is not active', 'forminator' ) );
+				throw new Forminator_Addon_Webhook_Exception( esc_html__( 'Webhook is not active', 'forminator' ) );
 			}
 			$is_connected = true;
 		} catch ( Forminator_Addon_Webhook_Exception $e ) {
@@ -231,17 +231,17 @@ final class Forminator_Addon_Webhook extends Forminator_Addon_Abstract {
 		try {
 			$form_settings_instance = null;
 			if ( ! $this->is_connected() ) {
-				throw new Forminator_Addon_Webhook_Exception( __( 'Webhook is not connected', 'forminator' ) );
+				throw new Forminator_Addon_Webhook_Exception( esc_html__( 'Webhook is not connected', 'forminator' ) );
 			}
 
 			$form_settings_instance = $this->get_addon_settings( $form_id, 'form' );
 			if ( ! $form_settings_instance instanceof Forminator_Addon_Webhook_Form_Settings ) {
-				throw new Forminator_Addon_Webhook_Exception( __( 'Invalid Form Settings of Webhook', 'forminator' ) );
+				throw new Forminator_Addon_Webhook_Exception( esc_html__( 'Invalid Form Settings of Webhook', 'forminator' ) );
 			}
 
 			// Mark as active when there is at least one active connection.
 			if ( false === $form_settings_instance->find_one_active_connection() ) {
-				throw new Forminator_Addon_Webhook_Exception( __( 'No active Webhook connection found in this form', 'forminator' ) );
+				throw new Forminator_Addon_Webhook_Exception( esc_html__( 'No active Webhook connection found in this form', 'forminator' ) );
 			}
 
 			$is_form_connected = true;

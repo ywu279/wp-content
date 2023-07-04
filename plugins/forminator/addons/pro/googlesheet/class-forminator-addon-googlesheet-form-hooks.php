@@ -39,7 +39,7 @@ class Forminator_Addon_Googlesheet_Form_Hooks extends Forminator_Addon_Form_Hook
 	 */
 	public function __construct( Forminator_Addon_Abstract $addon, $form_id ) {
 		parent::__construct( $addon, $form_id );
-		$this->_submit_form_error_message = __( 'Google Sheets failed to process submitted data. Please check your form and try again', 'forminator' );
+		$this->_submit_form_error_message = esc_html__( 'Google Sheets failed to process submitted data. Please check your form and try again', 'forminator' );
 	}
 
 	/**
@@ -294,7 +294,7 @@ class Forminator_Addon_Googlesheet_Form_Hooks extends Forminator_Addon_Form_Hook
 			return array(
 				'is_sent'         => true,
 				'connection_name' => $connection_settings['name'],
-				'description'     => __( 'Successfully send data to Google Sheets', 'forminator' ),
+				'description'     => esc_html__( 'Successfully send data to Google Sheets', 'forminator' ),
 			);
 
 		} catch ( Forminator_Google_Exception $e ) {
@@ -357,16 +357,16 @@ class Forminator_Addon_Googlesheet_Form_Hooks extends Forminator_Addon_Form_Hook
 		$sheets              = $spreadsheet->getSheets();
 
 		if ( ! isset( $sheets[0] ) || ! isset( $sheets[0]->properties ) ) {
-			throw new Forminator_Addon_Googlesheet_Exception( __( 'No sheet found', 'forminator' ) );
+			throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'No sheet found', 'forminator' ) );
 		}
 		$sheet_id = $sheets[0]->properties->sheetId;
 
 		if ( ! isset( $sheets[0]->properties->title ) || empty( $sheets[0]->properties->title ) ) {
-			throw new Forminator_Addon_Googlesheet_Exception( __( 'Sheet title not found', 'forminator' ) );
+			throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Sheet title not found', 'forminator' ) );
 		}
 
 		if ( ! isset( $sheets[0]->properties->gridProperties ) || ! isset( $sheets[0]->properties->gridProperties->columnCount ) ) {
-			throw new Forminator_Addon_Googlesheet_Exception( __( 'Failed to get column count of the sheet', 'forminator' ) );
+			throw new Forminator_Addon_Googlesheet_Exception( esc_html__( 'Failed to get column count of the sheet', 'forminator' ) );
 		}
 
 		$sheet_title        = $sheets[0]->properties->title;
@@ -574,29 +574,29 @@ class Forminator_Addon_Googlesheet_Form_Hooks extends Forminator_Addon_Form_Hook
 		}
 		$status                = $addon_meta_data['value'];
 		$additional_entry_item = array(
-			'label' => __( 'Google Sheets Integration', 'forminator' ),
+			'label' => esc_html__( 'Google Sheets Integration', 'forminator' ),
 			'value' => '',
 		);
 
 		$sub_entries = array();
 		if ( isset( $status['connection_name'] ) ) {
 			$sub_entries[] = array(
-				'label' => __( 'Integration Name', 'forminator' ),
+				'label' => esc_html__( 'Integration Name', 'forminator' ),
 				'value' => $status['connection_name'],
 			);
 		}
 
 		if ( isset( $status['is_sent'] ) ) {
-			$is_sent       = true === $status['is_sent'] ? __( 'Yes', 'forminator' ) : __( 'No', 'forminator' );
+			$is_sent       = true === $status['is_sent'] ? esc_html__( 'Yes', 'forminator' ) : esc_html__( 'No', 'forminator' );
 			$sub_entries[] = array(
-				'label' => __( 'Sent To Google Sheets', 'forminator' ),
+				'label' => esc_html__( 'Sent To Google Sheets', 'forminator' ),
 				'value' => $is_sent,
 			);
 		}
 
 		if ( isset( $status['description'] ) ) {
 			$sub_entries[] = array(
-				'label' => __( 'Info', 'forminator' ),
+				'label' => esc_html__( 'Info', 'forminator' ),
 				'value' => $status['description'],
 			);
 		}
@@ -617,7 +617,7 @@ class Forminator_Addon_Googlesheet_Form_Hooks extends Forminator_Addon_Form_Hook
 	public function on_export_render_title_row() {
 
 		$export_headers = array(
-			'info' => __( 'Google Sheets Info', 'forminator' ),
+			'info' => esc_html__( 'Google Sheets Info', 'forminator' ),
 		);
 
 		$form_id                = $this->form_id;

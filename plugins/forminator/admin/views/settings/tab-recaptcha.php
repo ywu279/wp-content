@@ -105,7 +105,12 @@ $new = true;
 
 									<span class="sui-settings-label"><?php esc_html_e( 'reCaptcha API Keys', 'forminator' ); ?></span>
 									<span class="sui-description" style="margin-bottom: 10px;">
-										<?php /* translators: ... */ printf( esc_html( __( 'Enter the API keys for each reCAPTCHA type you want to use in your forms. Note that each reCAPTCHA type requires a different set of API keys. %1$sGenerate API keys%2$s', 'forminator' ) ), '<a href="https://www.google.com/recaptcha/admin#list" target="_blank">', '</a>' ); ?>
+										<?php printf(
+										/* Translators: 1. Opening <a> tag with link to Google recaptcha, 2. closing <a> tag. */
+											esc_html__( 'Enter the API keys for each reCAPTCHA type you want to use in your forms. Note that each reCAPTCHA type requires a different set of API keys. %1$sGenerate API keys%2$s', 'forminator' ),
+											'<a href="https://www.google.com/recaptcha/admin#list" target="_blank">',
+											'</a>'
+										); ?>
 									</span>
 
 									<div class="sui-tabs sui-side-tabs">
@@ -156,7 +161,7 @@ $new = true;
 															<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>
 														</p>
 													</div>
-													<span class="sui-description"><?php esc_html_e( "If you see any errors in the preview, make sure the key you've entered are valid, and you've listed your domain name while generating the keys.", 'forminator' ); ?></span>
+													<span class="sui-description"><?php esc_html_e( 'If you see any errors in the preview, make sure the key you\'ve entered are valid, and you\'ve listed your domain name while generating the keys.', 'forminator' ); ?></span>
 												</div>
 
 											</div>
@@ -201,7 +206,7 @@ $new = true;
 														</p>
 													</div>
 
-													<span class="sui-description"><?php esc_html_e( "If you see any errors in the preview, make sure the key you've entered are valid, and you've listed your domain name while generating the keys.", 'forminator' ); ?></span>
+													<span class="sui-description"><?php esc_html_e( 'If you see any errors in the preview, make sure the key you\'ve entered are valid, and you\'ve listed your domain name while generating the keys.', 'forminator' ); ?></span>
 												</div>
 
 											</div>
@@ -247,7 +252,7 @@ $new = true;
 														</p>
 													</div>
 
-													<span class="sui-description"><?php esc_html_e( "If you see any errors in the preview, make sure the key you've entered are valid, and you've listed your domain name while generating the keys.", 'forminator' ); ?></span>
+													<span class="sui-description"><?php esc_html_e( 'If you see any errors in the preview, make sure the key you\'ve entered are valid, and you\'ve listed your domain name while generating the keys.', 'forminator' ); ?></span>
 
 												</div>
 
@@ -265,12 +270,12 @@ $new = true;
 									<span class="sui-settings-label"><?php esc_html_e( 'hCaptcha API Keys', 'forminator' ); ?></span>
 									<span class="sui-description" style="margin-bottom: 10px;">
 										<?php
-											/* translators: ... */
-											printf(
-												esc_html( __( 'Enter your hCaptcha API keys below to enable hCaptcha option in your form’s CAPTCHA field. See %1$sinstructions%2$s on how to get your API Keys.', 'forminator' ) ),
-												'<a href="https://docs.hcaptcha.com/switch#get-your-hcaptcha-sitekey-and-secret-key" target="_blank">',
-												'</a>'
-											);
+										printf(
+										/* Translators: 1. Opening <a> tag with hCaptcha API key, 2. closing <a> tag. */
+											esc_html__( 'Enter your hCaptcha API keys below to enable hCaptcha option in your form’s CAPTCHA field. See %1$sinstructions%2$s on how to get your API Keys.', 'forminator' ),
+											'<a href="https://docs.hcaptcha.com/switch#get-your-hcaptcha-sitekey-and-secret-key" target="_blank">',
+											'</a>'
+										);
 										?>
 									</span>
 

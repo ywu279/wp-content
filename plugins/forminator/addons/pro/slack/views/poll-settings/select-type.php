@@ -15,7 +15,7 @@ foreach ( $template_vars as $key => $val ) {
 <div class="forminator-integration-popup__header">
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
-		<?php echo esc_html( __( 'Select Type', 'forminator' ) ); ?>
+		<?php esc_html_e( 'Select Type', 'forminator' ); ?>
 	</h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description"><?php esc_html_e( 'Select what type of channel Slack will send the message to: a public channel, a private group or a DM channel.', 'forminator' ); ?></p>

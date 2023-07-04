@@ -61,7 +61,7 @@ class Forminator_Addon_Webhook_Wp_Api {
 		$wpdb->last_error;
 		//prerequisites
 		if ( ! $_endpoint ) {
-			throw new Forminator_Addon_Webhook_Wp_Api_Exception( __( 'Missing required Static Webhook URL', 'forminator' ) );
+			throw new Forminator_Addon_Webhook_Wp_Api_Exception( esc_html__( 'Missing required Static Webhook URL', 'forminator' ) );
 		}
 
 		$this->_endpoint = $_endpoint;
@@ -211,7 +211,7 @@ class Forminator_Addon_Webhook_Wp_Api {
 		if ( is_wp_error( $res ) || ! $res ) {
 			forminator_addon_maybe_log( __METHOD__, $res );
 			throw new Forminator_Addon_Webhook_Wp_Api_Exception(
-				__( 'Failed to process request, make sure your Webhook URL is correct and your server has internet connection.', 'forminator' )
+				esc_html__( 'Failed to process request, make sure your Webhook URL is correct and your server has internet connection.', 'forminator' )
 			);
 		}
 
@@ -228,11 +228,11 @@ class Forminator_Addon_Webhook_Wp_Api {
 				}
 
 				if ( 404 === $status_code ) {
-					/* translators: ... */
-					throw new Forminator_Addon_Webhook_Wp_Api_Not_Found_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
+					/* translators: %s: Error message */
+					throw new Forminator_Addon_Webhook_Wp_Api_Not_Found_Exception( sprintf( esc_html__( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
 				}
-				/* translators: ... */
-				throw new Forminator_Addon_Webhook_Wp_Api_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
+				/* translators: %s: Error message */
+				throw new Forminator_Addon_Webhook_Wp_Api_Exception( sprintf( esc_html__( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
 			}
 		}
 

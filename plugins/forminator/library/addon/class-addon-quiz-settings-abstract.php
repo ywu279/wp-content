@@ -122,8 +122,8 @@ abstract class Forminator_Addon_Quiz_Settings_Abstract extends Forminator_Addon_
 		$this->quiz_id = $quiz_id;
 		$this->quiz    = Forminator_Base_Form_Model::get_model( $this->quiz_id );
 		if ( ! $this->quiz ) {
-			/* translators: ... */
-			throw new Forminator_Addon_Exception( sprintf( __( 'Quiz with id %d could not be found', 'forminator' ), $this->quiz_id ) );
+			/* translators: Quiz ID */
+			throw new Forminator_Addon_Exception( sprintf( esc_html__( 'Quiz with id %d could not be found', 'forminator' ), $this->quiz_id ) );
 		}
 		$this->quiz_settings = forminator_addon_format_quiz_settings( $this->quiz );
 		if ( isset( $this->quiz_settings['hasLeads'] ) && $this->quiz_settings['hasLeads'] ) {

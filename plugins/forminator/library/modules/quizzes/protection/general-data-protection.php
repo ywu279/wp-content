@@ -20,7 +20,7 @@ class Forminator_Quiz_General_Data_Protection extends Forminator_General_Data_Pr
 	protected static $module_slug = 'quiz';
 
 	public function __construct() {
-		parent::__construct( __( 'Forminator Quizzes', 'forminator' ) );
+		parent::__construct( esc_html__( 'Forminator Quizzes', 'forminator' ) );
 	}
 
 	/**

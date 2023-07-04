@@ -324,6 +324,16 @@ abstract class Forminator_Addon_Abstract implements Forminator_Addon_Interface {
 	private $steps = array();
 
 	/**
+	 * Nonce option name
+	 *
+	 * @var string
+	 */
+	const NONCE_OPTION_NAME = 'forminator_custom_nonce';
+
+	const DOMAIN       = 'https://wpmudev.com';
+	const REDIRECT_URI = 'https://wpmudev.com/api/forminator/v1/provider';
+
+	/**
 	 * Get this addon slug
 	 *
 	 * @see    Forminator_Addon_Abstract::$_slug
@@ -382,6 +392,73 @@ abstract class Forminator_Addon_Abstract implements Forminator_Addon_Interface {
 	 */
 	public function get_url() {
 		return $this->_url;
+	}
+
+	/**
+	 * Get redirect URL
+	 *
+	 * @param string $provider Provider.
+	 * @param string $action Action.
+	 * @param array  $params Params.
+	 * @return string
+	 */
+	public static function redirect_uri( $provider, $action, $params ) {
+		$params = wp_parse_args(
+			$params,
+			array(
+				'action'   => $action,
+				'provider' => $provider,
+			)
+		);
+
+		return add_query_arg( $params, self::REDIRECT_URI );
+	}
+
+	/**
+	 * Validates request callback from WPMU DEV
+	 *
+	 * @param string $provider Provider.
+	 * @return bool
+	 */
+	public static function validate_callback_request( $provider ) {
+		$wpnonce        = filter_input( INPUT_GET, 'wpnonce', FILTER_SANITIZE_SPECIAL_CHARS );
+		$domain         = filter_input( INPUT_GET, 'domain', FILTER_VALIDATE_URL );
+		$provider_input = filter_input( INPUT_GET, 'provider', FILTER_SANITIZE_SPECIAL_CHARS );
+
+		return ! empty( $wpnonce ) && self::verify_nonce( $wpnonce )
+			&& self::DOMAIN === $domain && $provider === $provider_input;
+	}
+
+	/**
+	 * Helper function to validate nonce value.
+	 *
+	 * @param string $nonce Nonce.
+	 *
+	 * @return bool
+	 */
+	private static function verify_nonce( $nonce ) {
+		return self::get_nonce_value() === $nonce;
+	}
+
+	/**
+	 * Helper function to generate unique none changeable nonce.
+	 *
+	 * @return string The unique nonce value.
+	 */
+	public static function get_nonce_value() {
+		$nonce = get_option( self::NONCE_OPTION_NAME );
+
+		if ( empty( $nonce ) ) {
+			/**
+			 * Generate the nonce value only once to avoid error response
+			 * when retrieving access token.
+			 */
+			$nonce = wp_generate_password( 40, false, false );
+
+			update_option( self::NONCE_OPTION_NAME, $nonce );
+		}
+
+		return $nonce;
 	}
 
 	/**
@@ -904,13 +981,13 @@ abstract class Forminator_Addon_Abstract implements Forminator_Addon_Interface {
 
 		$steps = $this->settings_wizards();
 		if ( ! is_array( $steps ) ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 		$total_steps = count( $steps );
 		if ( $total_steps < 1 ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 
 		if ( ! isset( $steps[ $step ] ) ) {
@@ -992,13 +1069,13 @@ abstract class Forminator_Addon_Abstract implements Forminator_Addon_Interface {
 	final public function get_form_settings_wizard( $submitted_data, $form_id, $current_step = 0, $step = 0 ) {
 		$steps = $this->get_steps( $form_id );
 		if ( ! is_array( $steps ) ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Form Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Form Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 		$total_steps = count( $steps );
 		if ( $total_steps < 1 ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Form Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Form Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 
 		if ( ! isset( $steps[ $step ] ) ) {
@@ -1162,17 +1239,17 @@ abstract class Forminator_Addon_Abstract implements Forminator_Addon_Interface {
 	private function get_wizard( $steps, $submitted_data, $module_id, $step = 0 ) {
 		$total_steps = count( $steps );
 
-		// validate callback, when its empty or not callable, mark as no wizard.
+		// validate callback, when it's empty or not callable, mark as no wizard.
 		if ( ! isset( $steps[ $step ]['callback'] ) || ! is_callable( $steps[ $step ]['callback'] ) ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 
 		$wizard = call_user_func( $steps[ $step ]['callback'], $submitted_data, $module_id );
 		// a wizard to be able to processed by our application need to has at least `html` which will be rendered or `redirect` which will be the url for redirect user to go to.
 		if ( ! isset( $wizard['html'] ) && ! isset( $wizard['redirect'] ) ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 		$wizard['forminator_addon_current_step']  = $step;
 		$wizard['forminator_addon_count_step']    = $total_steps;
@@ -2016,13 +2093,13 @@ abstract class Forminator_Addon_Abstract implements Forminator_Addon_Interface {
 		$steps = array_merge( $settings_steps, $poll_settings_steps );
 
 		if ( ! is_array( $steps ) ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Poll Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Poll Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 		$total_steps = count( $steps );
 		if ( $total_steps < 1 ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Poll Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Poll Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 
 		if ( ! isset( $steps[ $step ] ) ) {
@@ -2402,13 +2479,13 @@ abstract class Forminator_Addon_Abstract implements Forminator_Addon_Interface {
 		$steps = array_merge( $settings_steps, $quiz_settings_steps );
 
 		if ( ! is_array( $steps ) ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Quiz Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Quiz Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 		$total_steps = count( $steps );
 		if ( $total_steps < 1 ) {
-			/* translators: ... */
-			return $this->get_empty_wizard( sprintf( __( 'No Quiz Settings available for %1$s', 'forminator' ), $this->get_title() ) );
+			/* translators: integration title */
+			return $this->get_empty_wizard( sprintf( esc_html__( 'No Quiz Settings available for %1$s', 'forminator' ), $this->get_title() ) );
 		}
 
 		if ( ! isset( $steps[ $step ] ) ) {
@@ -2740,7 +2817,7 @@ abstract class Forminator_Addon_Abstract implements Forminator_Addon_Interface {
 	 */
 	final public function connection_failed() {
 
-		/* translators: integration's title */
-		return sprintf( __( 'We couldn\'t connect to your %s account. Please resolve the errors below and try again.', 'forminator' ), $this->_title );
+		/* translators: integration title */
+		return sprintf( esc_html__( 'We couldn\'t connect to your %s account. Please resolve the errors below and try again.', 'forminator' ), $this->_title );
 	}
 }

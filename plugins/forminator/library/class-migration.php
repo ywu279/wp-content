@@ -1021,7 +1021,7 @@ class Forminator_Migration {
 	public static function migrate_payment_plan_field( $field ) {
 		if ( 'stripe' === $field['type'] && empty( $field['payments'] ) ) {
 			$payment_plan = array(
-				'plan_name'                => __( 'Plan 1', 'forminator' ),
+				'plan_name'                => esc_html__( 'Plan 1', 'forminator' ),
 				'payment_method'           => 'single',
 				'amount_type'              => isset( $field['amount_type'] ) ? $field['amount_type'] : 'fixed',
 				'subscription_amount_type' => 'fixed',

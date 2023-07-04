@@ -38,7 +38,7 @@ class Forminator_Addon_Trello_Form_Hooks extends Forminator_Addon_Form_Hooks_Abs
 	 */
 	public function __construct( Forminator_Addon_Abstract $addon, $form_id ) {
 		parent::__construct( $addon, $form_id );
-		$this->_submit_form_error_message = __( 'Trello failed to process submitted data. Please check your form and try again', 'forminator' );
+		$this->_submit_form_error_message = esc_html__( 'Trello failed to process submitted data. Please check your form and try again', 'forminator' );
 	}
 
 	/**
@@ -313,7 +313,7 @@ class Forminator_Addon_Trello_Form_Hooks extends Forminator_Addon_Form_Hooks_Abs
 			return array(
 				'is_sent'         => true,
 				'connection_name' => $connection_settings['name'] . $name_suffix,
-				'description'     => __( 'Successfully send data to Trello', 'forminator' ),
+				'description'     => esc_html__( 'Successfully send data to Trello', 'forminator' ),
 				'data_sent'       => $api->get_last_data_sent(),
 				'data_received'   => $api->get_last_data_received(),
 				'url_request'     => $api->get_last_url_request(),
@@ -374,7 +374,7 @@ class Forminator_Addon_Trello_Form_Hooks extends Forminator_Addon_Form_Hooks_Abs
 				case 'postdata-post-content':
 				case 'postdata-post-excerpt':
 				case 'postdata-post-image':
-					$value_format = '[' . __( 'Edit Post', 'forminator' ) . ']({' . $post_element_id . '})';
+					$value_format = '[' . esc_html__( 'Edit Post', 'forminator' ) . ']({' . $post_element_id . '})';
 					break;
 				case 'url':
 					$value_format = '[{' . $element_id . '}]({' . $element_id . '})';
@@ -389,7 +389,7 @@ class Forminator_Addon_Trello_Form_Hooks extends Forminator_Addon_Form_Hooks_Abs
 
 			if ( in_array( $field_type, $field_format, true ) ) {
 
-				$value_format = '[' . __( 'Edit Post', 'forminator' ) . ']({' . $post_element_id . '})';
+				$value_format = '[' . esc_html__( 'Edit Post', 'forminator' ) . ']({' . $post_element_id . '})';
 			}
 
 			$markdown .= self::get_field_markdown( $field_type, $field_label, $value_format );
@@ -531,29 +531,29 @@ class Forminator_Addon_Trello_Form_Hooks extends Forminator_Addon_Form_Hooks_Abs
 		}
 		$status                = $addon_meta_data['value'];
 		$additional_entry_item = array(
-			'label' => __( 'Trello Integration', 'forminator' ),
+			'label' => esc_html__( 'Trello Integration', 'forminator' ),
 			'value' => '',
 		);
 
 		$sub_entries = array();
 		if ( isset( $status['connection_name'] ) ) {
 			$sub_entries[] = array(
-				'label' => __( 'Integration Name', 'forminator' ),
+				'label' => esc_html__( 'Integration Name', 'forminator' ),
 				'value' => $status['connection_name'],
 			);
 		}
 
 		if ( isset( $status['is_sent'] ) ) {
-			$is_sent       = true === $status['is_sent'] ? __( 'Yes', 'forminator' ) : __( 'No', 'forminator' );
+			$is_sent       = true === $status['is_sent'] ? esc_html__( 'Yes', 'forminator' ) : esc_html__( 'No', 'forminator' );
 			$sub_entries[] = array(
-				'label' => __( 'Sent To Trello', 'forminator' ),
+				'label' => esc_html__( 'Sent To Trello', 'forminator' ),
 				'value' => $is_sent,
 			);
 		}
 
 		if ( isset( $status['description'] ) ) {
 			$sub_entries[] = array(
-				'label' => __( 'Info', 'forminator' ),
+				'label' => esc_html__( 'Info', 'forminator' ),
 				'value' => $status['description'],
 			);
 		}
@@ -562,21 +562,21 @@ class Forminator_Addon_Trello_Form_Hooks extends Forminator_Addon_Form_Hooks_Abs
 			// too long to be added on entry data enable this with `define('FORMINATOR_ADDON_TRELLO_SHOW_FULL_LOG', true)`.
 			if ( isset( $status['url_request'] ) ) {
 				$sub_entries[] = array(
-					'label' => __( 'API URL', 'forminator' ),
+					'label' => esc_html__( 'API URL', 'forminator' ),
 					'value' => $status['url_request'],
 				);
 			}
 
 			if ( isset( $status['data_sent'] ) ) {
 				$sub_entries[] = array(
-					'label' => __( 'Data sent to Trello', 'forminator' ),
+					'label' => esc_html__( 'Data sent to Trello', 'forminator' ),
 					'value' => '<pre class="sui-code-snippet">' . wp_json_encode( $status['data_sent'], JSON_PRETTY_PRINT ) . '</pre>',
 				);
 			}
 
 			if ( isset( $status['data_received'] ) ) {
 				$sub_entries[] = array(
-					'label' => __( 'Data received from Trello', 'forminator' ),
+					'label' => esc_html__( 'Data received from Trello', 'forminator' ),
 					'value' => '<pre class="sui-code-snippet">' . wp_json_encode( $status['data_received'], JSON_PRETTY_PRINT ) . '</pre>',
 				);
 			}
@@ -598,7 +598,7 @@ class Forminator_Addon_Trello_Form_Hooks extends Forminator_Addon_Form_Hooks_Abs
 	public function on_export_render_title_row() {
 
 		$export_headers = array(
-			'info' => __( 'Trello Info', 'forminator' ),
+			'info' => esc_html__( 'Trello Info', 'forminator' ),
 		);
 
 		$form_id                = $this->form_id;

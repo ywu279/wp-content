@@ -77,7 +77,7 @@ abstract class Forminator_GFBlock_Abstract {
 					'permission_callback' => '__return_true',
 					'args'     => array(
 						'module_id' => array(
-							'description' => __( 'Module ID' ),
+							'description' => esc_html__( 'Module ID', 'forminator' ),
 							'type'        => 'integer',
 							'required'    => true,
 						),

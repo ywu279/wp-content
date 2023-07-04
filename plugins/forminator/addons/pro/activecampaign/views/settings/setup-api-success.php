@@ -2,8 +2,8 @@
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg">
 		<?php
-			/* translators: %s: Addon name */
-			echo esc_html( sprintf( __( '%1$s Added', 'forminator' ), 'ActiveCampaign' ) );
+		/* translators: 1: Add-on name */
+			printf( esc_html__( '%1$s Added', 'forminator' ), 'ActiveCampaign' );
 		?>
 	</h3>
 

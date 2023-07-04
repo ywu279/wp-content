@@ -751,11 +751,11 @@ function forminator_get_latest_entry_time( $entry_type ) {
 	if ( $latest_entry instanceof Forminator_Form_Entry_Model ) {
 		$last_entry_time = mysql2date( 'U', $latest_entry->date_created_sql );
 		$time_diff       = human_time_diff( current_time( 'timestamp' ), $last_entry_time );
-		$last_entry_time = sprintf( /* translators: ... */ __( '%s ago', 'forminator' ), $time_diff );
+		$last_entry_time = sprintf( /* translators: %s: Time difference */ esc_html__( '%s ago', 'forminator' ), $time_diff );
 
 		return $last_entry_time;
 	} else {
-		return __( 'Never', 'forminator' );
+		return esc_html__( 'Never', 'forminator' );
 	}
 }
 
@@ -923,7 +923,7 @@ function forminator_get_name_from_model( $model ) {
  */
 function forminator_get_social_message( $model, $title, $result ) {
 	$settings = $model->settings;
-	$message  = __( 'I got {quiz_result} on {quiz_name} quiz!', 'forminator' );
+	$message  = esc_html__( 'I got {quiz_result} on {quiz_name} quiz!', 'forminator' );
 	if ( isset( $settings['social-share-message'] ) && ! empty( $settings['social-share-message'] ) ) {
 		$message = $settings['social-share-message'];
 	}

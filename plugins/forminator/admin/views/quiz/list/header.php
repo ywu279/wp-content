@@ -1,5 +1,5 @@
 <?php
-$title         = __( 'Quizzes', 'forminator' );
+$title         = esc_html__( 'Quizzes', 'forminator' );
 $create_dialog = 'quizzes';
 $import_dialog = 'import_quiz';
 $hash          = '#quizzes';

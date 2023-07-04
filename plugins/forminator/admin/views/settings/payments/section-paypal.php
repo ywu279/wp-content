@@ -42,7 +42,15 @@ try {
 
 					<span class="sui-notice-icon sui-icon-info" aria-hidden="true"></span>
 
-					<p><?php /* translators: ... */ printf( esc_html__( 'To be able to use PayPal Payments feature please upgrade your PHP to %1$sversion %2$s%3$s or above.', 'forminator' ), '<strong>', esc_html( $paypal_min_php_version ), '</strong>' ); ?></p>
+                    <p><?php
+						printf(
+						/* Translators: 1. Opening <strong> tag, 2. PayPal min php version 3. closing <strong> tag. */
+							esc_html__( 'To be able to use PayPal Payments feature please upgrade your PHP to %1$sversion %2$s%3$s or above.', 'forminator' ),
+							'<strong>',
+							esc_html( $paypal_min_php_version ),
+							'</strong>' );
+						?>
+                    </p>
 
 				</div>
 

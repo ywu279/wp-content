@@ -17,7 +17,7 @@ foreach ( $template_vars as $key => $val ) {
 
 <div class="forminator-integration-popup__header">
 
-	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;"><?php echo esc_html( __( 'Assign Fields', 'forminator' ) ); ?></h3>
+	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;"><?php esc_html_e( 'Assign Fields', 'forminator' ); ?></h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description"><?php esc_html_e( 'Match up your quiz lead fields with your campaign fields to make sure we\'re sending data to the right place.', 'forminator' ); ?></p>
 

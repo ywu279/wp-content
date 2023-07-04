@@ -26,7 +26,7 @@ $draft              = isset( $dashboard_settings['draft'] ) ? filter_var( $dashb
 		aria-required="true"
 	/>
 
-	<span class="sui-error-message" style="display: none;"><?php esc_html_e( "This field shouldn't be empty.", 'forminator' ); ?></span>
+	<span class="sui-error-message" style="display: none;"><?php esc_html_e( 'This field shouldn\'t be empty.', 'forminator' ); ?></span>
 
 </div>
 

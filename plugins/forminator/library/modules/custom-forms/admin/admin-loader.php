@@ -37,9 +37,9 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 	 * @since 1.0
 	 */
 	public function add_menu_pages() {
-		new Forminator_CForm_Page( $this->page, 'custom-form/list', __( 'Forms', 'forminator' ), __( 'Forms', 'forminator' ), 'forminator' );
-		new Forminator_CForm_New_Page( $this->page_edit, 'custom-form/wizard', __( 'Edit Form', 'forminator' ), __( 'New Custom Form', 'forminator' ), 'forminator' );
-		new Forminator_CForm_View_Page( $this->page_entries, 'custom-form/entries', __( 'Submissions:', 'forminator' ), __( 'View Custom Form', 'forminator' ), 'forminator' );
+		new Forminator_CForm_Page( $this->page, 'custom-form/list', esc_html__( 'Forms', 'forminator' ), esc_html__( 'Forms', 'forminator' ), 'forminator' );
+		new Forminator_CForm_New_Page( $this->page_edit, 'custom-form/wizard', esc_html__( 'Edit Form', 'forminator' ), esc_html__( 'New Custom Form', 'forminator' ), 'forminator' );
+		new Forminator_CForm_View_Page( $this->page_entries, 'custom-form/entries', esc_html__( 'Submissions:', 'forminator' ), esc_html__( 'View Custom Form', 'forminator' ), 'forminator' );
 	}
 
 	/**
@@ -118,7 +118,6 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 			'description' => esc_html__( 'Select an appearance preset from the list below to apply the appearance to the selected form(s)', 'forminator' ),
 			'presetUrl'   => $presets_page,
 			'notice'      => esc_html__( 'The current appearance configurations will be overwritten for the selected form(s).', 'forminator' ),
-			'noticeForm'  => __( "Your form's current appearance configurations will be overwritten.", 'forminator' ),
 			'button'      => esc_html__( 'Apply Preset', 'forminator' ),
 			'nonce'       => wp_create_nonce( 'forminator_apply_preset' ),
 			'selectbox'   => Forminator_Settings_Page::get_preset_selectbox(),
@@ -139,44 +138,44 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 	 */
 	public function add_l10n_strings( $data ) {
 		$data['custom_form'] = array(
-			'popup_label' => __( 'Choose Form Type', 'forminator' ),
+			'popup_label' => esc_html__( 'Choose Form Type', 'forminator' ),
 		);
 
 		$data['builder'] = array(
-			'save' => __( 'Save', 'forminator' ),
+			'save' => esc_html__( 'Save', 'forminator' ),
 		);
 
 		$data['product'] = array(
-			'add_variations' => __( 'Add some variations of your product.', 'forminator' ),
-			'use_list'       => __( 'Display in list?', 'forminator' ),
-			'add_variation'  => __( 'Add Variation', 'forminator' ),
-			'image'          => __( 'Image', 'forminator' ),
-			'name'           => __( 'Name', 'forminator' ),
-			'price'          => __( 'Price', 'forminator' ),
+			'add_variations' => esc_html__( 'Add some variations of your product.', 'forminator' ),
+			'use_list'       => esc_html__( 'Display in list?', 'forminator' ),
+			'add_variation'  => esc_html__( 'Add Variation', 'forminator' ),
+			'image'          => esc_html__( 'Image', 'forminator' ),
+			'name'           => esc_html__( 'Name', 'forminator' ),
+			'price'          => esc_html__( 'Price', 'forminator' ),
 		);
 
 		$data['appearance'] = array(
-			'customize_typography'    => __( 'Customize typography', 'forminator' ),
-			'custom_font_family'      => __( 'Enter custom font family name', 'forminator' ),
-			'custom_font_placeholder' => __( "E.g. 'Arial', sans-serif", 'forminator' ),
-			'custom_font_description' => __( 'Type the font family name, as you would in CSS', 'forminator' ),
-			'font_family'             => __( 'Font family', 'forminator' ),
-			'font_size'               => __( 'Font size', 'forminator' ),
-			'font_weight'             => __( 'Font weight', 'forminator' ),
-			'select_font'             => __( 'Select font', 'forminator' ),
-			'custom_font'             => __( 'Custom user font', 'forminator' ),
-			'minutes'                 => __( 'minute(s)', 'forminator' ),
-			'hours'                   => __( 'hour(s)', 'forminator' ),
-			'days'                    => __( 'day(s)', 'forminator' ),
-			'weeks'                   => __( 'week(s)', 'forminator' ),
-			'months'                  => __( 'month(s)', 'forminator' ),
-			'years'                   => __( 'year(s)', 'forminator' ),
+			'customize_typography'    => esc_html__( 'Customize typography', 'forminator' ),
+			'custom_font_family'      => esc_html__( 'Enter custom font family name', 'forminator' ),
+			'custom_font_placeholder' => esc_html__( 'E.g. \'Arial\', sans-serif', 'forminator' ),
+			'custom_font_description' => esc_html__( 'Type the font family name, as you would in CSS', 'forminator' ),
+			'font_family'             => esc_html__( 'Font family', 'forminator' ),
+			'font_size'               => esc_html__( 'Font size', 'forminator' ),
+			'font_weight'             => esc_html__( 'Font weight', 'forminator' ),
+			'select_font'             => esc_html__( 'Select font', 'forminator' ),
+			'custom_font'             => esc_html__( 'Custom user font', 'forminator' ),
+			'minutes'                 => esc_html__( 'minute(s)', 'forminator' ),
+			'hours'                   => esc_html__( 'hour(s)', 'forminator' ),
+			'days'                    => esc_html__( 'day(s)', 'forminator' ),
+			'weeks'                   => esc_html__( 'week(s)', 'forminator' ),
+			'months'                  => esc_html__( 'month(s)', 'forminator' ),
+			'years'                   => esc_html__( 'year(s)', 'forminator' ),
 		);
 
 		$data['tab_appearance'] = array(
-			'basic_selectors'      => __( 'Basic selectors', 'forminator' ),
-			'advanced_selectors'   => __( 'Advanced selectors', 'forminator' ),
-			'pagination_selectors' => __( 'Pagination selectors', 'forminator' ),
+			'basic_selectors'      => esc_html__( 'Basic selectors', 'forminator' ),
+			'advanced_selectors'   => esc_html__( 'Advanced selectors', 'forminator' ),
+			'pagination_selectors' => esc_html__( 'Pagination selectors', 'forminator' ),
 		);
 
 		return $data;
@@ -218,11 +217,14 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 			return array(
 				array(
 					'slug'             => 'notification-1234-4567',
-					'label'            => 'Admin Email',
+					'label'            => esc_html__( 'Admin Email', 'forminator' ),
 					'email-recipients' => 'default',
 					'recipients'       => get_option( 'admin_email' ),
-					'email-subject'    => __( 'New Form Entry #{submission_id} for {form_name}', 'forminator' ),
-					'email-editor'     => __( 'You have a new website form submission: <br/> {all_fields} <br/>---<br/> This message was sent from {site_url}.', 'forminator' ),
+					'email-subject'    => esc_html__( 'New Form Entry #{submission_id} for {form_name}', 'forminator' ),
+					'email-editor'     => sprintf( '%1$s <br/> {all_fields} <br/>---<br/> %2$s',
+						esc_html__( 'You have a new website form submission:', 'forminator' ),
+						esc_html__( 'This message was sent from {site_url}.', 'forminator' )
+					),
 					'email-attachment' => 'true',
 					'type'			   => 'default',
 				),
@@ -244,30 +246,36 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 	 */
 	public static function get_registration_form_notifications( $form, $template = null ) {
 		if ( ! isset( $form ) || ! isset( $form->notifications ) ) {
-			$msg_footer = __( 'This message was sent from {site_url}', 'forminator' );
+			$msg_footer = esc_html__( 'This message was sent from {site_url}', 'forminator' );
 			// For admin.
-			$message  = __( 'New user registration on your site {site_url}: <br/><br/> {all_fields} <br/><br/> Click {submission_url} to view the submission.<br/>', 'forminator' );
+			$message = sprintf( '%1$s <br/><br/> {all_fields} <br/><br/> %2$s<br/>',
+				esc_html__( 'New user registration on your site {site_url}:', 'forminator' ),
+				esc_html__( 'Click {submission_url} to view the submission.', 'forminator' )
+			);
 			$message .= '<br/>---<br/>';
 			$message .= $msg_footer;
 
 			$message_method_email = $message;
 
-			$message_method_manual  = __( 'New user registration on your site {site_url}: <br/><br/> {all_fields} <br/><br/> The account is still not activated and needs your approval. To activate this account, click the link below.', 'forminator' );
+			$message_method_manual = sprintf( '%1$s <br/><br/> {all_fields} <br/><br/> %2$s',
+				esc_html__( 'New user registration on your site {site_url}:', 'forminator' ),
+				esc_html__( 'The account is still not activated and needs your approval. To activate this account, click the link below.', 'forminator' )
+			);
 			$message_method_manual .= '<br/>{account_approval_link} <br/><br/>';
-			$message_method_manual .= __( "Click {submission_url} to view the submission on your website's dashboard.<br/><br/>", 'forminator' );
+			$message_method_manual .= esc_html__( 'Click {submission_url} to view the submission on your website\'s dashboard.', 'forminator' ) . '<br/><br/>';
 			$message_method_manual .= $msg_footer;
 
 			$notifications[] = array(
 				'slug'                        => 'notification-1111-1111',
-				'label'                       => __( 'Admin Email', 'forminator' ),
+				'label'                       => esc_html__( 'Admin Email', 'forminator' ),
 				'email-recipients'            => 'default',
 				'recipients'                  => get_option( 'admin_email' ),
-				'email-subject'               => __( 'New User Registration on {site_url}', 'forminator' ),
+				'email-subject'               => esc_html__( 'New User Registration on {site_url}', 'forminator' ),
 				'email-editor'                => $message,
 
-				'email-subject-method-email'  => __( 'New User Registration on {site_url}', 'forminator' ),
+				'email-subject-method-email'  => esc_html__( 'New User Registration on {site_url}', 'forminator' ),
 				'email-editor-method-email'   => $message_method_email,
-				'email-subject-method-manual' => __( 'New User Registration on {site_url} needs approval.', 'forminator' ),
+				'email-subject-method-manual' => esc_html__( 'New User Registration on {site_url} needs approval.', 'forminator' ),
 				'email-editor-method-manual'  => $message_method_manual,
 				'type'  					  => 'registration',
 			);
@@ -277,32 +285,34 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 				$email = self::get_registration_form_customer_email_slug( $form );
 			}
 			//For customer
-			$message  = __( "Your new account on our site {site_title} is ready to go. Here's your details: <br/><br/> {all_fields} <br/><br/>", 'forminator' );
-			$message .= sprintf( __( 'Login to your new account <a href="%s">here</a>.', 'forminator' ), wp_login_url() );
+			$message  = sprintf( '%1$s <br/><br/> {all_fields} <br/><br/>',
+				esc_html__( 'Your new account on our site {site_title} is ready to go. Here\'s your details:', 'forminator' )
+			);
+			$message .= sprintf( esc_html__( 'Login to your new account %1$shere%2$s.', 'forminator' ), '<a href="' . wp_login_url() . '">', '</a>' );
 			$message .= '<br/><br/>---<br/>';
 			$message .= $msg_footer;
 
-			$message_method_email  = __( 'Dear {username} <br/><br/>', 'forminator' );
-			$message_method_email .= __( 'Thank you for signing up on our website. You are one step away from activating your account. ', 'forminator' );
-			$message_method_email .= __( 'We have sent you another email containing a confirmation link. Please click on that link to activate your account.<br/><br/>', 'forminator' );
+			$message_method_email  = esc_html__( 'Dear {username} ', 'forminator' ) . '<br/><br/>';
+			$message_method_email .= esc_html__( 'Thank you for signing up on our website. You are one step away from activating your account. ', 'forminator' );
+			$message_method_email .= esc_html__( 'We have sent you another email containing a confirmation link. Please click on that link to activate your account.', 'forminator' ) . '<br/><br/>';
 			$message_method_email .= $msg_footer;
 
-			$message_method_manual  = __( 'Your new account on {site_title} is under review.<br/>', 'forminator' );
-			$message_method_manual .= __( "You'll receive another email once the site admin approves your account. You should be able to login into your account after that.", 'forminator' );
+			$message_method_manual  = esc_html__( 'Your new account on {site_title} is under review.', 'forminator' ) . '<br/>';
+			$message_method_manual .= esc_html__( 'You\'ll receive another email once the site admin approves your account. You should be able to login into your account after that.', 'forminator' );
 			$message_method_manual .= '<br/><br/>---<br/>';
 			$message_method_manual .= $msg_footer;
 
 			$notifications[] = array(
 				'slug'                        => 'notification-1111-1112',
-				'label'                       => __( 'User Confirmation Email', 'forminator' ),
+				'label'                       => esc_html__( 'User Confirmation Email', 'forminator' ),
 				'email-recipients'            => 'default',
 				'recipients'                  => $email,
-				'email-subject'               => __( 'Your new account on {site_title}', 'forminator' ),
+				'email-subject'               => esc_html__( 'Your new account on {site_title}', 'forminator' ),
 				'email-editor'                => $message,
 
-				'email-subject-method-email'  => __( 'Activate your account on {site_url}', 'forminator' ),
+				'email-subject-method-email'  => esc_html__( 'Activate your account on {site_url}', 'forminator' ),
 				'email-editor-method-email'   => $message_method_email,
-				'email-subject-method-manual' => __( 'Your new account on {site_title} is under review.', 'forminator' ),
+				'email-subject-method-manual' => esc_html__( 'Your new account on {site_title} is under review.', 'forminator' ),
 				'email-editor-method-manual'  => $message_method_manual,
 			);
 
@@ -360,7 +370,7 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 				'enable-ajax'          => 'true',
 				'autoclose'            => 'true',
 				'submission-indicator' => 'show',
-				'indicator-label'      => __( 'Submitting...', 'forminator' ),
+				'indicator-label'      => esc_html__( 'Submitting...', 'forminator' ),
 				'paginationData'       => array(
 					'pagination-header-design' => 'show',
 					'pagination-header'        => 'nav',
@@ -477,7 +487,7 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 			$action     = 'update';
 
 			if ( ! is_object( $form_model ) ) {
-				return new WP_Error( 'forminator_model_not_exist', __( "Form model doesn't exist", 'forminator' ) );
+				return new WP_Error( 'forminator_model_not_exist', esc_html__( 'Form model doesn\'t exist', 'forminator' ) );
 			}
 
 			if ( empty( $status ) ) {

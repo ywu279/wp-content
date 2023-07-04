@@ -63,7 +63,7 @@ class Forminator_Phone extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Phone', 'forminator' );
+		$this->name = esc_html__( 'Phone', 'forminator' );
 	}
 
 	/**
@@ -80,8 +80,8 @@ class Forminator_Phone extends Forminator_Field {
 				'limit'       => 10,
 				'limit_type'  => 'characters',
 				'validation'  => 'none',
-				'field_label' => __( 'Phone', 'forminator' ),
-				'placeholder' => __( 'E.g. +1 300 400 5000', 'forminator' ),
+				'field_label' => esc_html__( 'Phone', 'forminator' ),
+				'placeholder' => esc_html__( 'E.g. +1 300 400 5000', 'forminator' ),
 			)
 		);
 	}
@@ -125,10 +125,10 @@ class Forminator_Phone extends Forminator_Field {
 				 * https://github.com/jquery-validation/jquery-validation/blob/1.17.0/src/additional/phoneUS.js#L20
 				 */
 				'regex'       => '/^(\d|\s|\(|\)|\-|\.|\+){5,20}$/',
-				'instruction' => __( 'Please make sure the number has a national format.', 'forminator' ),
+				'instruction' => esc_html__( 'Please make sure the number has a national format.', 'forminator' ),
 			),
 			'international' => array(
-				'label'       => __( 'International', 'forminator' ),
+				'label'       => esc_html__( 'International', 'forminator' ),
 				'mask'        => '(123) 456-789',
 				/**
 				 * allowed `+`, but only on first character
@@ -136,7 +136,7 @@ class Forminator_Phone extends Forminator_Field {
 				 * allowed 10-20 in total characters
 				 */
 				'regex'       => '/^(\+){0,1}(\d|\s|\(|\)|\-){10,20}$/',
-				'instruction' => __( 'Please make sure the number has an international format.', 'forminator' ),
+				'instruction' => esc_html__( 'Please make sure the number has an international format.', 'forminator' ),
 			),
 		);
 
@@ -334,7 +334,7 @@ class Forminator_Phone extends Forminator_Field {
 		if ( $this->is_required( $field ) ) {
 			$required_message = self::get_property( 'required_message', $field );
 			if ( empty( $required_message ) ) {
-				$required_message = __( 'This field is required. Please input a phone number.', 'forminator' );
+				$required_message = esc_html__( 'This field is required. Please input a phone number.', 'forminator' );
 			}
 			$required_message = apply_filters(
 				'forminator_field_phone_required_validation_message',
@@ -358,7 +358,7 @@ class Forminator_Phone extends Forminator_Field {
 			if ( 'standard' === $format_check ) {
 				$validation_message = apply_filters(
 					'forminator_field_phone_phoneUS_validation_message',
-					( ! empty( $validation_message ) ? $validation_message : __( 'Please input a valid phone number.', 'forminator' ) ),
+					( ! empty( $validation_message ) ? $validation_message : esc_html__( 'Please input a valid phone number.', 'forminator' ) ),
 					$field,
 					$format_check,
 					$this
@@ -367,7 +367,7 @@ class Forminator_Phone extends Forminator_Field {
 			} elseif ( 'character_limit' === $format_check ) {
 				$validation_message = apply_filters(
 					'forminator_field_phone_maxlength_validation_message',
-					( ! empty( $validation_message ) ? $validation_message : __( 'You exceeded the allowed amount of numbers. Please check again.', 'forminator' ) ),
+					( ! empty( $validation_message ) ? $validation_message : esc_html__( 'You exceeded the allowed amount of numbers. Please check again.', 'forminator' ) ),
 					$field,
 					$format_check,
 					$this
@@ -376,7 +376,7 @@ class Forminator_Phone extends Forminator_Field {
 			} elseif ( 'international' === $format_check ) {
 				$validation_message = apply_filters(
 					'forminator_field_phone_internation_validation_message',
-					( ! empty( $validation_message ) ? $validation_message : __( 'Please input a valid international phone number.', 'forminator' ) ),
+					( ! empty( $validation_message ) ? $validation_message : esc_html__( 'Please input a valid international phone number.', 'forminator' ) ),
 					$field,
 					$format_check,
 					$this
@@ -387,7 +387,7 @@ class Forminator_Phone extends Forminator_Field {
 
 		$phone_message = apply_filters(
 			'forminator_field_phone_invalid_validation_message',
-			( ! empty( $validation_message ) ? $validation_message : __( 'Please enter a valid phone number.', 'forminator' ) ),
+			( ! empty( $validation_message ) ? $validation_message : esc_html__( 'Please enter a valid phone number.', 'forminator' ) ),
 			$field,
 			$format_check,
 			$this
@@ -416,7 +416,7 @@ class Forminator_Phone extends Forminator_Field {
 
 		if ( $this->is_required( $field ) ) {
 			if ( empty( $data ) ) {
-				$required_message                = self::get_property( 'required_message', $field, __( 'This field is required. Please input a phone number.', 'forminator' ) );
+				$required_message                = self::get_property( 'required_message', $field, esc_html__( 'This field is required. Please input a phone number.', 'forminator' ) );
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_field_phone_required_field_validation_message',
 					$required_message,
@@ -450,7 +450,7 @@ class Forminator_Phone extends Forminator_Field {
 				if ( strlen( $data ) > $limit ) {
 					$this->validation_message[ $id ] = apply_filters(
 						'forminator_field_phone_limit_validation_message',
-						( ! empty( $validation_message ) ? $validation_message : __( 'You exceeded the allowed amount of numbers. Please check again.', 'forminator' ) ),
+						( ! empty( $validation_message ) ? $validation_message : esc_html__( 'You exceeded the allowed amount of numbers. Please check again.', 'forminator' ) ),
 						$id,
 						$field,
 						$data,
@@ -469,8 +469,9 @@ class Forminator_Phone extends Forminator_Field {
 								'forminator_field_phone_format_validation_message',
 								( ! empty( $validation_message )
 									? $validation_message
-									: sprintf(/* translators: ... */
-										__( 'Invalid phone number. %s', 'forminator' ),
+									: sprintf(
+									/* translators: %s: Validate instruction */
+										esc_html__( 'Invalid phone number. %s', 'forminator' ),
 										$validation_type['instruction']
 									) ),
 								$validation_type['instruction']
@@ -483,7 +484,7 @@ class Forminator_Phone extends Forminator_Field {
 			if ( preg_match( '/[a-z]|[^\w\-()+. ]|[\-()+.]{2,}/i', $data ) ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_field_phone_invalid_validation_message',
-					( ! empty( $validation_message ) ? $validation_message : __( 'Please enter a valid phone number.', 'forminator' ) ),
+					( ! empty( $validation_message ) ? $validation_message : esc_html__( 'Please enter a valid phone number.', 'forminator' ) ),
 					$id,
 					$field,
 					$data,

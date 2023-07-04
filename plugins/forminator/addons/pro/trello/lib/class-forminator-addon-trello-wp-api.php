@@ -66,11 +66,11 @@ class Forminator_Addon_Trello_Wp_Api {
 	public function __construct( $app_key, $token ) {
 		//prerequisites
 		if ( ! $app_key ) {
-			throw new Forminator_Addon_Trello_Wp_Api_Exception( __( 'Missing required APP Key', 'forminator' ) );
+			throw new Forminator_Addon_Trello_Wp_Api_Exception( esc_html__( 'Missing required APP Key', 'forminator' ) );
 		}
 
 		if ( ! $token ) {
-			throw new Forminator_Addon_Trello_Wp_Api_Exception( __( 'Missing required Token', 'forminator' ) );
+			throw new Forminator_Addon_Trello_Wp_Api_Exception( esc_html__( 'Missing required Token', 'forminator' ) );
 		}
 
 		$this->_app_key = $app_key;
@@ -182,7 +182,7 @@ class Forminator_Addon_Trello_Wp_Api {
 		if ( is_wp_error( $res ) || ! $res ) {
 			forminator_addon_maybe_log( __METHOD__, $res );
 			throw new Forminator_Addon_Trello_Wp_Api_Exception(
-				__( 'Failed to process request, make sure you authorized Trello and your server has internet connection.', 'forminator' )
+				esc_html__( 'Failed to process request, make sure you authorized Trello and your server has internet connection.', 'forminator' )
 			);
 		}
 
@@ -195,11 +195,15 @@ class Forminator_Addon_Trello_Wp_Api {
 				}
 
 				if ( 404 === $status_code ) {
-					/* translators: ... */
-					throw new Forminator_Addon_Trello_Wp_Api_Not_Found_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
+					throw new Forminator_Addon_Trello_Wp_Api_Not_Found_Exception( sprintf(
+						/* translators: %s: Error message */
+						esc_html__( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) )
+					);
 				}
-				/* translators: ... */
-				throw new Forminator_Addon_Trello_Wp_Api_Exception( sprintf( __( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) ) );
+				throw new Forminator_Addon_Trello_Wp_Api_Exception( sprintf(
+					/* translators: %s: Error message */
+					esc_html__( 'Failed to process request : %s', 'forminator' ), esc_html( $msg ) )
+				);
 			}
 		}
 
@@ -408,13 +412,13 @@ class Forminator_Addon_Trello_Wp_Api {
 	 */
 	public function create_card( $args = array() ) {
 		$default_args = array(
-			'name' => __( 'Forminator Trello Card', 'forminator' ),
+			'name' => esc_html__( 'Forminator Trello Card', 'forminator' ),
 			'pos'  => 'bottom',
 		);
 		$args         = array_merge( $default_args, $args );
 
 		if ( ! isset( $args['idList'] ) ) {
-			throw new Forminator_Addon_Trello_Wp_Api_Exception( __( 'idList Required to create a Trello Card', 'forminator' ) );
+			throw new Forminator_Addon_Trello_Wp_Api_Exception( esc_html__( 'idList Required to create a Trello Card', 'forminator' ) );
 		}
 
 		return $this->post_( 'cards', $args );

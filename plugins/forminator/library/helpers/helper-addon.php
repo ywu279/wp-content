@@ -28,7 +28,7 @@ function forminator_get_pro_addon_list() {
 			'_title'                  => 'Mailchimp',
 			'_short_title'            => 'Mailchimp',
 			'_version'                => '1.0',
-			'_description'            => __( 'Unlock this as part of a WPMU DEV Membership', 'forminator' ),
+			'_description'            => esc_html__( 'Unlock this as part of a WPMU DEV Membership', 'forminator' ),
 			'_min_forminator_version' => FORMINATOR_VERSION,
 		),
 		'webhook'   => array(
@@ -37,7 +37,7 @@ function forminator_get_pro_addon_list() {
 			'_title'                  => 'Webhook',
 			'_short_title'            => 'Webhook',
 			'_version'                => '1.0',
-			'_description'            => __( 'Unlock this as part of a WPMU DEV Membership', 'forminator' ),
+			'_description'            => esc_html__( 'Unlock this as part of a WPMU DEV Membership', 'forminator' ),
 			'_min_forminator_version' => FORMINATOR_VERSION,
 		),
 	);
@@ -1096,8 +1096,10 @@ function forminator_addon_integration_section_admin_url( $addon, $section, $with
 	);
 
 	if ( $addon->is_multi_global ) {
-		$query_args['global_id']  = $addon->multi_global_id;
-		$query_args['identifier'] = rawurlencode( $identifier );
+		if ( $identifier ) {
+			$query_args['identifier'] = rawurlencode( $identifier );
+		}
+		$query_args['global_id'] = $addon->multi_global_id;
 	}
 
 	if ( $with_nonce ) {

@@ -15,8 +15,8 @@ foreach ( $template_vars as $key => $val ) {
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
 		<?php
-			/* translators: ... */
-			echo esc_html( sprintf( __( 'Connect %1$s', 'forminator' ), 'HubSpot' ) );
+		/* translators: 1: Add-on name */
+			printf( esc_html__( 'Connect %1$s', 'forminator' ), 'HubSpot' );
 		?>
 	</h3>
 
@@ -47,8 +47,13 @@ foreach ( $template_vars as $key => $val ) {
 
 				<p>
 					<?php
-						/* translators: ... */
-						echo sprintf( esc_html__( 'You are connected to %2$s%1$s%3$s.', 'forminator' ), esc_html( $vars['user'] ), '<strong>', '</strong>' );
+					printf(
+					/* Translators: 1. Opening <strong> tag, 2. User 3. closing <strong> tag. */
+						esc_html__( 'You are connected to %1$s%2$s%3$s.', 'forminator' ),
+						'<strong>',
+						esc_html( $vars['user'] ),
+						'</strong>'
+					);
 					?>
 				</p>
 
@@ -85,14 +90,19 @@ foreach ( $template_vars as $key => $val ) {
 				var parent = $(this).closest('.sui-box-body'),
 					val = $(this).val(),
 					link = $( '.forminator-addon-connect', parent.next() ),
+					paramName = 'identifier',
+					pattern = '',
 					href = link.prop('href');
 				if ( href ) {
-					var index = href.indexOf('identifier');
-
-					if ( index ) {
-						href = href.slice(0, index);
+					var index = href.indexOf( paramName );
+					if ( -1 !== index ) {
+						const regex = new RegExp( paramName + '[^ ]+global_id', 'g' );
+						pattern = href.match(regex);
+					} else {
+						pattern = 'global_id';
 					}
-					href += encodeURIComponent( 'identifier=' + encodeURIComponent( val ) );
+					href = href.replace( pattern, encodeURIComponent( encodeURIComponent( paramName + '=' + encodeURIComponent( val ) + '&global_id' ) ) );
+
 					link.prop('href', href);
 				}
 			});

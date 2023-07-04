@@ -56,7 +56,7 @@ class Forminator_Radio extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Radio', 'forminator' );
+		$this->name = esc_html__( 'Radio', 'forminator' );
 	}
 
 	/**
@@ -68,16 +68,16 @@ class Forminator_Radio extends Forminator_Field {
 	public function defaults() {
 		return array(
 			'value_type'  => 'radio',
-			'field_label' => __( 'Radio', 'forminator' ),
+			'field_label' => esc_html__( 'Radio', 'forminator' ),
 			'layout'      => 'vertical',
 			'options'     => array(
 				array(
-					'label' => __( 'Option 1', 'forminator' ),
+					'label' => esc_html__( 'Option 1', 'forminator' ),
 					'value' => 'one',
 					'key'   => forminator_unique_key(),
 				),
 				array(
-					'label' => __( 'Option 2', 'forminator' ),
+					'label' => esc_html__( 'Option 2', 'forminator' ),
 					'value' => 'two',
 					'key'   => forminator_unique_key(),
 				),
@@ -383,7 +383,7 @@ class Forminator_Radio extends Forminator_Field {
 			$required_message = self::get_property( 'required_message', $field, '' );
 			$required_message = apply_filters(
 				'forminator_single_field_required_validation_message',
-				( ! empty( $required_message ) ? $required_message : __( 'This field is required. Please select a value.', 'forminator' ) ),
+				( ! empty( $required_message ) ? $required_message : esc_html__( 'This field is required. Please select a value.', 'forminator' ) ),
 				$id,
 				$field
 			);
@@ -406,7 +406,7 @@ class Forminator_Radio extends Forminator_Field {
 		if ( ! empty( $data ) && false === array_search( htmlspecialchars_decode( $data ), array_column( $field['options'], 'value' ) ) ) {
 			$this->validation_message[ $id ] = apply_filters(
 				'forminator_radio_field_nonexistent_validation_message',
-				__( 'Selected value does not exist.', 'forminator' ),
+				esc_html__( 'Selected value does not exist.', 'forminator' ),
 				$id,
 				$field
 			);
@@ -416,7 +416,7 @@ class Forminator_Radio extends Forminator_Field {
 			if ( empty( $data ) && '0' !== $data ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'forminator_single_field_required_validation_message',
-					( ! empty( $required_message ) ? $required_message : __( 'This field is required. Please select a value.', 'forminator' ) ),
+					( ! empty( $required_message ) ? $required_message : esc_html__( 'This field is required. Please select a value.', 'forminator' ) ),
 					$id,
 					$field
 				);

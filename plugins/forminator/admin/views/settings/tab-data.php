@@ -61,7 +61,13 @@ $forminator_custom_upload = get_option( 'forminator_custom_upload', false );
                 <div class="sui-box-settings-col-1">
                     <span class="sui-settings-label"><?php esc_html_e( 'File Upload Storage', 'forminator' ); ?></span>
                     <span class="sui-description">
-                        <?php printf( __( 'For security reasons, we store all the file uploads of your forms with random names under the designated subdirectories of the “%s/wp-content/uploads/forminator/%s” directory. You can also specify a custom storage directory under the custom tab.', 'forminator' ), '<strong>', '</strong>' ); ?>
+                        <?php printf(
+                        /* Translators: 1. Opening <strong> tag, 2. closing <strong> tag. */
+	                        esc_html__( 'For security reasons, we store all the file uploads of your forms with random names under the designated subdirectories of the “%s/wp-content/uploads/forminator/%s” directory. You can also specify a custom storage directory under the custom tab.', 'forminator' ),
+	                        '<strong>',
+	                        '</strong>'
+                        );
+                        ?>
                     </span>
                 </div>
                 <div class="sui-box-settings-col-2">

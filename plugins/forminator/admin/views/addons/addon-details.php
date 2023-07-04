@@ -73,11 +73,11 @@ if ( is_array( $res->features ) && ! empty( $res->features ) ) {
 							<?php
 							if ( FORMINATOR_PRO ) {
 								/* translators: Plugin latest version */
-								echo '<span class="sui-tag sui-tag-sm addons-version">' . sprintf( esc_html__( 'Version %s', 'forminator' ), esc_html( $res->version_installed ) ) . '</span>';
+								echo '<span class="sui-tag sui-tag-sm addons-version">' . /* translators: %s: Installed version */ sprintf( esc_html__( 'Version %s', 'forminator' ), esc_html( $res->version_installed ) ) . '</span>';
 
 								if ( $res->is_installed && $res->has_update ) {
 									/* translators: Plugin latest version */
-									echo '<span class="sui-tag sui-tag-sm sui-tag-yellow addons-update-tag">' . sprintf( esc_html__( 'v%s update available', 'forminator' ), esc_html( $res->version_latest ) ) . '</span>';
+									echo '<span class="sui-tag sui-tag-sm sui-tag-yellow addons-update-tag">' . /* translators: %s: Latest version. */ sprintf( esc_html__( 'v%s update available', 'forminator' ), esc_html( $res->version_latest ) ) . '</span>';
 								}
 
 								if ( $res->is_installed && $res->is_active ) {
@@ -101,7 +101,7 @@ if ( is_array( $res->features ) && ! empty( $res->features ) ) {
 										'data-action'  => 'addons-update',
 										'data-addon'   => esc_attr( $res->pid ),
 										'data-nonce'   => esc_attr( wp_create_nonce( 'forminator_popup_addons_actions' ) ),
-										'data-version' => sprintf( esc_html__( 'Version %s', 'forminator' ), esc_html( $res->version_latest ) ),
+										'data-version' => /* translators: %s: Latest version */ sprintf( esc_html__( 'Version %s', 'forminator' ), esc_html( $res->version_latest ) ),
 									),
 								)
 							);
@@ -232,7 +232,7 @@ if ( is_array( $res->features ) && ! empty( $res->features ) ) {
 											<?php
 											$title = '<h4>';
 												/* translators: Log version */
-												$title .= '<span class="sui-tag sui-tag-sm sui-tag-purple">' . sprintf( esc_html__( 'Version %s', 'forminator' ), esc_attr( $log['version'] ) ) . '</span>';
+												$title .= '<span class="sui-tag sui-tag-sm sui-tag-purple">' . /* translators: %s: Current version */ sprintf( esc_html__( 'Version %s', 'forminator' ), esc_attr( $log['version'] ) ) . '</span>';
 											if ( $log['version'] === $res->version_latest ) {
 												$title .= '<span class="sui-tag sui-tag-sm">' . esc_html__( 'Current', 'forminator' ) . '</span>';
 											}

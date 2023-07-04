@@ -7,7 +7,8 @@
 		<?php if ( isset( $this->filters['search'] ) ) : ?>
 			<div class="sui-active-filter">
 				<?php
-				printf(/* translators: ... */
+				printf(
+				/* translators: %s: Search Keyword */
 					esc_html__( 'Keyword: %s', 'forminator' ),
 					esc_html( $this->filters['search'] )
 				);
@@ -21,7 +22,8 @@
 		<?php if ( isset( $this->filters['min_id'] ) ) : ?>
 			<div class="sui-active-filter">
 				<?php
-				printf(/* translators: ... */
+				printf(
+				/* translators: %s: Minimum ID */
 					esc_html__( 'From ID: %s', 'forminator' ),
 					esc_html( $this->filters['min_id'] )
 				);
@@ -35,7 +37,8 @@
 		<?php if ( isset( $this->filters['max_id'] ) ) : ?>
 			<div class="sui-active-filter">
 				<?php
-				printf(/* translators: ... */
+				printf(
+				/* translators: %s: Maximum ID */
 					esc_html__( 'To ID: %s', 'forminator' ),
 					esc_html( $this->filters['max_id'] )
 				);
@@ -49,7 +52,8 @@
 		<?php if ( ! empty( $this->filters['user_status'] ) ) : ?>
 			<div class="sui-active-filter">
 				<?php
-				printf(/* translators: ... */
+				printf(
+				/* translators: %s: User status */
 					esc_html__( 'User status: %s', 'forminator' ),
 					( 'pending' === $this->filters['user_status'] )
 						? esc_html__( 'Pending Approval', 'forminator' )
@@ -65,7 +69,8 @@
 		<?php if ( isset( $this->filters['date_created'][0] ) || isset( $this->filters['date_created'][1] ) ) : ?>
 			<div class="sui-active-filter">
 				<?php
-				printf(/* translators: ... */
+				printf(
+				/* translators: 1: First date from date range, 2: Second date from date range */
 					esc_html__( 'Submission Date Range: %1$s to %2$s', 'forminator' ),
 					esc_html( $this->filters['date_created'][0] ),
 					esc_html( $this->filters['date_created'][1] )
@@ -95,7 +100,8 @@
 						break;
 				}
 
-				printf(/* translators: ... */
+				printf(
+				/* translators: %s: Entry status */
 					esc_html__( 'Entry status: %s', 'forminator' ),
 					$entry_status
 				);

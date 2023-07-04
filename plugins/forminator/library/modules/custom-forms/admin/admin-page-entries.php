@@ -117,9 +117,9 @@ class Forminator_CForm_View_Page extends Forminator_Admin_View_Page {
 					continue;
 				}
 			}
-			$notice = sprintf( __( '%s users approved successfully.', 'forminator' ), '<strong>' . $users_approved . '</strong>' );
+			$notice = sprintf( esc_html__( '%s users approved successfully.', 'forminator' ), '<strong>' . $users_approved . '</strong>' );
 			if ( $email_activation_users ) {
-				$notice .= '<br>' . sprintf( __( '%1$sNote:%2$s This action does not apply to user accounts awaiting email activation.', 'forminator' ), '<strong>', '</strong>' );
+				$notice .= '<br>' . sprintf( esc_html__( '%1$sNote:%2$s This action does not apply to user accounts awaiting email activation.', 'forminator' ), '<strong>', '</strong>' );
 			}
 			$args = array(
 				'page'      => $this->get_admin_page(),
@@ -268,13 +268,13 @@ class Forminator_CForm_View_Page extends Forminator_Admin_View_Page {
 			array(
 				// read form model's property.
 				'property' => 'entry_id', // must be on entries.
-				'label'    => __( 'ID', 'forminator' ),
+				'label'    => esc_html__( 'ID', 'forminator' ),
 				'type'     => 'entry_entry_id',
 			),
 			array(
 				// read form model's property.
 				'property' => 'time_created', // must be on entries.
-				'label'    => __( 'Date Submitted', 'forminator' ),
+				'label'    => esc_html__( 'Date Submitted', 'forminator' ),
 				'type'     => 'entry_time_created',
 			),
 		);
@@ -439,36 +439,36 @@ class Forminator_CForm_View_Page extends Forminator_Admin_View_Page {
 				$mapper = array();
 			}
 		} elseif ( 'stripe' === $field_type ) {
-			$mapper['label']         = __( 'Stripe Payment', 'forminator' );
+			$mapper['label']         = esc_html__( 'Stripe Payment', 'forminator' );
 			$mapper['sub_metas']     = array();
 			$mapper['sub_metas'][]   = array(
 				'key'                => 'mode',
-				'label'              => __( 'Mode', 'forminator' ),
+				'label'              => esc_html__( 'Mode', 'forminator' ),
 				'transform_callback' => 'strtoupper',
 			);
 			$mapper['sub_metas'][]   = array(
 				'key'   => 'product_name',
-				'label' => __( 'Product / Plan Name', 'forminator' ),
+				'label' => esc_html__( 'Product / Plan Name', 'forminator' ),
 			);
 			$mapper['sub_metas'][]   = array(
 				'key'   => 'payment_type',
-				'label' => __( 'Payment type', 'forminator' ),
+				'label' => esc_html__( 'Payment type', 'forminator' ),
 			);
 			$mapper['sub_metas'][]   = array(
 				'key'   => 'amount',
-				'label' => __( 'Amount', 'forminator' ),
+				'label' => esc_html__( 'Amount', 'forminator' ),
 			);
 			$mapper['sub_metas'][]   = array(
 				'key'   => 'currency',
-				'label' => __( 'Currency', 'forminator' ),
+				'label' => esc_html__( 'Currency', 'forminator' ),
 			);
 			$mapper['sub_metas'][]   = array(
 				'key'   => 'quantity',
-				'label' => __( 'Quantity', 'forminator' ),
+				'label' => esc_html__( 'Quantity', 'forminator' ),
 			);
 			$transaction_link_mapper = array(
 				'key'   => 'transaction_id',
-				'label' => __( 'Transaction ID', 'forminator' ),
+				'label' => esc_html__( 'Transaction ID', 'forminator' ),
 			);
 			if ( class_exists( 'Forminator_Stripe' ) ) {
 				$transaction_link_mapper['transform_callback'] = array( 'Forminator_Stripe', 'linkify_transaction_id' );
@@ -477,13 +477,13 @@ class Forminator_CForm_View_Page extends Forminator_Admin_View_Page {
 			$mapper['sub_metas'][] = $transaction_link_mapper;
 			$mapper['sub_metas'][] = array(
 				'key'                => 'status',
-				'label'              => __( 'Status', 'forminator' ),
+				'label'              => esc_html__( 'Status', 'forminator' ),
 				'transform_callback' => 'ucfirst',
 			);
 			if ( class_exists( 'Forminator_Stripe_Subscription' ) ) {
 				$manage_mapper                       = array(
 					'key'   => 'subscription_id',
-					'label' => __( 'Manage', 'forminator' ),
+					'label' => esc_html__( 'Manage', 'forminator' ),
 				);
 				$manage_mapper['transform_callback'] = array( 'Forminator_Stripe_Subscription', 'manage_subscription' );
 				$manage_mapper['num_transform_arg']  = 2;
@@ -491,30 +491,30 @@ class Forminator_CForm_View_Page extends Forminator_Admin_View_Page {
 				$mapper['sub_metas'][] = $manage_mapper;
 			}
 		} elseif ( 'paypal' === $field_type ) {
-			$mapper['label']         = __( 'PayPal Checkout', 'forminator' );
+			$mapper['label']         = esc_html__( 'PayPal Checkout', 'forminator' );
 			$mapper['sub_metas']     = array();
 			$mapper['sub_metas'][]   = array(
 				'key'                => 'mode',
-				'label'              => __( 'Mode', 'forminator' ),
+				'label'              => esc_html__( 'Mode', 'forminator' ),
 				'transform_callback' => 'strtoupper',
 			);
 			$mapper['sub_metas'][]   = array(
 				'key'                => 'status',
-				'label'              => __( 'Status', 'forminator' ),
+				'label'              => esc_html__( 'Status', 'forminator' ),
 				'transform_callback' => 'ucfirst',
 			);
 			$mapper['sub_metas'][]   = array(
 				'key'   => 'amount',
-				'label' => __( 'Amount', 'forminator' ),
+				'label' => esc_html__( 'Amount', 'forminator' ),
 			);
 			$mapper['sub_metas'][]   = array(
 				'key'                => 'currency',
-				'label'              => __( 'Currency', 'forminator' ),
+				'label'              => esc_html__( 'Currency', 'forminator' ),
 				'transform_callback' => 'strtoupper',
 			);
 			$transaction_link_mapper = array(
 				'key'   => 'transaction_id',
-				'label' => __( 'Transaction ID', 'forminator' ),
+				'label' => esc_html__( 'Transaction ID', 'forminator' ),
 			);
 			if ( class_exists( 'Forminator_PayPal' ) ) {
 				$transaction_link_mapper['transform_callback'] = array( 'Forminator_PayPal', 'linkify_transaction_id' );

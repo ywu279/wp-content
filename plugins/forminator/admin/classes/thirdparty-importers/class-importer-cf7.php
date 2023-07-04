@@ -91,7 +91,7 @@ class Forminator_Admin_Import_CF7 extends Forminator_Import_Mediator {
 			'enable-ajax'          => 'true',
 			'autoclose'            => 'true',
 			'submission-indicator' => 'show',
-			'indicator-label'      => __( 'Submitting...', 'forminator' ),
+			'indicator-label'      => esc_html__( 'Submitting...', 'forminator' ),
 			'paginationData'       => array(
 				'pagination-header-design' => 'show',
 				'pagination-header'        => 'nav',

@@ -27,7 +27,8 @@
                     <div class="sui-notice-message">
                         <i aria-hidden="true" class="sui-notice-icon sui-icon-info sui-md"></i>
                         <p><?php printf(
-								__( 'No third-party app connected. %1$sConnect a third-party app%2$s to view data in this report.', 'forminator' ),
+	                        /* Translators: 1. Opening <a> tag with link to the Integration page, 2. closing <a> tag. */
+								esc_html__( 'No third-party app connected. %1$sConnect a third-party app%2$s to view data in this report.', 'forminator' ),
 								'<a href="' . admin_url( 'admin.php?page=forminator-integrations' ) . '" target=_blank>',
 								'</a>' ); ?>
                         </p>

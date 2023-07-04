@@ -31,15 +31,15 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 	public function __construct( Forminator_Addon_Abstract $addon, $quiz_id ) {
 		parent::__construct( $addon, $quiz_id );
 
-		$this->_update_quiz_settings_error_message = __(
+		$this->_update_quiz_settings_error_message = esc_html__(
 			'The update to your settings for this quiz failed, check the form input and try again.',
 			'forminator'
 		);
 
 		$this->target_types = array(
-			Forminator_Addon_Slack::TARGET_TYPE_PUBLIC_CHANNEL  => __( 'Public Channel', 'forminator' ),
-			Forminator_Addon_Slack::TARGET_TYPE_PRIVATE_CHANNEL => __( 'Private Channel', 'forminator' ),
-			Forminator_Addon_Slack::TARGET_TYPE_DIRECT_MESSAGE  => __( 'Direct Message', 'forminator' ),
+			Forminator_Addon_Slack::TARGET_TYPE_PUBLIC_CHANNEL  => esc_html__( 'Public Channel', 'forminator' ),
+			Forminator_Addon_Slack::TARGET_TYPE_PRIVATE_CHANNEL => esc_html__( 'Private Channel', 'forminator' ),
+			Forminator_Addon_Slack::TARGET_TYPE_DIRECT_MESSAGE  => esc_html__( 'Direct Message', 'forminator' ),
 		);
 	}
 
@@ -104,7 +104,7 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 
 			try {
 				if ( empty( $name ) ) {
-					throw new Forminator_Addon_Slack_Exception( __( 'Please pick valid name' ) );
+					throw new Forminator_Addon_Slack_Exception( esc_html__( 'Please pick valid name' ) );
 				}
 
 				$time_added = $this->get_multi_id_quiz_settings_value( $multi_id, 'time_added', time() );
@@ -184,7 +184,7 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 		$template = forminator_addon_slack_dir() . 'views/quiz-settings/select-type.php';
 
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -210,11 +210,11 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 			try {
 
 				if ( empty( $type ) ) {
-					throw new Forminator_Addon_Slack_Exception( __( 'Please pick valid type' ) );
+					throw new Forminator_Addon_Slack_Exception( esc_html__( 'Please pick valid type', 'forminator' ) );
 				}
 
 				if ( ! in_array( $type, array_keys( $types ), true ) ) {
-					throw new Forminator_Addon_Slack_Exception( __( 'Please pick valid type' ) );
+					throw new Forminator_Addon_Slack_Exception( esc_html__( 'Please pick valid type', 'forminator' ) );
 				}
 
 				$this->save_multi_id_quiz_setting_values(
@@ -297,7 +297,7 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 	public function select_target( $submitted_data ) {
 		$template = forminator_addon_slack_dir() . 'views/quiz-settings/select-target.php';
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -317,17 +317,17 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 			case Forminator_Addon_Slack::TARGET_TYPE_PRIVATE_CHANNEL:
 				$func_get_targets                = 'get_groups_list';
 				$key_to_walk                     = 'channels';
-				$template_params['help_message'] = __( 'Select which Slack private group / channel this feed will post a message to.', 'forminator' );
+				$template_params['help_message'] = esc_html__( 'Select which Slack private group / channel this feed will post a message to.', 'forminator' );
 				break;
 			case Forminator_Addon_Slack::TARGET_TYPE_DIRECT_MESSAGE:
 				$func_get_targets                = 'get_users_list';
 				$key_to_walk                     = 'members';
-				$template_params['help_message'] = __( 'Select which Slack user this feed will post a message to.', 'forminator' );
+				$template_params['help_message'] = esc_html__( 'Select which Slack user this feed will post a message to.', 'forminator' );
 				break;
 			default:
 				$func_get_targets                = 'get_channels_list';
 				$key_to_walk                     = 'channels';
-				$template_params['help_message'] = __( 'Select which Slack channel this feed will post a message to.', 'forminator' );
+				$template_params['help_message'] = esc_html__( 'Select which Slack channel this feed will post a message to.', 'forminator' );
 				break;
 		}
 
@@ -341,7 +341,7 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 			$api             = $this->addon->get_api();
 			$targets_request = call_user_func( array( $api, $func_get_targets ) );
 			if ( ! is_object( $targets_request ) || ! isset( $targets_request->$key_to_walk ) || ! is_array( $targets_request->$key_to_walk ) || empty( $targets_request->$key_to_walk ) ) {
-				throw new Forminator_Addon_Slack_Exception( __( 'No target found on your selected target type.', 'forminator' ) );
+				throw new Forminator_Addon_Slack_Exception( esc_html__( 'No target found on your selected target type.', 'forminator' ) );
 			}
 
 			foreach ( $targets_request->$key_to_walk as $value ) {
@@ -362,11 +362,11 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 			try {
 
 				if ( empty( $target_id ) ) {
-					throw new Forminator_Addon_Slack_Exception( __( 'Please pick valid target' ) );
+					throw new Forminator_Addon_Slack_Exception( esc_html__( 'Please pick valid target', 'forminator' ) );
 				}
 
 				if ( ! in_array( $target_id, array_keys( $targets ), true ) ) {
-					throw new Forminator_Addon_Slack_Exception( __( 'Please pick valid target' ) );
+					throw new Forminator_Addon_Slack_Exception( esc_html__( 'Please pick valid target', 'forminator' ) );
 				}
 
 				$target_name = $targets[ $target_id ];
@@ -448,7 +448,7 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 	public function setup_message( $submitted_data ) {
 		$template = forminator_addon_slack_dir() . 'views/quiz-settings/setup-message.php';
 		if ( ! isset( $submitted_data['multi_id'] ) ) {
-			return $this->get_force_closed_wizard( __( 'Please pick valid connection', 'forminator' ) );
+			return $this->get_force_closed_wizard( esc_html__( 'Please pick valid connection', 'forminator' ) );
 		}
 
 		$multi_id = $submitted_data['multi_id'];
@@ -464,7 +464,7 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 		);
 
 		$template_params['tags']              = forminator_get_vars();
-		$template_params['tags']['quiz_name'] = __( 'Quiz Name', 'forminator' );
+		$template_params['tags']['quiz_name'] = esc_html__( 'Quiz Name', 'forminator' );
 
 		if ( isset( $this->quiz_settings['hasLeads'] ) && $this->quiz_settings['hasLeads'] ) {
 			$template_params['lead_fields'] = $this->form_fields;
@@ -482,7 +482,7 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 			try {
 
 				if ( empty( $message ) ) {
-					throw new Forminator_Addon_Slack_Exception( __( 'Please add a message', 'forminator' ) );
+					throw new Forminator_Addon_Slack_Exception( esc_html__( 'Please add a message', 'forminator' ) );
 				}
 
 				$this->save_multi_id_quiz_setting_values(
@@ -494,7 +494,7 @@ class Forminator_Addon_Slack_Quiz_Settings extends Forminator_Addon_Quiz_Setting
 
 				$notification = array(
 					'type' => 'success',
-					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . __( 'Successfully connected to your quiz' ),
+					'text' => '<strong>' . $this->addon->get_title() . '</strong> ' . esc_html__( 'Successfully connected to your quiz', 'forminator' ),
 				);
 				$is_close     = true;
 

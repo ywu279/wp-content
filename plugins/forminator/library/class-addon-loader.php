@@ -146,10 +146,10 @@ class Forminator_Addon_Loader {
 		 * Initiate standard default error messages
 		 */
 		$this->default_addon_error_messages = array(
-			'activate'             => __( 'Failed to activate addon', 'forminator' ),
-			'deactivate'           => __( 'Failed to deactivate addon', 'forminator' ),
-			'update_settings'      => __( 'Failed to update settings', 'forminator' ),
-			'update_form_settings' => __( 'Failed to update form settings', 'forminator' ),
+			'activate'             => esc_html__( 'Failed to activate addon', 'forminator' ),
+			'deactivate'           => esc_html__( 'Failed to deactivate addon', 'forminator' ),
+			'update_settings'      => esc_html__( 'Failed to update settings', 'forminator' ),
+			'update_form_settings' => esc_html__( 'Failed to update form settings', 'forminator' ),
 		);
 
 		// Only enable wp_ajax hooks.
@@ -366,13 +366,13 @@ class Forminator_Addon_Loader {
 	public function deactivate_addon( $slug ) {
 		$addon = $this->get_addon( $slug );
 		if ( is_null( $addon ) ) {
-			$this->last_error_message = __( 'Addon not found', 'forminator' );
+			$this->last_error_message = esc_html__( 'Addon not found', 'forminator' );
 
 			return false;
 		}
 
 		if ( ! $this->addon_is_active( $slug ) ) {
-			$this->last_error_message = __( 'Addon is not activated before', 'forminator' );
+			$this->last_error_message = esc_html__( 'Addon is not activated before', 'forminator' );
 
 			return false;
 		}
@@ -500,19 +500,19 @@ class Forminator_Addon_Loader {
 		do_action( 'forminator_before_addon_activated', $slug, $addon );
 
 		if ( is_null( $addon ) ) {
-			$this->last_error_message = __( 'Addon not found', 'forminator' );
+			$this->last_error_message = esc_html__( 'Addon not found', 'forminator' );
 
 			return false;
 		}
 
 		if ( $this->addon_is_active( $slug ) ) {
-			$this->last_error_message = __( 'Addon already activated before', 'forminator' );
+			$this->last_error_message = esc_html__( 'Addon already activated before', 'forminator' );
 
 			return false;
 		}
 
 		if ( ! $addon->is_activable() ) {
-			$this->last_error_message = __( 'Addon is not activable', 'forminator' );
+			$this->last_error_message = esc_html__( 'Addon is not activable', 'forminator' );
 
 			return false;
 		}

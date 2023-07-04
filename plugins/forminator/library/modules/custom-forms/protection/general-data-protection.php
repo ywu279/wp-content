@@ -29,17 +29,17 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 	private static $custom_form_model_instances = array();
 
 	public function __construct() {
-		parent::__construct( __( 'Forminator Forms', 'forminator' ) );
+		parent::__construct( esc_html__( 'Forminator Forms', 'forminator' ) );
 
 		$this->add_exporter(
 			'forminator-form-submissions',
-			__( 'Forminator Form Submissions', 'forminator' ),
+			esc_html__( 'Forminator Form Submissions', 'forminator' ),
 			array( 'Forminator_CForm_General_Data_Protection', 'form_submissions_exporter' )
 		);
 
 		$this->add_eraser(
 			'forminator-form-submissions',
-			__( 'Forminator Form Submissions', 'forminator' ),
+			esc_html__( 'Forminator Form Submissions', 'forminator' ),
 			array( 'Forminator_CForm_General_Data_Protection', 'form_submissions_eraser' )
 		);
 
@@ -151,11 +151,11 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 				} else {
 					// fallback to dump the rows.
 					$data [] = array(
-						'name'  => __( 'Entry ID', 'forminator' ),
+						'name'  => esc_html__( 'Entry ID', 'forminator' ),
 						'value' => '#' . $entry_model->entry_id,
 					);
 					$data [] = array(
-						'name'  => __( 'Submission Date', 'forminator' ),
+						'name'  => esc_html__( 'Submission Date', 'forminator' ),
 						'value' => $entry_model->date_created_sql,
 					);
 
@@ -181,7 +181,7 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 
 				$data_to_export[] = array(
 					'group_id'    => 'forminator_form_submissions',
-					'group_label' => __( 'Forminator Form Submissions', 'forminator' ),
+					'group_label' => esc_html__( 'Forminator Form Submissions', 'forminator' ),
 					'item_id'     => 'entry-' . $entry_id,
 					'data'        => $data,
 				);
@@ -237,19 +237,19 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 			array(
 				// read form model's meta property.
 				'property' => 'entry_id', // must be on export.
-				'label'    => __( 'Entry ID', 'forminator' ),
+				'label'    => esc_html__( 'Entry ID', 'forminator' ),
 				'type'     => 'entry_id',
 			),
 			array(
 				// read form model's property.
 				'property' => 'date_created_sql', // must be on export.
-				'label'    => __( 'Submission Date', 'forminator' ),
+				'label'    => esc_html__( 'Submission Date', 'forminator' ),
 				'type'     => 'entry_date_created',
 			),
 			array(
 				// read form model's meta property.
 				'meta_property' => '_forminator_user_ip', // must be on export.
-				'label'         => __( 'IP Address', 'forminator' ),
+				'label'         => esc_html__( 'IP Address', 'forminator' ),
 				'type'          => '_forminator_user_ip',
 			),
 		);
@@ -432,11 +432,11 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 			if ( $remove_form_submission ) {
 				if ( ! empty( $entry_model->form_id ) ) {
 					Forminator_Form_Entry_Model::delete_by_entry( $entry_id );
-					$response['messages'][]    = sprintf( __( 'Removed form #%1$s submission #%2$s.', 'forminator' ), $entry_model->form_id, $entry_id );
+					$response['messages'][]    = sprintf( esc_html__( 'Removed form #%1$s submission #%2$s.', 'forminator' ), $entry_model->form_id, $entry_id );
 					$response['items_removed'] = true;
 				}
 			} else {
-				$response['messages'][]     = sprintf( __( 'Form #%1$s submission #%2$s has been retained.', 'forminator' ), $entry_model->form_id, $entry_id );
+				$response['messages'][]     = sprintf( esc_html__( 'Form #%1$s submission #%2$s has been retained.', 'forminator' ), $entry_model->form_id, $entry_id );
 				$response['items_retained'] = true;
 			}
 		}

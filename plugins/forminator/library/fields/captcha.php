@@ -58,7 +58,7 @@ class Forminator_Captcha extends Forminator_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Captcha', 'forminator' );
+		$this->name = esc_html__( 'Captcha', 'forminator' );
 	}
 
 	/**
@@ -76,11 +76,12 @@ class Forminator_Captcha extends Forminator_Field {
 			'score_threshold'         => '0.5',
 			'captcha_badge'           => 'bottomright',
 			'hc_invisible_notice'	  => sprintf(
-											__(
-												'This site is protected by hCaptcha and its %1$sPrivacy Policy%3$s and %2$sTerms of Service%3$s apply.',
+											esc_html__(
+												'This site is protected by hCaptcha and its %1$sPrivacy Policy%2$s and %3$sTerms of Service%4$s apply.',
 												'forminator'
 											),
 											'<a href="https://hcaptcha.com/privacy">',
+											'</a>',
 											'<a href="https://hcaptcha.com/terms">',
 											'</a>'
 										),
@@ -172,7 +173,7 @@ class Forminator_Captcha extends Forminator_Field {
 				$hcaptcha_notice  = sprintf( '<div class="forminator-checkbox__label">%s</div>', wp_kses_post( $hcaptcha_notice ) );
 			}
 		}
-		// dont use .g-recaptcha class as it will rendered automatically when other plugin load recaptcha with default render
+		// don't use .g-recaptcha class as it will render automatically when other plugin load recaptcha with default render
 		return sprintf(
 			'<div class="%s" data-theme="%s" %s data-sitekey="%s" data-size="%s"></div> %s',
 			esc_attr( $captcha_class ),
@@ -261,7 +262,7 @@ class Forminator_Captcha extends Forminator_Field {
 		$verify	 = $captcha->verify( $data, null, $score );
 
 		if ( is_wp_error( $verify ) ) {
-			$invalid_captcha_message = ( ! empty( $error_message ) ? $error_message : __( 'Captcha verification failed. Please try again.', 'forminator' ) );
+			$invalid_captcha_message = ( ! empty( $error_message ) ? $error_message : esc_html__( 'Captcha verification failed. Please try again.', 'forminator' ) );
 
 			/**
 			 * Filter message displayed for invalid captcha

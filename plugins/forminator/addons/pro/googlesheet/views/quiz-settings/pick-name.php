@@ -16,7 +16,7 @@ foreach ( $template_vars as $key => $val ) {
 <div class="forminator-integration-popup__header">
 
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
-		<?php echo esc_html( __( 'Set Up Name', 'forminator' ) ); ?>
+		<?php esc_html_e( 'Set Up Name', 'forminator' ); ?>
 	</h3>
 
 	<p id="forminator-integration-popup__description" class="sui-description">
@@ -39,8 +39,8 @@ foreach ( $template_vars as $key => $val ) {
 
 					<p>
 						<?php
-						/* translators: ... */
 						printf(
+						/* Translators: 1. Opening <a> tag with link spreadsheet link, 2. closing <a> tag. */
 							esc_html__( 'You can open your current Spreadsheet %shere%s.', 'forminator' ),
 							'<a target="_blank" href="https://docs.google.com/spreadsheets/d/' . esc_attr( $vars['file_id'] ) . '">',
 							'</a>'
@@ -85,7 +85,7 @@ foreach ( $template_vars as $key => $val ) {
 		<label class="sui-label"><?php esc_html_e( 'Name', 'forminator' ); ?></label>
 		<input
 				class="sui-form-control"
-				name="name" placeholder="<?php echo esc_attr( __( 'Friendly Name', 'forminator' ) ); ?>"
+				name="name" placeholder="<?php esc_attr_e( 'Friendly Name', 'forminator' ); ?>"
 				value="<?php echo esc_attr( $vars['name'] ); ?>">
 		<?php if ( ! empty( $vars['name_error'] ) ) : ?>
 			<span class="sui-error-message"><?php echo esc_html( $vars['name_error'] ); ?></span>

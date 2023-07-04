@@ -3,7 +3,7 @@
 	<h3 id="forminator-integration-popup__title" class="sui-box-title sui-lg" style="overflow: initial; white-space: normal; text-overflow: initial;">
 		<?php
 		/* translators: Integration name */
-		echo esc_html( sprintf( __( '%1$s Added', 'forminator' ), 'Webhook' ) );
+		printf( esc_html__( '%1$s Added', 'forminator' ), 'Webhook' );
 		?>
 	</h3>
 

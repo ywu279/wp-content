@@ -24,17 +24,16 @@ if ( $count > 0 || $is_search ) {
 				<span class="sui-summary-large"><?php echo esc_html( $count_active ); ?></span>
 
 				<span class="sui-summary-sub">
-				<?php
-				echo esc_html(
-					_n(
-						sprintf( 'Active %s', forminator_get_prefix( static::$module_slug, '', true ) ),
-						sprintf( 'Active %s', forminator_get_prefix( static::$module_slug, '', true, true ) ),
-						esc_html( $count_active ),
-						'forminator'
-					)
-				);
-				?>
-											  </span>
+                <?php
+                $active_text     = esc_html__( 'Active %s', 'forminator' );
+                $active_singular = esc_html__( forminator_get_prefix( static::$module_slug, '', true ), 'forminator' );
+                $active_plural   = esc_html__( forminator_get_prefix( static::$module_slug, '', true, true ), 'forminator' );
+                if ( 1 < $count_active ) {
+	                echo sprintf( $active_text, $active_plural );
+                } else {
+	                echo sprintf( $active_text, $active_singular );
+                } ?>
+                </span>
 
 				<form id="forminator-search-modules" class="forminator-search-modules" data-searched="false">
 
@@ -46,7 +45,7 @@ if ( $count > 0 || $is_search ) {
 
 								<div class="sui-control-with-icon">
 									<button class="forminator-search-submit"><i class="sui-icon-magnifying-glass-search"></i></button>
-									<input type="text" name="search" value="<?php echo esc_attr( $search_keyword ); ?>" placeholder="<?php echo esc_attr( sprintf( __( 'Search %s...', 'forminator' ), static::$module_slug ) ); ?>" id="forminator-module-search" class="sui-form-control">
+									<input type="text" name="search" value="<?php echo esc_attr( $search_keyword ); ?>" placeholder="<?php /* translators: %s: Module slug */ printf( esc_html__( 'Search %s...', 'forminator' ), esc_html__( static::$module_slug, 'forminator' ) ); ?>" id="forminator-module-search" class="sui-form-control">
 								</div>
 								<button role="button" class="search-reset sui-button-icon" title="<?php esc_attr_e( 'Reset search', 'forminator' ); ?>">
 									<span class="sui-icon-cross-close" aria-hidden="true"></span>

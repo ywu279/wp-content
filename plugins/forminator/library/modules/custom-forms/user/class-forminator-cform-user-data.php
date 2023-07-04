@@ -55,7 +55,7 @@ class Forminator_CForm_User_Data {
 				wp_send_json_error( $e->getMessage() );
 			}
 		} else {
-			wp_send_json_error( __( 'Invalid activation key.', 'forminator' ) );
+			wp_send_json_error( esc_html__( 'Invalid activation key.', 'forminator' ) );
 		}
 	}
 
@@ -80,15 +80,15 @@ class Forminator_CForm_User_Data {
 
 				$entry_id = Forminator_Core::sanitize_text_field( 'entry_id' );
 				if ( ! $entry_id ) {
-					wp_send_json_error( __( 'Invalid entry ID.', 'forminator' ) );
+					wp_send_json_error( esc_html__( 'Invalid entry ID.', 'forminator' ) );
 				}
 				$form_id = Forminator_Core::sanitize_text_field( 'form_id' );
 				if ( ! $form_id ) {
-					wp_send_json_error( __( 'Invalid form ID.', 'forminator' ) );
+					wp_send_json_error( esc_html__( 'Invalid form ID.', 'forminator' ) );
 				}
 
 				if ( false === Forminator_Form_Entry_Model::delete_by_entrys( $form_id, $entry_id ) ) {
-					wp_send_json_error( __( 'Error! Entry was not deleted.', 'forminator' ) );
+					wp_send_json_error( esc_html__( 'Error! Entry was not deleted.', 'forminator' ) );
 				}
 
 				wp_send_json_success();
@@ -97,7 +97,7 @@ class Forminator_CForm_User_Data {
 				wp_send_json_error( $e->getMessage() );
 			}
 		} else {
-			wp_send_json_error( __( 'Invalid activation key.', 'forminator' ) );
+			wp_send_json_error( esc_html__( 'Invalid activation key.', 'forminator' ) );
 		}
 	}
 
